@@ -3,8 +3,17 @@ var router = express.Router();
 var kafka = require('./../kafka/client');
 
 router.get('/searchcars', function(req, res, next) {
-  kafka.make_request('car_search',{"Node":"Node Message"}, function(err,result){
-    res.status(201).json(result);
+
+  var src_city = (req.body.src_city).toLowerCase() ;
+  var destination_city = (req.body.destination_city).toLowerCase();
+
+  kafka.make_request('car_search',{"src_city" : src_city , "destination_city" : destination_city}, function(err,result){
+    if(err){
+      console.log("error in searching cars");
+    }
+    else{
+      res.status(201).json(result);
+    }
   });
 });
 
