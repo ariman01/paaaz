@@ -1,12 +1,41 @@
 var mongoose = require('mongoose');
 
 var flightSchema = mongoose.Schema({
-  flightId:{
+  flight_id:{
     type:String,
     required:true
   },
-  carrierName:{
+  carrier_name:{
     type:String
+    required : true
+  },
+  src_city :{
+    type : String,
+    required : true
+  },
+  destination_city :{
+    type : String,
+    required : true
+  },
+  flight_duration : {
+    type : Number,
+    required : true
+  },
+  operational_day : {
+    type : String,
+    required : true
+  },
+  departure_time : {
+    type : String,
+    required : true
+  },
+  arrival_time : {
+    type : String,
+    required : true
+  },
+  price : {
+    type  : Number,
+    required : true
   }
 });
 

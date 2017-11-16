@@ -1,12 +1,45 @@
 var mongoose = require('mongoose');
 
 var hotelSchema = mongoose.Schema({
-  hotelId:{
+  hotel_id:{
     type:String,
     required:true
   },
-  name:{
-    type:String
+  hotel_name:{
+    type:String,
+    required:true
+  },
+  hotel_address : {
+    type : String,
+    required : true
+  },
+  hotel_city : {
+    type : String,
+    required : true
+  },
+  hotel_state : {
+    type : String,
+    required : true
+  },
+  hotel_zip : {
+    type : Number,
+    required : true
+  },
+  hotel_stars : {
+    type : Number,
+    required : true
+  },
+  hotel_room_type : {
+    type : [String],
+    required : true
+  },
+  hotel_rating : {
+    type : Number,
+    required : true
+  }
+  hotel_reviews : {
+    type : [String],
+    required : true
   }
 });
 
