@@ -29,10 +29,11 @@ var flightSchema = mongoose.Schema({
     type : String,
     required : true
   },
-  arrival_time : {
+  // arrival_time can be calculated from departure_time and flight_duration
+  /*arrival_time : {
     type : String,
     required : true
-  },
+  },*/
   price : {
     type  : Number,
     required : true
