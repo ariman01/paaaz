@@ -1,4 +1,4 @@
-import * as searchcarsAPI from '../api/carAPI';
+import {searchcarsAPI} from '../api/carAPI';
 export function searchcars_action(payload){
     console.log("its action"+payload);
     return dispatch => {
@@ -7,6 +7,8 @@ export function searchcars_action(payload){
                 responseJson => {
                     if(responseJson.code == 201)
                     {
+                        console.log("its"+responseJson);
+                        var cars= responseJson.cars;
                         dispatch(success(responseJson.cars));
                        // history.push('/Mainhome');
                     }

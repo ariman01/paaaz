@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 import { authentication } from './authentication_reducer';
 import { registration } from './registration_reducer';
-import { users } from './users.reducer';
+import { users } from './user_reducer';
 import { alert } from './alert_reducer';
-import {listoffiles} from './listfiles.reducer';
-const rootReducer = combineReducers({
+import { cars } from './car_reducer';
+const index = combineReducers({
   authentication,
-  listoffiles,
   registration,
   users,
-  alert
+  alert,
+    cars
 });
 
-export default rootReducer;
+export default index;
