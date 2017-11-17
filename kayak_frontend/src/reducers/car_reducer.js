@@ -1,4 +1,4 @@
-function cars(state = {}, action) {
+export function cars(state = {}, action) {
     switch (action.type) {
 
         case CAR_SUCCESS:
@@ -15,4 +15,3 @@ function cars(state = {}, action) {
             return state
     }
 }
-exports.cars=cars;

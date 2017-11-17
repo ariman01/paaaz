@@ -1,6 +1,10 @@
-// Add rest api calls related to cars
-function searchcars(payload)
+const headers = {
+    'Accept': 'application/json'
+};
+console.log("its test");
+export function searchcarsAPI(payload)
 {
+    console.log("its api"+payload);
     const requestOptions = {
         method: 'POST',
         credentials:'include',
@@ -12,4 +16,3 @@ function searchcars(payload)
             return responseJson;
         });
 }
-module.exports.searchcars=searchcars;

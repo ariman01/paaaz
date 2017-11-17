@@ -1,15 +1,14 @@
-// add actions related to cars
-// carAPI from './carAPI';
-function searchcars(payload){
+import * as searchcarsAPI from '../api/carAPI';
+export function searchcars_action(payload){
+    console.log("its action"+payload);
     return dispatch => {
-
-        carAPI.searchcars(payload)
+        searchcarsAPI(payload)
             .then(
                 responseJson => {
                     if(responseJson.code == 201)
                     {
                         dispatch(success(responseJson.cars));
-                        history.push('/Mainhome');
+                       // history.push('/Mainhome');
                     }
                     else
                     {
@@ -17,9 +16,6 @@ function searchcars(payload){
                     }
                 } );
     };
-   function success(cars) { return { type: CAR_SUCCESS, cars } }
-   function failure(error) { return { type: CAR_FAILURE, error } }
-
+   function success(cars) { return { type: 'CAR_SUCCESS', cars } }
+   function failure(error) { return { type: 'CAR_FAILURE', error } }
 }
-
-exports.searchcars= searchcars;
