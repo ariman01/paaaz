@@ -12,6 +12,7 @@ import HomePageHeader from './components/headers/homepage_header';
 import HomeScreenButtonPanel from './components/searchbars/homescreen_button_panel';
 import CarSearchLeftNav from './components/searchbars/car_search_leftnav';
 import CarTile from './components/searchbars/car_tiles';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import Headers from './components/header';
 
 class App extends Component {
@@ -19,18 +20,19 @@ class App extends Component {
     return (
       <div className="App">
       <BrowserRouter>
+          <MuiThemeProvider>
+              <Switch>
 
-        <Switch>
+                    <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
+                    <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
+                    <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
+                    <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
+                    <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
+                    <Route  exact path="/hotels" render ={() => (<SearchHotel/>)}/>
+                    <Route  exact path="/" render ={() => (<ShowCars/>)}/>
 
-              <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
-              <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
-              <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
-              <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
-              <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
-              <Route  exact path="/hotels" render ={() => (<SearchHotel/>)}/>
-              <Route  exact path="/" render ={() => (<ShowCars/>)}/>
-
-        </Switch>
+              </Switch>
+          </MuiThemeProvider>
       </BrowserRouter>
       </div>
     );
