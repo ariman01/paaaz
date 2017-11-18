@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 
+
 var flightSchema = mongoose.Schema({
   flight_id:{
     type:String,
     required:true
   },
   carrier_name:{
-    type:String
+    type:String,
     required : true
   },
   src_city :{
@@ -22,7 +23,7 @@ var flightSchema = mongoose.Schema({
     required : true
   },
   operational_day : {
-    type : String,
+    type : Number,
     required : true
   },
   departure_time : {
@@ -40,7 +41,7 @@ var flightSchema = mongoose.Schema({
   }
 });
 
-const Flights = mongoose.model('flights',flightSchema);
+const Flights = mongoose.model('Flights',flightSchema);
 
 
 function addNewFlight(flightDetail, callback){
@@ -48,11 +49,17 @@ function addNewFlight(flightDetail, callback){
 }
 
 function searchFlights(parameter, callback){
-	Flights.find(parameter, callback);
+
+   console.log("I am inside Models");
+  console.log("parameter is:");
+
+  // usin thing parameter we will make a call to mongodb
+
+  Flights.find(parameter, callback);
 }
 
 function searchFlight(parameter, callback){
-	Flights.findOne(parameter, callback);
+  Flights.findOne(parameter, callback);
 }
 
 
