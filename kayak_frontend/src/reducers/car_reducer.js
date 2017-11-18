@@ -1,7 +1,9 @@
-export function cars(state = {}, action) {
+export function cars(state = {cars:{'name':'pooja'}}, action) {
+    const cars={'no':'123'};
     switch (action.type) {
 
         case 'CAR_SUCCESS':
+            console.log(cars);
             return {
                 ...state,
                 cars: action.cars

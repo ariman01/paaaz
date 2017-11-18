@@ -15,19 +15,26 @@ class SearchCar extends Component {
     return (
               <div>
                     <h1> Search Car Screen</h1>
+                  {this.props.cars.length > 0 ?
+                      this.props.cars.map((cardetails) => {
+                          return (<div>
+                                  {cardetails.name}
+                          </div>);
+                  })
+                      :
+                          ''
+                  }
               </div>
            );
   }
 }
 function mapStateToProps(data) {
     let cars = [];
-    console.log("in component ----- ");
-    console.log(data.cars.cars);
+    console.log("its cars data in mapstatetoprops"+data.cars.cars);
     if(data.cars.cars !== undefined) {
         cars.push(data.cars.cars);
-
     }
-    console.log(cars);
+    console.log("its cars array"+cars);
     return {cars};
 }
 function mapDispatchToProps(dispatch) {
