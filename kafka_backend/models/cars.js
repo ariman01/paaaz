@@ -61,4 +61,4 @@ function searchCars(src_city, destination_city, callback){
 
 module.exports.addNewCar = addNewCar;
 module.exports.searchCars = searchCars;
-module.exports.Cars = Users;
+module.exports.Cars = Cars;

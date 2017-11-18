@@ -1,6 +1,4 @@
-var Cars = require('./models/cars')
-var addNewCar = require('./models/cars')
-var searchCars = require('./models/cars')
+var Cars = require('./../models/cars')
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/kayak');
 
@@ -14,7 +12,6 @@ db.once('open', function(){
 
 
 exports.searchCars = function(data, callback){
-
   Cars.searchCars( data.src_city, data.destination_city , function(err , results){
     if(err){
       callback(null,err);
