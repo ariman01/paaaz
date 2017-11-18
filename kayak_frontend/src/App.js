@@ -12,7 +12,7 @@ import HomePageHeader from './components/headers/homepage_header';
 import HomeScreenButtonPanel from './components/searchbars/homescreen_button_panel';
 import CarSearchLeftNav from './components/searchbars/car_search_leftnav';
 import CarTile from './components/searchbars/car_tiles';
-//import Headers from './components/header';
+import FlightTile from './components/searchbars/flight_tiles';
 
 class App extends Component {
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
               <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
               <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
               <Route  exact path="/hotels" render ={() => (<SearchHotel/>)}/>
-              <Route  exact path="/" render ={() => (<ShowCars/>)}/>
+              <Route  exact path="/" render ={() => (<ShowFlights/>)}/>
 
         </Switch>
       </BrowserRouter>
