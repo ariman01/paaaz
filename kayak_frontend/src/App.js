@@ -14,7 +14,8 @@ import CarSearchLeftNav from './components/searchbars/car_search_leftnav';
 import CarTile from './components/searchbars/car_tiles';
 import FlightTile from './components/searchbars/flight_tiles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import CarBillingSummary from './components/subcomponents/car_billing_summary';
+import CarBillingPage from './components/car_billing_page';
 
 class App extends Component {
   render() {
@@ -30,7 +31,7 @@ class App extends Component {
                     <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
                     <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
                     <Route  exact path="/hotels" render ={() => (<SearchHotel/>)}/>
-                    <Route  exact path="/" render ={() => (<ShowCars/>)}/>
+                    <Route  exact path="/" render ={() => (<CarBillingPage/>)}/>
 
               </Switch>
           </MuiThemeProvider>
