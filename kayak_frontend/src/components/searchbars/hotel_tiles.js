@@ -8,7 +8,7 @@ import viewDeal from './../../images/viewdeal.png'
 class HotelTile extends Component {
 
   handleView(){
-    console.log("handle car view");
+    console.log("handle  car view");
   }
 
   render() {
