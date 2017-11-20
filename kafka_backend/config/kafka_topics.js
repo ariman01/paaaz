@@ -9,7 +9,8 @@ const topics = [
   "flight_search_req",
   "car_book_req",
   "hotel_search_req",
-  "hotel_add_req"
+  "hotel_add_req",
+  "signup_req"
 ]
 
 
