@@ -1,0 +1,103 @@
+.carr-billing-summary{
+
+  height:150px;
+  width: 100%;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.car-summary{
+  background-color: white;
+  width: 100%;
+}
+
+.car-summary-1{
+  float:left;
+  text-align: left;
+  background-color: white;
+  width:100%;
+  padding-left: 10px;
+}
+.car-summary-2{
+  float:left;
+  text-align: left;
+  background-color: white;
+  width:100%;
+  padding-left: 10px;
+
+}
+.car-summary-support{
+  margin-top: 10px;
+  float:left;
+  text-align: left;
+  background-color: white;
+  width:100%;
+  padding-left: 10px;
+}
+
+
+.car-billing-body-left-nav{
+  display:inline-block;
+  width: 20%;
+  height: 500px;
+  background-color: #f1f1f1;
+  display:inline-block;
+}
+.car-billing-body-centre{
+  display:inline-block;
+  background-color: #f1f1f1;
+  width: 60%;
+  height: 500px;
+  display:inline-block;
+
+}
+.car-billing-body-right-nav{
+  display:inline-block;
+  width: 20%;
+  height: 500px;
+  background-color: #f1f1f1;
+  display:inline-block;
+}
+
+.car-billing-page{
+  background-color: #f1f1f1;
+}
+
+.car-billing-page-header{
+  background-color: #0f1011;
+  padding-bottom: 0px;
+}
+
+
+
+.flight-billing-body-left-nav{
+  display:inline-block;
+  width: 20%;
+  height: 300px;
+  background-color: #f1f1f1;
+  display:inline-block;
+}
+.flight-billing-body-centre{
+  display:inline-block;
+  background-color: #f1f1f1;
+  width: 60%;
+  height: 300px;
+  display:inline-block;
+
+}
+.flight-billing-body-right-nav{
+  display:inline-block;
+  width: 20%;
+  height: 300px;
+  background-color: #f1f1f1;
+  display:inline-block;
+}
+
+.flight-billing-page{
+  background-color: #f1f1f1;
+}
+
+.flight-billing-page-header{
+  background-color: #0f1011;
+  padding-bottom: 0px;
+}

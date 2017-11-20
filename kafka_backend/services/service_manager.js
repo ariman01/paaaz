@@ -9,8 +9,12 @@ function handle_request(topic, data, callback){
     }else if(topic === "car_book_req"){
       carsercices.bookCar(data, callback);
     }else if(topic === "flight_search_req"){
-    	
+
     	flightservices.searchFlights(data,callback);
+    }
+    else if(topic === "hotel_search_req"){
+
+    	hotelservices.searchHotels(data,callback);
     }
 
 

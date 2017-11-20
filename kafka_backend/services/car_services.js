@@ -1,15 +1,4 @@
-var Cars = require('./../models/cars')
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/kayak');
-
-var db = mongoose.connection;
-db.on('error' , console.error.bind(console, 'connection error:'));
-
-db.once('open', function(){
-  console.log("connected to mongodb");
-});
-
-
+var Cars = require('./../models/cars');
 
 exports.searchCars = function(data, callback){
   Cars.searchCars( data.src_city, data.destination_city , function(err , results){

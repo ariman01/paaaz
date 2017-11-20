@@ -36,7 +36,7 @@ var hotelSchema = mongoose.Schema({
   hotel_rating : {
     type : Number,
     required : true
-  }
+  },
   hotel_reviews : {
     type : [String],
     required : true
@@ -51,7 +51,7 @@ function addNewHotel(hotelDetail, callback){
 }
 
 function searchHotels(location, callback){
-  Hotels.find(query, callback);
+  Hotels.find(location, callback);
 }
 
 function searchHotel(parameter, callback){
