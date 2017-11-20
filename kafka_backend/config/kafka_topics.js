@@ -6,7 +6,10 @@ const topics = [
   "add_flight_req",
   "delete_flight_req",
   "edit_flight_req",
-  "flight_search_req"
+  "flight_search_req",
+  "car_book_req",
+  "hotel_search_req",
+  "hotel_add_req"
 ]
 
 

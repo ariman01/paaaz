@@ -20,7 +20,11 @@ function handle_request(topic, data, callback){
     	flightservices.deleteFlight(data,callback);
     }else if(topic === "edit_flight_req"){
     	flightservices.editFlight(data,callback);
-    }
+    }else if(topic === "hotel_search_req"){
+      hotelservices.searchHotels(data, callback);
+    }else if(topic === "hotel_add_req"){
+      hotelservices.addNewHotel(data, callback);
+  }
 }
 
 exports.handle_request = handle_request;

@@ -74,6 +74,4 @@ exports.editCar = function(data, callback){
     });
   }
 
-
-
 }

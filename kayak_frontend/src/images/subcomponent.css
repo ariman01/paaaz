@@ -45,7 +45,7 @@
   display:inline-block;
   background-color: #f1f1f1;
   width: 60%;
-    height: 500px;
+  height: 500px;
 
 }
 .car-billing-body-right-nav{
@@ -53,4 +53,45 @@
   width: 20%;
   height: 500px;
   background-color: #f1f1f1;
+
+}
+
+.car-billing-page{
+  background-color: #f1f1f1;
+}
+
+.car-billing-page-header{
+  background-color: #0f1011;
+  padding-bottom: 0px;
+}
+
+
+
+.flight-billing-body-left-nav{
+  display:inline-block;
+  width: 20%;
+  height: 300px;
+  background-color: #f1f1f1;
+}
+.flight-billing-body-centre{
+  display:inline-block;
+  background-color: #f1f1f1;
+  width: 60%;
+  height: 300px;
+
+}
+.flight-billing-body-right-nav{
+  display:inline-block;
+  width: 20%;
+  height: 300px;
+  background-color: #f1f1f1;
+}
+
+.flight-billing-page{
+  background-color: #f1f1f1;
+}
+
+.flight-billing-page-header{
+  background-color: #0f1011;
+  padding-bottom: 0px;
 }
