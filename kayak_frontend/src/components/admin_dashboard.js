@@ -15,7 +15,7 @@ class AdminDashboard extends Component {
                     </div>
 
                     <div className="admin-dashboard-welcome">
-                      <h2>Welcome to Dashboard</h2>
+                      <h2>Welcome to Admin Dashboard</h2>
                       <hr/>
                     </div>
 
@@ -51,7 +51,7 @@ class AdminDashboard extends Component {
                     </div>
 
                       <div className="admin-dashboard-graph">
-                              
+
                       </div>
 
             </div>

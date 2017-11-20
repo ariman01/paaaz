@@ -78,3 +78,31 @@
   height: 400px;
   background-color: #e5e5e0;
 }
+
+.car-graph-1{
+  padding-top: 30px;
+  margin-left: 25%;
+    margin-top : 20px;
+  margin-right: 25%;
+  height: 400px;
+  border : solid grey 1px; ;
+}
+
+.car-graph-2{
+  padding-top: 10px;
+  margin-top : 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 400px;
+  border : solid grey 1px; ;
+}
+
+
+.car-graph-3{
+  padding-top: 10px;
+  margin-left: 25%;
+    margin-top : 20px;
+  margin-right: 25%;
+  height: 400px;
+  border : solid grey 1px; ;
+}
