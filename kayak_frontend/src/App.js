@@ -16,6 +16,7 @@ import FlightTile from './components/searchbars/flight_tiles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CarBillingSummary from './components/subcomponents/car_billing_summary';
 import CarBillingPage from './components/car_billing_page';
+import HotelTile from './components/searchbars/hotel_tiles';
 
 class App extends Component {
   render() {
