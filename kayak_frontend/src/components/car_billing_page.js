@@ -16,6 +16,7 @@ class CarBillingPage extends Component {
   render() {
     console.log("It will car billing page:");
     return (
+
               <div className="car-billing-page">
                   <div className="car-billing-page-header">
                   <HomePageHeader/>
@@ -41,6 +42,7 @@ class CarBillingPage extends Component {
                   </div>
 
               </div>
+              
            );
   }
 }
