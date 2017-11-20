@@ -47,14 +47,15 @@ const Flights = mongoose.model('Flights',flightSchema);
 function addNewFlight(flightDetail, callback){
   flightDetail.save(callback);
 }
+function deleteFlight(flight_id, callback){
+    Flights.deleteOne({flight_id:flight_id}, callback);
+}
+
+function editFlight(flight_id, flightDetail, callback){
+  Flights.update({ flight_id: flight_id}, {$set: flightDetail}, callback);
+}
 
 function searchFlights(parameter, callback){
-
-   console.log("I am inside Models");
-  console.log("parameter is:");
-
-  // usin thing parameter we will make a call to mongodb
-
   Flights.find(parameter, callback);
 }
 
@@ -66,4 +67,6 @@ function searchFlight(parameter, callback){
 module.exports.addNewFlight = addNewFlight;
 module.exports.searchFlights = searchFlights;
 module.exports.searchFlight = searchFlight;
+module.exports.editFlight = editFlight;
+module.exports.deleteFlight = deleteFlight;
 module.exports.Flights = Flights;
