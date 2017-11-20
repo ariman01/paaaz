@@ -136,7 +136,6 @@
   width: 20%;
   background-color: grey;
 }
-
 .view-car {
   width:97%;
   height:200px;
@@ -365,5 +364,39 @@
   width:40%;
   display:inline-block;
   padding-top: 0px;
+
+}
+
+.hotel-details-body{
+  width:100%;
+  background-color: #f1f1f1;
+}
+
+.hotel-details-body-left-nav{
+  display:inline-block;
+  width: 20%;
+  background-color: grey;
+}
+.hotel-details-body-centre{
+  display:inline-block;
+  width: 60%;
+
+}
+.hotel-details-body-right-nav{
+  display:inline-block;
+  width: 20%;
+  background-color: grey;
+}
+
+.hotel-img {
+  width: 310px;
+  src: url('hotelimage.jpg');
+}
+.hotel-name{
+   background-color:white;
+}
+.hotel-det1{
+  padding-top: 35px;
+  display: inline;
 
 }

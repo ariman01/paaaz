@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var hotelSchema = mongoose.Schema({
   hotel_id:{
-    type:String,
+    type: String,
     required:true
   },
   hotel_name:{
@@ -40,22 +40,47 @@ var hotelSchema = mongoose.Schema({
   hotel_reviews : {
     type : [String],
     required : true
+  },
+  //hotel_capacity = number of people that can be accomadated in the hotel
+  hotel_capacity : {
+    type : Number,
+    required : true
+  },
+    hotel_start_date : {
+    type : Date,
+  },
+    hotel_end_date : {
+    type : Date,
+  },
+   hotel_price : {
+    type : Number,
+    required : true
   }
+
 });
 
 const Hotels = mongoose.model('hotels',hotelSchema);
 
 
 function addNewHotel(hotelDetail, callback){
+  console.log("addNewHotel:",hotelDetail);
   hotelDetail.save(callback);
+
 }
 
-function searchHotels(location, callback){
-  Hotels.find(location, callback);
+function searchHotels(hotel_city, hotel_capacity, callback){
+  var query = {};
+  if(hotel_city)
+    query.hotel_city = hotel_city;
+  if(hotel_capacity)
+    query.hotel_capacity = hotel_capacity;
+  console.log("searchHotel:",query);
+  Hotels.find(query, callback);
+
 }
 
 function searchHotel(parameter, callback){
-	Hotels.findOne(parameter, callback);
+  Hotels.findOne(parameter, callback);
 }
 
 

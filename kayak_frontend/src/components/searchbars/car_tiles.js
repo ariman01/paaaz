@@ -26,7 +26,7 @@ class CarTile extends Component {
                   </div>
                   <div style={{width:"100%"}}>
                       <div className="car-agency-image">
-                        <img src = {this.props.data.rental_agency} />
+                        <img src = {foxIcon} />
                       </div>
 
                       <div className="car-des-name" >

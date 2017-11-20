@@ -12,7 +12,9 @@ import HomePageHeader from './components/headers/homepage_header';
 import HomeScreenButtonPanel from './components/searchbars/homescreen_button_panel';
 import CarSearchLeftNav from './components/searchbars/car_search_leftnav';
 import CarTile from './components/searchbars/car_tiles';
+import FlightTile from './components/searchbars/flight_tiles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+<<<<<<< HEAD
 import ViewCar from './components/subcomponents/view_car';
 import BookingDetails from './components/subcomponents/booking_details';
 import RentalCarPrice from './components/subcomponents/rental_car_price';
@@ -21,6 +23,10 @@ import CarBillingPage from './components/car_billing_page';
 import FlightBillingPage from './components/flight_billing_page';
 import AdminDashboard from './components/admin_dashboard';
 //import Headers from './components/header';
+
+import CarBillingSummary from './components/subcomponents/car_billing_summary';
+import CarBillingPage from './components/car_billing_page';
+import HotelTile from './components/searchbars/hotel_tiles';
 
 class App extends Component {
   render() {
@@ -39,6 +45,7 @@ class App extends Component {
                     <Route  exact path="/" render ={() => (<CarBillingPage/>)}/>
                     <Route  exact path="/flightbillingpage" render ={() => (<FlightBillingPage/>)}/>
                     <Route  exact path="/admindashboard" render ={() => (<AdminDashboard/>)}/>
+
 
               </Switch>
           </MuiThemeProvider>

@@ -13,7 +13,7 @@ class SearchCar extends Component {
 }
     componentWillMount()
     {
-        this.props.searchcars_action("pooja");
+        
 
     }
   render(){
@@ -31,13 +31,7 @@ class SearchCar extends Component {
   }
 }
 function mapStateToProps(data) {
-    let cars = [];
-    console.log("its cars data in mapstatetoprops"+data.cars.cars);
-    if(data.cars.cars !== undefined) {
-        cars.push(data.cars.cars);
-    }
-    console.log("its cars array"+cars);
-    return {cars};
+return data;
 }
 function mapDispatchToProps(dispatch) {
     return {

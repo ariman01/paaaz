@@ -11,11 +11,11 @@ function handle_request(topic, data, callback){
     }else if(topic === "flight_search_req"){
 
     	flightservices.searchFlights(data,callback);
-    }
-    else if(topic === "hotel_search_req"){
-
-    	hotelservices.searchHotels(data,callback);
-    }
+    }else if(topic === "hotel_search_req"){
+      hotelservices.searchHotels(data, callback);
+  }else if(topic === "hotel_add_req"){
+      hotelservices.addNewHotel(data, callback);
+  }
 
 
 }

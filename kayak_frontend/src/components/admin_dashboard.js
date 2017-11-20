@@ -50,8 +50,9 @@ class AdminDashboard extends Component {
 
                     </div>
 
-                    <div className="admin-dashboard-graph">
-                    </div>
+                      <div className="admin-dashboard-graph">
+                              
+                      </div>
 
             </div>
            );
