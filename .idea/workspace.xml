@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b57cc125-baae-429b-a383-09a660280d15" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/App.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" />
-    </list>
+    <list default="true" id="b57cc125-baae-429b-a383-09a660280d15" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -314,12 +306,12 @@
       <workItem from="1510799094640" duration="265000" />
       <workItem from="1510799569062" duration="5209000" />
       <workItem from="1510859822372" duration="1430000" />
-      <workItem from="1511255100167" duration="3426000" />
+      <workItem from="1511255100167" duration="3564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10330000" />
+    <option name="totallyTimeSpent" value="10468000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
