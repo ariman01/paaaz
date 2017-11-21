@@ -88,8 +88,4 @@ constructor(){
               </div>
            );
   }
-}
-
-
-
-export default ShowHotels;
+}export default ShowHotels;
