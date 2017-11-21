@@ -36,9 +36,9 @@ topic_names.map((topic)=>{
                 partition : 0
             }
         ];
-        console.log("[Kafka] sending response,topic: ",data.replyTo)
+        console.log("[Kafka] sending response,topic: ",data.replyTo+result);
         producer.send(payloads, function(err, data){
-           console.log(data);
+           console.log("its dta in server.js"+data);
         });
       });
   });

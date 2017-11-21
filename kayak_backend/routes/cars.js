@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var kafka = require('./../kafka/client');
 
-router.get('/searchcars', function(req, res, next) {
+router.post('/searchcars', function(req, res, next) {
 
   var src_city = (req.body.src_city).toLowerCase() ;
   var destination_city = (req.body.destination_city).toLowerCase();
@@ -12,7 +12,8 @@ router.get('/searchcars', function(req, res, next) {
       console.log("error in searching cars");
     }
     else{
-      res.status(201).json(result);
+      console.log("its result in car model"+result.src_city);
+      res.status(201).json({result:result});
     }
   });
 });

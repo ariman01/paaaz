@@ -4,48 +4,48 @@ var searchHotels = require('../models/hotels')
 var mongoose = require('mongoose');
 
 exports.searchHotels = function(data, callback){
-  console.log("In searchHotels");
-  Hotels.searchHotels( data.hotel_city, data.hotel_capacity,  function(err , results){
-  	console.log("result is" + results);
-    if(err){
-      callback(null,err);
-    }
-    else{
-	    	console.log("Hotel search data passed to model function");
-	      	callback(null,results);
-    }
-  });
+    console.log("In searchHotels");
+    Hotels.searchHotels( data.hotel_city, data.hotel_capacity,  function(err , results){
+        console.log("result is" + results);
+        if(err){
+            callback(null,err);
+        }
+        else{
+            console.log("Hotel search data passed to model function");
+            callback(null,results);
+        }
+    });
 }
 
 exports.addNewHotel = function(data, callback){
-  console.log("In addNewHotel");
-  var hotelDetail = new Hotels.Hotels({
-  		hotel_id: data.hotel_id,
-  		hotel_name : data.hotel_name ,
-  		hotel_address : data.hotel_address,
-  		hotel_city : data.hotel_city,
-  		hotel_state : data.hotel_state,
-  		hotel_zip : data.hotel_zip ,
-  	 	hotel_stars : data.hotel_stars,
-  	 	hotel_room_type : data.hotel_room_type,
-  	 	hotel_rating : data.hotel_rating,
-  	 	hotel_reviews : data.hotel_reviews,
-  	 	hotel_capacity : data.hotel_capacity,
-  	 	hotel_price : data.hotel_price
-  });
-  Hotels.addNewHotel(hotelDetail, function(err , results){
-    if(err){
-      callback(null,err);
-    }
-    else{
-	    	console.log("Hotel add data passed to model function");
-	      	callback(null,results);
-    }
-  });
+    console.log("In addNewHotel");
+    var hotelDetail = new Hotels.Hotels({
+        hotel_id: data.hotel_id,
+        hotel_name : data.hotel_name ,
+        hotel_address : data.hotel_address,
+        hotel_city : data.hotel_city,
+        hotel_state : data.hotel_state,
+        hotel_zip : data.hotel_zip ,
+        hotel_stars : data.hotel_stars,
+        hotel_room_type : data.hotel_room_type,
+        hotel_rating : data.hotel_rating,
+        hotel_reviews : data.hotel_reviews,
+        hotel_capacity : data.hotel_capacity,
+        hotel_price : data.hotel_price
+    });
+    Hotels.addNewHotel(hotelDetail, function(err , results){
+        if(err){
+            callback(null,err);
+        }
+        else{
+            console.log("Hotel add data passed to model function");
+            callback(null,results);
+        }
+    });
 }
 
 
 exports.bookHotel = function(data, callback){
-  console.log("In bookHotel");
-  callback(null,{result:"bookHotel success"});
+    console.log("In bookHotel");
+    callback(null,{result:"bookHotel success"});
 }
