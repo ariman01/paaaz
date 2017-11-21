@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b57cc125-baae-429b-a383-09a660280d15" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/App.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" afterPath="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,9 +25,11 @@
       <file leaf-file-name="car_action.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="435">
+              <caret line="29" column="67" lean-forward="false" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,18 +37,100 @@
       <file leaf-file-name="car_reducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="360">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="carAPI.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/api/carAPI.js">
+      <file leaf-file-name="car_billing_page.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="booking_details.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/booking_details.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rental_car_price.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/rental_car_price.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_car.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_cars.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/show_cars.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="car_tiles.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="car_search_bar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_search_bar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -66,10 +156,15 @@
         <option value="$PROJECT_DIR$/kayak_frontend/src/api/userAPI.js" />
         <option value="$PROJECT_DIR$/kayak_frontend/src/constants/carConstants.js" />
         <option value="$PROJECT_DIR$/kayak_frontend/src/actions/user_action.js" />
-        <option value="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" />
         <option value="$PROJECT_DIR$/kayak_frontend/src/utils/util.js" />
-        <option value="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" />
         <option value="$PROJECT_DIR$/kayak_frontend/src/api/carAPI.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/App.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js" />
+        <option value="$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/rental_car_price.js" />
       </list>
     </option>
   </component>
@@ -80,6 +175,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/kafka_backend/node_modules" />
+    <handled-path value="$PROJECT_DIR$/kayak_backend/node_modules" />
     <handled-path value="$PROJECT_DIR$/kayak_frontend/node_modules" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
@@ -146,6 +243,22 @@
               <item name="paaaz" type="462c0819:PsiDirectoryNode" />
               <item name="kayak_frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="searchbars" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="paaaz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="paaaz" type="462c0819:PsiDirectoryNode" />
+              <item name="kayak_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="subcomponents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="paaaz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="paaaz" type="462c0819:PsiDirectoryNode" />
+              <item name="kayak_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -201,12 +314,12 @@
       <workItem from="1510799094640" duration="265000" />
       <workItem from="1510799569062" duration="5209000" />
       <workItem from="1510859822372" duration="1430000" />
-      <workItem from="1511255100167" duration="67000" />
+      <workItem from="1511255100167" duration="3426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6971000" />
+    <option name="totallyTimeSpent" value="10330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -265,7 +378,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -289,7 +404,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -297,6 +414,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -355,6 +473,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -423,10 +542,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/search_car.js">
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/utils/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="30">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -434,37 +554,117 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/utils/util.js">
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/search_car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kayak_frontend/src/api/carAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="255">
+          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_search_bar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/actions/car_action.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="67" lean-forward="false" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/reducers/car_reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/view_car.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/searchbars/car_tiles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/show_cars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/car_billing_page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/booking_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kayak_frontend/src/components/subcomponents/rental_car_price.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

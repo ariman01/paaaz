@@ -1,6 +1,7 @@
 var cars=[];
 var displaycars=[];
-export default function cardetails_reducer(state = {cars:{'name':'pooja'}}, action) {
+var current_car=[];
+export default function cardetails_reducer(state = {}, action) {
     switch (action.type) {
 
         case 'CAR_SUCCESS':
@@ -12,6 +13,11 @@ export default function cardetails_reducer(state = {cars:{'name':'pooja'}}, acti
             return {
                 ...state,
                 error: action.error
+            };
+        case 'CURRENT_CAR':
+            return{
+                ...state,
+                current_car:action.result
             };
         default:
             return state
