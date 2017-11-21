@@ -1,1 +1,28 @@
-// Add actions related to flight
+import {searchflightsAPI} from '../api/flightAPI';
+import {history} from "../utils/util";
+
+export function searchflights_action(payload){
+    console.log("its action"+payload.src_city);
+    return dispatch => {
+        searchflightsAPI(payload)
+            .then(
+                response => {
+                    if(response.status==201)
+                    {
+                        response.json().then((response) => {
+                            console.log("its result in flightaction"+ response.result);
+                            console.log("its"+response);
+                            dispatch(success(response.result));
+                            history.push('/flightdetails');
+                        });
+                    }
+                    else
+                    {
+                        dispatch(failure(response.message));
+                    }
+                }
+            );
+    };
+    function success(result) { return { type: 'FLIGHT_SUCCESS', result } }
+    function failure(error) { return { type: 'FLIGHT_FAILURE', error } }
+}

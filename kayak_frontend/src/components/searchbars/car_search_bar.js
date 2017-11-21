@@ -1,10 +1,41 @@
 import React,{ Component } from 'react';
 import clickIcon from './../../images/clickIcon.png';
-
+import { connect } from 'react-redux';
+import {searchcars_action} from './../../actions/car_action';
+import {bindActionCreators} from 'redux';
 class CarSearchBar extends Component {
-
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            cardetails: {
+                src_city: '',
+                destination_city: '',
+                start_date: '',
+                end_date: ''
+            }
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event) {
+        const { name, value } = event.target;
+        const { cardetails } = this.state;
+        this.setState({
+            cardetails: {
+                ...cardetails,
+                [name]: value
+            }
+        });
+        console.log(cardetails);
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        const { cardetails } = this.state;
+        const { dispatch } = this.props;
+        this.props.searchcars_action(cardetails);
+    }
   render() {
+      const { cardetails } = this.state;
     console.log("Search CarSearch Bar Page");
     return (
               <div className="container-fluid" style = {{height:250}}>
@@ -16,21 +47,24 @@ class CarSearchBar extends Component {
                       <a style={{color:"black",fontWeight:"bold"}}>SAME DROP-OFF</a>
                       <a style={{paddingLeft:35,color:"black",fontWeight:"bold"}}>DIFFERENT DROP-OFF</a>
                   </div>
-                      <div className="form-group" style={{marginTop:"6%"}}>
+                      <div className="form-group" style={{marginTop:"6%"}} >
                           <input type="text"  className="TextField col-sm-3 col-md-3 col-lg-3" id="srclocation"
-                          placeholder="Where" style={{marginLeft:2,height:70,fontSize:17}}/>
+                          placeholder="Where" name="src_city" value={cardetails.src_city} style={{marginLeft:2,height:70,fontSize:17}} onChange={this.handleChange}/>
                           <input type="text"  className="TextField col-sm-3 col-md-3 col-lg-3" id="deslocation"
-                          placeholder="To" style={{marginLeft:2,height:70, fontSize:17}}/>
+                          placeholder="To" name="destination_city" value={cardetails.destination_city} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
                           <input type="text"  className="TextField col-sm-2 col-md-3 col-lg-3" id="startdate"
-                          placeholder="Start Date" style={{marginLeft:2,height:70, fontSize:17}}/>
+                          placeholder="Start Date" name="start_date" value={cardetails.start_date} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
                           <input type="text"  className="TextField col-sm-2 col-md-2 col-lg-2" id="enddate"
-                          placeholder="End Date" style={{marginLeft:2,height:70, fontSize:17}}/>
+                          placeholder="End Date" name="end_date" value={cardetails.end_date} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
                       </div>
-                      <img src={clickIcon}  alt="Submit" style={{height:70}}/>
+                      <img src={clickIcon}  alt="Submit" style={{height:70}} onClick={this.handleSubmit}/>
                   </div>
               </div>
            );
   }
 }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({searchcars_action:searchcars_action},dispatch);
+}
 
-export default CarSearchBar;
+export default connect(null,mapDispatchToProps)(CarSearchBar);

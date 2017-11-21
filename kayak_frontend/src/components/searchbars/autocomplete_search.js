@@ -13,7 +13,7 @@ class Demo4 extends Component{
             isOk:true
         }
 
-         this.options = [
+        this.options = [
             {
                 columField: "Name",
                 type:"text"
@@ -42,22 +42,22 @@ class Demo4 extends Component{
 
     render(){
         var rows = this.state.data;
-         return <div className="main-container">
+        return <div className="main-container">
 
 
 
-         <div className="demo-4-filter-wrapper">
-            <div className="demo-4-filter">
-            <ReactFilterBox
+            <div className="demo-4-filter-wrapper">
+                <div className="demo-4-filter">
+                    <ReactFilterBox
 
-                    query={this.state.query}
-                    options={this.options}
-                     />
+                        query={this.state.query}
+                        options={this.options}
+                    />
+                </div>
+
+
+
             </div>
-
-
-
-         </div>
 
         </div>
     }
