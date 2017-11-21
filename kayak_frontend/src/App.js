@@ -23,12 +23,15 @@ import AdminDashboard from './components/admin_dashboard';
 import AddCarAdmin from './components/subcomponents/add_car_admin';
 import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
 import AddFlightAdmin from './components/subcomponents/add_flight_admin';
+import CarBillingPage from './components/car_billing_page';
+import UserProfile from './components/user_profile';
 
 import CarGraphs from './components/subcomponents/car_graphs';
 
 
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -42,12 +45,14 @@ class App extends Component {
                     <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
                     <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
                     <Route  exact path="/hotels" render ={() => (<SearchHotel/>)}/>
+                    <Route  exact path="/" render ={() => (<CarBillingPage/>)}/>
                     <Route  exact path="/flightbillingpage" render ={() => (<FlightBillingPage/>)}/>
                     <Route  exact path="/admindashboard" render ={() => (<AdminDashboard/>)}/>
                     <Route  exact path="/cargraphs" render ={() => (<CarGraphs/>)}/>
                     <Route  exact path="/addcaradmin" render ={() => (<AddCarAdmin/>)}/>
                     <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                     <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
+                    <Route  exact path="/userprofile" render ={() => (<UserProfile />)}/>
 
               </Switch>
           </MuiThemeProvider>
