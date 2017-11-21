@@ -7,11 +7,13 @@ export function searchcarsAPI(payload)
     const requestOptions = {
         method: 'POST',
         credentials:'include',
+       mode: 'cors',
         headers: { ...headers,'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     };
-    return fetch('http://localhost:3001/cars', requestOptions)
-        .then((response) => response.json()).then((responseJson) => {
-            return responseJson;
-        });
+    return fetch('http://localhost:3010/cars/searchcars', requestOptions)
+        .then((response) =>{ 
+            return response;
+            
+        }); 
 }

@@ -1,72 +1,15 @@
 import React,{ Component } from 'react';
 import CarTile from './searchbars/car_tiles';
 import HomePageHeader from './headers/homepage_header';
-
+import { connect } from 'react-redux';
+console.log("its show cars before class");
 class ShowCars extends Component {
+
 constructor(){
+    console.log("its show in constructor");
   super();
- this.cars = [{
-    name:"Audi",
-    type:"Luxury",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:100,
-    src:"San Francisco",
-    des:"San Diego"
-  },{
-    name:"BMW",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:300,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:1100,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:180,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:200,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:300,
-  }]
 }
-
-  getCarTile(cars){
-    console.log("cars: ", cars);
-    return cars.map((car)=>{
-      return (<CarTile data={car} style={{paddingTop:10}}/>)
-    });
-  }
-
   render() {
-    console.log("It will display list of cars searched by the user");
     return (
               <div>
               <div>
@@ -78,7 +21,12 @@ constructor(){
 
                 </div>
                 <div className ="car-details-body-centre">
-                {this.getCarTile(this.cars)}
+                    {this.props.cars.length > 0 ?
+                        this.props.cars.map((car) => {
+                            return (<div><CarTile data={car} style={{paddingTop: 10}}/></div>);
+                        })
+                        : ''
+                    }
                 </div>
                 <div className ="car-details-body-right-nav">
 
@@ -89,7 +37,11 @@ constructor(){
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.cardetails_reducer.cars);
+    return {
+        cars: state.cardetails_reducer.cars,
+    };
 
-
-
-export default ShowCars;
+}
+export default connect(mapStateToProps,null)(ShowCars);

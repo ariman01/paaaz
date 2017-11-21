@@ -1,14 +1,14 @@
-var cars=[];
-var displaycars=[];
-export default function cardetails_reducer(state = {cars:{'name':'pooja'}}, action) {
+var flights=[];
+var displayflights=[];
+export default function flightdetails_reducer(state = {flights:{'name':'pooja'}}, action) {
     switch (action.type) {
 
-        case 'CAR_SUCCESS':
+        case 'FLIGHT_SUCCESS':
             return {
                 ...state,
-                cars: action.result
+                flights: action.result
             };
-        case 'CAR_FAILURE':
+        case 'FLIGHT_FAILURE':
             return {
                 ...state,
                 error: action.error
