@@ -8,6 +8,7 @@ import RenderDetails from './subcomponents/render_details';
 import RentalCarDamageProtection from './subcomponents/rental_car_damage_protection';
 import BookFasterNextTime from './subcomponents/book_faster_next_time';
 import TermsAndConditions from './subcomponents/terms_and_conditions';
+import BillingInformation from './subcomponents/billing_information'
 import './../images/subcomponent.css';
 
 class CarBillingPage extends Component {
@@ -32,6 +33,7 @@ class CarBillingPage extends Component {
                         <RentalCarPrice/>
                         <RenderDetails/>
                         <RentalCarDamageProtection/>
+                        <BillingInformation/>
                         <BookFasterNextTime/>
                         <TermsAndConditions/>
                       </div>
@@ -42,7 +44,7 @@ class CarBillingPage extends Component {
                   </div>
 
               </div>
-              
+
            );
   }
 }
