@@ -23,6 +23,7 @@ import AdminDashboard from './components/admin_dashboard';
 import AddCarAdmin from './components/subcomponents/add_car_admin';
 import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
 import AddFlightAdmin from './components/subcomponents/add_flight_admin';
+import Signup from './components/sign_up';
 
 import CarGraphs from './components/subcomponents/car_graphs';
 
@@ -48,6 +49,7 @@ class App extends Component {
                             <Route  exact path="/addcaradmin" render ={() => (<AddCarAdmin/>)}/>
                             <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
+                            <Route  exact path="/signup" render ={() => (<Signup/>)}/>
 
 
                     </MuiThemeProvider>
