@@ -3,7 +3,7 @@ db.cars.insert([
       "model_no": "HZN814",
       "capacity": "3",
       "no_of_bags": "4",
-      "no_of_doors": "5",
+      "no_of_doors": "6",
       "price": 199,
       "src_city": "alexandria",
       "destination_city": "alexandria",

@@ -19,6 +19,7 @@ import ViewCar from './components/subcomponents/view_car';
 import BookingDetails from './components/subcomponents/booking_details';
 import RentalCarPrice from './components/subcomponents/rental_car_price';
 import FlightBillingPage from './components/flight_billing_page';
+import CarBillingPage from './components/car_billing_page';
 import AdminDashboard from './components/admin_dashboard';
 import AddCarAdmin from './components/subcomponents/add_car_admin';
 import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
@@ -50,6 +51,7 @@ class App extends Component {
                             <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/signup" render ={() => (<Signup/>)}/>
+                            <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
 
 
                     </MuiThemeProvider>
