@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 
+
 var flightSchema = mongoose.Schema({
   flight_id:{
     type:String,
     required:true
   },
   carrier_name:{
-    type:String
+    type:String,
     required : true
   },
   src_city :{
@@ -22,7 +23,7 @@ var flightSchema = mongoose.Schema({
     required : true
   },
   operational_day : {
-    type : String,
+    type : Number,
     required : true
   },
   departure_time : {
@@ -40,23 +41,32 @@ var flightSchema = mongoose.Schema({
   }
 });
 
-const Flights = mongoose.model('flights',flightSchema);
+const Flights = mongoose.model('Flights',flightSchema);
 
 
 function addNewFlight(flightDetail, callback){
   flightDetail.save(callback);
 }
+function deleteFlight(flight_id, callback){
+    Flights.deleteOne({flight_id:flight_id}, callback);
+}
+
+function editFlight(flight_id, flightDetail, callback){
+  Flights.update({ flight_id: flight_id}, {$set: flightDetail}, callback);
+}
 
 function searchFlights(parameter, callback){
-	Flights.find(parameter, callback);
+  Flights.find(parameter, callback);
 }
 
 function searchFlight(parameter, callback){
-	Flights.findOne(parameter, callback);
+  Flights.findOne(parameter, callback);
 }
 
 
 module.exports.addNewFlight = addNewFlight;
 module.exports.searchFlights = searchFlights;
 module.exports.searchFlight = searchFlight;
+module.exports.editFlight = editFlight;
+module.exports.deleteFlight = deleteFlight;
 module.exports.Flights = Flights;

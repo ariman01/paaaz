@@ -3,8 +3,8 @@ var service_manager = require('./services/service_manager');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var topic_names = require('./config/kafka_topics').getTopicList();
-
-
+var car_service = require('./services/car_services');
+var flight_services = require('./services/flight_services');
 
 var producer = connection.getProducer();
 console.log('[Kafka]server is running');

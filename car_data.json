@@ -1,4 +1,4 @@
-[
+db.cars.insert([
       {
       "model_no": "HZN814",
       "capacity": "3",
@@ -1099,4 +1099,4 @@
       "rental_agency": "Advantage",
       "car_type": "Small"
    }
-]
+]);

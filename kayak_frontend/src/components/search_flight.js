@@ -1,4 +1,8 @@
 import React,{ Component } from 'react';
+import FlightSearchBar from './searchbars/flight_search_bar.js';
+import HomeHeader from './headers/homepage_header';
+import '../images/home.css';
+import HomeScreenButtonPanel from './searchbars/homescreen_button_panel';
 
 class SearchFlight extends Component {
 
@@ -6,9 +10,14 @@ class SearchFlight extends Component {
   render() {
     console.log("Search Flight Page");
     return (
-              <div>
-                    <h1> Search Flight Screen</h1>
-              </div>
+              <div className="flighthome">
+                    <HomeHeader/>
+                    <div style={{paddingTop:"12%"}}>
+                        <HomeScreenButtonPanel/>
+                        <FlightSearchBar/>
+                    </div>
+                </div>
+
            );
   }
 }
