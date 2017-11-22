@@ -1,17 +1,28 @@
 const initialState = {
- hotels:[{
-                name:"Sofitel Los Angeles at Beverly Hills",
+ listofsearchedhotels:[{
+                name:"Sofitel Los Angeles at Bernandinho",
                 stars:4,
                 rating:8.5,
-                reviews:"Good",
+                reviews:"Excellent",
                 city : "San Jose",
                 state : "California",
                 zip : 95126,
                 capacity : 10,
                 address:"Beverly Grove",
-                price:249
+                price:259
               }],
- displayhotels:[],
+ listofdisplayedhotels:[{
+                name:"Sofitel Los Angeles at Bernandinho",
+                stars:4,
+                rating:8.5,
+                reviews:"Excellent",
+                city : "San Jose",
+                state : "California",
+                zip : 95126,
+                capacity : 10,
+                address:"Beverly Grove",
+                price:259
+              }],
  current_hotel:[]
 }
 export default function hoteldetails_reducer(state = initialState, action) {
