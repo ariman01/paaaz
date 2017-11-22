@@ -23,3 +23,27 @@ router.post('/adminsignup', function(req, res, next) {
   });
 
 });
+
+router.post('/adminsignin', function(req, res, next) {
+ var username = req.body.username;
+ var password = req.body.password;
+ let admininfo ={};
+ admininfo.username = username;
+ admininfo.password = password;
+ kafka.make_request('admin_signin', admininfo, function(err , results){
+   if(err){
+     console.log("error in signing in as admin");
+   }
+   else{
+     console.log("result: ",results);
+     if(results.status == 201){
+       res.status(201).json({result : results.result, message:"Admin Signed in successfully"});
+     }else{
+       res.status(401).json({result : results.result, message:"Failed to login in "});
+     }
+   }
+ });
+});
+
+
+module.exports = router;

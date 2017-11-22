@@ -10,6 +10,7 @@ var cars = require('./routes/cars');
 var hotels = require('./routes/hotels');
 var flights = require('./routes/flights')
 var analysis = require('./routes/analysis');
+var admin = require('./routes/admin');
 var cors = require('cors');
 var app = express();
 app.use(cors({credentials:true, origin: true}));
@@ -32,6 +33,7 @@ app.use('/cars', cars);
 app.use('/hotels', hotels);
 app.use('/flights', flights);
 app.use('/analysis', analysis);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

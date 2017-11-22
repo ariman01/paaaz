@@ -26,6 +26,6 @@ function fetchData(callback,sqlQuery){
         }
     });
     console.log("\nConnection closed..");
-    connection.end();
+    //connection.end();
 }
 exports.fetchData=fetchData;

@@ -73,8 +73,6 @@
   margin-top: 30px;
   margin-left: 10%;
   margin-right: 10%;
-  height: 400px;
-  background-color: #e5e5e0;
 }
 
 .car-graph-1{
@@ -132,5 +130,11 @@
   padding-left: 400px;
   padding-right: 350px;
   height : 500px;
+
+}.admin-login{
+width : 200px;
+height : 300 px;
+margin-top: 100px;
+margin-left: 30%;
 
 }

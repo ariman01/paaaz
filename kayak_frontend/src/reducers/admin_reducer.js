@@ -1,5 +1,5 @@
 const initialData ={
-  total_sales:{car_sales:0,flight_sales:0,hotel_sales:0,user_booking:0}
+  total_sales:{car_sales:200,flight_sales:300,hotel_sales:10,user_booking:510}
 }
 export default function admin_reducer(state = initialData, action) {
     switch (action.type) {
@@ -17,6 +17,10 @@ export default function admin_reducer(state = initialData, action) {
                 ...state,
                 error: action.error
             };
+        case 'UPDATE_TOTAL_SALES':
+        return Object.assign({},state,{
+          total_sales:action.total_Sales
+        });
         default:
             return state
     }

@@ -2,10 +2,19 @@ import React,{ Component } from 'react';
 import AdminDashboardHeader from './headers/admin_dashboard_header';
 import {connect} from 'react-redux';
 import './../images/home.css';
+import BarChart from './graph/bar_chart';
 
 class AdminDashboard extends Component {
 
-
+  getAdminDashBoardGraph(){
+    var data={
+        labels: ["Car Sales", "Flight Sales", "Hotel Sales", "User Booking"],
+        datasets:[this.props.total_sales.car_sales,this.props.total_sales.flight_sales,this.props.total_sales.hotel_sales,this.props.total_sales.user_booking],
+        labelName:"Sales Overview",
+        header_text:"Sales Overview"
+    }
+    return (<BarChart data={data}/>)
+  }
   render() {
     console.log("It will render admin dash board page:");
     return (
@@ -51,6 +60,9 @@ class AdminDashboard extends Component {
                     </div>
 
                       <div className="admin-dashboard-graph">
+                      <div style={{padding:20,margingBottom:100}}>
+                      {this.getAdminDashBoardGraph()}
+                      </div>
 
                       </div>
 
