@@ -61,7 +61,9 @@ KafkaRPC.prototype.setupResponseQueue = function(producer,topic_name, next){
     //subscribe to messages
     var consumer = self.connection.getConsumer(topic_name+"_res");
     consumer.on('message', function (message) {
+
         var data = JSON.parse(message.value);
+        console.log("its consumer"+data[0]);
         //get the correlationId
         var correlationId = data.correlationId;
         //is it a response to a pending request

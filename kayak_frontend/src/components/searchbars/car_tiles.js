@@ -1,15 +1,24 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
+import { connect } from 'react-redux';
 import carIcon from './../../images/audi.png'
 import viewDeal from './../../images/viewdeal.png'
 import userIcon from './../../images/user1.png';
 import baggageIcon from './../../images/car_baggage.png';
 import cardoorIcon from './../../images/car_door.png';
 import foxIcon from './../../images/fox.png';
+import {history} from './../../utils/util.js';
+import {bindActionCreators} from 'redux';
+import {currentcar_action} from './../../actions/car_action';
 class CarTile extends Component {
+    constructor(props) {
+        super(props);
+        this.handleView = this.handleView.bind(this);
+    }
+  handleView(data){
+this.props.currentcar_action(data);
+history.push('./carbillingpage');
 
-  handleView(){
-    console.log("handle car view");
   }
 
   render() {
@@ -21,18 +30,18 @@ class CarTile extends Component {
                       <h1>{this.props.data.name}</h1>
                       <h5 style={{color:"grey"}}>Audi or similar car</h5>
                       <img src = {userIcon}/> {this.props.data.capacity}
-                      <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.bags}
+                      <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.no_of_bags}
                       <img src = {cardoorIcon} style={{padding:10}}/> {this.props.data.no_of_doors}
                   </div>
                   <div style={{width:"100%"}}>
                       <div className="car-agency-image">
-                        <img src = {foxIcon} />
+                          <img src = {foxIcon} />
                       </div>
 
                       <div className="car-des-name" >
 
-                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;San Francisco </span><br/>
-                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;San Francisco </span>
+                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;{this.props.data.src_city} </span><br/>
+                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;{this.props.data.destination_city} </span>
                       </div>
                   </div>
            </div>
@@ -49,11 +58,13 @@ class CarTile extends Component {
               <h4>Total</h4>
               <h5 style={{color:"grey",marginTop:"15%"}}>Kayak</h5>
               <img src={viewDeal} style={{width:"80%",marginTop:"2%"}}
-              onClick ={() => this.handleView()}/>
+              onClick ={() => this.handleView(this.props.data)}/>
           </div>
       </div>
           );
   }
 }
-
-export default CarTile;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({currentcar_action:currentcar_action},dispatch);
+}
+export default connect(null,mapDispatchToProps)(CarTile);

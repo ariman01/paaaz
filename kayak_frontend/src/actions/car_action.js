@@ -2,28 +2,34 @@ import {searchcarsAPI} from '../api/carAPI';
 import {history} from "../utils/util";
 
 export function searchcars_action(payload){
-    console.log("its action"+payload);
-    const cars= {
-        'no':'123'
-    }
+    console.log("its action"+payload.src_city);
     return dispatch => {
         searchcarsAPI(payload)
             .then(
-                responseJson => {
-                    if(responseJson.code == 200)
+                response => {
+                    if(response.status==201)
                     {
-                        console.log("its"+responseJson);
-                        var cars= responseJson.cars;
-                        dispatch(success(responseJson.cars));
-                        history.push('/searchcars');
+                        response.json().then((response) => {
+                        console.log(response.result);
+                        dispatch(success(response.result));
+                        history.push('/cardetails');
+                    });
                     }
                     else
                     {
-                        dispatch(failure(responseJson.message));
+                        dispatch(failure(response.message));
                     }
                 }
                 );
     };
-   function success(cars) { return { type: 'CAR_SUCCESS', cars } }
+   function success(result) { return { type: 'CAR_SUCCESS', result } }
    function failure(error) { return { type: 'CAR_FAILURE', error } }
+}
+export function currentcar_action(payload)
+{
+    console.log("its payload in currentcar_action"+payload.capacity);
+    return dispatch => {
+        dispatch(success(payload));
+    };
+    function success(result) { return { type: 'CURRENT_CAR', result } }
 }

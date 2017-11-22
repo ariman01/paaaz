@@ -18,6 +18,11 @@ const store = createStore(
     ),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+if (localStorage.servertoken) {
+    if(localStorage.currentUser){
+        //dispatch the action to update the logged in user
+    }
+}
 
 ReactDOM.render(
     <Provider store={store}>

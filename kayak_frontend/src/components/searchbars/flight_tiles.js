@@ -1,11 +1,12 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
 import * as Images from './../../utils/images';
+import './../../images/flight.css';
 
 
 class FlightTile extends Component {
 
-  handleView(){
+  handleView(data){
     console.log("handle car view");
   }
 
@@ -16,18 +17,19 @@ class FlightTile extends Component {
 
           <div className="flight-tile1">
             <div className="flight-tile-div">
-            <img src={Images.getImages().delta_icon} />
+            <img src={Images.getImages().delta_icon}/><br/>
+                {this.props.data.carrier_name}
             </div>
             <div className="flight-tile-div">
-              1:54 PM<br/>
-            SFO
+                {this.props.data.departure_time} <br/>
+                {this.props.data.src_city}
             </div>
             <div className="flight-tile-div">
               <span style ={{color:"grey",bold:true}}>____________ <br/> non-stop</span>
             </div>
             <div className="flight-tile-div">
             1:54 PM<br/>
-            SFO
+                {this.props.data.destination_city}
             </div>
             <div className="flight-tile-div">
               <span style={{marginLeft:"30%"}}>5 hr 33 min</span>
@@ -39,7 +41,7 @@ class FlightTile extends Component {
               <h4>Total</h4>
               <h5 style={{color:"grey",marginTop:"8%"}}>Kayak</h5>
               <img src={Images.getImages().view_deal} style={{width:"80%"}}
-              onClick ={() => this.handleView()}/>
+              onClick ={() => this.handleView(this.props.data)}/>
           </div>
       </div>
           );

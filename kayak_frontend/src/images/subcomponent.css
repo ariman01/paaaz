@@ -33,36 +33,46 @@
   width:100%;
   padding-left: 10px;
 }
-
+.car-billing-body {
+  display: inline;
+}
 
 .car-billing-body-left-nav{
-  display:inline-block;
+  display:inline;
+  margin-top:0px;
+  padding-top:0px;
   width: 20%;
-  height: 500px;
+  height: 2300px;
   background-color: #f1f1f1;
+  float:left;
 }
 .car-billing-body-centre{
-  display:inline-block;
+  display:inline;
   background-color: #f1f1f1;
   width: 60%;
-  height: 500px;
+  height: 2300px;
+  float:left;
+
 
 }
 .car-billing-body-right-nav{
-  display:inline-block;
+  display:inline;
   width: 20%;
-  height: 500px;
+  height: 2300px;
   background-color: #f1f1f1;
+  float: left;
+
 
 }
 
 .car-billing-page{
-  background-color: #f1f1f1;
+  background-color: red;
 }
 
 .car-billing-page-header{
   background-color: #0f1011;
   padding-bottom: 0px;
+
 }
 
 
