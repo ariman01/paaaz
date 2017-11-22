@@ -1,7 +1,21 @@
-var cars=[];
-var displaycars=[];
-var current_car=[];
-export default function cardetails_reducer(state = {}, action) {
+
+
+const initialState = {
+ cars:[{
+                name:"Audi Q3",
+                duration:4,
+                no_of_bags:8,
+                no_of_doors:4,
+                src_city : "San Jose",
+                destination_city : "San Diego",
+                agency : "Audi Rental Groups",
+                price:249,
+                capacity : 4
+              }],
+displaycars:[],
+ current_car:[]
+}
+export default function cardetails_reducer(state = initialState, action) {
     switch (action.type) {
 
         case 'CAR_SUCCESS':
