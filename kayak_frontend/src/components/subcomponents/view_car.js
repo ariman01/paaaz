@@ -18,15 +18,15 @@ class ViewCar extends Component {
                   <div className="view-car-bottom-div">
                             <div className = "view-car-left-div">
                                 <div className ="view-car-cardetails1">
-                                    <strong style={{fontSize : 17}}>Economy (Hyundai Accent or similar)</strong><br></br>
+                                    <strong style={{fontSize : 17}}>{this.props.data.car_type} {this.props.data.model_no}</strong><br></br>
                                     Automatic transmission, Air-conditioning<br></br>
                                     Sun, Dec 3 to Wed Dec 6 2017 (3 days)
                                 </div>
 
                                 <div className ="view-car-cardetails2" style={{float:"left",width:"100%"}}>
-                                    <img src = {userIcon}/> 4 People
-                                    <img src = {baggageIcon} style={{padding:10}}/> 1 Bag
-                                    <img src = {cardoorIcon} style={{padding:10}}/> 5 Doors
+                                    <img src = {userIcon}/> {this.props.data.capacity} People
+                                    <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.no_of_bags} Bag
+                                    <img src = {cardoorIcon} style={{padding:10}}/> {this.props.data.no_of_doors} Doors
                                 </div>
 
                             </div>

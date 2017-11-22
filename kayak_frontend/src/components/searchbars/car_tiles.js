@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
+import { connect } from 'react-redux';
 import carIcon from './../../images/audi.png'
 import viewDeal from './../../images/viewdeal.png'
 import userIcon from './../../images/user1.png';
@@ -7,10 +8,15 @@ import baggageIcon from './../../images/car_baggage.png';
 import cardoorIcon from './../../images/car_door.png';
 import foxIcon from './../../images/fox.png';
 import {history} from './../../utils/util.js';
+import {bindActionCreators} from 'redux';
+import {currentcar_action} from './../../actions/car_action';
 class CarTile extends Component {
-
+    constructor(props) {
+        super(props);
+        this.handleView = this.handleView.bind(this);
+    }
   handleView(data){
-
+this.props.currentcar_action(data);
 history.push('./carbillingpage');
 
   }
@@ -58,4 +64,7 @@ history.push('./carbillingpage');
           );
   }
 }
-export default CarTile;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({currentcar_action:currentcar_action},dispatch);
+}
+export default connect(null,mapDispatchToProps)(CarTile);

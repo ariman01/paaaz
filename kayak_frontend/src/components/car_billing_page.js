@@ -10,7 +10,7 @@ import BookFasterNextTime from './subcomponents/book_faster_next_time';
 import TermsAndConditions from './subcomponents/terms_and_conditions';
 import BillingInformation from './subcomponents/billing_information'
 import './../images/subcomponent.css';
-
+import { connect } from 'react-redux';
 class CarBillingPage extends Component {
 
 
@@ -28,18 +28,18 @@ class CarBillingPage extends Component {
                       </div>
 
                       <div className ="car-billing-body-centre">
-                        <ViewCar/>
-                        <BookingDetails/>
-                        <RentalCarPrice/>
-                        <RenderDetails/>
-                        <RentalCarDamageProtection/>
+                        <ViewCar data={this.props.current_car}/>
+                        <BookingDetails data={this.props.current_car}/>
+                        <RentalCarPrice data={this.props.current_car}/>
+                        <RenderDetails data={this.props.current_car}/>
+                        <RentalCarDamageProtection data={this.props.current_car}/>
                         <BillingInformation/>
-                        <BookFasterNextTime/>
-                        <TermsAndConditions/>
+                        <BookFasterNextTime data={this.props.current_car}/>
+                        <TermsAndConditions data={this.props.current_car}/>
                       </div>
 
                       <div className ="car-billing-body-right-nav">
-                      <CarBillingSummary/>
+                      <CarBillingSummary data={this.props.current_car}/>
                       </div>
                   </div>
 
@@ -48,7 +48,13 @@ class CarBillingPage extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.cardetails_reducer.current_car);
+    return {
+        current_car: state.cardetails_reducer.current_car,
+    };
+
+}
 
 
-
-export default CarBillingPage;
+export default connect(mapStateToProps,null)(CarBillingPage);

@@ -557,3 +557,24 @@
 .credit-card-images{
   padding-left: 50px;
 }
+.hotel-tile {
+  width:100%;
+  height:210px;
+  background-color: white;
+  border: solid grey 1px;
+  margin-top: 7px;
+}
+
+.hoteltiled3 {
+  float:right;
+  padding-top: 35px;
+  padding-left: 2px;
+  width:20%;
+  height:100%;
+  display: inline;
+  margin-right:20px;
+  border-width:3px;
+  border-left-style:outset;
+  contenteditable : true;
+  display:block;
+}

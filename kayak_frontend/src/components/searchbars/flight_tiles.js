@@ -32,7 +32,7 @@ class FlightTile extends Component {
                 {this.props.data.destination_city}
             </div>
             <div className="flight-tile-div">
-              <span style={{marginLeft:"30%"}}>5 hr 33 min</span>
+              <span style={{marginLeft:"30%"}}>{this.props.data.duration} mins</span>
             </div>
 
           </div>
