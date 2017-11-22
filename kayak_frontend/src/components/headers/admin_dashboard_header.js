@@ -9,6 +9,7 @@ import NavItem from 'react-bootstrap/lib/NavItem'
 import NavDropdown from 'react-bootstrap/lib/NavDropdown'
 import MenuItem  from 'react-bootstrap/lib/NavItem'
 import {history} from "./../../utils/util.js";
+import { connect } from 'react-redux';
 
 class AdminDashboardHeader extends Component {
 
@@ -99,6 +100,7 @@ class AdminDashboardHeader extends Component {
         );
     }
 }
+
 
 
 

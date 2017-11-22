@@ -17,6 +17,10 @@ export default function admin_reducer(state = initialData, action) {
                 ...state,
                 error: action.error
             };
+        case 'UPDATE_TOTAL_SALES':
+        return Object.assign({},state,{
+          total_sales:action.total_Sales
+        });
         default:
             return state
     }
