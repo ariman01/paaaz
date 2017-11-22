@@ -43,9 +43,3 @@ topic_names.map((topic)=>{
       });
   });
 });
-
-
-
-admin_services.adminSignIn({admininfo:{username:"root1",password:"root"}}, function(err,result){
- console.log("Error", err,"result",result);
-});

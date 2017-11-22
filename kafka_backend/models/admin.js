@@ -67,7 +67,7 @@ function adminSignIn(admindetail, callback) {
                    //             };
            res_result.message = "User logged in ... ";
            res_result.status = 201;
-           res_result.result={car_sales:100,flight_sales:200,hotel_sales:500,user_booking:800};
+           res_result.result={car_sales:100,flight_sales:10,hotel_sales:20,user_booking:30};
            console.log("user signed in ");
          }else{
            res_result.message = "Wrong password !!!";
