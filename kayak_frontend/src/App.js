@@ -24,7 +24,6 @@ import AdminDashboard from './components/admin_dashboard';
 import AddCarAdmin from './components/subcomponents/add_car_admin';
 import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
 import AddFlightAdmin from './components/subcomponents/add_flight_admin';
-import CarBillingPage from './components/car_billing_page';
 import UserProfile from './components/user_profile';
 import SignUp from './components/sign_up';
 
@@ -111,7 +110,6 @@ class App extends Component {
                             <Route  exact path="/addcaradmin" render ={() => (<AddCarAdmin/>)}/>
                             <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
-                            <Route  exact path="/signup" render ={() => (<Signup/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
 
 
