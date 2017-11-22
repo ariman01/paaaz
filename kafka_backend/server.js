@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var topic_names = require('./config/kafka_topics').getTopicList();
 var car_service = require('./services/car_services');
 var flight_services = require('./services/flight_services');
-
+var admin_services = require('./services/admin_services');
 var producer = connection.getProducer();
 console.log('[Kafka]server is running');
 var mongoURL = "mongodb://localhost:27017/kayak_database";
@@ -36,9 +36,9 @@ topic_names.map((topic)=>{
                 partition : 0
             }
         ];
-        console.log("[Kafka] sending response,topic: ",data.replyTo)
+        console.log("[Kafka] sending response,topic: ",data.replyTo+result);
         producer.send(payloads, function(err, data){
-           console.log(data);
+           console.log("its dta in server.js"+data);
         });
       });
   });

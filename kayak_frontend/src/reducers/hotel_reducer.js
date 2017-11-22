@@ -1,14 +1,14 @@
-var cars=[];
-var displaycars=[];
-export default function cardetails_reducer(state = {cars:{'name':'pooja'}}, action) {
+var hotels=[];
+var displayhotels=[];
+export default function hoteldetails_reducer(state = {hotels:{'name':'pooja'}}, action) {
     switch (action.type) {
 
-        case 'CAR_SUCCESS':
+        case 'HOTEL_SUCCESS':
             return {
                 ...state,
-                cars: action.result
+                hotels: action.result
             };
-        case 'CAR_FAILURE':
+        case 'HOTEL_FAILURE':
             return {
                 ...state,
                 error: action.error

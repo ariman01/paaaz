@@ -5,18 +5,18 @@ const server_secret_key = "aqswdefrgthyjukilop";
 
 
 function checkLoggedInUser(req,res,next){
-  const tokenheader = req.body.servertoken || req.headers['servertoken'];
+    const tokenheader = req.body.servertoken || req.headers['servertoken'];
 
-  if (tokenheader) {
-     jwt.verify(tokenheader, server_secret_key, function(err, decoded){
-         if (!err) {
-           req.body.uidfromtoken = decoded.uid;
-         }
-         next();
-    });
-  }else{
-    next();
-  }
+    if (tokenheader) {
+        jwt.verify(tokenheader, server_secret_key, function(err, decoded){
+            if (!err) {
+                req.body.uidfromtoken = decoded.uid;
+            }
+            next();
+        });
+    }else{
+        next();
+    }
 
 }
 

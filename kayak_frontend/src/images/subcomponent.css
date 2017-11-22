@@ -52,6 +52,7 @@
   width: 60%;
   height: 3000px;
   float:left;
+  align: left;
 
 
 }
@@ -61,7 +62,7 @@
   height: 3000px;
   background-color: #f1f1f1;
   float: left;
-
+    align: left;
 
 }
 

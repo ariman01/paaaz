@@ -4,14 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 var cars = require('./routes/cars');
 var hotels = require('./routes/hotels');
 var flights = require('./routes/flights')
-
+var cors = require('cors');
 var app = express();
+app.use(cors({credentials:true, origin: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

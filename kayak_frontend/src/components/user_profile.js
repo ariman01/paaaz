@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import HotelTile from './searchbars/hotel_tiles';
 import HomePageHeader from './headers/homepage_header';
 import './../images/user_profile.css';
 
