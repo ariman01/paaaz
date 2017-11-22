@@ -15,7 +15,7 @@ exports.addAdmin = function(data, callback){
     });
 }
 
-<<<<<<< HEAD
+
 exports.adminAnalysisHotel = function(data, callback){
     var hotel_analysis_query="select sum(booking_amount) as Booking_Amount,hotel_name from hotel_transaction where Year(booking_date) = '"+data.year+"' group by hotel_name order by Booking_Amount desc limit 10";
     let res_result ={};
@@ -121,7 +121,7 @@ exports.adminAnalysis3Hotel = function(data, callback){
 
 
 
-=======
+
 exports.adminSignIn = function(data, callback){
  console.log("adminSignIn:data",data);
    var adminDetail = {
@@ -136,4 +136,4 @@ exports.adminSignIn = function(data, callback){
        callback(err,results);
    });
 }
->>>>>>> 2058b1d95b6bfb174ea5abfb3006e7394b581974
+
