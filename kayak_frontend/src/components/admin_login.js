@@ -27,14 +27,14 @@ class AdminLogin extends Component {
               }}/>
               <br></br>
               <label>Password</label>
-              <input type="text" style={{width:400}} className="form-control" id="password"  placeholder="Enter password" size="35"
+              <input type="password" style={{width:400}} className="form-control" id="password"  placeholder="Enter password" size="35"
               onChange={(admininput)=>{
                 this.adminDetail.password = admininput.target.value;
               }}/>
               <br></br>
 
               <button type="submit" className="btn btn-primary" style={{width:150}}
-              onClick ={()=> this.props.adminLogin(this.adminDetail)}>Add</button>
+              onClick ={()=> this.props.adminLogin(this.adminDetail)}>Login</button>
               </div>
 
 

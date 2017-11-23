@@ -49,7 +49,8 @@ class AdminDashboard extends Component {
                             <h1>{this.props.total_sales.flight_sales}</h1>
                         </div>
 
-                        <div className="admin-dashboard-tile-hotel">
+                        <div className="admin-dashboard-tile-hotel"
+                        onClick={()=>{this.props.getHotelAnalysis({date:new Date().getFullYear()})}}>
                             <h3>Total hotels booked: </h3>
                             <br></br>
                             <br></br>

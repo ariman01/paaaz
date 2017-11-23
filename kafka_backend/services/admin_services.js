@@ -16,107 +16,87 @@ exports.addAdmin = function(data, callback){
 }
 
 
-exports.adminAnalysisHotel = function(data, callback){
-    var hotel_analysis_query="select sum(booking_amount) as Booking_Amount,hotel_name from hotel_transaction where Year(booking_date) = '"+data.year+"' group by hotel_name order by Booking_Amount desc limit 10";
-    let res_result ={};
-    res_result.result = {hotel_name:[],sales:[]};
-    var hotels,amount="";
-    var seq1 = "";
-    var seq2 = "";
-    mysql.fetchData(function(err,results) {
-        
-        if(err){
-            console.log("error");
-            res_result.message = "Error could not find top ten hotels"
-            callback(null,results);
-             }
-        console.log("Results from database:"+JSON.stringify(results));
-        for (var key in results)
-                {
-                if (results.hasOwnProperty(key))
-                {
-                     var hotel_name = results[key].hotel_name;
-                     var booking_amount = results[key].Booking_Amount;
-                     res_result.result['hotel_name'].push(hotel_name);
-                     res_result.result['sales'].push(booking_amount);
-                }
-                }
-    
-                 callback(null,res_result);
+exports.adminHotelAnalysis = function(data , callback){
+  //Analysis#1
+  var finalResult = [];
+  var hotel_analysis_query1="select sum(booking_amount) as Booking_Amount,hotel_name from hotel_transaction where Year(booking_date) = '"+data.year+"' group by hotel_name order by Booking_Amount desc limit 10";
+  var result1 = {};
+  result1.hotels = [];
+  result1.sales= [];
 
-    
-            
-    }, hotel_analysis_query);
-}
+      mysql.fetchData(function(err,results) {
 
-// analysis 2 query
+          if(err){
+              console.log("error");
+          }
+          else{
+            results.map((value)=>{
+              result1.hotels.push(value.hotel_name);
+              result1.sales.push(value.Booking_Amount);
+            });
+            console.log("result1 ******",result1);
+            finalResult.push({top_ten_hotel_sales:result1});
 
-exports.adminAnalysis2Hotel = function(data, callback){
-    var hotel_analysis_query="select name_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by name_city order by Booking_Amount";
-    let res_result ={};
-    res_result.result = {city_name:[],sales:[]};
-    var hotels,amount="";
-    var seq1 = "";
-    var seq2 = "";
-    mysql.fetchData(function(err,results) {
-        
-        if(err){
-            console.log("error");
-            res_result.message = "Error could not find top ten hotels"
-            callback(null,results);
-             }
-        console.log("Results from database:"+JSON.stringify(results));
-        for (var key in results)
-                {
-                if (results.hasOwnProperty(key))
-                {
-                     var city_name = results[key].name_city;
-                     var booking_amount = results[key].Booking_Amount;
-                     res_result.result['city_name'].push(city_name);
-                     res_result.result['sales'].push(booking_amount);
-                }
-                }
-    
-                 callback(null,res_result);
+            //Analysis#2
+              var hotel_analysis_query2="select name_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by name_city order by Booking_Amount";
+              var result2 ={};
+              result2.city_name =[];
+              result2.sales=[];
 
-    
-            
-    }, hotel_analysis_query);
-}
+              mysql.fetchData(function(err,results) {
+
+                  if(err){
+                      console.log("error");
+                  }else{
+                      console.log("Results from database:"+JSON.stringify(results));
 
 
-exports.adminAnalysis3Hotel = function(data, callback){
-    var hotel_analysis_query="select hotel_name,count(hotel_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from hotel_transaction where month(booking_date) = month(current_date())-1 group by hotel_name order by Number_Of_Bookings desc limit 10";
+                      results.map((value)=>{
+                        result2.city_name.push(value.name_city);
+                        result2.sales.push(value.Booking_Amount);
+                      });
 
-    let res_result ={};
-    res_result.result = {hotel_name:[],Number_Of_Bookings:[]};
-    var hotels,amount="";
-    var seq1 = "";
-    var seq2 = "";
-    mysql.fetchData(function(err,results) {
-        
-        if(err){
-            console.log("error");
-            res_result.message = "Error could not find top ten hotels"
-            callback(null,results);
-             }
-        console.log("Results from database:"+JSON.stringify(results));
-        for (var key in results)
-                {
-                if (results.hasOwnProperty(key))
-                {
-                     var hotel_name = results[key].hotel_name;
-                     var Number_Of_Bookings = results[key].Number_Of_Bookings;
-                     res_result.result['hotel_name'].push(hotel_name);
-                     res_result.result['Number_Of_Bookings'].push(Number_Of_Bookings);
-                }
-                }
-    
-                 callback(null,res_result);
+                      console.log("result2****",result2);
+                      finalResult.push({top_ten_hotel_sales_city:result2});
 
-    
-            
-    }, hotel_analysis_query);
+
+                      //Analysis#3
+                        var hotel_analysis_query3="select hotel_name,count(hotel_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from hotel_transaction where month(booking_date) = month(current_date())-1 group by hotel_name order by Number_Of_Bookings desc limit 10";
+
+                        var result3 ={};
+                        result3.hotels = [];
+                        result3.sales=[];
+
+                        mysql.fetchData(function(err,results) {
+                          console.log("results:  ",results);
+
+                            if(err){
+                                console.log("error");
+                                result3.message = "Error could not find top ten hotels"
+                                //callback(null,err);
+                                 }
+                            console.log("Results from database:"+JSON.stringify(results));
+
+                                  results.map((value)=>{
+                                    result3.hotels.push(value.hotel_name);
+                                    result3.sales.push(value.Number_Of_Bookings);
+                                  });
+                                  console.log("result3****",result3);
+                                  finalResult.push({top_ten_host_sales:result3});
+                                  var result_1 = {status:201,finalResult : finalResult};
+
+                                  console.log("analysis result:",result_1);
+                                  callback(null, result_1);
+
+                        }, hotel_analysis_query3);
+
+                  }
+              }, hotel_analysis_query2);
+
+
+        }
+    }, hotel_analysis_query1);
+
 }
 
 
@@ -136,4 +116,3 @@ exports.adminSignIn = function(data, callback){
        callback(err,results);
    });
 }
-
