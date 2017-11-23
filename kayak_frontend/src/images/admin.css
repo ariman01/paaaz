@@ -74,7 +74,10 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
+.hotel-graph-header{
+  text-align: center;
+  text-decoration-color: grey;
+}
 .car-graph-1{
   padding-top: 30px;
   margin-left: 25%;
