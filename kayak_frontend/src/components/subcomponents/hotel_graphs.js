@@ -7,13 +7,18 @@ import BarChart from './../graph/bar_chart';
 class HotelGraphs extends Component {
 
   getAdminDashBoardGraph(data, label_name, header_text){
-    var data={
-        labels: data.hotels,
-        datasets:data.sales,
-        labelName:label_name,
-        header_text:header_text
+    if(data.hotels.length >0 && data.sales.length >0){
+      var data={
+          labels: data.hotels,
+          datasets:data.sales,
+          labelName:label_name,
+          header_text:header_text
+      }
+      return (<BarChart data={data}/>)
+    }else{
+      return (<h2 style={{color:"red"}}> Analysis data not available </h2>)
     }
-    return (<BarChart data={data}/>)
+
   }
 
   render() {
@@ -40,7 +45,7 @@ class HotelGraphs extends Component {
                 <br></br>
                 <h3 className="hotel-graph-header">Top 10 properties sales in terms of host/hotel owner </h3>
                 <div className="car-graph-3">
-                {this.getAdminDashBoardGraph(this.props.hotel_analysis_data[0].top_ten_hotel_sales,
+                {this.getAdminDashBoardGraph(this.props.hotel_analysis_data[2].top_ten_host_sales,
                 " Sales Report"," Top 10 properties in terms of sales")}
                 </div>
 
