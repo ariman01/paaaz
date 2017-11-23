@@ -42,7 +42,7 @@ import EditFlightTile from './components/searchbars/editflight_tiles';
 import CarGraphs from './components/subcomponents/car_graphs';
 import UserHistoryTile from './components/searchbars/userhistory_tiles';
 
-
+import HotelGraphs from './components/subcomponents/hotel_graphs';
 import EditPreferenceForm from './components/searchbars/editpreference_form';
 import EditPaymentDetailsForm from './components/searchbars/editpaymentdetails_form';
 import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_form';
@@ -122,8 +122,8 @@ class App extends Component {
                 <Router history={history}>
                     <MuiThemeProvider>
                             <Route  exact path="/edituserprofileform" render ={() => (<EditPreferenceForm data={this.userpreference}/>)}/>
-                            <Route  exact path="/editpaymentdetailsform" render ={() => (<EditPaymentDetailsForm data={this.paymentdetails}/>)}/>   
-                            <Route  exact path="/addpaymentdetailsform" render ={() => (<AddPaymentDetailsForm/>)}/> 
+                            <Route  exact path="/editpaymentdetailsform" render ={() => (<EditPaymentDetailsForm data={this.paymentdetails}/>)}/>
+                            <Route  exact path="/addpaymentdetailsform" render ={() => (<AddPaymentDetailsForm/>)}/>
                             <Route  exact path="/userprofile" render ={() => (<UserProfile data={this.userpreference}/>)}/>
                             <Route  exact path="/paymentdetails" render ={() => (<PaymentDetails data={this.paymentdetails}/>)}/>
                             <Route  exact path="/userhistory" render ={() => (<UserHistory/>)}/>
@@ -148,7 +148,7 @@ class App extends Component {
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
-
+                            <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
 
                     </MuiThemeProvider>
                 </Router>
