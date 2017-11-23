@@ -40,6 +40,14 @@ import EditFlights from './components/editFlights';
 import EditFlightTile from './components/searchbars/editflight_tiles';
 
 import CarGraphs from './components/subcomponents/car_graphs';
+import UserHistoryTile from './components/searchbars/userhistory_tiles';
+
+
+import EditPreferenceForm from './components/searchbars/editpreference_form';
+import EditPaymentDetailsForm from './components/searchbars/editpaymentdetails_form';
+import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_form';
+import UserHistory from './components/user_history';
+import PaymentDetails from './components/payment_details';
 
 
 
@@ -83,6 +91,27 @@ class App extends Component {
                 price:249
               }]
 
+            this.userpreference = [{
+                first_name:"Lufthanza",
+                second_name:"Kumari",
+                gender:"F",
+                email:"kumariluft@gmail.com",
+                address : "1318 The Julian",
+                city : "San Jose",
+                state : "California",
+                zip: 95126
+              }]
+
+               this.paymentdetails = [{
+                name_on_card:"Lufthanza Kumari",
+                last_digits:1234,
+                card_type: "VISA",
+                address : "1318 The Julian",
+                city : "San Jose",
+                state : "California",
+                zip: 95126
+              }]
+
 
             }
 
@@ -92,6 +121,12 @@ class App extends Component {
             <div className="App">
                 <Router history={history}>
                     <MuiThemeProvider>
+                            <Route  exact path="/edituserprofileform" render ={() => (<EditPreferenceForm data={this.userpreference}/>)}/>
+                            <Route  exact path="/editpaymentdetailsform" render ={() => (<EditPaymentDetailsForm data={this.paymentdetails}/>)}/>   
+                            <Route  exact path="/addpaymentdetailsform" render ={() => (<AddPaymentDetailsForm/>)}/> 
+                            <Route  exact path="/userprofile" render ={() => (<UserProfile data={this.userpreference}/>)}/>
+                            <Route  exact path="/paymentdetails" render ={() => (<PaymentDetails data={this.paymentdetails}/>)}/>
+                            <Route  exact path="/userhistory" render ={() => (<UserHistory/>)}/>
 
                             <Route  exact path="/edithotelform" render ={() => (<EditHotelForm data={this.hotels}/>)}/>
                             <Route  exact path="/editcarform" render ={() => (<EditCarForm data={this.cars}/>)}/>

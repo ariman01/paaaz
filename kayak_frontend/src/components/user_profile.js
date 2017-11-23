@@ -5,6 +5,10 @@ import './../images/user_profile.css';
 
 class UserProfile extends Component {
 
+handleEdit(){
+    console.log("Clicked Edit User profile");
+  }
+
 
   render() {
     console.log("It will display user profile");
@@ -16,8 +20,6 @@ class UserProfile extends Component {
 
               <div className= "user-profile-body">
                   <div className= "user-profile-body-nav-options">
-                    <a href="">Preferences</a>
-                    <br></br>
                     <br></br>
                     <a href="">Payment Details</a>
                     <br></br>
@@ -31,38 +33,41 @@ class UserProfile extends Component {
                         <tbody>
                           <tr>
                             <td><strong>First Name</strong></td>
-                            <td>Akash</td>
+                            <td>{this.props.data[0].first_name}</td>
                           </tr>
                           <tr>
                             <td><strong>Second Name</strong></td>
-                            <td>Gupta</td>
+                            <td>{this.props.data[0].second_name}</td>
                           </tr>
                           <tr>
                             <td><strong>Gender</strong></td>
-                            <td>Male</td>
+                            <td>{this.props.data[0].gender}</td>
                           </tr>
                           <tr>
                             <td><strong>Email</strong></td>
-                            <td><a href="">akashgupta@gmail.com</a></td>
+                            <td><a href="">{this.props.data[0].email}</a></td>
                           </tr>
                           <tr>
                             <td><strong>Address</strong></td>
-                            <td>2913 Pescadero Terrace</td>
+                            <td>{this.props.data[0].address}</td>
                           </tr>
                           <tr>
                             <td><strong>City</strong></td>
-                            <td>Fremont</td>
+                            <td>{this.props.data[0].city}</td>
                           </tr>
                           <tr>
                             <td><strong>State</strong></td>
-                            <td>California</td>
+                            <td>{this.props.data[0].state}</td>
                           </tr>
                           <tr>
                             <td><strong>Zip</strong></td>
-                            <td>90909</td>
+                            <td>{this.props.data[0].zip}</td>
                           </tr>
                         </tbody>
                       </table>
+                      <div style = {{width : "100%", marginLeft: 160}}>
+                      <button onClick ={() => this.handleEdit()} style={{align:'center', width:"15%",marginTop:"2%"}}><strong>Edit</strong></button>
+                      </div>
                   </div>
               </div>
 
