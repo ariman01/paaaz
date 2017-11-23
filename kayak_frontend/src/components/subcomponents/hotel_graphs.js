@@ -38,7 +38,7 @@ class HotelGraphs extends Component {
                 <br></br>
                 <h3 className="hotel-graph-header">Top 10 sales in terms of city</h3>
                 <div className="car-graph-2">
-                {this.getAdminDashBoardGraph(this.props.hotel_analysis_data[0].top_ten_hotel_sales,
+                {this.getAdminDashBoardGraph(this.props.hotel_analysis_data[1].top_ten_hotel_sales_city,
                 " Sales Report"," Top 10 properties in terms of sales")}
                 </div>
 

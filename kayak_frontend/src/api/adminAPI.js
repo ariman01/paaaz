@@ -58,3 +58,27 @@ export const getHotelAnalysis = function(data){
        });
    };
 };
+
+
+export const addCarAdmin = function(cardetail){
+ console.log("add car details:",cardetail)
+ return (dispatch) => {
+   fetch(`${server_url}/cars/addcar`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(cardetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" New car with model:"+cardetail.model_no+" is added successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to add new car !!!");
+         }
+    }).catch(err => {
+         console.log("Error while retrieving hotel graph!!!");
+         return err;
+       });
+   };
+};
