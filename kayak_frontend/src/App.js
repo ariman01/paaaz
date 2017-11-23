@@ -29,27 +29,9 @@ import SignUp from './components/sign_up';
 import AdminLogin from './components/admin_login'
 import HotelGraphs from './components/subcomponents/hotel_graphs';
 
-import EditHotels from './components/editHotels';
-import editHotelTile from './components/searchbars/edithotel_tiles';
-import EditHotelForm from './components/searchbars/edithotel_form';
-import EditCarForm from './components/searchbars/editcar_form';
-import EditFlightForm from './components/searchbars/editflight_form';
-import EditCars from './components/editCars';
-import EditCarTile from './components/searchbars/editcar_tiles';
-import EditFlights from './components/editFlights';
-import EditFlightTile from './components/searchbars/editflight_tiles';
-
 import CarGraphs from './components/subcomponents/car_graphs';
 
-import UserHistoryTile from './components/searchbars/userhistory_tiles';
-import EditPreferenceForm from './components/searchbars/editpreference_form';
-import EditPaymentDetailsForm from './components/searchbars/editpaymentdetails_form';
-import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_form';
-import UserHistory from './components/user_history';
-import PaymentDetails from './components/payment_details';
 
-import HotelBillingInfo from './components/hotel_billing_information';
-import FlightBillingInfo from './components/flight_billing_information';
 
 
 class App extends Component {
@@ -122,20 +104,7 @@ class App extends Component {
             <div className="App">
                 <Router history={history}>
                     <MuiThemeProvider>
-                            <Route  exact path="/edituserprofileform" render ={() => (<EditPreferenceForm data={this.userpreference}/>)}/>
-                            <Route  exact path="/editpaymentdetailsform" render ={() => (<EditPaymentDetailsForm data={this.paymentdetails}/>)}/>
-                            <Route  exact path="/addpaymentdetailsform" render ={() => (<AddPaymentDetailsForm/>)}/>
-                            <Route  exact path="/userprofile" render ={() => (<UserProfile data={this.userpreference}/>)}/>
-                            <Route  exact path="/paymentdetails" render ={() => (<PaymentDetails data={this.paymentdetails}/>)}/>
-                            <Route  exact path="/userhistory" render ={() => (<UserHistory/>)}/>
 
-                            <Route  exact path="/edithotelform" render ={() => (<EditHotelForm data={this.hotels}/>)}/>
-                            <Route  exact path="/editcarform" render ={() => (<EditCarForm data={this.cars}/>)}/>
-                            <Route  exact path="/editflightform" render ={() => (<EditFlightForm data={this.flights}/>)}/>
-                            <Route  exact path="/editHotels" render ={() => (<EditHotels/>)}/>
-                            <Route  exact path="/editFlights" render ={() => (<EditFlights/>)}/>
-                            <Route  exact path="/editCars" render ={() => (<EditCars/>)}/>
-                            <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
                             <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
                             <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
                             <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
@@ -150,8 +119,7 @@ class App extends Component {
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
 
-                            <Route  exact path="/adminHotelBilling" render ={() => (<HotelBillingInfo/>)}/>
-                           <Route  exact path ="/adminFlightBilling" render ={() => (<FlightBillingInfo/>)}/>
+
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
 
 

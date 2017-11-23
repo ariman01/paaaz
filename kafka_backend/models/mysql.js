@@ -7,7 +7,7 @@ function getConnection(){
         host     : 'localhost',
         user     : 'root',
         password : 'root',
-        database : 'test',
+        database : 'kayak_database',
         port	 : 3306
     });
     return connection;

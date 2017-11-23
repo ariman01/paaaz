@@ -121,14 +121,95 @@ exports.adminHotelBilling= function(data,callback) {
 
    var hotelbilling="select booking_id,user_id,hotel_name,booking_date,booking_amount from hotel_transaction";
    mysql.fetchData(function(err,results) {
-    
+
     if(err){
       console.log("error");
          }
     console.log("Results from database:"+JSON.stringify(results));
-           callback(err,results);      
+           callback(err,results);
   }, hotelbilling);
+}
 
 
+
+exports.adminCarAnalysis = function(data , callback){
+  //Analysis#1
+  var finalResult = [];
+  var car_analysis_query1="select sum(booking_amount) as Booking_Amount,model_no from car_transaction where Year(booking_date) = '"+data.year+"' group by model_no order by Booking_Amount desc limit 10";
+  var result1 = {};
+  result1.models = [];
+  result1.sales= [];
+
+      mysql.fetchData(function(err,results) {
+
+          if(err){
+              console.log("error");
+          }
+          else{
+            results.map((value)=>{
+              result1.models.push(value.model_no);
+              result1.sales.push(value.Booking_Amount);
+            });
+            console.log("result1 ******",result1);
+            finalResult.push({top_ten_car_sales:result1});
+
+            //Analysis#2
+            var car_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from car_transaction group by src_city order by Booking_Amount";
+            var result2 ={};
+            result2.cities =[];
+            result2.sales=[];
+
+            mysql.fetchData(function(err,results) {
+
+                if(err){
+                      console.log("error");
+                  }
+                  else{
+                      console.log("Results from database:"+JSON.stringify(results));
+                      results.map((value)=>{
+                        result2.cities.push(value.src_city);
+                        result2.sales.push(value.Booking_Amount);
+                      });
+
+                      console.log("result2****",result2);
+                      finalResult.push({top_ten_city_sales:result2});
+
+
+                      //Analysis#3
+                      var car_analysis_query3="select sum(booking_amount) as Booking_Amount,agency_name from car_transaction where month(booking_date) = month(current_date())-1 group by agency_name order by Booking_Amount desc limit 10";;
+
+                      var result3 ={};
+                      result3.agencies = [];
+                      result3.sales=[];
+
+                      mysql.fetchData(function(err,results) {
+                          console.log("results:  ",results);
+
+                            if(err){
+                                console.log("error");
+                                result3.message = "Error could not find top ten hotels"
+                                //callback(null,err);
+                                 }
+                            console.log("Results from database:"+JSON.stringify(results));
+
+                            results.map((value)=>{
+                                result3.agencies.push(value.agency_name);
+                                result3.sales.push(value.Number_Of_Bookings);
+                            });
+                            console.log("result3****",result3);
+                            finalResult.push({top_ten_agency_sales:result3});
+                            var result_1 = {status:201,finalResult : finalResult};
+
+                            console.log("analysis result:",result_1);
+                            callback(null, result_1);
+
+                        }, car_analysis_query3);
+
+                  }
+              }, car_analysis_query2);
+
+
+        }
+    }, car_analysis_query1);
 
 }

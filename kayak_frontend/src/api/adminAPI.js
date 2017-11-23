@@ -1,6 +1,6 @@
 // Add rest api calls related to admin
 import {history} from "../utils/util";
-import {updateTotalSales,updateHotelSalesAnalysis} from './../actions/admin_action';
+import {updateTotalSales,updateHotelSalesAnalysis, updateCarSalesAnalysis} from './../actions/admin_action';
 
 const server_url = "http://localhost:3010"
 const headers = {
@@ -128,6 +128,34 @@ export const addHotelAdmin = function(hoteldetail){
          }
     }).catch(err => {
          console.log("Error while adding new Hotel!!!");
+         return err;
+       });
+   };
+};
+
+
+export const getCarAnalysis = function(data){
+ console.log("Car analysis request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/analysis/caranalysis`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get car analysis res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Admin does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result.finalResult:",result.result.finalResult);
+        dispatch(updateCarSalesAnalysis(result.result.finalResult));
+        history.push('/cargraphs');
+ }).catch(err => {
+         console.log("Error while retrieving car graph!!!");
          return err;
        });
    };

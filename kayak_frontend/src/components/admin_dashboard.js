@@ -8,7 +8,7 @@ import carDashIcon from './../images/admin_dash_car.png';
 import hotelDashIcon from './../images/admin_hotel_dash_1.png';
 import flightDashIcon from './../images/admin_dash_flight.png';
 import userDashIcon from './../images/admin_dash_user.png';
-import {getHotelAnalysis} from './../api/adminAPI';
+import {getHotelAnalysis,getCarAnalysis} from './../api/adminAPI';
 import BarChart from './graph/bar_chart';
 
 class AdminDashboard extends Component {
@@ -39,7 +39,7 @@ class AdminDashboard extends Component {
                       <hr/>
                     </div>
 
-                    <div className="admin-dashboard-tiles-div">
+                    <div className="admin-dashboard-tiles-div" onClick={() => this.props.getCarAnalysis({date : "2017"})}>
                         <div className="admin-dashboard-tile-car" >
                             <div style={{height:"100%"}}>
                                 <div style={{height:"60%"}}>
@@ -127,7 +127,9 @@ class AdminDashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getHotelAnalysis:getHotelAnalysis},dispatch);
+    return bindActionCreators({getHotelAnalysis:getHotelAnalysis,
+                              getCarAnalysis:getCarAnalysis
+                              },dispatch);
 }
 
 function mapStateToProps(state){
