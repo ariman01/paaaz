@@ -38,8 +38,7 @@ var hotelSchema = mongoose.Schema({
     required : true
   },
   hotel_reviews : {
-    type : [String],
-    required : true
+    type : [String]
   },
   //hotel_capacity = number of people that can be accomadated in the hotel
   hotel_capacity : {

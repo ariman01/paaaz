@@ -58,7 +58,7 @@ class AdminDashboard extends Component {
                             </div>
                         </div>
 
-                        <div className="admin-dashboard-tile-hotel" >
+                        <div className="admin-dashboard-tile-hotel" onClick={() => this.props.getHotelAnalysis({date : "2017"})}>
                             <div style={{height:"100%"}}>
                                 <div style={{height:"60%"}}>
                                         <div style={{display:"inline",float:"left", width:"60%"}}>

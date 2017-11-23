@@ -104,7 +104,30 @@ export const addFlightAdmin = function(flightdetail){
            alert((res.message)?res.message:"Failed to add new flight !!!");
          }
     }).catch(err => {
-         console.log("Error while retrieving hotel graph!!!");
+         console.log("Error while adding new flight!!!");
+         return err;
+       });
+   };
+};
+
+export const addHotelAdmin = function(hoteldetail){
+ console.log("add hotel details:",hoteldetail)
+ return (dispatch) => {
+   fetch(`${server_url}/hotels/addhotel`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(hoteldetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" New Hotel with id:"+hoteldetail.hotel_id+" is added successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to add new Hotel !!!");
+         }
+    }).catch(err => {
+         console.log("Error while adding new Hotel!!!");
          return err;
        });
    };

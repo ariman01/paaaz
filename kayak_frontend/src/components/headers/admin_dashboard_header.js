@@ -38,7 +38,7 @@ class AdminDashboardHeader extends Component {
           history.push('/adminsearchhotel');
         };
         handle_hotel_add=()=>{
-          history.push('/adminaddhotel');
+          history.push('/addhoteladmin');
         };
         handle_hotel_billing=()=>{
           history.push('/adminhotelbilling');
