@@ -40,6 +40,9 @@ function handle_request(topic, data, callback){
   }else if(topic === "admin_signin_req"){
     adminservices.adminSignIn(data, callback);
   }
+  else if(topic === "admin_hotel_bil_req"){
+    adminservices.adminHotelBilling(data, callback);
+  }
 }
 
 exports.handle_request = handle_request;
