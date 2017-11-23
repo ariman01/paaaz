@@ -39,8 +39,8 @@ class AdminDashboard extends Component {
                       <hr/>
                     </div>
 
-                    <div className="admin-dashboard-tiles-div" onClick={() => this.props.getCarAnalysis({date : "2017"})}>
-                        <div className="admin-dashboard-tile-car" >
+                    <div className="admin-dashboard-tiles-div" >
+                        <div className="admin-dashboard-tile-car" onClick={() => this.props.getCarAnalysis({date : "2017"})}>
                             <div style={{height:"100%"}}>
                                 <div style={{height:"60%"}}>
                                         <div style={{display:"inline",float:"left", width:"60%"}}>
