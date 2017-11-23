@@ -116,3 +116,20 @@ exports.adminSignIn = function(data, callback){
        callback(err,results);
    });
 }
+
+exports.adminHotelBilling= function(data,callback) {
+
+
+   var hotelbilling="select booking_id,user_id,hotel_name,booking_date,booking_amount from hotel_transaction";
+   mysql.fetchData(function(err,results) {
+    
+    if(err){
+      console.log("error");
+         }
+    console.log("Results from database:"+JSON.stringify(results));
+           callback(err,results);      
+  }, hotelbilling);
+
+
+
+}

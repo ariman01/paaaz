@@ -40,6 +40,7 @@ import EditFlights from './components/editFlights';
 import EditFlightTile from './components/searchbars/editflight_tiles';
 
 import CarGraphs from './components/subcomponents/car_graphs';
+
 import UserHistoryTile from './components/searchbars/userhistory_tiles';
 
 
@@ -49,6 +50,8 @@ import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_for
 import UserHistory from './components/user_history';
 import PaymentDetails from './components/payment_details';
 
+import HotelBillingInfo from './components/hotel_billing_information';
+import FlightBillingInfo from './components/flight_billing_information';
 
 
 class App extends Component {
@@ -148,6 +151,8 @@ class App extends Component {
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
+                            <Route  exact path="/adminHotelBilling" render ={() => (<HotelBillingInfo/>)}/>
+                           <Route  exact path ="/adminFlightBilling" render ={() => (<FlightBillingInfo/>)}/>
 
 
                     </MuiThemeProvider>
