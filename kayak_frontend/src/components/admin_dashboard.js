@@ -3,6 +3,7 @@ import AdminDashboardHeader from './headers/admin_dashboard_header';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../images/home.css';
+import './../images/admin.css';
 import carDashIcon from './../images/admin_dash_car.png';
 import hotelDashIcon from './../images/admin_hotel_dash_1.png';
 import flightDashIcon from './../images/admin_dash_flight.png';

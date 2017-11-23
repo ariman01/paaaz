@@ -38,19 +38,18 @@ exports.adminHotelAnalysis = function(data , callback){
             finalResult.push({top_ten_hotel_sales:result1});
 
             //Analysis#2
-              var hotel_analysis_query2="select name_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by name_city order by Booking_Amount";
-              var result2 ={};
-              result2.city_name =[];
-              result2.sales=[];
+            var hotel_analysis_query2="select name_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by name_city order by Booking_Amount";
+            var result2 ={};
+            result2.city_name =[];
+            result2.sales=[];
 
-              mysql.fetchData(function(err,results) {
+            mysql.fetchData(function(err,results) {
 
-                  if(err){
+                if(err){
                       console.log("error");
-                  }else{
+                  }
+                  else{
                       console.log("Results from database:"+JSON.stringify(results));
-
-
                       results.map((value)=>{
                         result2.city_name.push(value.name_city);
                         result2.sales.push(value.Booking_Amount);
@@ -61,13 +60,13 @@ exports.adminHotelAnalysis = function(data , callback){
 
 
                       //Analysis#3
-                        var hotel_analysis_query3="select hotel_name,count(hotel_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from hotel_transaction where month(booking_date) = month(current_date())-1 group by hotel_name order by Number_Of_Bookings desc limit 10";
+                      var hotel_analysis_query3="select hotel_name,count(hotel_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from hotel_transaction where month(booking_date) = month(current_date())-1 group by hotel_name order by Number_Of_Bookings desc limit 10";
 
-                        var result3 ={};
-                        result3.hotels = [];
-                        result3.sales=[];
+                      var result3 ={};
+                      result3.hotels = [];
+                      result3.sales=[];
 
-                        mysql.fetchData(function(err,results) {
+                      mysql.fetchData(function(err,results) {
                           console.log("results:  ",results);
 
                             if(err){
@@ -77,16 +76,16 @@ exports.adminHotelAnalysis = function(data , callback){
                                  }
                             console.log("Results from database:"+JSON.stringify(results));
 
-                                  results.map((value)=>{
-                                    result3.hotels.push(value.hotel_name);
-                                    result3.sales.push(value.Number_Of_Bookings);
-                                  });
-                                  console.log("result3****",result3);
-                                  finalResult.push({top_ten_host_sales:result3});
-                                  var result_1 = {status:201,finalResult : finalResult};
+                            results.map((value)=>{
+                                result3.hotels.push(value.hotel_name);
+                                result3.sales.push(value.Number_Of_Bookings);
+                            });
+                            console.log("result3****",result3);
+                            finalResult.push({top_ten_host_sales:result3});
+                            var result_1 = {status:201,finalResult : finalResult};
 
-                                  console.log("analysis result:",result_1);
-                                  callback(null, result_1);
+                            console.log("analysis result:",result_1);
+                            callback(null, result_1);
 
                         }, hotel_analysis_query3);
 

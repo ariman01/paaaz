@@ -28,7 +28,7 @@ class AdminDashboardHeader extends Component {
           history.push('/adminsearchflight');
         };
         handle_flight_add=()=>{
-          history.push('/adminaddflight');
+          history.push('/addflightadmin');
         };
         handle_flight_billing=()=>{
           history.push('/adminflightbilling');

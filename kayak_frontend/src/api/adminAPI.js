@@ -84,3 +84,28 @@ export const addCarAdmin = function(cardetail){
        });
    };
 };
+
+
+
+export const addFlightAdmin = function(flightdetail){
+ console.log("add flight details:",flightdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/flights/addflight`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(flightdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" New flight with carrier:"+flightdetail.carrier_name+" is added successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to add new flight !!!");
+         }
+    }).catch(err => {
+         console.log("Error while retrieving hotel graph!!!");
+         return err;
+       });
+   };
+};

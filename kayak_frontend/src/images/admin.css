@@ -28,6 +28,7 @@
   color: #FF7F50;
   font-family: Lucida Console;
   font-style: normal;
+  cursor: pointer;
 }
 
 .admin-dashboard-tile-hotel{
@@ -43,6 +44,7 @@
   color: #3CB371;
   font-family: Lucida Console;
   font-style: normal;
+  cursor: pointer;
 }
 
 .admin-dashboard-tile-flight{
@@ -58,7 +60,7 @@
   color: #87CEEB;
   font-family: Lucida Console;
   font-style: normal;
-
+  cursor: pointer;
 }
 
 .admin-dashboard-tile-users{
@@ -74,7 +76,7 @@
   color: #3CB371;
   font-family: Lucida Console;
   font-style: normal;
-
+  cursor: pointer;
 }
 
 .admin-dashboard-graph{
