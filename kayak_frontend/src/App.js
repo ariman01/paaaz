@@ -41,8 +41,6 @@ import EditFlightTile from './components/searchbars/editflight_tiles';
 
 import CarGraphs from './components/subcomponents/car_graphs';
 import UserHistoryTile from './components/searchbars/userhistory_tiles';
-
-import HotelGraphs from './components/subcomponents/hotel_graphs';
 import EditPreferenceForm from './components/searchbars/editpreference_form';
 import EditPaymentDetailsForm from './components/searchbars/editpaymentdetails_form';
 import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_form';
