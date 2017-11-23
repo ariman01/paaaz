@@ -23,14 +23,14 @@ router.post('/searchflights', function(req, res, next) {
 
 router.post('/addflight', function(req, res, next) {
     var flightDetail = {
-        flight_id:req.data.flight_id,
-        carrier_name:req.data.carrier_name,
-        src_city:req.data.src_city,
-        destination_city:req.data.destination_city,
-        flight_duration:req.data.flight_duration,
-        operational_day:req.data.operational_day,
-        departure_time:req.data.departure_time,
-        price:req.data.price
+        flight_id:req.body.flight_id,
+        carrier_name:req.body.carrier_name,
+        src_city:req.body.src_city,
+        destination_city:req.body.destination_city,
+        flight_duration:req.body.flight_duration,
+        operational_day:req.body.operational_day,
+        departure_time:req.body.departure_time,
+        price:req.body.price
     };
     kafka.make_request('add_flight', flightDetail, function(err,result){
         if(err){

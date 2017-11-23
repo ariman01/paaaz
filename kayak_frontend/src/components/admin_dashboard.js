@@ -3,6 +3,11 @@ import AdminDashboardHeader from './headers/admin_dashboard_header';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../images/home.css';
+import './../images/admin.css';
+import carDashIcon from './../images/admin_dash_car.png';
+import hotelDashIcon from './../images/admin_hotel_dash_1.png';
+import flightDashIcon from './../images/admin_dash_flight.png';
+import userDashIcon from './../images/admin_dash_user.png';
 import {getHotelAnalysis} from './../api/adminAPI';
 import BarChart from './graph/bar_chart';
 
@@ -35,32 +40,76 @@ class AdminDashboard extends Component {
                     </div>
 
                     <div className="admin-dashboard-tiles-div">
-                        <div className="admin-dashboard-tile-car">
-                            <h3>Total cars rented: </h3>
-                            <br></br>
-                            <br></br>
-                            <h1>{this.props.total_sales.car_sales}</h1>
+                        <div className="admin-dashboard-tile-car" >
+                            <div style={{height:"100%"}}>
+                                <div style={{height:"60%"}}>
+                                        <div style={{display:"inline",float:"left", width:"60%"}}>
+                                        <img src={carDashIcon}/>
+                                        </div>
+                                        <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
+                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.car_sales}</strong></span>
+                                        </div>
+                                      </div>
+                                  <hr/>
+
+                                  <div style={{height:"30%"}}>
+                                  <h4>Total cars rented last year</h4>
+                                  </div>
+                            </div>
                         </div>
 
-                        <div className="admin-dashboard-tile-flight">
-                            <h3>Total flights booked: </h3>
-                            <br></br>
-                            <br></br>
-                            <h1>{this.props.total_sales.flight_sales}</h1>
+                        <div className="admin-dashboard-tile-hotel" >
+                            <div style={{height:"100%"}}>
+                                <div style={{height:"60%"}}>
+                                        <div style={{display:"inline",float:"left", width:"60%"}}>
+                                        <img src={hotelDashIcon} style={{padding:10}}/>
+                                        </div>
+                                        <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
+                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.hotel_sales}</strong></span>
+                                        </div>
+                                      </div>
+                                  <hr/>
+
+                                  <div style={{height:"30%"}}>
+                                  <h4>Total hotels rented last year</h4>
+                                  </div>
+                            </div>
                         </div>
 
-                        <div className="admin-dashboard-tile-hotel">
-                            <h3>Total hotels booked: </h3>
-                            <br></br>
-                            <br></br>
-                            <h1>{this.props.total_sales.hotel_sales}</h1>
+                        <div className="admin-dashboard-tile-flight" >
+                            <div style={{height:"100%"}}>
+                                <div style={{height:"60%"}}>
+                                        <div style={{display:"inline",float:"left", width:"60%"}}>
+                                        <img src={flightDashIcon} style={{padding:10}}/>
+                                        </div>
+                                        <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
+                                        <span style={{fontSize:40,textAlign:"center",color:"#00BFFF"}}><strong>{this.props.total_sales.flight_sales}</strong></span>
+                                        </div>
+                                      </div>
+                                  <hr/>
+
+                                  <div style={{height:"30%"}}>
+                                  <h4 style={{color:"#00BFFF"}}>Total flights rented last year</h4>
+                                  </div>
+                            </div>
                         </div>
 
-                        <div className="admin-dashboard-tile-users">
-                            <h3>Total users active: </h3>
-                            <br></br>
-                            <br></br>
-                            <h1>{this.props.total_sales.user_booking}</h1>
+                        <div className="admin-dashboard-tile-users" >
+                            <div style={{height:"100%"}}>
+                                <div style={{height:"60%"}}>
+                                        <div style={{display:"inline",float:"left", width:"60%"}}>
+                                        <img src={userDashIcon} style={{padding:10}}/>
+                                        </div>
+                                        <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
+                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.flight_sales}</strong></span>
+                                        </div>
+                                      </div>
+                                  <hr/>
+
+                                  <div style={{height:"30%"}}>
+                                  <h4>Total hotels rented last year</h4>
+                                  </div>
+                            </div>
                         </div>
 
                     </div>

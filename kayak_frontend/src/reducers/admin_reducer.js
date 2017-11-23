@@ -6,7 +6,7 @@ const initialData ={
           sales:[10000,10200,20000,10000,80000,20000,60000,10000,50000,40000]
       }},
       {top_ten_hotel_sales_city:{
-          hotels:[],
+          city_name:[],
           sales:[]
       }},
       {top_ten_host_sales:{
@@ -40,7 +40,7 @@ export default function admin_reducer(state = initialData, action) {
         return Object.assign({},state,{
           hotel_analysis_data:action.hotel_analysis_data
         });
-        
+
         default:
             return state
     }

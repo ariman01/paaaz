@@ -16,57 +16,67 @@
 }
 
 .admin-dashboard-tile-car{
+  border-radius: 25px;
   width : 20%;
-  height: 200px;
+  height: 180px;
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: #f0def7;
+  background-color: white;
   text-align: center;
-  color: #a852a1;
+  border : solid #FF7F50 1px;
+  color: #FF7F50;
   font-family: Lucida Console;
   font-style: normal;
-}
-
-.admin-dashboard-tile-flight{
-  width : 20%;
-  height: 200px;
-  display: inline-block;
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: #c2dfef;
-  text-align: center;
-  color: #5393cc;
-  font-family: Lucida Console;
-  font-style: normal;
+  cursor: pointer;
 }
 
 .admin-dashboard-tile-hotel{
+  border-radius: 25px;
   width : 20%;
-  height: 200px;
+  height: 180px;
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: #add1b8;
+  background-color: white;
+  border : solid #3CB371 1px;
   text-align: center;
-  color: #19c413;
+  color: #3CB371;
   font-family: Lucida Console;
   font-style: normal;
+  cursor: pointer;
+}
 
+.admin-dashboard-tile-flight{
+  border-radius: 25px;
+  width : 20%;
+  height: 180px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: white;
+  border : solid #87CEEB 1px;
+  text-align: center;
+  color: #87CEEB;
+  font-family: Lucida Console;
+  font-style: normal;
+  cursor: pointer;
 }
 
 .admin-dashboard-tile-users{
+  border-radius: 25px;
   width : 20%;
-  height: 200px;
+  height: 180px;
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: #e5e5a0;
+  background-color: white;
+  border : solid #3CB371 1px;
   text-align: center;
-  color: #82820a;
+  color: #3CB371;
   font-family: Lucida Console;
   font-style: normal;
-
+  cursor: pointer;
 }
 
 .admin-dashboard-graph{

@@ -19,17 +19,18 @@ router.post('/searchcars', function(req, res, next) {
 });
 
 router.post('/addcar', function(req, res, next) {
+  console.log("addcar data: ",req.body.model_no);
   var cardetail = {
-    model_no:req.data.model_no,
-    name:req.data.name,
-    capacity:req.data.capacity,
-    no_of_bags:req.data.no_of_bags,
-    no_of_doors:req.data.no_of_doors,
-    price:req.data.price,
-    src_city:req.data.src_city,
-    destination_city:req.data.destination_city,
-    rental_agency:req.data.rental_agency,
-    car_type:req.data.car_type
+    model_no:req.body.model_no,
+    name:req.body.name,
+    capacity:req.body.capacity,
+    no_of_bags:req.body.no_of_bags,
+    no_of_doors:req.body.no_of_doors,
+    price:req.body.price,
+    src_city:req.body.src_city,
+    destination_city:req.body.destination_city,
+    rental_agency:req.body.rental_agency,
+    car_type:req.body.car_type
   };
   kafka.make_request('add_car',cardetail, function(err,result){
     if(err){
@@ -59,16 +60,16 @@ router.post('/deletecar', function(req, res, next) {
 
 router.post('/editcar', function(req, res, next) {
   var cardetail = {
-    model_no:req.data.model_no,
-    name:req.data.name,
-    capacity:req.data.capacity,
-    no_of_bags:req.data.no_of_bags,
-    no_of_doors:req.data.no_of_doors,
-    price:req.data.price,
-    src_city:req.data.src_city,
-    destination_city:req.data.destination_city,
-    rental_agency:req.data.rental_agency,
-    car_type:req.data.car_type
+    model_no:req.body.model_no,
+    name:req.body.name,
+    capacity:req.body.capacity,
+    no_of_bags:req.body.no_of_bags,
+    no_of_doors:req.body.no_of_doors,
+    price:req.body.price,
+    src_city:req.body.src_city,
+    destination_city:req.body.destination_city,
+    rental_agency:req.body.rental_agency,
+    car_type:req.body.car_type
   };
   kafka.make_request('edit_car',cardetail, function(err,result){
     if(err){

@@ -1,88 +1,13 @@
 import React,{ Component } from 'react';
+import { connect } from 'react-redux';
 import EditHotelTile from './searchbars/edithotel_tiles';
 import HomePageHeader from './headers/homepage_header';
 import './../images/home.css';
 
 class EditHotels extends Component {
 
-constructor(){
-  super();
 
- this.hotels = [{
-    name:"Sofitel Los Angeles at Beverly Hills",
-    stars:4,
-    rating:8.5,
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"Beverly Grove",
-    price:249
-  },{
-    name:"Sofitel San Jose",
-    stars:3,
-    rating:7.6,
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"The Alameda",
-    price:249
-  },{
-    name:"Sofitel Los Angeles at Beverly Hills",
-    stars:4,
-    rating:8.5,
-    reviews:"Excellent",
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"Beverly Grove",
-    price:249
-  },{
-   name:"Sofitel Los Angeles at Beverly Hills",
-    stars:4,
-    rating:8.5,
-    reviews:"Excellent",
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"Beverly Grove",
-    price:249
-  },{
-    name:"Sofitel Los Angeles at Beverly Hills",
-    stars:4,
-    rating:8.5,
-    reviews:"Excellent",
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"Beverly Grove",
-    price:249
-  },{
-    name:"Sofitel Los Angeles at Beverly Hills",
-    stars:4,
-    rating:8.5,
-    reviews:"Excellent",
-    reviews:"Good",
-    city : "San Jose",
-    state : "California",
-    zip : 95126,
-    capacity : 10,
-    address:"Beverly Grove",
-    price:249
-  }]
-}
-
-
-   getHotelTile(hotels){
+ getHotelTile(hotels){
     console.log("Hotels: ", hotels);
     return hotels.map((hotel)=>{
       return (<EditHotelTile data={hotel} style={{paddingTop:10}}/>)
@@ -102,7 +27,7 @@ render() {
 
                 </div>
                 <div className ="hotel-details-body-centre">
-                {this.getHotelTile(this.hotels)}
+                {this.getHotelTile(this.props.listOfSearchedHotel)}
                 </div>
                 <div className ="hotel-details-body-right-nav">
 
@@ -116,5 +41,11 @@ render() {
 
 
 
+function mapStateToProps(state) {
+    console.log("Edit hotels mapStateToProps: "+state.admin_reducer.listOfSearchedHotel);
+    return {
+        listOfSearchedHotel: state.admin_reducer.listOfSearchedHotel,
+      };
+}
 
-export default EditHotels;
+export default connect(mapStateToProps,null)(EditHotels);
