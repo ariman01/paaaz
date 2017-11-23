@@ -17,7 +17,6 @@ topic_names.map((topic)=>{
   var consumer = connection.getConsumer(topic);
   consumer.on('message', function (message) {
       console.log('[Kafka] request received, topic: ',topic);
-      //console.log(JSON.stringify(message.value));
       var data = JSON.parse(message.value);
       service_manager.handle_request(topic, data.data, function(error, result){
         let error_msg = null;

@@ -1,7 +1,9 @@
 import React,{ Component } from 'react';
 import AdminDashboardHeader from './headers/admin_dashboard_header';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import './../images/home.css';
+import {getHotelAnalysis} from './../api/adminAPI';
 import BarChart from './graph/bar_chart';
 
 class AdminDashboard extends Component {
@@ -9,7 +11,11 @@ class AdminDashboard extends Component {
   getAdminDashBoardGraph(){
     var data={
         labels: ["Car Sales", "Flight Sales", "Hotel Sales", "User Booking"],
-        datasets:[this.props.total_sales.car_sales,this.props.total_sales.flight_sales,this.props.total_sales.hotel_sales,this.props.total_sales.user_booking],
+        datasets:[this.props.total_sales.car_sales,
+                  this.props.total_sales.flight_sales,
+                  this.props.total_sales.hotel_sales,
+                  this.props.total_sales.user_booking
+                ],
         labelName:"Sales Overview",
         header_text:"Sales Overview"
     }
@@ -71,11 +77,15 @@ class AdminDashboard extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getHotelAnalysis:getHotelAnalysis},dispatch);
+}
+
 function mapStateToProps(state){
-  console.log("maps to props admin dashboard: state.admin_reducer.total_sales",state.admin_reducer.total_sales);
+  console.log("maps to props admin dashboard:",state.admin_reducer.total_sales);
   return {
     total_sales:state.admin_reducer.total_sales
   };
 }
 
-export default connect(mapStateToProps)(AdminDashboard);
+export default connect(mapStateToProps,mapDispatchToProps)(AdminDashboard);

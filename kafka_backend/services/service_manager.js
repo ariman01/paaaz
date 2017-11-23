@@ -29,7 +29,7 @@ function handle_request(topic, data, callback){
     }else if(topic === "signup_req"){
         userservices.addUser(data, callback);
     }else if(topic === "admin_analysis_hotel_req"){
-        adminservices.adminAnalysisHotel(data, callback);
+        adminservices.adminHotelAnalysis(data, callback);
     }
   else if(topic === "admin_analysis2_hotel_req"){
         adminservices.adminAnalysis2Hotel(data, callback);
