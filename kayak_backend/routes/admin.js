@@ -46,4 +46,22 @@ router.post('/adminsignin', function(req, res, next) {
 });
 
 
+router.post('/adminHotelBilling', function(req, res, next) {
+
+
+        var date = new Date(req.body.date);
+        var year = date.getFullYear();
+        console.log("Year entered is:"+year);
+
+      kafka.make_request('admin_hotel_bil', {"year" : 2017}, function(err,result){
+        
+        if(err){
+            console.log(err);
+        }else {
+            res.status(201).json(result);
+        }
+    });
+});
+
+
 module.exports = router;
