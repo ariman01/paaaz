@@ -1,6 +1,6 @@
 // Add rest api calls related to admin
 import {history} from "../utils/util";
-import {updateTotalSales,updateHotelSalesAnalysis, updateCarSalesAnalysis} from './../actions/admin_action';
+import {updateTotalSales,updateHotelSalesAnalysis, updateCarSalesAnalysis,updateFlightSalesAnalysis} from './../actions/admin_action';
 
 const server_url = "http://localhost:3010"
 const headers = {
@@ -156,6 +156,34 @@ export const getCarAnalysis = function(data){
         history.push('/cargraphs');
  }).catch(err => {
          console.log("Error while retrieving car graph!!!");
+         return err;
+       });
+   };
+};
+
+
+export const getFlightAnalysis = function(data){
+ console.log("Flight analysis request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/analysis/flightanalysis`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get flight analysis res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Admin does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result.finalResult:",result.result.finalResult);
+        dispatch(updateFlightSalesAnalysis(result.result.finalResult));
+        history.push('/flightgraphs');
+ }).catch(err => {
+         console.log("Error while retrieving flight graph!!!");
          return err;
        });
    };

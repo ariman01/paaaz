@@ -28,6 +28,7 @@ import UserProfile from './components/user_profile';
 import SignUp from './components/sign_up';
 import AdminLogin from './components/admin_login'
 import HotelGraphs from './components/subcomponents/hotel_graphs';
+import FlightGraphs from './components/subcomponents/flight_graphs';
 
 import CarGraphs from './components/subcomponents/car_graphs';
 
@@ -113,6 +114,7 @@ class App extends Component {
                             <Route  exact path="/flightbillingpage" render ={() => (<FlightBillingPage/>)}/>
                             <Route  exact path="/admindashboard" render ={() => (<AdminDashboard/>)}/>
                             <Route  exact path="/cargraphs" render ={() => (<CarGraphs/>)}/>
+                            <Route  exact path="/flightgraphs" render ={() => (<FlightGraphs/>)}/>
                             <Route  exact path="/addcaradmin" render ={() => (<AddCarAdmin/>)}/>
                             <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>

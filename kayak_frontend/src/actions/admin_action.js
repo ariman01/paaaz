@@ -11,10 +11,19 @@ export const updateHotelSalesAnalysis = (sales_analysis) =>{
     hotel_analysis_data:sales_analysis
   }
 }
-  export const updateCarSalesAnalysis = (sales_analysis) =>{
+
+export const updateCarSalesAnalysis = (sales_analysis) =>{
     console.log("Action UPDATE_CAR_ANALYSIS");
     return {
       type:"UPDATE_CAR_ANALYSIS",
       car_analysis_data:sales_analysis
+    }
+}
+
+export const updateFlightSalesAnalysis = (sales_analysis) =>{
+    console.log("Action UPDATE_FLIGHT_ANALYSIS");
+    return {
+      type:"UPDATE_FLIGHT_ANALYSIS",
+      flight_analysis_data:sales_analysis
     }
 }
