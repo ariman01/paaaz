@@ -1,8 +1,9 @@
 import React,{ Component } from 'react';
 import clickIcon from './../../images/clickIcon.png';
 import { connect } from 'react-redux';
-import {searchcars_action} from './../../actions/car_action';
 import {bindActionCreators} from 'redux';
+import {searchcars_action} from './../../actions/car_action';
+
 class CarSearchBar extends Component {
     constructor(props) {
         super(props);

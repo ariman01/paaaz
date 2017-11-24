@@ -49,7 +49,6 @@ import UserHistory from './components/user_history';
 import PaymentDetails from './components/payment_details';
 
 import HotelBillingInfo from './components/hotel_billing_information';
-import FlightBillingInfo from './components/flight_billing_information';
 
 
 class App extends Component {
@@ -149,13 +148,8 @@ class App extends Component {
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
-
-                            <Route  exact path="/adminHotelBilling" render ={() => (<HotelBillingInfo/>)}/>
-                           <Route  exact path ="/adminFlightBilling" render ={() => (<FlightBillingInfo/>)}/>
+                            <Route  exact path="/adminhotelbilling" render ={() => (<HotelBillingInfo/>)}/>
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
-
-
-
                     </MuiThemeProvider>
                 </Router>
             </div>
