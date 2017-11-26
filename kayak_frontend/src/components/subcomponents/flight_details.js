@@ -27,18 +27,11 @@ class FlightDetails extends Component {
                         <br></br>
                         <img src={limitedseats} style={{height: 30 }}/>
                         <br></br>
-                        <br></br>
+                        <hr/>
                     </div>
 
-                    <div className= "flight-departure-return-image">
 
-                    </div>
 
-                      <hr/>
-                      <br></br>
-                      <strong>This rate is no longer available for the dates you requested.</strong>
-                      <br></br>
-                      <a href ="">Choose a different flight</a>, or choose another rate below.
 
                 </div>
 

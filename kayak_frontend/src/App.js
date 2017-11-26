@@ -24,21 +24,86 @@ import AdminDashboard from './components/admin_dashboard';
 import AddCarAdmin from './components/subcomponents/add_car_admin';
 import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
 import AddFlightAdmin from './components/subcomponents/add_flight_admin';
-import Signup from './components/sign_up';
-
+import UserProfile from './components/user_profile';
+import SignUp from './components/sign_up';
+import AdminLogin from './components/admin_login'
+import HotelGraphs from './components/subcomponents/hotel_graphs';
+import FlightGraphs from './components/subcomponents/flight_graphs';
 import CarGraphs from './components/subcomponents/car_graphs';
-
+import HotelBillingInfo from './components/hotel_billing_information';
 
 
 class App extends Component {
+
+    constructor(){
+        super();
+
+             this.hotels = [{
+                name:"Sofitel Los Angeles at Beverly Hills",
+                stars:4,
+                rating:8.5,
+                reviews:"Good",
+                city : "San Jose",
+                state : "California",
+                zip : 95126,
+                capacity : 10,
+                address:"Beverly Grove",
+                price:249
+              }]
+
+               this.cars = [{
+                name:"Audi Q3",
+                duration:4,
+                no_of_bags:8,
+                no_of_doors:4,
+                src_city : "San Jose",
+                dest_city : "San Diego",
+                agency : "Audi Rental Groups",
+                price:249,
+                capacity : 4
+              }]
+
+               this.flights = [{
+                carrier:"Lufthanza",
+                operation_day:3,
+                dep_time:1500,
+                duration:240,
+                src_city : "San Jose",
+                dest_city : "San Diego",
+                price:249
+              }]
+
+            this.userpreference = [{
+                first_name:"Lufthanza",
+                second_name:"Kumari",
+                gender:"F",
+                email:"kumariluft@gmail.com",
+                address : "1318 The Julian",
+                city : "San Jose",
+                state : "California",
+                zip: 95126
+              }]
+
+               this.paymentdetails = [{
+                name_on_card:"Lufthanza Kumari",
+                last_digits:1234,
+                card_type: "VISA",
+                address : "1318 The Julian",
+                city : "San Jose",
+                state : "California",
+                zip: 95126
+              }]
+
+
+            }
+
+
     render() {
         return (
             <div className="App">
                 <Router history={history}>
                     <MuiThemeProvider>
 
-
-                            <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
                             <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
                             <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
                             <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
@@ -47,13 +112,14 @@ class App extends Component {
                             <Route  exact path="/flightbillingpage" render ={() => (<FlightBillingPage/>)}/>
                             <Route  exact path="/admindashboard" render ={() => (<AdminDashboard/>)}/>
                             <Route  exact path="/cargraphs" render ={() => (<CarGraphs/>)}/>
+                            <Route  exact path="/flightgraphs" render ={() => (<FlightGraphs/>)}/>
                             <Route  exact path="/addcaradmin" render ={() => (<AddCarAdmin/>)}/>
                             <Route  exact path="/addhoteladmin" render ={() => (<AddHotelAdmin/>)}/>
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
-                            <Route  exact path="/signup" render ={() => (<Signup/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
-
-
+                            <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
+                            <Route  exact path="/adminhotelbilling" render ={() => (<HotelBillingInfo/>)}/>
+                            <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

@@ -2,6 +2,7 @@ var carsercices = require('./car_services');
 var flightservices = require('./flight_services');
 var hotelservices = require('./hotel_services');
 var userservices = require('./user_services');
+var adminservices = require('./admin_services');
 
 function handle_request(topic, data, callback){
     console.log("[Kafka] handle_request topic: "+topic+" ,data: ",data);
@@ -27,6 +28,20 @@ function handle_request(topic, data, callback){
       hotelservices.addNewHotel(data, callback);
     }else if(topic === "signup_req"){
         userservices.addUser(data, callback);
+    }else if(topic === "admin_analysis_hotel_req"){
+        adminservices.adminHotelAnalysis(data, callback);
+    }
+  else if(topic === "admin_analysis_car_req"){
+        adminservices.adminCarAnalysis(data, callback);
+  }
+  else if(topic === "admin_analysis_flight_req"){
+        adminservices.adminFlightAnalysis(data, callback);
+
+  }else if(topic === "admin_signin_req"){
+    adminservices.adminSignIn(data, callback);
+  }
+  else if(topic === "admin_hotel_bill_req"){
+    adminservices.adminHotelBilling(data, callback);
   }
 }
 

@@ -8,6 +8,7 @@ import RenderDetails from './subcomponents/render_details';
 import RentalCarDamageProtection from './subcomponents/rental_car_damage_protection';
 import BookFasterNextTime from './subcomponents/book_faster_next_time';
 import TermsAndConditions from './subcomponents/terms_and_conditions';
+import BillingInformation from './subcomponents/billing_information'
 import './../images/subcomponent.css';
 import { connect } from 'react-redux';
 class CarBillingPage extends Component {
@@ -32,6 +33,7 @@ class CarBillingPage extends Component {
                         <RentalCarPrice data={this.props.current_car}/>
                         <RenderDetails data={this.props.current_car}/>
                         <RentalCarDamageProtection data={this.props.current_car}/>
+                        <BillingInformation/>
                         <BookFasterNextTime data={this.props.current_car}/>
                         <TermsAndConditions data={this.props.current_car}/>
                       </div>
@@ -42,7 +44,7 @@ class CarBillingPage extends Component {
                   </div>
 
               </div>
-              
+
            );
   }
 }

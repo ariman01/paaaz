@@ -8,7 +8,7 @@ function getConnection(){
         user     : 'root',
         password : 'root',
         database : 'kayak_database',
-        port	 : 8889
+        port	 : 3306
     });
     return connection;
 }
@@ -26,6 +26,6 @@ function fetchData(callback,sqlQuery){
         }
     });
     console.log("\nConnection closed..");
-    connection.end();
+    //connection.end();
 }
 exports.fetchData=fetchData;
