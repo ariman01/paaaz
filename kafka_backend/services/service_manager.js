@@ -31,11 +31,11 @@ function handle_request(topic, data, callback){
     }else if(topic === "admin_analysis_hotel_req"){
         adminservices.adminHotelAnalysis(data, callback);
     }
-  else if(topic === "admin_analysis2_hotel_req"){
-        adminservices.adminAnalysis2Hotel(data, callback);
+  else if(topic === "admin_analysis_car_req"){
+        adminservices.adminCarAnalysis(data, callback);
   }
-  else if(topic === "admin_analysis3_hotel_req"){
-        adminservices.adminAnalysis3Hotel(data, callback);
+  else if(topic === "admin_analysis_flight_req"){
+        adminservices.adminFlightAnalysis(data, callback);
 
   }else if(topic === "admin_signin_req"){
     adminservices.adminSignIn(data, callback);

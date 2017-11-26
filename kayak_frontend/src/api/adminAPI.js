@@ -1,6 +1,5 @@
 // Add rest api calls related to admin
 import {history} from "../utils/util";
-import {updateTotalSales,updateHotelSalesAnalysis} from './../actions/admin_action';
 import * as adminActions from './../actions/admin_action'
 
 const server_url = "http://localhost:3010"
@@ -25,7 +24,7 @@ export const adminLogin = function(admindetail){
          }
     }).then(result=>{
         console.log("result",result," token :",result)
-        dispatch(updateTotalSales(result.result));
+        dispatch(adminActions.updateTotalSales(result.result));
         history.push('/admindashboard');
  }).catch(err => {
          console.log("Error admin login!!!");
@@ -53,7 +52,7 @@ export const getHotelAnalysis = function(data){
          }
     }).then(result=>{
         console.log("result.finalResult:",result.result.finalResult);
-        dispatch(updateHotelSalesAnalysis(result.result.finalResult));
+        dispatch(adminActions.updateHotelSalesAnalysis(result.result.finalResult));
         history.push('/hotelgraphs');
  }).catch(err => {
          console.log("Error while retrieving hotel graph!!!");
@@ -144,16 +143,76 @@ export const getHotelBillingInfo = function(data){
        headers: { ...headers,'Content-Type': 'application/json' },
        body: JSON.stringify(data)
      }).then(res => {
+           if(res.status === 201){
+               return res.json();
+           }else{
+               alert((res.message)?res.message:"Failed to get billing information !!!");
+           }
+     }).then(result =>{
+          dispatch(adminActions.updateHotelBillingInformation(result.result));
+          history.push('/adminhotelbilling');
+    }).catch(err => {
+            console.log("Error while retrieving hotel billing information !!!");
+            return err;
+          });
+      };
+   };
+
+
+
+
+
+
+export const getCarAnalysis = function(data){
+ console.log("Car analysis request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/analysis/caranalysis`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get car analysis res:",res.status);
          if(res.status === 201){
            return res.json();
          }else{
-           alert((res.message)?res.message:"Failed to get billing information !!!");
+           alert((res.message)?res.message:"Admin does not exist !!!");
          }
-    }).then(result =>{
-        dispatch(adminActions.updateHotelBillingInformation(result.result));
-        history.push('/adminhotelbilling');
-    }).catch(err => {
-         console.log("Error while retrieving billing information!!!");
+    }).then(result=>{
+        console.log("result.finalResult:",result.result.finalResult);
+        dispatch(adminActions.updateCarSalesAnalysis(result.result.finalResult));
+        history.push('/cargraphs');
+ }).catch(err => {
+         console.log("Error while retrieving car graph!!!");
+         return err;
+       });
+   };
+};
+
+
+export const getFlightAnalysis = function(data){
+ console.log("Flight analysis request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/analysis/flightanalysis`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get flight analysis res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Admin does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result.finalResult:",result.result.finalResult);
+        dispatch(adminActions.updateFlightSalesAnalysis(result.result.finalResult));
+        history.push('/flightgraphs');
+ }).catch(err => {
+         console.log("Error while retrieving flight graph!!!");
          return err;
        });
    };
