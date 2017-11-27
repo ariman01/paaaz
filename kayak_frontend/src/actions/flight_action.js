@@ -5,8 +5,8 @@ export function searchflights_action(payload){
     console.log("its action"+payload.start_date);
     return dispatch => {
         var ONE_DAY = 1000 * 60 * 60 * 24;
-        var start_d= new Date(payload.start_date);
-        var end_d= new Date(payload.end_date);
+        var start_d= new Date(payload.start_date+'T00:00:00');
+        var end_d= new Date(payload.end_date+'T00:00:00');
         var date1_ms = start_d.getTime();
         var date2_ms = end_d.getTime();
         var difference_ms = Math.abs(date1_ms - date2_ms);

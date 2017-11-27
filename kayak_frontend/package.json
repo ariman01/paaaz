@@ -13,6 +13,7 @@
     "react-bootstrap": "^0.31.5",
     "react-button": "^1.2.1",
     "react-chartjs-2": "^2.6.4",
+    "react-datepicker": "^0.61.0",
     "react-dom": "^16.1.1",
     "react-dropdown-button": "^1.0.11",
     "react-modal-bootstrap": "^1.1.1",
