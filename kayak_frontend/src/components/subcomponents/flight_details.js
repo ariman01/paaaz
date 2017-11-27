@@ -1,8 +1,7 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
 import limitedseats from './../../images/limitedseats.png';
-import airline from './../../images/airline.jpeg';
-
+import {connect} from 'react-redux';
 class FlightDetails extends Component {
 
 
@@ -16,33 +15,31 @@ class FlightDetails extends Component {
 
                 <div className = "flight-departure-return">
                     <div className= "flight-departure-return-text">
-                        <strong>New Delhi, India (DEL) to San Francisco, CA (SFO)</strong>
+                        <strong>{this.props.data.src_city} to {this.props.data.destination_city}</strong>
                         <br></br>
-                        China Southern, round-trip, mixed, 1 adult
+                        {this.props.data.carrier_name}, round-trip, mixed, 1 adult
                         <br></br>
                         <br></br>
-                        Depart: Sun Dec 3 2017
+                        Depart: {this.props.flight_days.flightfromdate}
                         <br></br>
-                        Return: Wed Dec 6 2017
+                        Return: {this.props.flight_days.flighttodate}
                         <br></br>
                         <img src={limitedseats} style={{height: 30 }}/>
                         <br></br>
                         <hr/>
                     </div>
-
-
-
-
                 </div>
-
-
-
               </div>
-
-
 
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.flightdetails_reducer.flight_days.days);
+    return {
+        flight_days: state.flightdetails_reducer.flight_days,
+    };
 
-export default FlightDetails;
+}
+
+export default connect(mapStateToProps,null)(FlightDetails);

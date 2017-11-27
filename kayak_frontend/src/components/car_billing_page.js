@@ -15,7 +15,6 @@ class CarBillingPage extends Component {
 
 
   render() {
-    console.log("It will car billing page:");
     return (
 
               <div className="car-billing-page">
@@ -49,7 +48,7 @@ class CarBillingPage extends Component {
   }
 }
 function mapStateToProps(state) {
-    console.log("hiii"+state.cardetails_reducer.current_car);
+    console.log("hiii"+state.cardetails_reducer.current_car.days);
     return {
         current_car: state.cardetails_reducer.current_car,
     };

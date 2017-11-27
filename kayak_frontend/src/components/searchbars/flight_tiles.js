@@ -1,13 +1,17 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
+import { connect } from 'react-redux';
 import * as Images from './../../utils/images';
 import './../../images/flight.css';
+import {history} from './../../utils/util.js';
+import {bindActionCreators} from 'redux';
+import {currentflight_action} from './../../actions/flight_action';
 
 
 class FlightTile extends Component {
-
   handleView(data){
-    console.log("handle car view");
+      this.props.currentflight_action(data);
+      history.push('./flightbillingpage');
   }
 
   render() {
@@ -32,12 +36,12 @@ class FlightTile extends Component {
                 {this.props.data.destination_city}
             </div>
             <div className="flight-tile-div">
-              <span style={{marginLeft:"30%"}}>{this.props.data.duration} mins</span>
+              <span style={{marginLeft:"30%"}}>{this.props.data.flight_duration} hours</span>
             </div>
 
           </div>
           <div className="flight-tile2">
-              <strong style={{fontSize:25,color:"black",marginTop:20}}>$100</strong>
+              <strong style={{fontSize:25,color:"black",marginTop:20}}>{this.props.data.price}</strong>
               <h4>Total</h4>
               <h5 style={{color:"grey",marginTop:"8%"}}>Kayak</h5>
               <img src={Images.getImages().view_deal} style={{width:"80%"}}
@@ -47,5 +51,7 @@ class FlightTile extends Component {
           );
   }
 }
-
-export default FlightTile;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({currentflight_action:currentflight_action},dispatch);
+}
+export default connect(null,mapDispatchToProps)(FlightTile);

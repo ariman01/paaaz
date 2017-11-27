@@ -105,6 +105,7 @@ class App extends Component {
                     <MuiThemeProvider>
 
                             <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
+                            <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
                             <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
                             <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
                             <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>

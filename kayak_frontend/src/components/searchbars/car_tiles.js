@@ -22,7 +22,6 @@ history.push('./carbillingpage');
   }
 
   render() {
-    console.log("Search leftnav Bar Page");
     return (
       <div className="tile">
           <div className="tiled1">

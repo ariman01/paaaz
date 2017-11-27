@@ -5,7 +5,8 @@ import TravelDetails from './subcomponents/flight_travel_details';
 import FlightTripProtection from './subcomponents/flight_trip_protection'
 import BillingInformation from './subcomponents/billing_information'
 import FlightBillingSummary from './subcomponents/flight_billing_summary';
-import FlightsTermsAndConditions from './subcomponents/flights_tnc'
+import FlightsTermsAndConditions from './subcomponents/flights_tnc';
+import { connect } from 'react-redux';
 
 import './../images/subcomponent.css';
 
@@ -26,11 +27,11 @@ class FlightBillingPage extends Component {
                       </div>
 
                       <div className ="flight-billing-body-centre">
-                          <FlightDetails/>
-                          <TravelDetails/>
-                          <FlightTripProtection/>
-                          <BillingInformation/>
-                          <FlightsTermsAndConditions/>
+                          <FlightDetails data={this.props.current_flight}/>
+                          <TravelDetails data={this.props.current_flight}/>
+                          <FlightTripProtection data={this.props.current_flight}/>
+                          <BillingInformation data={this.props.current_flight}/>
+                          <FlightsTermsAndConditions data={this.props.current_flight}/>
                       </div>
 
                       <div className ="flight-billing-body-right-nav">
@@ -42,7 +43,11 @@ class FlightBillingPage extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.flightdetails_reducer.current_flight);
+    return {
+        current_flight: state.flightdetails_reducer.current_flight,
+    };
 
-
-
-export default FlightBillingPage;
+}
+export default connect(mapStateToProps,null)(FlightBillingPage);

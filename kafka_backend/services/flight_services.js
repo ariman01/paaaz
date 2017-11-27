@@ -6,6 +6,7 @@ exports.searchFlights = function(data, callback){
         if(err){
             console.log("[Kafka] Error while searching for ")
         }
+        console.log("its result in flight_services for search flights"+result.src_city);
         callback(err, result);
 
     });
