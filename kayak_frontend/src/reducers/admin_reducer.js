@@ -74,9 +74,9 @@ export default function admin_reducer(state = initialData, action) {
         });
 
         case 'UPDATE_HOTEL_BILLING_INFO':
-        return Object.assign({},state,{
-          hotelBillingInformation:action.hotel_billing_info
-
+        return Object.assign({},state, {
+            hotelBillingInformation: action.hotel_billing_info
+        });
         case 'UPDATE_CAR_ANALYSIS':
         return Object.assign({},state,{
           car_analysis_data:action.car_analysis_data

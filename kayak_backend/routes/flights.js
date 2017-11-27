@@ -14,7 +14,7 @@ router.post('/searchflights', function(req, res, next) {
         if(err){
             console.log(err);
         }else {
-            res.status(201).json(result);
+            res.status(201).json({result:result});
         }
     });
 });
