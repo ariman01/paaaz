@@ -1,11 +1,11 @@
 import React,{ Component } from 'react';
 import HomePageHeader from './headers/homepage_header';
-import FlightDetails from './subcomponents/flight_details';
-import TravelDetails from './subcomponents/flight_travel_details';
-import FlightTripProtection from './subcomponents/flight_trip_protection'
+import GuestDetails from './subcomponents/hotel_guest_details'
+import BookFasterNextTime from './subcomponents/book_faster_next_time';
 import BillingInformation from './subcomponents/billing_information'
-import FlightBillingSummary from './subcomponents/flight_billing_summary';
-import FlightsTermsAndConditions from './subcomponents/flights_tnc'
+import HotelBillingSummary from './subcomponents/hotel_billing_summary';
+import HotelTermsAndConditions from './subcomponents/hotel_tnc'
+import HotelDetails from './subcomponents/hotel_details'
 
 import './../images/subcomponent.css';
 
@@ -21,20 +21,20 @@ class HotelBillingPage extends Component {
                   </div>
 
                   <div className = "flight-billing-body">
-                      <div className ="flight-billing-body-left-nav" >
+                      <div className ="hotel-billing-body-left-nav" >
 
                       </div>
 
-                      <div className ="flight-billing-body-centre">
-                          <FlightDetails/>
-                          <TravelDetails/>
-                          <FlightTripProtection/>
+                      <div className ="hotel-billing-body-centre">
+                          <HotelDetails/>
+                          <GuestDetails/>
+                          <BookFasterNextTime/>
                           <BillingInformation/>
-                          <FlightsTermsAndConditions/>
+                          <HotelTermsAndConditions/>
                       </div>
 
-                      <div className ="flight-billing-body-right-nav">
-                          <FlightBillingSummary/>
+                      <div className ="hotel-billing-body-right-nav">
+                          <HotelBillingSummary/>
                       </div>
                   </div>
 

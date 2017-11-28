@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
 import './../../images/admin.css';
 import BarChart from './../graph/bar_chart';
+import PieChart from './../graph/pie_chart';
+import LineChart from './../graph/line_chart';
 
 class FlightGraphs extends Component {
 
@@ -14,7 +16,7 @@ getAdminDashBoardGraph(labels, datasets, label_name, header_text){
           labelName:label_name,
           header_text:header_text
          }
-      return (<BarChart data={data}/>)
+      return (<PieChart data={data}/>)
     }else{
       return (<h2 style={{color:"red"}}> Analysis data not available </h2>)
     }
