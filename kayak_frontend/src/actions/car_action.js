@@ -20,7 +20,7 @@ export function searchcars_action(payload){
         searchcarsAPI(payload)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                         console.log(response.result);

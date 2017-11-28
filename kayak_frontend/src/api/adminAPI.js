@@ -149,7 +149,11 @@ export const getHotelBillingInfo = function(data){
                alert((res.message)?res.message:"Failed to get billing information !!!");
            }
      }).then(result =>{
-          dispatch(adminActions.updateHotelBillingInformation(result.result));
+          if(result.result.length >0){
+            dispatch(adminActions.updateHotelBillingInformation(result.result));
+          }else{
+            alert("No billing information found for specific date or month");
+          }
           history.push('/adminhotelbilling');
     }).catch(err => {
             console.log("Error while retrieving hotel billing information !!!");
@@ -158,9 +162,65 @@ export const getHotelBillingInfo = function(data){
       };
    };
 
+   export const getCarBillingInfo = function(data){
+    console.log("getCarBillingInfo api",data)
+    return (dispatch) => {
+      fetch(`${server_url}/admin/admincarbilling`, {
+          method: 'POST',
+          credentials:'include',
+          mode: 'cors',
+          headers: { ...headers,'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(res => {
+              if(res.status === 201){
+                  return res.json();
+              }else{
+                  alert((res.message)?res.message:"Failed to get billing information !!!");
+              }
+        }).then(result =>{
+          console.log("result: ",result);
+            if(result.result.length >0){
+               dispatch(adminActions.updateCarBillingInformation(result.result));
+            }else{
+              alert("No billing information found for specific date or month");
+            }
+            history.push('/admincarbilling');
+       }).catch(err => {
+               console.log("Error while retrieving hotcarel billing information !!!");
+               return err;
+        });
+      };
+};
 
-
-
+export const getFlightBillingInfo = function(data){
+ console.log("getFlightBillingInfo api",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/adminflightbilling`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+           if(res.status === 201){
+               return res.json();
+           }else{
+               alert((res.message)?res.message:"Failed to get billing information !!!");
+           }
+     }).then(result =>{
+       console.log("result: ",result);
+         if(result.result.length >0){
+            dispatch(adminActions.updateFlightBillingInformation(result.result));
+         }else{
+           alert("No billing information found for specific date or month");
+         }
+         history.push('/adminflightbilling');
+    }).catch(err => {
+            console.log("Error while retrieving flight billing information !!!");
+            return err;
+     });
+   };
+};
 
 
 export const getCarAnalysis = function(data){

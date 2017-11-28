@@ -7,7 +7,7 @@ export function searchhotels_action(payload){
         searchhotelsAPI(payload)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             console.log("its result in hotelaction"+ response.result);

@@ -98,9 +98,6 @@ exports.adminHotelAnalysis = function(data , callback){
 
 }
 
-
-
-
 exports.adminSignIn = function(data, callback){
  console.log("adminSignIn:data",data);
    var adminDetail = {
@@ -118,7 +115,6 @@ exports.adminSignIn = function(data, callback){
 
 exports.adminHotelBilling= function(data,callback) {
 
-
    var hotelbilling="select booking_id,user_id,hotel_name,booking_date,booking_amount from hotel_transaction";
    mysql.fetchData(function(err,results) {
 
@@ -130,7 +126,25 @@ exports.adminHotelBilling= function(data,callback) {
   }, hotelbilling);
 }
 
+exports.adminCarBilling= function(data,callback) {
+   mysql.fetchData(function(err,results) {
 
+    if(err){
+      console.log("[Kafka] Error adminCarBilling");
+    }
+    callback(err,results);
+  }, data.query);
+}
+
+exports.adminflightBilling= function(data,callback) {
+   mysql.fetchData(function(err,results) {
+
+    if(err){
+      console.log("[Kafka] Error adminflightBilling");
+    }
+    callback(err,results);
+  }, data.query);
+}
 
 exports.adminCarAnalysis = function(data , callback){
   //Analysis#1
@@ -213,8 +227,6 @@ exports.adminCarAnalysis = function(data , callback){
     }, car_analysis_query1);
 
 }
-
-
 
 exports.adminFlightAnalysis = function(data , callback){
   //Analysis#1

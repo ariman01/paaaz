@@ -27,22 +27,22 @@ function handle_request(topic, data, callback){
     }else if(topic === "hotel_add_req"){
       hotelservices.addNewHotel(data, callback);
     }else if(topic === "signup_req"){
-        userservices.addUser(data, callback);
+      userservices.addUser(data, callback);
     }else if(topic === "admin_analysis_hotel_req"){
-        adminservices.adminHotelAnalysis(data, callback);
+      adminservices.adminHotelAnalysis(data, callback);
+    }else if(topic === "admin_analysis_car_req"){
+      adminservices.adminCarAnalysis(data, callback);
+    }else if(topic === "admin_analysis_flight_req"){
+      adminservices.adminFlightAnalysis(data, callback);
+    }else if(topic === "admin_signin_req"){
+      adminservices.adminSignIn(data, callback);
+    }else if(topic === "admin_hotel_bill_req"){
+      adminservices.adminHotelBilling(data, callback);
+    }else if(topic === "admin_car_bill_req"){
+      adminservices.adminCarBilling(data, callback);
+    }else if(topic === "admin_flight_bill_req"){
+      adminservices.adminflightBilling(data, callback);
     }
-  else if(topic === "admin_analysis_car_req"){
-        adminservices.adminCarAnalysis(data, callback);
-  }
-  else if(topic === "admin_analysis_flight_req"){
-        adminservices.adminFlightAnalysis(data, callback);
-
-  }else if(topic === "admin_signin_req"){
-    adminservices.adminSignIn(data, callback);
-  }
-  else if(topic === "admin_hotel_bill_req"){
-    adminservices.adminHotelBilling(data, callback);
-  }
 }
 
 exports.handle_request = handle_request;

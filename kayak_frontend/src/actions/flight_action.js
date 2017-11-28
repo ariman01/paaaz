@@ -19,7 +19,7 @@ export function searchflights_action(payload){
         searchflightsAPI(payload)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             dispatch(success(response.result));
@@ -45,4 +45,3 @@ export function currentflight_action(payload)
     };
     function success(result) { return { type: 'CURRENT_FLIGHT', result } }
 }
-
