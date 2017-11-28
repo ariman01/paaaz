@@ -29,10 +29,8 @@ import SignUp from './components/sign_up';
 import AdminLogin from './components/admin_login'
 import HotelGraphs from './components/subcomponents/hotel_graphs';
 import FlightGraphs from './components/subcomponents/flight_graphs';
-
 import CarGraphs from './components/subcomponents/car_graphs';
-
-
+import HotelBillingInfo from './components/hotel_billing_information';
 
 
 class App extends Component {
@@ -107,6 +105,7 @@ class App extends Component {
                     <MuiThemeProvider>
 
                             <Route  exact path="/flightdetails" render ={() => (<ShowFlights/>)}/>
+                            <Route  exact path="/cardetails" render ={() => (<ShowCars/>)}/>
                             <Route  exact path="/hoteldetails" render ={() => (<ShowHotels/>)}/>
                             <Route  exact path="/cars" render ={() => (<SearchCar/>)}/>
                             <Route  exact path="/flights" render ={() => (<SearchFlight/>)}/>
@@ -120,12 +119,8 @@ class App extends Component {
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
-
-
+                            <Route  exact path="/adminhotelbilling" render ={() => (<HotelBillingInfo/>)}/>
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
-
-
-
                     </MuiThemeProvider>
                 </Router>
             </div>

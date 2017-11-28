@@ -1,6 +1,6 @@
 // Add rest api calls related to admin
 import {history} from "../utils/util";
-import {updateTotalSales,updateHotelSalesAnalysis, updateCarSalesAnalysis,updateFlightSalesAnalysis} from './../actions/admin_action';
+import * as adminActions from './../actions/admin_action'
 
 const server_url = "http://localhost:3010"
 const headers = {
@@ -24,7 +24,7 @@ export const adminLogin = function(admindetail){
          }
     }).then(result=>{
         console.log("result",result," token :",result)
-        dispatch(updateTotalSales(result.result));
+        dispatch(adminActions.updateTotalSales(result.result));
         history.push('/admindashboard');
  }).catch(err => {
          console.log("Error admin login!!!");
@@ -52,7 +52,7 @@ export const getHotelAnalysis = function(data){
          }
     }).then(result=>{
         console.log("result.finalResult:",result.result.finalResult);
-        dispatch(updateHotelSalesAnalysis(result.result.finalResult));
+        dispatch(adminActions.updateHotelSalesAnalysis(result.result.finalResult));
         history.push('/hotelgraphs');
  }).catch(err => {
          console.log("Error while retrieving hotel graph!!!");
@@ -133,6 +133,35 @@ export const addHotelAdmin = function(hoteldetail){
    };
 };
 
+export const getHotelBillingInfo = function(data){
+ console.log("getHotelBillingInfo api",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/adminhotelbilling`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+           if(res.status === 201){
+               return res.json();
+           }else{
+               alert((res.message)?res.message:"Failed to get billing information !!!");
+           }
+     }).then(result =>{
+          dispatch(adminActions.updateHotelBillingInformation(result.result));
+          history.push('/adminhotelbilling');
+    }).catch(err => {
+            console.log("Error while retrieving hotel billing information !!!");
+            return err;
+          });
+      };
+   };
+
+
+
+
+
 
 export const getCarAnalysis = function(data){
  console.log("Car analysis request data: ",data)
@@ -152,7 +181,7 @@ export const getCarAnalysis = function(data){
          }
     }).then(result=>{
         console.log("result.finalResult:",result.result.finalResult);
-        dispatch(updateCarSalesAnalysis(result.result.finalResult));
+        dispatch(adminActions.updateCarSalesAnalysis(result.result.finalResult));
         history.push('/cargraphs');
  }).catch(err => {
          console.log("Error while retrieving car graph!!!");
@@ -180,7 +209,7 @@ export const getFlightAnalysis = function(data){
          }
     }).then(result=>{
         console.log("result.finalResult:",result.result.finalResult);
-        dispatch(updateFlightSalesAnalysis(result.result.finalResult));
+        dispatch(adminActions.updateFlightSalesAnalysis(result.result.finalResult));
         history.push('/flightgraphs');
  }).catch(err => {
          console.log("Error while retrieving flight graph!!!");

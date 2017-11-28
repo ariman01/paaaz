@@ -4,6 +4,7 @@ import carIcon from './../../images/audi.png';
 import userIcon from './../../images/user1.png';
 import baggageIcon from './../../images/car_baggage.png';
 import cardoorIcon from './../../images/car_door.png';
+import { connect } from 'react-redux';
 
 class ViewCar extends Component {
 
@@ -20,7 +21,7 @@ class ViewCar extends Component {
                                 <div className ="view-car-cardetails1">
                                     <strong style={{fontSize : 17}}>{this.props.data.car_type} {this.props.data.model_no}</strong><br></br>
                                     Automatic transmission, Air-conditioning<br></br>
-                                    Sun, Dec 3 to Wed Dec 6 2017 (3 days)
+                                    {this.props.car_days.carfromdate} to {this.props.car_days.cartodate} ({this.props.car_days.days} days)
                                 </div>
 
                                 <div className ="view-car-cardetails2" style={{float:"left",width:"100%"}}>
@@ -40,5 +41,11 @@ class ViewCar extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.cardetails_reducer.car_days);
+    return {
+        car_days: state.cardetails_reducer.car_days,
+    };
 
-export default ViewCar;
+}
+export default connect(mapStateToProps,null)(ViewCar);

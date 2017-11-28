@@ -49,8 +49,8 @@ class HomePageHeader extends Component {
                     <a className="home-nav-link" href="/hotels">Hotels</a>
                     <a className="home-nav-link" href="/flights">Flights</a>
                     <a className="home-nav-link" href="/cars">Cars</a>
-                    {/* <a className="user-account"><span><img src ={userIcon} onClick={this.handleOpenMenu}/></span><label onClick={this.handleOpenMenu}>My Account</label>
-                         <IconMenu
+                    <a className="user-account"><span><img src ={userIcon} onClick={this.handleOpenMenu}/></span><label onClick={this.handleOpenMenu}>My Account</label>
+                        {/*  <IconMenu
                             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                             targetOrigin={{horizontal: 'right', vertical: 'top'}}
                             iconButtonElement={<IconButton></IconButton>}
@@ -60,9 +60,9 @@ class HomePageHeader extends Component {
                                 <button style={{margin:38,marginBottom:5,backgroundColor:'darkorange',width:225,color:'white',height:45,textAlign:'center'}} onClick={this.signup}>SignUp</button><br/>
                                 <button style={{margin:38,marginTop:5,backgroundColor:'white',width:225,color:'darkorange',height:45,textAlign:'center',borderColor:'darkorange'}} onClick={this.signin}>SignIn</button>
                             </div>
-                        </IconMenu>
+                        </IconMenu>*/}
 
-                    </a>*/}
+                    </a>
 
                 </ul>
              </nav>

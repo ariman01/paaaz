@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import CarTile from './searchbars/car_tiles';
 import HomePageHeader from './headers/homepage_header';
 import { connect } from 'react-redux';
-console.log("its show cars before class");
 class ShowCars extends Component {
 
 constructor(){

@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
-
+import { connect } from 'react-redux';
 class BookingDetails extends Component {
 
 
@@ -8,7 +8,7 @@ class BookingDetails extends Component {
     return (
               <div className="view-booking">
                     <div className = "view-booking-pick-up">
-                        <strong>Pick up:</strong> Sun Dec 3 2017 – 12:00PM
+                        <strong>Pick up:</strong> {this.props.car_days.carfromdate} – 12:00PM
                         <br></br><br></br>
                         <strong>Payless</strong><br></br>
                         OAK (off-airport shuttle)<br></br>
@@ -20,7 +20,7 @@ class BookingDetails extends Component {
                     </div>
 
                     <div className = "view-booking-drop-off">
-                        <strong>Drop off:</strong> Sun Dec 3 2017 – 12:00PM
+                        <strong>Drop off:</strong>{this.props.car_days.cartodate} – 12:00PM
                         <br></br><br></br>
                         <strong>Payless</strong><br></br>
                         OAK (off-airport shuttle)<br></br>
@@ -38,5 +38,12 @@ class BookingDetails extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.cardetails_reducer.car_days);
+    return {
+        car_days: state.cardetails_reducer.car_days,
+    };
 
-export default BookingDetails;
+}
+
+export default connect(mapStateToProps,null)(BookingDetails);

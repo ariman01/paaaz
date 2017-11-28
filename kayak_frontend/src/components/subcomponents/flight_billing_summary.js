@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './../../images/subcomponent.css';
-
+import {connect} from 'react-redux';
 
 class FlightBillingSummary extends Component {
 
@@ -10,8 +10,8 @@ class FlightBillingSummary extends Component {
             <div className="car-summary" >
                 <div className="car-summary-1">
                     <strong style={{fontSize : "11pt"}}>Summary</strong>
-                    <h6>Depart Sun 12/3: SFO > DEL 10:30a – 4:15p</h6>
-                    <h6>Flight 174</h6>
+                    <h6>Depart {this.props.flight_days.flightfromdate}: SFO > DEL 10:30a – 4:15p</h6>
+                    <h6>Flight {this.props.current_flight.flight_id}</h6>
                     <hr/>
                 </div >
                 <div className="car-summary-2">
@@ -42,5 +42,15 @@ class FlightBillingSummary extends Component {
           );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.flightdetails_reducer.flight_days.days);
+    return {
+        flight_days: state.flightdetails_reducer.flight_days,
+        current_flight:state.flightdetails_reducer.current_flight
+    };
 
-export default FlightBillingSummary;
+}
+
+export default connect(mapStateToProps,null)(FlightBillingSummary);
+
+

@@ -23,7 +23,7 @@ var flightSchema = mongoose.Schema({
     required : true
   },
   operational_day : {
-    type : Number,
+    type : String,
     required : true
   },
   departure_time : {

@@ -1,11 +1,10 @@
 const topics = [
  "admin_analysis_hotel_req",
- "add_car_req",
- "add_flight_req",
- "hotel_add_req",
- "admin_analysis_car_req",
- "admin_analysis_flight_req"
-
+ "admin_hotel_bill_req",
+    "flight_search_req",
+    "flight_search_res",
+    "car_search_req",
+    "car_search_res"
 ]
 
 

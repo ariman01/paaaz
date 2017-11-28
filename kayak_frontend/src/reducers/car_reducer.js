@@ -13,7 +13,8 @@ const initialState = {
                 capacity : 4
               }],
 displaycars:[],
- current_car:[]
+ current_car:[],
+    car_days:[]
 }
 export default function cardetails_reducer(state = initialState, action) {
     switch (action.type) {
@@ -33,7 +34,14 @@ export default function cardetails_reducer(state = initialState, action) {
                 ...state,
                 current_car:action.result
             };
+        case 'CAR_DAYS':
+            return{
+                ...state,
+                car_days:action.result
+            };
         default:
             return state
+
     }
+
 }

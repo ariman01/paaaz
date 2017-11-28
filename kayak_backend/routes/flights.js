@@ -4,8 +4,10 @@ var kafka = require('./../kafka/client');
 
 
 router.post('/searchflights', function(req, res, next) {
-    var d = new Date(req.body.operational_day);
+    console.log(req.body.start_date);
+    var d = new Date(req.body.start_date);
     var day = d.getDay();
+    console.log("its date in body"+d+"day"+day);
     var details = { "src_city": req.body.src_city,
         "destination_city":req.body.destination_city,
         "operational_day":day
@@ -14,7 +16,7 @@ router.post('/searchflights', function(req, res, next) {
         if(err){
             console.log(err);
         }else {
-            res.status(201).json(result);
+            res.status(201).json({result:result});
         }
     });
 });
