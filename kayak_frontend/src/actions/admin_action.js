@@ -34,3 +34,20 @@ export const updateFlightSalesAnalysis = (sales_analysis) =>{
       flight_analysis_data:sales_analysis
     }
 }
+
+
+export const updateListOfSearchedHotels = (payload) =>{
+    console.log("Action UPDATE_LIST_OF_SEARCHED_HOTELS");
+    return {
+      type:"UPDATE_LIST_OF_SEARCHED_HOTELS",
+      payload:payload
+    }
+}
+
+export const editHotelAdmin = (hotelinfo) =>{
+    console.log("Action EDIT_HOTEL_INFO");
+    return {
+      type:"EDIT_HOTEL_INFO",
+      hotelinfo:hotelinfo
+    }
+}

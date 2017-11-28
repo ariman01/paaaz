@@ -83,7 +83,35 @@ function searchHotel(parameter, callback){
 }
 
 
+function searchHotelsAdmin(hotel_id, hotel_name, callback){
+  var query = {};
+  if(hotel_id)
+    query.hotel_id = hotel_id;
+  if(hotel_name)
+    query.hotel_name = hotel_name;
+  console.log("searchHotel:",query);
+  Hotels.find(query, callback);
+}
+
+function updateHotelAdmin(hotelDetail,callback){
+  Hotels.update({hotel_id : hotelDetail.hotel_id},{$set:{
+    hotel_name : hotelDetail.hotel_name,
+    hotel_address :hotelDetail.hotel_address,
+    hotel_city :hotelDetail.hotel_city,
+    hotel_state :hotelDetail.hotel_state,
+    hotel_zip :hotelDetail.hotel_zip,
+    hotel_stars :hotelDetail.hotel_stars,
+    hotel_room_type :hotelDetail.hotel_room_type,
+    hotel_rating :hotelDetail.hotel_rating,
+    hotel_reviews :hotelDetail.hotel_reviews,
+    hotel_capacity :hotelDetail.hotel_capacity,
+    hotel_price :hotelDetail.hotel_price,
+  }},callback);
+}
+
 module.exports.addNewHotel = addNewHotel;
 module.exports.searchHotels = searchHotels;
 module.exports.searchHotel = searchHotel;
+module.exports.searchHotelsAdmin = searchHotelsAdmin;
+module.exports.updateHotelAdmin = updateHotelAdmin;
 module.exports.Hotels = Hotels;

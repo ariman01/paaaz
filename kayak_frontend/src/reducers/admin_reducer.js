@@ -44,7 +44,9 @@ const initialData ={
             carriers:[],
             bookings:[]
         }}
-     ]
+     ],
+listOfSearchedHotels : [],
+current_hotel_edit:{}
 }
 
 export default function admin_reducer(state = initialData, action) {
@@ -85,6 +87,15 @@ export default function admin_reducer(state = initialData, action) {
         case 'UPDATE_FLIGHT_ANALYSIS':
         return Object.assign({},state,{
           flight_analysis_data:action.flight_analysis_data
+        });
+
+        case 'UPDATE_LIST_OF_SEARCHED_HOTELS':
+        return Object.assign({},state,{
+          listOfSearchedHotels:action.payload
+        });
+        case 'EDIT_HOTEL_INFO':
+        return Object.assign({},state,{
+          current_hotel_edit:action.hotelinfo
         });
 
         default:

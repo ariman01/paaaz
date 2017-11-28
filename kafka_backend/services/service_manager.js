@@ -43,6 +43,12 @@ function handle_request(topic, data, callback){
   else if(topic === "admin_hotel_bill_req"){
     adminservices.adminHotelBilling(data, callback);
   }
+  else if(topic === "hotel_search_admin_req"){
+    hotelservices.searchHotelsAdmin(data, callback);
+  }
+  else if(topic === "hotel_update_admin_req"){
+    hotelservices.updateHotelAdmin(data, callback);
+  }
 }
 
 exports.handle_request = handle_request;

@@ -63,5 +63,53 @@ router.post('/adminhotelbilling', function(req, res, next) {
     });
 });
 
+router.post('/searchhotelsadmin', function(req, res, next) {
+    console.log("In search hotels admin");
+
+    var hotel_id = req.body.hotel_id;
+    var hotel_name = req.body.hotel_name;
+
+    kafka.make_request('hotel_search_admin',{"hotel_id" : hotel_id , "hotel_name" : hotel_name}, function(err,result){
+        if(err){
+            console.log("error in searching hotels");
+            res.status(403).json({result:result,message:"Admin Failed to search hotel with id :"+hotel_id});
+        }
+        else{
+            console.log("hotel search successful");
+            res.status(201).json({result:result,message:"Admin Sucessfully searched hotel with id :"+hotel_id});
+        }
+    });
+});
+
+
+router.post('/updatehoteladmin', function(req, res, next) {
+    console.log("In update hotels");
+    var hotelDetail = {
+       hotel_id : req.body.hotel_id,
+       hotel_name : req.body.hotel_name,
+       hotel_address : req.body.hotel_address,
+       hotel_city : req.body.hotel_city,
+       hotel_state : req.body.hotel_state,
+       hotel_zip : req.body.hotel_zip,
+       hotel_stars :req.body.hotel_stars,
+       hotel_room_type : req.body.hotel_room_type,
+       hotel_rating : req.body.hotel_rating,
+       hotel_reviews : req.body.hotel_reviews,
+       hotel_capacity : req.body.hotel_capacity,
+       hotel_price : req.body.hotel_price
+    };
+
+
+    kafka.make_request('hotel_update_admin', hotelDetail , function(err,result){
+        if(err){
+            console.log("error in updating hotel");
+            res.status(403).json({result:result,message:"Failed to add hotel :"+ hotelDetail.hotel_name});
+        }
+        else{
+            res.status(201).json({result:result,message:"Sucessfully updated hotel :"+hotelDetail.hotel_name});
+        }
+    });
+});
+
 
 module.exports = router;

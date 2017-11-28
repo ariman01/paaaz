@@ -217,3 +217,54 @@ export const getFlightAnalysis = function(data){
        });
    };
 };
+
+
+export const handleHotelSearch = function(data){
+ console.log("Admin hotel search request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/searchhotelsadmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get hotel search res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Hotel doesn't exist!!!");
+         }
+    }).then(result=>{
+        console.log("result:",result);
+        dispatch(adminActions.updateListOfSearchedHotels(result.result));
+ }).catch(err => {
+         console.log("Error while retrieving hotels!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleHotelUpdate = function(hoteldetail){
+ console.log("update hotel details:",hoteldetail)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/updatehoteladmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(hoteldetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated Hotel with id:"+hoteldetail.hotel_id+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to update new Hotel !!!");
+         }
+    }).catch(err => {
+         console.log("Error while adding new Hotel!!!");
+         return err;
+       });
+   };
+};

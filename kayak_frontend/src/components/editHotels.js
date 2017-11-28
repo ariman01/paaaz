@@ -1,33 +1,42 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {handleHotelSearch} from './../api/adminAPI';
 import EditHotelTile from './searchbars/edithotel_tiles';
-import HomePageHeader from './headers/homepage_header';
+import AdminDashboardHeader from './headers/admin_dashboard_header';
 import './../images/home.css';
 
 class EditHotels extends Component {
-
-
- getHotelTile(hotels){
-    console.log("Hotels: ", hotels);
-    return hotels.map((hotel)=>{
-      return (<EditHotelTile data={hotel} style={{paddingTop:10}}/>)
-    });
+  constructor(){
+    super();
+    this.searchhotel ={}
   }
+
 
 render() {
     console.log("It will display list of hotels searched by the user");
     return (
               <div>
               <div>
-              <HomePageHeader/>
+              <AdminDashboardHeader/>
               </div>
 
               <div className = "hotel-details-body">
+                <div>
+                    <input placeholder="Hotel ID" id="hotel_id" onChange={(hotel_id) => {this.searchhotel.hotel_id = hotel_id.target.value}}/>
+                     <strong> OR  </strong>
+                    <input placeholder="Hotel Name" id="hotel_name" onChange={(hotel_name) => {this.searchhotel.hotel_name = hotel_name.target.value}}/>
+                    <button style={{marginLeft:15}} onClick ={() => this.props.handleHotelSearch(this.searchhotel)} ><strong>Search</strong></button>
+                </div>
                 <div className ="hotel-details-body-left-nav">
 
                 </div>
+
                 <div className ="hotel-details-body-centre">
-                {this.getHotelTile(this.props.listOfSearchedHotel)}
+
+                {this.props.listOfSearchedHotels.map((hotel)=>{
+                    return (<EditHotelTile data={hotel} style={{paddingTop:10}}/>)
+                })}
                 </div>
                 <div className ="hotel-details-body-right-nav">
 
@@ -39,13 +48,15 @@ render() {
   }
 }
 
-
-
-function mapStateToProps(state) {
-    console.log("Edit hotels mapStateToProps: "+state.admin_reducer.listOfSearchedHotel);
-    return {
-        listOfSearchedHotel: state.admin_reducer.listOfSearchedHotel,
-      };
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({handleHotelSearch:handleHotelSearch},dispatch);
 }
 
-export default connect(mapStateToProps,null)(EditHotels);
+function mapStateToProps(state){
+  console.log("Edit hotels mapStateToProps: "+state.admin_reducer.listOfSearchedHotels);
+  return{
+      listOfSearchedHotels: state.admin_reducer.listOfSearchedHotels,
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditHotels);
