@@ -96,6 +96,10 @@ function searchHotel(parameter, callback){
   Hotels.findOne(parameter, callback);
 }
 
+function deleteCar(hotel_id, callback){
+  Hotels.deleteOne({hotel_id:hotel_id}, callback);
+}
+
 
 function searchHotelsAdmin(hotel_id, hotel_name, callback){
   var query = {};
@@ -124,11 +128,10 @@ function updateHotelAdmin(hotelDetail,callback){
 }
 
 module.exports.addNewHotel = addNewHotel;
+module.exports.deleteCar = deleteCar;
 module.exports.searchHotels = searchHotels;
 module.exports.searchHotel = searchHotel;
-
 module.exports.searchHotelsAdmin = searchHotelsAdmin;
 module.exports.updateHotelAdmin = updateHotelAdmin;
-
 module.exports.bookNewHotel=bookNewHotel;
 module.exports.Hotels = Hotels;

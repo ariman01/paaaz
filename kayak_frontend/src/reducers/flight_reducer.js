@@ -10,8 +10,9 @@ const initialState = {
               }],
  displayflights:[],
  current_flight:[],
-    flight_days:[],
-    flight_finalamount:[]
+ flight_days:[],
+ flight_finalamount:[],
+ latest_admin_search_parameter:null
 }
 export default function flightdetails_reducer(state = initialState, action) {
     switch (action.type) {
@@ -41,6 +42,10 @@ export default function flightdetails_reducer(state = initialState, action) {
                 ...state,
                 flight_finalamount:action.result
             }
+        case 'UPDATE_LAST_FLIGHT_ADMIN_SEARCH':
+            return Object.assign({},state,{
+                latest_admin_search_parameter:action.last_search
+                });
         default:
             return state
     }

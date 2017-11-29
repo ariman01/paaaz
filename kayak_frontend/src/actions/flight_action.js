@@ -86,3 +86,10 @@ export function addTripProtection_action(payload)
     };
     function setflightprice(result){return { type :'FLIGHT_FINALAMOUNT',result }}
 }
+export const updateLastAdminSearch = (last_search) => {
+    console.log("Action UPDATE_LAST_FLIGHT_ADMIN_SEARCH");
+    return {
+        type: "UPDATE_LAST_FLIGHT_ADMIN_SEARCH",
+        last_search: last_search
+    }
+}

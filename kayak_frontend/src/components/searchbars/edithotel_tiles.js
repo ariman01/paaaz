@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import HotelIcon from './../../images/hotelimage.jpg'
 import viewDeal from './../../images/viewdeal.png';
 import * as adminActions from './../../actions/admin_action';
+import {adminHotelDelete} from './../../api/adminAPI';
 import {history} from "../../utils/util";
 
 class EditHotelTile extends Component {
@@ -46,23 +47,26 @@ class EditHotelTile extends Component {
           </div>
 
           <div className="tiled3">
-              <strong style={{marginLeft:20,fontSize:15,color:"black"}}>Available : {this.props.data.hotel_capacity}</strong><br/>
-              <strong style={{marginLeft:20,fontSize:15,color:"black"}}>Price : {this.props.data.hotel_price}</strong><br/>
-              <br></br>
-              <br></br>
-              <br></br>
-              <button onClick ={() => this.handleEdit()} style={{marginLeft:20,width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
-              <button  onClick ={() => this.handleDelete(this.props.data.hotel_id)} style={{marginLeft:20,width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
+              <strong style={{fontSize:15,color:"black"}}>Available : {this.props.data.hotel_capacity}</strong><br/>
+              <strong style={{fontSize:25,color:"black"}}>${this.props.data.hotel_price}</strong>
+              <h4>Total</h4>
+              <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
+              <button  onClick ={() => this.props.adminHotelDelete({hotel_id:this.props.data.hotel_id},this.props.latest_admin_search_parameter)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
           </div>
       </div>
           );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({editHotelAdmin:adminActions.editHotelAdmin},dispatch);
+function mapStateToProps(state) {
+    return {
+        latest_admin_search_parameter: state.hoteldetails_reducer.latest_admin_search_parameter,
+    };
+
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editHotelAdmin:adminActions.editHotelAdmin,adminHotelDelete:adminHotelDelete},dispatch);
+}
 
-
-export default connect(null,mapDispatchToProps)(EditHotelTile);
+export default connect(mapStateToProps,mapDispatchToProps)(EditHotelTile);

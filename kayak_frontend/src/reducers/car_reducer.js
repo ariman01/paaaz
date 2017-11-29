@@ -13,9 +13,10 @@ const initialState = {
                 capacity : 4
               }],
 displaycars:[],
- current_car:[],
-    car_days:[],
-    car_finalamount:[]
+current_car:[],
+car_days:[],
+car_finalamount:[],
+latest_admin_search_parameter:null
 }
 export default function cardetails_reducer(state = initialState, action) {
     switch (action.type) {
@@ -45,6 +46,10 @@ export default function cardetails_reducer(state = initialState, action) {
                 ...state,
                 car_finalamount:action.result
             }
+        case 'UPDATE_LAST_CAR_ADMIN_SEARCH':
+            return Object.assign({},state,{
+              latest_admin_search_parameter:action.last_search
+            });
         default:
             return state
 

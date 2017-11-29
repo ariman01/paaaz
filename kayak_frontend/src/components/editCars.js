@@ -13,7 +13,7 @@ constructor(){
 
 
   render() {
-    console.log("It will display list of cars searched by the user");
+    console.log("It will display list of cars searched by the admin :this.searchflight",this.searchflight);
     return (
               <div>
               <div>

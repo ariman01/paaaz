@@ -36,8 +36,10 @@ const initialState = {
         price:259
     }],
  current_hotel:[],
-    hotel_days:[],
-    hotel_finalamount:[]
+ hotel_days:[],
+ hotel_finalamount:[],
+ latest_admin_search_parameter:null
+
 }
 export default function hoteldetails_reducer(state = initialState, action) {
     switch (action.type) {
@@ -67,6 +69,10 @@ export default function hoteldetails_reducer(state = initialState, action) {
                 ...state,
                 hotel_finalamount:action.result
             }
+        case 'UPDATE_LAST_HOTEL_ADMIN_SEARCH':
+            return Object.assign({},state,{
+                latest_admin_search_parameter:action.last_search
+            });
         default:
             return state
     }

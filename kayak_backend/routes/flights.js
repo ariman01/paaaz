@@ -69,7 +69,7 @@ router.post('/addflight', function(req, res, next) {
 
 router.post('/deleteflight', function(req, res, next) {
     var flightDetail = {
-        flight_id:req.data.flight_id
+        flight_id:req.body.flight_id
     };
     kafka.make_request('delete_flight', flightDetail, function(err,result){
         if(err){
