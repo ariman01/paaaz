@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import HomePageHeader from './headers/homepage_header';
+import AdminDashboardHeader from './headers/admin_dashboard_header';
 import FlightDetails from './subcomponents/flight_details';
 import {getFlightBillingInfo} from './../api/adminAPI';
 import './../images/billing.css';
@@ -34,7 +34,7 @@ class FlightBillingInfo extends Component {
               <div className="Flight-billing-Info">
 
                   <div className="flight-billing-page-header">
-                  <HomePageHeader/>
+                  <AdminDashboardHeader/>
                   </div>
                      <div className = "heading">
                       <h1> Flight Billing Information </h1>

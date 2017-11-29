@@ -30,12 +30,13 @@ class EditHotelTile extends Component {
               </div>
               <div style={{width:300}}>
 
-                   <span class="glyphicon glyphicon-star" style={{float: "left",marginLeft:45}}>
+                   <span className="glyphicon glyphicon-star" style={{float: "left",marginLeft:45}}>
                  : {this.props.data.hotel_stars}</span><br/>
                  <div style={{marginTop:30}}>
                    <span style={{marginTop:30,marginLeft:50, backgroundColor: "#00B1E1", color: 'white'}}> {this.props.data.hotel_rating} </span>
                    <span style={{marginTop:30,marginLeft:30}}>{this.props.data.hotel_reviews}   </span>
-                         <span style={{fontSize:15,marginLeft:50}}>Address <br/><div style={{marginLeft:200, fontSize:12,color: 'grey' }}> {this.props.data.hotel_address}, {this.props.data.hotel_city}, {this.props.data.hotel_state} - {this.props.data.hotel_zip} </div></span>
+                   <br></br>
+                         <span style={{marginLeft:200,fontSize:12,color: 'grey' }}>Address <br/><div style={{marginLeft:200, fontSize:12,color: 'grey' }}> {this.props.data.hotel_address}, {this.props.data.hotel_city}, {this.props.data.hotel_state} - {this.props.data.hotel_zip} </div></span>
 
 
                 <span style={{marginLeft:170}}></span>
@@ -45,11 +46,13 @@ class EditHotelTile extends Component {
           </div>
 
           <div className="tiled3">
-              <strong style={{fontSize:15,color:"black"}}>Available : {this.props.data.hotel_capacity}</strong><br/>
-              <strong style={{fontSize:25,color:"black"}}>${this.props.data.hotel_price}</strong>
-              <h4>Total</h4>
-              <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
-              <button  onClick ={() => this.handleDelete(this.props.data.hotel_id)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
+              <strong style={{marginLeft:20,fontSize:15,color:"black"}}>Available : {this.props.data.hotel_capacity}</strong><br/>
+              <strong style={{marginLeft:20,fontSize:15,color:"black"}}>Price : {this.props.data.hotel_price}</strong><br/>
+              <br></br>
+              <br></br>
+              <br></br>
+              <button onClick ={() => this.handleEdit()} style={{marginLeft:20,width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
+              <button  onClick ={() => this.handleDelete(this.props.data.hotel_id)} style={{marginLeft:20,width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
           </div>
       </div>
           );

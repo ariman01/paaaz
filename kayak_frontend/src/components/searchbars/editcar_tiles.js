@@ -29,7 +29,7 @@ class EditCarTile extends Component {
                       <h1>{this.props.data.name}</h1>
                       <h5 style={{color:"grey"}}>Audi or similar car</h5>
                       <img src = {userIcon}/> {this.props.data.capacity}
-                      <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.bags}
+                      <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.no_of_bags}
                       <img src = {cardoorIcon} style={{padding:10}}/> {this.props.data.no_of_doors}
                   </div>
                   <div style={{width:"100%"}}>
@@ -52,8 +52,8 @@ class EditCarTile extends Component {
           </div>
 
           <div className="tiled3">
-              <strong style={{fontSize:25,color:"black"}}>${this.props.data.price}</strong>
-              <h4>Total</h4>
+              <strong style={{marginLeft:35,fontSize:25,color:"black"}}>${this.props.data.price}</strong>
+              <h4 style={{marginLeft:35}}>Total</h4>
               <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
               <button  onClick ={() => this.handleDelete()} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
           </div>

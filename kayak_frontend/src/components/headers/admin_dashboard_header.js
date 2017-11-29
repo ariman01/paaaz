@@ -1,8 +1,5 @@
 import React,{ Component } from 'react';
-import './../../images/home.css';
-import './../../images/admin.css';
 import homeIcon from './../../images/homescreen.png';
-import userIcon from './../../images/user3.png';
 import Nav from 'react-bootstrap/lib/Nav'
 import Navbar from 'react-bootstrap/lib/Navbar'
 import NavItem from 'react-bootstrap/lib/NavItem'
@@ -14,7 +11,7 @@ import { connect } from 'react-redux';
 class AdminDashboardHeader extends Component {
 
         handle_car_search=()=>{
-          history.push('/adminsearchcar');
+          history.push('/editcars');
         };
         handle_car_add=()=>{
           history.push('/addcaradmin');
@@ -25,7 +22,7 @@ class AdminDashboardHeader extends Component {
         };
 
         handle_flight_search=()=>{
-          history.push('/adminsearchflight');
+          history.push('/editflights');
         };
         handle_flight_add=()=>{
           history.push('/addflightadmin');
@@ -35,7 +32,7 @@ class AdminDashboardHeader extends Component {
         };
 
         handle_hotel_search=()=>{
-          history.push('/adminsearchhotel');
+          history.push('/edithotels');
         };
         handle_hotel_add=()=>{
           history.push('/addhoteladmin');
@@ -51,45 +48,49 @@ class AdminDashboardHeader extends Component {
           history.push('/adminsearchuser');
         };
 
+        handle_admindashboard=()=>{
+          history.push('/admindashboard');
+        }
+
     render() {
 
 
         return (
             <div >
-              <Navbar inverse collapseOnSelect className="admin-dashboard-header">
+              <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                   <Navbar.Brand>
-                    <a href="#"><img src={homeIcon}/></a>
+                    <a ><input type="image" onClick={this.handle_admindashboard} src={homeIcon}/></a>
                   </Navbar.Brand>
                   <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav>
-                    <NavDropdown eventKey={1} title="Cars" id="cars">
+                    <NavDropdown eventKey={1} title="Cars">
                       <MenuItem eventKey={1.1} onClick={this.handle_car_search}>Search</MenuItem>
                       <MenuItem eventKey={1.2} onClick={this.handle_car_add}>Add</MenuItem>
                       <MenuItem divider />
                       <MenuItem eventKey={1.3} onClick={this.handle_car_billing}>Billing</MenuItem>
                     </NavDropdown>
-                    <NavDropdown eventKey={2} title="Flights" id="flights">
+                    <NavDropdown eventKey={2} title="Flights" >
                       <MenuItem eventKey={2.1} onClick={this.handle_flight_search}>Search</MenuItem>
                       <MenuItem eventKey={2.2} onClick={this.handle_flight_add}>Add</MenuItem>
                       <MenuItem divider />
                       <MenuItem eventKey={2.3} onClick={this.handle_flight_billing}>Billing</MenuItem>
                     </NavDropdown>
-                    <NavDropdown eventKey={3} title="Hotels" id="hotels">
+                    <NavDropdown eventKey={3} title="Hotels">
                       <MenuItem eventKey={3.1} onClick={this.handle_hotel_search}>Search</MenuItem>
                       <MenuItem eventKey={3.2} onClick={this.handle_hotel_add}>Add</MenuItem>
                       <MenuItem divider />
                       <MenuItem eventKey={3.3} onClick={this.handle_hotel_billing}>Billing</MenuItem>
                     </NavDropdown>
-                    <NavDropdown eventKey={4} title="Users" id="users">
+                    <NavDropdown eventKey={4} title="Users">
                       <MenuItem eventKey={4.1} onClick={this.handle_user_search}>Search</MenuItem>
                       <MenuItem eventKey={4.2} onClick={this.handle_user_add}>Add</MenuItem>
                     </NavDropdown>
                   </Nav>
                   <Nav pullRight>
-                    <NavDropdown eventKey={4} title="My Admin" id="admin">
+                    <NavDropdown eventKey={4} title="My Admin">
                       <MenuItem eventKey={4.1}>Profile</MenuItem>
                       <MenuItem eventKey={4.2}>Logout</MenuItem>
                     </NavDropdown>

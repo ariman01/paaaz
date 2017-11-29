@@ -21,7 +21,7 @@ constructor(){
               </div>
 
               <div className = "car-details-body">
-                  <div>
+                  <div style = {{marginLeft:420}}>
                       <input placeholder="Car Id" id="model_no" onChange={(model_no) => {this.searchcar.model_no = model_no.target.value}}/>
                        <strong> OR  </strong>
                       <input placeholder="Car Name" id="name" onChange={(name) => {this.searchcar.name = name.target.value}}/>

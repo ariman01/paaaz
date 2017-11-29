@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import HomePageHeader from './headers/homepage_header';
+import AdminDashboardHeader from './headers/admin_dashboard_header';
 import FlightDetails from './subcomponents/flight_details';
 import {getCarBillingInfo} from './../api/adminAPI';
 import './../images/billing.css';
@@ -36,7 +36,7 @@ constructor(){
               <div className="Car-billing-Info">
 
                   <div className="flight-billing-page-header">
-                  <HomePageHeader/>
+                  <AdminDashboardHeader/>
                   </div>
                      <div className = "heading">
                       <h1> Car Billing Information </h1>

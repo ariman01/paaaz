@@ -25,7 +25,7 @@ class EditFlights extends Component {
               </div>
 
               <div className = "car-details-body">
-                      <div>
+                      <div style = {{marginLeft:420}}>
                           <input placeholder="Flight Id" id="flight_id" onChange={(flight_id) => {this.searchflight.flight_id = flight_id.target.value}}/>
                            <strong> OR  </strong>
                           <input placeholder="Carrier Name" id="carrier_name" onChange={(carrier_name) => {this.searchflight.carrier_name = carrier_name.target.value}}/>
