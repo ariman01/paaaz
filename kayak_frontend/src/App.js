@@ -65,8 +65,7 @@ class App extends Component {
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
 
-                            <Route  exact path="/admincarbilling" render ={() => (<CarBillingInfo/>)}/>
-                            <Route  exact path="/adminflightbilling" render ={() => (<FlightBillingInfo/>)}/>
+  
 
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
                             <Route  exact path="/editcars" render ={() => (<EditCars/>)}/>

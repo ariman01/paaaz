@@ -83,6 +83,7 @@ export const editFlightAdmin = (flightinfo) =>{
       type:"EDIT_FLIGHT_INFO",
       carinfo:flightinfo
     }
+  }
 
 export const updateCarBillingInformation = (car_billing_info) =>{
   console.log("Action UPDATE_CAR_BILLING_INFO");

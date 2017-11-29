@@ -49,10 +49,10 @@ function handle_request(topic, data, callback){
     hotelservices.updateHotelAdmin(data, callback);
   }
   else if(topic === "car_search_admin_req"){
-    carsercices.searchCarsAdmin(data, callback);
+    carservices.searchCarsAdmin(data, callback);
   }
   else if(topic === "car_update_admin_req"){
-    carsercices.updateCarAdmin(data, callback);
+    carservices.updateCarAdmin(data, callback);
   }
   else if(topic === "flight_search_admin_req"){
     flightservices.searchFlightsAdmin(data, callback);
