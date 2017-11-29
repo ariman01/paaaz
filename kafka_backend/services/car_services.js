@@ -1,4 +1,4 @@
-var Cars = require('./../models/cars')
+var Cars = require('./../models/cars');
 
 exports.searchCars = function(data, callback){
     Cars.searchCars( data.src_city, data.destination_city , function(err , results){
@@ -22,7 +22,8 @@ exports.addCar = function(data, callback){
         src_city:data.src_city,
         destination_city:data.destination_city,
         rental_agency:data.rental_agency,
-        car_type:data.car_type}
+        car_type:data.car_type,
+        car_name:data.car_name}
     );
     Cars.addNewCar( carDetail , function(err , results){
         if(err){
@@ -32,6 +33,26 @@ exports.addCar = function(data, callback){
     });
 }
 
+exports.bookCar = function(data, callback){
+    var carbookingDetail ={
+        user_id:data.user_id,
+        booking_date:data.booking_date,
+        booking_amount:data.booking_amount,
+        start_date:data.start_date,
+        end_date:data.end_date,
+        car_name:data.car_name,
+        src_city:data.src_city,
+        destination_city:data.destination_city,
+        rental_agency:data.rental_agency};
+    console.log("its car_services details"+carbookingDetail.user_id);
+    Cars.bookNewCar( carbookingDetail , function(err , results){
+        console.log("its booknewcar in car_services");
+        if(err){
+            console.log("[Kafka] Error booking new car")
+        }
+        callback(err,results);
+    });
+}
 exports.deleteCar = function(data, callback){
     console.log("delete car data",data);
     Cars.deleteCar( data.model_no , function(err , results){
@@ -48,8 +69,8 @@ exports.editCar = function(data, callback){
         callback("Model No missing, failed to edit without model_no",null);
     }else{
         var carEditData = {};
-        if(data.name)
-            carEditData.name = data.name;
+        if(data.car_name)
+            carEditData.car_name = data.car_name;
         if(data.capacity)
             carEditData.capacity = data.capacity;
         if(data.no_of_bags)

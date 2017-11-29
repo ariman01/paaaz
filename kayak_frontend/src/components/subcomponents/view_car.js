@@ -13,13 +13,13 @@ class ViewCar extends Component {
     return (
               <div className="view-car">
                   <div className="view-car-top-div">
-                    <h3>You are reserving this rental car with</h3>
+                    <h3>You are reserving this rental car with {this.props.data.rental_agency}</h3>
                   </div>
                   <hr></hr>
                   <div className="view-car-bottom-div">
                             <div className = "view-car-left-div">
                                 <div className ="view-car-cardetails1">
-                                    <strong style={{fontSize : 17}}>{this.props.data.car_type} {this.props.data.model_no}</strong><br></br>
+                                    <strong style={{fontSize : 17}}>{this.props.data.car_type}({this.props.data.car_name} or similar)</strong><br></br>
                                     Automatic transmission, Air-conditioning<br></br>
                                     {this.props.car_days.carfromdate} to {this.props.car_days.cartodate} ({this.props.car_days.days} days)
                                 </div>

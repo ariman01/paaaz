@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mysql = require('./mysql');
 
 var hotelSchema = mongoose.Schema({
   hotel_id:{
@@ -42,7 +43,7 @@ var hotelSchema = mongoose.Schema({
   },
   //hotel_capacity = number of people that can be accomadated in the hotel
   hotel_capacity : {
-    type : Number,
+    type : String,
     required : true
   },
     hotel_start_date : {
@@ -59,8 +60,6 @@ var hotelSchema = mongoose.Schema({
 });
 
 const Hotels = mongoose.model('hotels',hotelSchema);
-
-
 function addNewHotel(hotelDetail, callback){
   console.log("addNewHotel:",hotelDetail);
   hotelDetail.save(callback);
@@ -77,6 +76,21 @@ function searchHotels(hotel_city, hotel_capacity, callback){
   Hotels.find(query, callback);
 
 }
+function bookNewHotel(hotelbookdetail, callback){
+  console.log("its hotel details in models(hotels)"+hotelbookdetail.user_id);
+    var bookHotel = "INSERT INTO hotel_transaction(user_id,src_city,hotel_name,hotel_id,booking_date,booking_amount,start_date,end_date) VALUES ('" + hotelbookdetail.user_id + "','" + hotelbookdetail.src_city + "','" + hotelbookdetail.hotel_name + "','" + hotelbookdetail.hotel_id + "','" + hotelbookdetail.booking_date + "','" + hotelbookdetail.booking_amount + "','" + hotelbookdetail.start_date + "','" + hotelbookdetail.end_date + "')";
+    mysql.fetchData(function (err, result) {
+        if (err) {
+            throw err;
+        }
+        else(result)
+        {
+            console.log("its result after mysql query"+result);
+            callback(null,result);
+        }
+    }, bookHotel);
+    console.log("[Kafka] car model booking new hotel:",hotelbookdetail);
+}
 
 function searchHotel(parameter, callback){
   Hotels.findOne(parameter, callback);
@@ -86,4 +100,5 @@ function searchHotel(parameter, callback){
 module.exports.addNewHotel = addNewHotel;
 module.exports.searchHotels = searchHotels;
 module.exports.searchHotel = searchHotel;
+module.exports.bookNewHotel=bookNewHotel;
 module.exports.Hotels = Hotels;

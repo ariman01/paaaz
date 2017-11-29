@@ -8,7 +8,7 @@ function getConnection(){
         user     : 'root',
         password : 'root',
         database : 'kayak_database',
-        port	 : 3306
+        port	 : 8889
     });
     return connection;
 }

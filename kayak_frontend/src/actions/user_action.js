@@ -5,6 +5,7 @@ import {history,saveServerToken} from "../utils/util";
 export const useraction={
     signin_action,
     signup_action,
+    setUser_action
 };
 
 function signin_action(email, password) {
@@ -65,4 +66,12 @@ function signup_action(user) {
     };
     function success(user) { return { type: 'REGISTER_SUCCESS', user } }
     function failure(error) { return { type: 'REGISTER_FAILURE', error } }
+}
+function setUser_action(email)
+{
+    console.log("its set user action");
+    return dispatch => {
+        dispatch(setUser({user_id:email}));
+    };
+    function setUser(result){return { type :'SET_USER',result }}
 }

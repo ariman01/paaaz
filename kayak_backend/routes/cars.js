@@ -42,7 +42,29 @@ router.post('/addcar', function(req, res, next) {
     }
   });
 });
-
+router.post('/bookcar', function(req, res, next) {
+    console.log("bookcar data: ",req.body.car_name);
+    var carbookingdetail = {
+        user_id:req.body.user_id,
+        booking_date:req.body.booking_date,
+        booking_amount:req.body.booking_amount,
+        start_date:req.body.start_date,
+        end_date:req.body.end_date,
+        car_name:req.body.car_name,
+        src_city:req.body.src_city,
+        destination_city:req.body.destination_city,
+        rental_agency:req.body.rental_agency
+    };
+    kafka.make_request('car_book',carbookingdetail, function(err,result){
+        if(err){
+            console.log("[Node Server] Error booking car, error: ",err);
+            res.status(403).json({message:"Failed to book a car: "+carbookingdetail.car_name+" try again!!!"})
+        }
+        else{
+            res.status(201).json({result:result,message:"successfully booked car:"+carbookingdetail.car_name});
+        }
+    });
+});
 router.post('/deletecar', function(req, res, next) {
   var cardetail = {
     model_no:req.data.model_no

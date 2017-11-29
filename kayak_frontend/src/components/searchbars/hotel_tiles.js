@@ -2,14 +2,17 @@ import React,{ Component } from 'react';
 import './../../images/home.css';
 import HotelIcon from './../../images/hotelimage.jpg'
 import viewDeal from './../../images/viewdeal.png'
-
-
-
+import {history} from './../../utils/util.js';
+import {bindActionCreators} from 'redux';
+import {currenthotel_action} from './../../actions/hotel_action';
+import { connect } from 'react-redux';
 class HotelTile extends Component {
 
-  handleView(){
-    console.log("handle  car view");
-  }
+
+    handleView(data){
+        this.props.currenthotel_action(data);
+        history.push('./hotelbillingpage');
+    }
 
   render() {
     console.log("Search leftnav Bar Page");
@@ -52,5 +55,7 @@ class HotelTile extends Component {
           );
   }
 }
-
-export default HotelTile;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({currenthotel_action:currenthotel_action},dispatch);
+}
+export default connect(null,mapDispatchToProps)(HotelTile);

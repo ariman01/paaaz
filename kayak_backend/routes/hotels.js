@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var kafka = require('./../kafka/client');
 
-router.post('/searchHotels', function(req, res, next) {
+router.post('/searchhotels', function(req, res, next) {
     console.log("In search hotels");
 
     var hotel_city = (req.body.hotel_city).toLowerCase() ;
@@ -16,6 +16,28 @@ router.post('/searchHotels', function(req, res, next) {
         else{
             console.log("hotel search successful");
             res.status(201).json({result:result,message:"Sucessfully searched hotel in city :"+hotel_city});
+        }
+    });
+});
+router.post('/bookhotel', function(req, res, next) {
+    console.log("bookhotel data: ",req.body.hotel_name);
+    var hotelbookingdetail = {
+        user_id:req.body.user_id,
+        booking_date:req.body.booking_date,
+        booking_amount:req.body.booking_amount,
+        start_date:req.body.start_date,
+        end_date:req.body.end_date,
+        hotel_name:req.body.hotel_name,
+        src_city:req.body.src_city,
+        hotel_id:req.body.hotel_id
+    };
+    kafka.make_request('hotel_book',hotelbookingdetail, function(err,result){
+        if(err){
+            console.log("[Node Server] Error booking hotel, error: ",err);
+            res.status(403).json({message:"Failed to book a hotel: "+hotelbookingdetail.hotel_name+" try again!!!"})
+        }
+        else{
+            res.status(201).json({result:result,message:"successfully booked hotel:"+hotelbookingdetail.hotel_name});
         }
     });
 });

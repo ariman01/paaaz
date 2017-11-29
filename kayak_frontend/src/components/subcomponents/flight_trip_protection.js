@@ -1,9 +1,20 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
 import recommended from './../../images/recommended.jpg';
-
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addTripProtection_action} from './../../actions/flight_action';
 class FlightTripProtection extends Component {
+    constructor(props) {
+        super(props);
+        this.submitTripProtection = this.submitTripProtection.bind(this);
 
+    }
+    submitTripProtection()
+    {
+        const temp=this.props.current_flight.price+100+(80.15);
+        this.props.addTripProtection_action(temp);
+    }
 
   render() {
     return (
@@ -18,7 +29,7 @@ class FlightTripProtection extends Component {
 
 
                   <div className= "flight-trip-protection-middle-div1">
-                      <input type="radio" name="insurance" value="yes"/> <strong>Yes. Add trip protection for $80.15 (USD) per passenger. </strong>
+                      <input type="radio" name="insurance" value="yes" onChange={this.submitTripProtection}/> <strong>Yes. Add trip protection for $80.15 (USD) per passenger. </strong>
 
                   </div>
 
@@ -51,5 +62,14 @@ class FlightTripProtection extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    return {
+        current_flight: state.flightdetails_reducer.current_flight
+    };
 
-export default FlightTripProtection;
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({addTripProtection_action:addTripProtection_action},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(FlightTripProtection);

@@ -16,7 +16,25 @@ exports.searchHotels = function(data, callback){
         }
     });
 }
-
+exports.bookHotel = function(data, callback){
+    var hotelbookingDetail = {
+        user_id:data.user_id,
+        booking_date:data.booking_date,
+        booking_amount:data.booking_amount,
+        start_date:data.start_date,
+        end_date:data.end_date,
+        hotel_name:data.hotel_name,
+        src_city:data.src_city,
+       hotel_id:data.hotel_id};
+    console.log("its hotel details im hotel services"+hotelbookingDetail.user_id);
+    Hotels.bookNewHotel( hotelbookingDetail , function(err , results){
+        console.log("its booknewhotel in hotel_services");
+        if(err){
+            console.log("[Kafka] Error booking new hotel")
+        }
+        callback(err,results);
+    });
+}
 exports.addNewHotel = function(data, callback){
     console.log("In addNewHotel");
     var hotelDetail = new Hotels.Hotels({
@@ -42,10 +60,4 @@ exports.addNewHotel = function(data, callback){
             callback(null,results);
         }
     });
-}
-
-
-exports.bookHotel = function(data, callback){
-    console.log("In bookHotel");
-    callback(null,{result:"bookHotel success"});
 }

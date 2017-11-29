@@ -1,9 +1,35 @@
 import React,{ Component } from 'react';
 import './../../images/subcomponent.css';
+import { connect } from 'react-redux';
 import booknow from './../../images/booknow.jpg';
-
+import {bookflight_action} from './../../actions/flight_action';
+import {bindActionCreators} from 'redux';
 class FlightsTermsAndConditions extends Component {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
+    }
+    handleSubmit()
+    {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        var booking = yyyy+"/"+mm+"/"+dd;
+        const payload={
+            user_id:this.props.user_id.user_id,
+            flight_id:this.props.current_flight.flight_id,
+            flight_name:this.props.current_flight.carrier_name,
+            src_city:this.props.current_flight.src_city,
+            destination_city:this.props.current_flight.destination_city,
+            start_date:this.props.flight_days.start_date,
+            end_date:this.props.flight_days.end_date,
+            booking_amount:this.props.flight_finalamount.booking_amount,
+            booking_date:booking
+        }
+        this.props.bookflight_action(payload);
+    }
 
   render() {
     return (
@@ -30,12 +56,24 @@ class FlightsTermsAndConditions extends Component {
               <input type="checkbox" checked = "true"/>Email me KAYAKs deals
               <br></br>
               <br></br>
-              <input type ="image" src = {booknow} style={{height : 30}}/>
+              <input type ="image" src = {booknow} onClick={this.handleSubmit} style={{height : 30}}/>
 
             </div>
 
            );
   }
 }
+function mapStateToProps(state) {
+    return {
+        current_flight:state.flightdetails_reducer.current_flight,
+        flight_finalamount: state.flightdetails_reducer.flight_finalamount,
+        flight_days:state.flightdetails_reducer.flight_days,
+        user_id:state.users.user_id
+    };
 
-export default FlightsTermsAndConditions;
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({bookflight_action:bookflight_action},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(FlightsTermsAndConditions);

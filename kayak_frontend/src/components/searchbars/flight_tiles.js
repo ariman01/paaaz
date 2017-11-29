@@ -13,7 +13,6 @@ class FlightTile extends Component {
       this.props.currentflight_action(data);
       history.push('./flightbillingpage');
   }
-
   render() {
     console.log("Search leftnav Bar Page");
     return (
@@ -41,7 +40,7 @@ class FlightTile extends Component {
 
           </div>
           <div className="flight-tile2">
-              <strong style={{fontSize:25,color:"black",marginTop:20}}>{this.props.data.price}</strong>
+              <strong style={{fontSize:25,color:"black",marginTop:20}}>${this.props.data.price}</strong>
               <h4>Total</h4>
               <h5 style={{color:"grey",marginTop:"8%"}}>Kayak</h5>
               <img src={Images.getImages().view_deal} style={{width:"80%"}}

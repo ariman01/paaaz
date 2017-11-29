@@ -1,10 +1,21 @@
 import React,{ Component } from 'react';
 import './../../images/home.css';
 import recommended from './../../images/recommended.jpg';
-
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addDamageProtection_action} from './../../actions/car_action';
 class RentalCarDamageProtection extends Component {
 
+    constructor(props) {
+        super(props);
+        this.submitDamageProtection = this.submitDamageProtection.bind(this);
 
+    }
+submitDamageProtection()
+{
+    const temp=this.props.car_finalamount.totalprice_car+this.props.car_finalamount.totaltax_days+(9*this.props.car_days.days);
+    this.props.addDamageProtection_action(temp);
+}
   render() {
     return (
               <div className = "rental-car-damage-protection">
@@ -18,7 +29,7 @@ class RentalCarDamageProtection extends Component {
                   <br></br>
 
                   <div className= "rental-car-damage-middle-div1">
-                      <input type="radio" name="insurance" value="yes"/> <strong>Yes</strong>, add Rental Car Damage Protection for <strong>only $9 per day.</strong>
+                      <input type="radio" name="insurance" value="yes" onChange={this.submitDamageProtection}/> <strong>Yes</strong>, add Rental Car Damage Protection for <strong>only $9 per day.</strong>
 
                   </div>
 
@@ -49,5 +60,15 @@ class RentalCarDamageProtection extends Component {
            );
   }
 }
+function mapStateToProps(state) {
+    return {
+        car_finalamount: state.cardetails_reducer.car_finalamount,
+        car_days:state.cardetails_reducer.car_days
+    };
 
-export default RentalCarDamageProtection;
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({addDamageProtection_action:addDamageProtection_action},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(RentalCarDamageProtection);

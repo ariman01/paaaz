@@ -10,7 +10,8 @@ const initialState = {
               }],
  displayflights:[],
  current_flight:[],
-    flight_days:[]
+    flight_days:[],
+    flight_finalamount:[]
 }
 export default function flightdetails_reducer(state = initialState, action) {
     switch (action.type) {
@@ -35,6 +36,11 @@ export default function flightdetails_reducer(state = initialState, action) {
                 ...state,
                 flight_days:action.result
             };
+        case 'FLIGHT_FINALAMOUNT':
+            return{
+                ...state,
+                flight_finalamount:action.result
+            }
         default:
             return state
     }
