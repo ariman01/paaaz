@@ -50,3 +50,11 @@ export const updateFlightBillingInformation = (flight_billing_info) =>{
     flight_billing_info:flight_billing_info
   }
 }
+
+export const updateTotalSalesAnalysis = (total_sales_info) =>{
+  console.log("Action UPDATE_TOTAL_SALES_INFO");
+  return {
+    type:"UPDATE_TOTAL_SALES_INFO",
+    total_sales_info:total_sales_info
+  }
+}

@@ -6,7 +6,9 @@ const topics = [
  "flight_search_req",
  "car_search_req",
  "admin_car_bill_req",
- "admin_flight_bill_req"
+ "admin_flight_bill_req",
+ "admin_total_sales_req",
+ "admin_signin_req"
 ]
 
 

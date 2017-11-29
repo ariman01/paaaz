@@ -42,6 +42,8 @@ function handle_request(topic, data, callback){
       adminservices.adminCarBilling(data, callback);
     }else if(topic === "admin_flight_bill_req"){
       adminservices.adminflightBilling(data, callback);
+    }else if(topic === "admin_total_sales_req"){
+      adminservices.adminTotalSalesAnalysis(data, callback);
     }
 }
 

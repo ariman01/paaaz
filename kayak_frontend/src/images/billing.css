@@ -57,7 +57,6 @@ float:left;
 	text-align: center;
 }
 #date {
-
 width:174px;
 height:28px;
 border-style: blue;
@@ -65,13 +64,9 @@ margin-left: 4px;
 border-radius: 8px;
 font-size: 15px;
 border: 2px solid #555555;
-
-
 }
 
-
 #search {
-
 	float:left;
 	height: 30px;
 	margin-top:30px;
@@ -96,7 +91,7 @@ border: 2px solid #555555;
 font-size: 20px;
 margin-left: 15px;
 }
-.search-options {
+.search-options{
 	text-align: center;
 	margin-left: 30%;
 }

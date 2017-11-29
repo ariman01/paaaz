@@ -309,3 +309,52 @@ exports.adminFlightAnalysis = function(data , callback){
     }, flight_analysis_query1);
 
 }
+
+exports.adminTotalSalesAnalysis = function(data , callback){
+  getTotalSalesUtil(function(err,result){
+    if(err){
+      console.log("[Kafka] Error in adminTotalSalesAnalysis: error - ",err);
+    }
+      callback(err,result);
+
+  });
+}
+
+function getTotalSalesUtil(callback){
+   var carcount_query = "select count(booking_id) as car_count from car_transaction";
+   var res_result ={car_sales:0,flight_sales:0,hotel_sales:0,user_booking:0}
+   var res_error = null;
+   mysql.fetchData(function(err,results) {
+    if(err){
+      console.log("[Kafka] Error adminCarSales error - ",err);
+      res_error = err;
+    }else{
+      console.log("car count:",results[0].car_count);
+      res_result.car_sales = results[0].car_count;
+    }
+    var flightcount_query = "select count(booking_id) as flight_count from flight_transaction";
+    mysql.fetchData(function(err,results) {
+      if(err){
+        console.log("[Kafka] Error adminflightSales error - ",err);
+        res_error = err;
+      }else{
+        console.log("flight count:",results[0].flight_count);
+        res_result.flight_sales = results[0].flight_count;
+      }
+      var hotelcount_query = "select count(booking_id) as hotel_count from hotel_transaction";
+      mysql.fetchData(function(err,results) {
+        if(err){
+          console.log("[Kafka] Error adminhotelSales error - ",err);
+          res_error = err;
+        }else{
+          console.log("hotel count:",results[0].hotel_count);
+          res_result.hotel_sales = results[0].hotel_count;
+        }
+        res_result.user_booking = res_result.car_sales + res_result.flight_sales + res_result.hotel_sales;
+        callback(res_error,res_result);
+      },hotelcount_query);
+
+    },flightcount_query);
+
+  },carcount_query);
+}

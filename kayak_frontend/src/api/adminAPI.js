@@ -25,7 +25,8 @@ export const adminLogin = function(admindetail){
     }).then(result=>{
         console.log("result",result," token :",result)
         dispatch(adminActions.updateTotalSales(result.result));
-        history.push('/admindashboard');
+        dispatch(getTotalSales());
+        //history.push('/admindashboard');
  }).catch(err => {
          console.log("Error admin login!!!");
          return err;
@@ -84,8 +85,6 @@ export const addCarAdmin = function(cardetail){
        });
    };
 };
-
-
 
 export const addFlightAdmin = function(flightdetail){
  console.log("add flight details:",flightdetail)
@@ -149,7 +148,7 @@ export const getHotelBillingInfo = function(data){
                alert((res.message)?res.message:"Failed to get billing information !!!");
            }
      }).then(result =>{
-          if(result.result.length >0){
+          if(result.result.length >0  ){
             dispatch(adminActions.updateHotelBillingInformation(result.result));
           }else{
             alert("No billing information found for specific date or month");
@@ -162,7 +161,7 @@ export const getHotelBillingInfo = function(data){
       };
    };
 
-   export const getCarBillingInfo = function(data){
+export const getCarBillingInfo = function(data){
     console.log("getCarBillingInfo api",data)
     return (dispatch) => {
       fetch(`${server_url}/admin/admincarbilling`, {
@@ -273,6 +272,32 @@ export const getFlightAnalysis = function(data){
         history.push('/flightgraphs');
  }).catch(err => {
          console.log("Error while retrieving flight graph!!!");
+         return err;
+       });
+   };
+};
+
+export const getTotalSales = function(){
+ console.log("getTotalSales ")
+ return (dispatch) => {
+   fetch(`${server_url}/analysis/admintotalsales`, {
+       method: 'GET',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' }
+     }).then(res => {
+        console.log("get total sales res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Could not retrieve total sales information!!!");
+         }
+    }).then(result=>{
+        console.log("result:",result.result);
+        dispatch(adminActions.updateTotalSalesAnalysis(result.result));
+        history.push('/admindashboard');
+ }).catch(err => {
+         console.log("Error while retrieving total sales graph!!!");
          return err;
        });
    };
