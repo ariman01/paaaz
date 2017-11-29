@@ -82,3 +82,11 @@ export function addDamageProtection_action(payload)
     };
     function sethotelprice(result){return { type :'HOTEL_FINALAMOUNT',result }}
 }
+
+export const updateLastAdminSearch = (last_search) => {
+    console.log("Action UPDATE_LAST_HOTEL_ADMIN_SEARCH");
+    return {
+        type: "UPDATE_LAST_HOTEL_ADMIN_SEARCH",
+        last_search: last_search
+    }
+}

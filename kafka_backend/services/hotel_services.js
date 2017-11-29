@@ -83,7 +83,15 @@ exports.searchHotelsAdmin = function(data, callback){
         }
     });
 }
-
+exports.deleteHotel = function(data, callback){
+    console.log("delete hotel data",data);
+    Hotels.deleteCar( data.hotel_id , function(err , results){
+        if(err){
+            console.log("[Kafka] Error deleting hotel ")
+        }
+        callback(err,results);
+    });
+}
 
 exports.updateHotelAdmin = function(data, callback){
     console.log("In update Hotel admin");

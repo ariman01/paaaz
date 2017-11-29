@@ -1,6 +1,9 @@
 // Add rest api calls related to admin
 import {history} from "../utils/util";
-import * as adminActions from './../actions/admin_action'
+import * as adminActions from './../actions/admin_action';
+import * as carActions from './../actions/car_action';
+import * as hotelActions from './../actions/hotel_action';
+import * as flightActions from './../actions/flight_action';
 
 const server_url = "http://localhost:3010"
 const headers = {
@@ -291,6 +294,7 @@ export const handleHotelSearch = function(data){
      }).then(res => {
         console.log("get hotel search res:",res.status);
          if(res.status === 201){
+           dispatch(hotelActions.updateLastAdminSearch(data));
            return res.json();
          }else{
            alert((res.message)?res.message:"Hotel doesn't exist!!!");
@@ -342,6 +346,7 @@ export const handleCarSearch = function(data){
      }).then(res => {
         console.log("get car search res:",res.status);
          if(res.status === 201){
+           dispatch(carActions.updateLastAdminSearch(data));
            return res.json();
          }else{
            alert((res.message)?res.message:"Car doesn't exist!!!");
@@ -351,6 +356,75 @@ export const handleCarSearch = function(data){
         dispatch(adminActions.updateListOfSearchedCars(result.result));
  }).catch(err => {
          console.log("Error while retrieving cars!!!");
+         return err;
+       });
+   };
+};
+
+export const adminCarDelete = function(data, last_search){
+ console.log("car delete api data: ",data, "last_search: ",last_search);
+ return (dispatch) => {
+   fetch(`${server_url}/cars/deletecar`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("hotel delete response:",res.status);
+         if(res.status === 201){
+           dispatch(handleCarSearch(last_search));
+         }else{
+           alert((res.message)?res.message:"Failed to delete car !!!");
+         }
+    }).catch(err => {
+         console.log("Error while deleting car !!!");
+         return err;
+       });
+   };
+};
+
+export const adminflightDelete = function(data, last_search){
+ console.log("flight delete api data: ",data, "last_search: ",last_search);
+ return (dispatch) => {
+   fetch(`${server_url}/flights/deleteflight`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("flight delete response:",res.status);
+         if(res.status === 201){
+           dispatch(handleFlightSearch(last_search));
+         }else{
+           alert((res.message)?res.message:"Failed to delete flight !!!");
+         }
+    }).catch(err => {
+         console.log("Error while deleting flight !!!");
+         return err;
+       });
+   };
+};
+
+export const adminHotelDelete = function(data, last_search){
+ console.log("hotel delete api data: ",data, "last_search: ",last_search);
+ return (dispatch) => {
+   fetch(`${server_url}/hotels/deletehotel`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("hotel delete response:",res.status);
+         if(res.status === 201){
+           dispatch(handleHotelSearch(last_search));
+         }else{
+           alert((res.message)?res.message:"Failed to delete hotel !!!");
+         }
+    }).catch(err => {
+         console.log("Error while deleting hotel !!!");
          return err;
        });
    };
@@ -393,6 +467,7 @@ export const handleFlightSearch = function(data){
      }).then(res => {
         console.log("get flight search res:",res.status);
          if(res.status === 201){
+           dispatch(flightActions.updateLastAdminSearch(data));
            return res.json();
          }else{
            alert((res.message)?res.message:"Flight doesn't exist!!!");

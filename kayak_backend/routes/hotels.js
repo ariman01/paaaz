@@ -72,4 +72,19 @@ router.post('/addhotel', function(req, res, next) {
     });
 });
 
+router.post('/deletehotel', function(req, res, next) {
+  var hoteldetail = {
+    hotel_id:req.body.hotel_id
+  };
+  kafka.make_request('delete_hotel',hoteldetail, function(err,result){
+    if(err){
+      console.log("[Node Server] Error deleteing hotel, error: ",err);
+      res.status(403).json({message:"Failed to delete hotel: "+hoteldetail.hotel_id+" try again!!!"})
+    }
+    else{
+      res.status(201).json({result:result,message:"successfully deleted car: "+hoteldetail.hotel_id});
+    }
+  });
+});
+
 module.exports = router;

@@ -67,7 +67,7 @@ router.post('/bookcar', function(req, res, next) {
 });
 router.post('/deletecar', function(req, res, next) {
   var cardetail = {
-    model_no:req.data.model_no
+    model_no:req.body.model_no
   };
   kafka.make_request('delete_car',cardetail, function(err,result){
     if(err){

@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import HotelIcon from './../../images/hotelimage.jpg'
 import viewDeal from './../../images/viewdeal.png';
 import * as adminActions from './../../actions/admin_action';
+import {adminHotelDelete} from './../../api/adminAPI';
 import {history} from "../../utils/util";
 
 class EditHotelTile extends Component {
@@ -49,17 +50,22 @@ class EditHotelTile extends Component {
               <strong style={{fontSize:25,color:"black"}}>${this.props.data.hotel_price}</strong>
               <h4>Total</h4>
               <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
-              <button  onClick ={() => this.handleDelete(this.props.data.hotel_id)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
+              <button  onClick ={() => this.props.adminHotelDelete({hotel_id:this.props.data.hotel_id},this.props.latest_admin_search_parameter)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
           </div>
       </div>
           );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({editHotelAdmin:adminActions.editHotelAdmin},dispatch);
+function mapStateToProps(state) {
+    return {
+        latest_admin_search_parameter: state.hoteldetails_reducer.latest_admin_search_parameter,
+    };
+
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editHotelAdmin:adminActions.editHotelAdmin,adminHotelDelete:adminHotelDelete},dispatch);
+}
 
-
-export default connect(null,mapDispatchToProps)(EditHotelTile);
+export default connect(mapStateToProps,mapDispatchToProps)(EditHotelTile);

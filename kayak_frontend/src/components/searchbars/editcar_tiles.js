@@ -9,6 +9,7 @@ import foxIcon from './../../images/fox.png';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as adminActions from './../../actions/admin_action';
+import {adminCarDelete} from './../../api/adminAPI';
 import {history} from "../../utils/util";
 
 
@@ -55,17 +56,21 @@ class EditCarTile extends Component {
               <strong style={{fontSize:25,color:"black"}}>${this.props.data.price}</strong>
               <h4>Total</h4>
               <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
-              <button  onClick ={() => this.handleDelete()} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
+              <button  onClick ={() => this.props.adminCarDelete({model_no:this.props.data.model_no},this.props.latest_admin_search_parameter)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>
           </div>
       </div>
           );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({editCarAdmin:adminActions.editCarAdmin},dispatch);
+function mapStateToProps(state) {
+    return {
+        latest_admin_search_parameter: state.cardetails_reducer.latest_admin_search_parameter,
+    };
+
 }
 
-
-
-export default connect(null,mapDispatchToProps)(EditCarTile);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editCarAdmin:adminActions.editCarAdmin,adminCarDelete:adminCarDelete},dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(EditCarTile);

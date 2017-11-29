@@ -30,45 +30,35 @@ function handle_request(topic, data, callback){
       userservices.addUser(data, callback);
     }else if(topic === "admin_analysis_hotel_req"){
         adminservices.adminHotelAnalysis(data, callback);
-    } else if(topic === "admin_analysis_car_req"){
+    }else if(topic === "admin_analysis_car_req"){
         adminservices.adminCarAnalysis(data, callback);
-    } else if(topic === "admin_analysis_flight_req"){
+    }else if(topic === "admin_analysis_flight_req"){
         adminservices.adminFlightAnalysis(data, callback);
-
-
-  }else if(topic === "admin_signin_req"){
-    adminservices.adminSignIn(data, callback);
-  }
-  else if(topic === "admin_hotel_bill_req"){
-    adminservices.adminHotelBilling(data, callback);
-  }
-  else if(topic === "hotel_search_admin_req"){
-    hotelservices.searchHotelsAdmin(data, callback);
-  }
-  else if(topic === "hotel_update_admin_req"){
-    hotelservices.updateHotelAdmin(data, callback);
-  }
-  else if(topic === "car_search_admin_req"){
-    carservices.searchCarsAdmin(data, callback);
-  }
-  else if(topic === "car_update_admin_req"){
-    carservices.updateCarAdmin(data, callback);
-  }
-  else if(topic === "flight_search_admin_req"){
-    flightservices.searchFlightsAdmin(data, callback);
-  }
-  else if(topic === "flight_update_admin_req"){
-    flightservices.updateFlightAdmin(data, callback);
-  }
-   else if(topic === "admin_signin_req"){
+    }else if(topic === "admin_signin_req"){
+      adminservices.adminSignIn(data, callback);
+    }else if(topic === "admin_hotel_bill_req"){
+      adminservices.adminHotelBilling(data, callback);
+    }else if(topic === "hotel_search_admin_req"){
+      hotelservices.searchHotelsAdmin(data, callback);
+    }else if(topic === "hotel_update_admin_req"){
+      hotelservices.updateHotelAdmin(data, callback);
+    }else if(topic === "car_search_admin_req"){
+      carservices.searchCarsAdmin(data, callback);
+    }else if(topic === "car_update_admin_req"){
+      carservices.updateCarAdmin(data, callback);
+    }else if(topic === "flight_search_admin_req"){
+      flightservices.searchFlightsAdmin(data, callback);
+    }else if(topic === "flight_update_admin_req"){
+      flightservices.updateFlightAdmin(data, callback);
+    }else if(topic === "admin_signin_req"){
         adminservices.adminSignIn(data, callback);
-    } else if(topic === "admin_hotel_bill_req"){
+    }else if(topic === "admin_hotel_bill_req"){
         adminservices.adminHotelBilling(data, callback);
-    } else if(topic === "car_book_req"){
+    }else if(topic === "car_book_req"){
         carservices.bookCar(data, callback);
-    } else if(topic === "flight_book_req"){
+    }else if(topic === "flight_book_req"){
         flightservices.bookFlight(data, callback);
-    } else if(topic === "hotel_book_req") {
+    }else if(topic === "hotel_book_req") {
         hotelservices.bookHotel(data, callback);
     }else if(topic === "admin_car_bill_req"){
       adminservices.adminCarBilling(data, callback);
@@ -76,6 +66,8 @@ function handle_request(topic, data, callback){
       adminservices.adminflightBilling(data, callback);
     }else if(topic === "admin_total_sales_req"){
       adminservices.adminTotalSalesAnalysis(data, callback);
+    }else if(topic === "delete_hotel_req"){
+      hotelservices.deleteHotel(data, callback);
     }
 }
 

@@ -86,3 +86,11 @@ export function addDamageProtection_action(payload)
     };
     function setcarprice(result){return { type :'CAR_FINALAMOUNT',result }}
 }
+
+export const updateLastAdminSearch = (last_search) => {
+    console.log("Action UPDATE_LAST_CAR_ADMIN_SEARCH");
+    return {
+        type: "UPDATE_LAST_CAR_ADMIN_SEARCH",
+        last_search: last_search
+    }
+}
