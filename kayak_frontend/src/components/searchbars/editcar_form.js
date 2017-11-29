@@ -1,14 +1,19 @@
 import React,{ Component } from 'react';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import './../../images/admin.css';
+import {handleCarUpdate} from './../../api/adminAPI';
 
 class EditCarForm extends Component {
 
- handleEdit(){
-    console.log("Clicked Edit Car");
-    console.log(this.props.data[0].name);
+constructor(){
+    super();
+    this.car_edit_data ={};
   }
+
   render() {
+    this.car_edit_data = this.props.current_car_edit;
     return (
             <div className = "add-hotel-admin">
 
@@ -19,38 +24,46 @@ class EditCarForm extends Component {
                 <div className = "add-hotel-admin-body">
                   <h2>Edit Car</h2>
                   <hr/>
-                  
+
 
                   <label>Car Name</label>
-                  <input type="text" style={{width:400}} className="form-control" id="car_name"  placeholder={this.props.data[0].name} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="name"  defaultValue={this.props.current_car_edit.name} size="35"
+                  onChange={(name) => {this.car_edit_data.name = name.target.value}}/>
                   <br></br>
                   <label>Car Capacity</label>
-                  <input type="text" style={{width:400}} className="form-control" id="car_capacity"  placeholder={this.props.data[0].capacity} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="capacity"  defaultValue={this.props.current_car_edit.capacity} size="35"
+                  onChange={(capacity) => {this.car_edit_data.capacity = capacity.target.value}}/>
                   <br></br>
                   <label>Number of Bags</label>
-                  <input type="text" style={{width:400}} className="form-control" id="no_of_bags"  placeholder={this.props.data[0].no_of_bags} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="no_of_bags"  defaultValue={this.props.current_car_edit.no_of_bags} size="35"
+                  onChange={(no_of_bags) => {this.car_edit_data.no_of_bags = no_of_bags.target.value}}/>
                   <br></br>
 
                   <label>Number of Doors</label>
-                  <input type="text" style={{width:400}} className="form-control" id="no_of_doors"  placeholder={this.props.data[0].no_of_doors} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="no_of_doors"  defaultValue={this.props.current_car_edit.no_of_doors}size="35"
+                  onChange={(no_of_doors) => {this.car_edit_data.no_of_doors = no_of_doors.target.value}}/>
                   <br></br>
                   <label>Source City</label>
-                  <input type="text" style={{width:400}} className="form-control" id="src_city"  placeholder={this.props.data[0].src_city} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="src_city"  defaultValue={this.props.current_car_edit.src_city} size="35"
+                  onChange={(src_city) => {this.car_edit_data.src_city = src_city.target.value}}/>
                   <br></br>
                   <label>Destination City</label>
-                  <input type="text" style={{width:400}} className="form-control" id="dest_city"  placeholder={this.props.data[0].dest_city} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="destination_city"  defaultValue={this.props.current_car_edit.destination_city} size="35"
+                  onChange={(destination_city) => {this.car_edit_data.destination_city = destination_city.target.value}}/>
                   <br></br>
-                 
+
                   <label>Rental Agency</label>
-                  <input type="text" style={{width:400}} className="form-control" id="agency"  placeholder={this.props.data[0].agency} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="rental_agency"  defaultValue={this.props.current_car_edit.rental_agency} size="35"
+                  onChange={(rental_agency) => {this.car_edit_data.rental_agency = rental_agency.target.value}}/>
 
                   <br></br>
                   <label>Car base price in $</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_price"  placeholder= {this.props.data[0].price} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" id="price"  defaultValue={this.props.current_car_edit.price} size="35"
+                  onChange={(price) => {this.car_edit_data.price = price.target.value}}/>
 
                   <br></br>
 
-                  <button onClick ={() => this.handleEdit()} type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
+                  <button onClick ={() => this.props.handleCarUpdate(this.car_edit_data)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
 
                 </div>
 
@@ -62,5 +75,17 @@ class EditCarForm extends Component {
 }
 
 
+function mapStateToProps(state) {
+    console.log("maps to props  car edit form :"+state.admin_reducer.current_car_edit);
+    return {
+        current_car_edit: state.admin_reducer.current_car_edit,
+    };
 
-export default EditCarForm;
+}
+
+function mapDispatchToProps(dispatch) {
+    console.log("updated car data : ",this.car_edit_data );
+    return bindActionCreators({handleCarUpdate:handleCarUpdate},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditCarForm);

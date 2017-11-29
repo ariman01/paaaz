@@ -49,6 +49,18 @@ function handle_request(topic, data, callback){
   else if(topic === "hotel_update_admin_req"){
     hotelservices.updateHotelAdmin(data, callback);
   }
+  else if(topic === "car_search_admin_req"){
+    carsercices.searchCarsAdmin(data, callback);
+  }
+  else if(topic === "car_update_admin_req"){
+    carsercices.updateCarAdmin(data, callback);
+  }
+  else if(topic === "flight_search_admin_req"){
+    flightservices.searchFlightsAdmin(data, callback);
+  }
+  else if(topic === "flight_update_admin_req"){
+    flightservices.updateFlightAdmin(data, callback);
+  }
 }
 
 exports.handle_request = handle_request;

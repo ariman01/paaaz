@@ -263,7 +263,109 @@ export const handleHotelUpdate = function(hoteldetail){
            alert((res.message)?res.message:"Failed to update new Hotel !!!");
          }
     }).catch(err => {
-         console.log("Error while adding new Hotel!!!");
+         console.log("Error while updating new Hotel!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleCarSearch = function(data){
+ console.log("Admin car search request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/searchcarsadmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get car search res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Car doesn't exist!!!");
+         }
+    }).then(result=>{
+        console.log("result:",result);
+        dispatch(adminActions.updateListOfSearchedCars(result.result));
+ }).catch(err => {
+         console.log("Error while retrieving cars!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleCarUpdate = function(cardetail){
+ console.log("update hotel details:",cardetail)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/updatecaradmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(cardetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated car with id:"+cardetail.model_no+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to update car !!!");
+         }
+    }).catch(err => {
+         console.log("Error while updating new car!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleFlightSearch = function(data){
+ console.log("Admin flight search request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/searchflightsadmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+        console.log("get flight search res:",res.status);
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"Flight doesn't exist!!!");
+         }
+    }).then(result=>{
+        console.log("result:",result);
+        dispatch(adminActions.updateListOfSearchedFlights(result.result));
+ }).catch(err => {
+         console.log("Error while retrieving cars!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleFlightUpdate = function(flightdetail){
+ console.log("update flight details:",flightdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/updateflightadmin`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(flightdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated flight with id:"+flightdetail.flight_id+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to update flight !!!");
+         }
+    }).catch(err => {
+         console.log("Error while updating flight!!!");
          return err;
        });
    };

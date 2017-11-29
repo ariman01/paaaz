@@ -46,7 +46,11 @@ const initialData ={
         }}
      ],
 listOfSearchedHotels : [],
-current_hotel_edit:{}
+current_hotel_edit:{},
+listOfSearchedCars :[],
+current_car_edit:{},
+listOfSearchedFlights :[],
+current_flight_edit:{}
 }
 
 export default function admin_reducer(state = initialData, action) {
@@ -96,6 +100,26 @@ export default function admin_reducer(state = initialData, action) {
         case 'EDIT_HOTEL_INFO':
         return Object.assign({},state,{
           current_hotel_edit:action.hotelinfo
+        });
+
+        case 'UPDATE_LIST_OF_SEARCHED_CARS':
+        return Object.assign({},state,{
+          listOfSearchedCars:action.payload
+        });
+
+        case 'EDIT_CAR_INFO':
+        return Object.assign({},state,{
+          current_car_edit:action.carinfo
+        });
+
+        case 'UPDATE_LIST_OF_SEARCHED_FLIGHTS':
+        return Object.assign({},state,{
+          listOfSearchedFlights:action.payload
+        });
+
+        case 'EDIT_FLIGHT_INFO':
+        return Object.assign({},state,{
+          current_flight_edit:action.carinfo
         });
 
         default:

@@ -6,14 +6,18 @@ import userIcon from './../../images/user1.png';
 import baggageIcon from './../../images/car_baggage.png';
 import cardoorIcon from './../../images/car_door.png';
 import foxIcon from './../../images/fox.png';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as adminActions from './../../actions/admin_action';
+import {history} from "../../utils/util";
+
+
 class EditCarTile extends Component {
 
-    handleEdit(){
-    console.log("Clicked Edit Hotel");
-    console.log(this.props.data.rating);
-  }
-    handleDelete(){
-    console.log("Clicked delete Hotel");
+  handleEdit(){
+      console.log("Car edit:",this.props.data);
+      this.props.editCarAdmin(this.props.data);
+      history.push('/editcarform');
   }
 
   render() {
@@ -58,4 +62,10 @@ class EditCarTile extends Component {
   }
 }
 
-export default EditCarTile;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editCarAdmin:adminActions.editCarAdmin},dispatch);
+}
+
+
+
+export default connect(null,mapDispatchToProps)(EditCarTile);

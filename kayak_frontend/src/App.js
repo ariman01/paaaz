@@ -31,11 +31,13 @@ import HotelGraphs from './components/subcomponents/hotel_graphs';
 import FlightGraphs from './components/subcomponents/flight_graphs';
 import CarGraphs from './components/subcomponents/car_graphs';
 import HotelBillingInfo from './components/hotel_billing_information';
-import EditCars from './components/editCars';
 import EditHotels from './components/editHotels';
 import EditHotelTile from './components/searchbars/edithotel_tiles';
 import EditFlights from './components/editFlights';
+import EditCars from './components/editCars';
 import EditHotelForm from './components/searchbars/edithotel_form';
+import EditFlightForm from './components/searchbars/editflight_form';
+import EditCarForm from './components/searchbars/editcar_form';
 
 
 class App extends Component {
@@ -129,6 +131,8 @@ class App extends Component {
                             <Route  exact path="/edithotels" render ={() => (<EditHotels/>)}/>
                             <Route  exact path="/editflights" render ={() => (<EditFlights/>)}/>
                             <Route  exact path="/edithotelform" render ={() => (<EditHotelForm/>)}/>
+                            <Route  exact path="/editcarform" render ={() => (<EditCarForm/>)}/>
+                            <Route  exact path="/editflightform" render ={() => (<EditFlightForm/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

@@ -111,5 +111,95 @@ router.post('/updatehoteladmin', function(req, res, next) {
     });
 });
 
+router.post('/searchcarsadmin', function(req, res, next) {
+    console.log("In search cars admin");
+
+    var model_no = req.body.model_no;
+    var name = req.body.name;
+
+    kafka.make_request('car_search_admin',{"model_no" : model_no , "name" : name}, function(err,result){
+        if(err){
+            console.log("error in searching cars");
+            res.status(403).json({result:result,message:"Admin Failed to search car with id :"+model_no});
+        }
+        else{
+            console.log("car search successful");
+            res.status(201).json({result:result,message:"Admin Sucessfully searched car with id :"+model_no});
+        }
+    });
+});
+
+router.post('/updatecaradmin', function(req, res, next) {
+    console.log("In update cars");
+    var carDetail = {
+       model_no : req.body.model_no,
+       capacity : req.body.capacity,
+       no_of_bags : req.body.no_of_bags,
+       name : req.body.name,
+       no_of_doors : req.body.no_of_doors,
+       price : req.body.price,
+       src_city :req.body.src_city,
+       destination_city : req.body.destination_city,
+       rental_agency : req.body.rental_agency,
+       car_type : req.body.car_type
+    };
+
+
+    kafka.make_request('car_update_admin', carDetail , function(err,result){
+        if(err){
+            console.log("error in updating car");
+            res.status(403).json({result:result,message:"Failed to add hotel :"+ carDetail.model_no});
+        }
+        else{
+            res.status(201).json({result:result,message:"Sucessfully updated car :"+carDetail.model_no});
+        }
+    });
+});
+
+router.post('/searchflightsadmin', function(req, res, next) {
+    console.log("In search flights admin");
+
+    var flight_id = req.body.flight_id;
+    var carrier_name = req.body.carrier_name;
+
+    kafka.make_request('flight_search_admin',{"flight_id" : flight_id , "carrier_name" : carrier_name}, function(err,result){
+        if(err){
+            console.log("error in searching flights");
+            res.status(403).json({result:result,message:"Admin Failed to search flight with id :"+flight_id});
+        }
+        else{
+            console.log("flight search successful");
+            res.status(201).json({result:result,message:"Admin Sucessfully searched flight with id :"+flight_id});
+        }
+    });
+});
+
+router.post('/updateflightadmin', function(req, res, next) {
+    console.log("In update flight");
+    var flightDetail = {
+       flight_id : req.body.flight_id,
+       carrier_name : req.body.carrier_name,
+       src_city : req.body.src_city,
+       destination_city : req.body.destination_city,
+       flight_duration : req.body.flight_duration,
+       operational_day : req.body.operational_day,
+       departure_time :req.body.departure_time,
+       price : req.body.price
+    };
+
+
+    kafka.make_request('flight_update_admin', flightDetail , function(err,result){
+        if(err){
+            console.log("error in updating flight");
+            res.status(403).json({result:result,message:"Failed to update flight :"+ flightDetail.flight_id});
+        }
+        else{
+            res.status(201).json({result:result,message:"Sucessfully updated flight :"+flightDetail.flight_id});
+        }
+    });
+});
+
+
+
 
 module.exports = router;

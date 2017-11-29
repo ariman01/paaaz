@@ -1,87 +1,39 @@
 import React,{ Component } from 'react';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {handleCarSearch} from './../api/adminAPI';
 import EditCarTile from './searchbars/editcar_tiles';
-import HomePageHeader from './headers/homepage_header';
+import AdminDashboardHeader from './headers/admin_dashboard_header';
 
 class EditCars extends Component {
-
 constructor(){
-  super();
- this.cars = [{
-    name:"Audi",
-    type:"Luxury",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:100,
-    src:"San Francisco",
-    des:"San Diego"
-  },{
-    name:"BMW",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:300,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:1100,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:180,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:200,
-  },{
-    name:"Mazda",
-    type:"Economy",
-    capacity:4,
-    no_of_doors:4,
-    bags:4,
-    rental_agency:"Fox",
-    price:300,
-  }]
-}
-
-
-
-getCarTile(cars){
-    console.log("cars: ", cars);
-    return cars.map((car)=>{
-      return (<EditCarTile data={car} style={{paddingTop:10}}/>)
-    });
+    super();
+    this.searchcar ={}
   }
+
 
   render() {
     console.log("It will display list of cars searched by the user");
     return (
               <div>
               <div>
-              <HomePageHeader/>
+                  <AdminDashboardHeader/>
               </div>
 
               <div className = "car-details-body">
+                  <div>
+                      <input placeholder="Car Id" id="model_no" onChange={(model_no) => {this.searchcar.model_no = model_no.target.value}}/>
+                       <strong> OR  </strong>
+                      <input placeholder="Car Name" id="name" onChange={(name) => {this.searchcar.name = name.target.value}}/>
+                      <button style={{marginLeft:15}} onClick ={() => this.props.handleCarSearch(this.searchcar)} ><strong>Search</strong></button>
+                  </div>
                 <div className ="car-details-body-left-nav">
 
                 </div>
                 <div className ="car-details-body-centre">
-                {this.getCarTile(this.cars)}
+                {this.props.listOfSearchedCars.map((car)=>{
+                    return (<EditCarTile data={car} style={{paddingTop:10}}/>)
+                })}
                 </div>
                 <div className ="car-details-body-right-nav">
 
@@ -96,4 +48,15 @@ getCarTile(cars){
 
 
 
-export default EditCars;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({handleCarSearch:handleCarSearch},dispatch);
+}
+
+function mapStateToProps(state){
+  console.log("Edit cars mapStateToProps: "+state.admin_reducer.listOfSearchedCars);
+  return{
+      listOfSearchedCars: state.admin_reducer.listOfSearchedCars,
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditCars);

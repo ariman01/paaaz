@@ -51,3 +51,35 @@ export const editHotelAdmin = (hotelinfo) =>{
       hotelinfo:hotelinfo
     }
 }
+
+export const updateListOfSearchedCars = (payload) =>{
+    console.log("Action UPDATE_LIST_OF_SEARCHED_CARS");
+    return {
+      type:"UPDATE_LIST_OF_SEARCHED_CARS",
+      payload:payload
+    }
+}
+
+export const editCarAdmin = (carinfo) =>{
+    console.log("Action EDIT_CAR_INFO");
+    return {
+      type:"EDIT_CAR_INFO",
+      carinfo:carinfo
+    }
+}
+
+export const updateListOfSearchedFlights = (payload) =>{
+    console.log("Action UPDATE_LIST_OF_SEARCHED_CARS");
+    return {
+      type:"UPDATE_LIST_OF_SEARCHED_FLIGHTS",
+      payload:payload
+    }
+}
+
+export const editFlightAdmin = (flightinfo) =>{
+    console.log("Action EDIT_FLIGHT_INFO");
+    return {
+      type:"EDIT_FLIGHT_INFO",
+      carinfo:flightinfo
+    }
+}

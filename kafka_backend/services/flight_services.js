@@ -76,3 +76,42 @@ exports.editFlight = function(data, callback){
     }
 
 }
+
+
+
+exports.searchFlightsAdmin = function(data, callback){
+    console.log("In searchFlightsAdmin");
+    Flights.searchFlightsAdmin( data.flight_id, data.carrier_name,  function(err , results){
+        console.log("result is" + results);
+        if(err){
+            callback(err,null);
+        }
+        else{
+            console.log("flight admin search data passed to model function");
+            callback(null,results);
+        }
+    });
+}
+
+exports.updateFlightAdmin =function(data, callback){
+    console.log("In update flight admin");
+    var flightDetail = {
+      flight_id : data.flight_id,
+      carrier_name : data.carrier_name,
+      src_city :data.src_city,
+      destination_city :data.destination_city,
+      flight_duration :data.flight_duration,
+      operational_day :data.operational_day,
+      departure_time :data.departure_time,
+      price :data.price
+    };
+    Flights.updateFlightAdmin(flightDetail, function(err , results){
+        if(err){
+            callback(err,null);
+        }
+        else{
+            console.log("Flight update data passed to model function");
+            callback(null,results);
+        }
+    });
+}

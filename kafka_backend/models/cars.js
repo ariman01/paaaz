@@ -71,8 +71,36 @@ function updateCar(car_model_no,cardetail, callback){
   Cars.update({ model_no: car_model_no}, {$set: cardetail}, callback);
 }
 
+function searchCarsAdmin(model_no, name, callback){
+  var query = {};
+  if(model_no)
+    query.model_no = model_no;
+  if(name)
+    query.name = name;
+  console.log("searchCarAdmin:",query);
+  Cars.find(query, callback);
+}
+
+
+function updateCarAdmin(carDetail,callback){
+  Cars.update({model_no : carDetail.model_no},{$set:{
+    capacity : carDetail.capacity,
+    no_of_bags :carDetail.no_of_bags,
+    name :carDetail.name,
+    no_of_doors :carDetail.no_of_doors,
+    price :carDetail.price,
+    src_city :carDetail.src_city,
+    destination_city :carDetail.destination_city,
+    rental_agency :carDetail.rental_agency,
+    car_type :carDetail.car_type
+  }},callback);
+}
+
+
 module.exports.addNewCar = addNewCar;
 module.exports.searchCars = searchCars;
 module.exports.deleteCar = deleteCar;
 module.exports.updateCar = updateCar;
+module.exports.searchCarsAdmin = searchCarsAdmin;
+module.exports.updateCarAdmin = updateCarAdmin;
 module.exports.Cars = Cars;

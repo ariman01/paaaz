@@ -75,3 +75,43 @@ exports.editCar = function(data, callback){
     }
 
 }
+
+
+exports.searchCarsAdmin = function(data, callback){
+    console.log("In searchCarsAdmin");
+    Cars.searchCarsAdmin( data.model_no, data.name,  function(err , results){
+        console.log("result is" + results);
+        if(err){
+            callback(err,null);
+        }
+        else{
+            console.log("car admin search data passed to model function");
+            callback(null,results);
+        }
+    });
+}
+
+exports.updateCarAdmin =function(data, callback){
+    console.log("In update car admin");
+    var carDetail = {
+        model_no: data.model_no,
+        capacity : data.capacity,
+        no_of_bags :data.no_of_bags,
+        name :data.name,
+        no_of_doors :data.no_of_doors,
+        price :data.price,
+        src_city :data.src_city,
+        destination_city :data.destination_city,
+        rental_agency :data.rental_agency,
+        car_type :data.car_type
+    };
+    Cars.updateCarAdmin(carDetail, function(err , results){
+        if(err){
+            callback(err,null);
+        }
+        else{
+            console.log("Hotel update data passed to model function");
+            callback(null,results);
+        }
+    });
+}
