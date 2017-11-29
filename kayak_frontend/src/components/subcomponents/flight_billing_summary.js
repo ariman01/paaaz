@@ -10,7 +10,7 @@ class FlightBillingSummary extends Component {
             <div className="car-summary" >
                 <div className="car-summary-1">
                     <strong style={{fontSize : "11pt"}}>Summary</strong>
-                    <h6>Depart {this.props.flight_days.flightfromdate}: SFO > DEL 10:30a – 4:15p</h6>
+                    <h6>Depart {this.props.flight_days.flightfromdate}: SFO > DEL {this.props.current_flight.departure_time} – 4:15p</h6>
                     <h6>Flight {this.props.current_flight.flight_id}</h6>
                     <hr/>
                 </div >
@@ -18,16 +18,18 @@ class FlightBillingSummary extends Component {
                     <div>
                     <strong style={{fontSize : "11pt"}}> Charges</strong>
                     <h5>Economy</h5>
-                    <hr/>
+                        ${this.props.current_flight.price} <hr/>
                     </div>
 
                     <div>
                     <h5>Tax and Fees</h5>
+                        $100
                     <hr/>
                     </div>
 
                     <div>
                     <h5>Total cost</h5>
+                        ${this.props.current_flight.price+100}
                     <hr/>
                     </div>
 
@@ -46,7 +48,8 @@ function mapStateToProps(state) {
     console.log("hiii"+state.flightdetails_reducer.flight_days.days);
     return {
         flight_days: state.flightdetails_reducer.flight_days,
-        current_flight:state.flightdetails_reducer.current_flight
+        current_flight:state.flightdetails_reducer.current_flight,
+        flight_finalamount:state.flightdetails_reducer.flight_finalamount
     };
 
 }

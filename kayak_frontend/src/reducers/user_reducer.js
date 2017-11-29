@@ -21,6 +21,11 @@ export function users(state = initialState, action) {
                 ...state,
                 userdetails:action.user
             };
+        case 'SET_USER':
+            return{
+                ...state,
+                user_id:action.result
+            }
         default:
             return state
     }

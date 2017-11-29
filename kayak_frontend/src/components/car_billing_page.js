@@ -48,7 +48,6 @@ class CarBillingPage extends Component {
   }
 }
 function mapStateToProps(state) {
-    console.log("hiii"+state.cardetails_reducer.current_car.days);
     return {
         current_car: state.cardetails_reducer.current_car,
     };

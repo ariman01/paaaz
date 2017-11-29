@@ -42,68 +42,6 @@ import EditCarForm from './components/searchbars/editcar_form';
 
 class App extends Component {
 
-    constructor(){
-        super();
-
-             this.hotels = [{
-                name:"Sofitel Los Angeles at Beverly Hills",
-                stars:4,
-                rating:8.5,
-                reviews:"Good",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:249
-              }]
-
-               this.cars = [{
-                name:"Audi Q3",
-                duration:4,
-                no_of_bags:8,
-                no_of_doors:4,
-                src_city : "San Jose",
-                dest_city : "San Diego",
-                agency : "Audi Rental Groups",
-                price:249,
-                capacity : 4
-              }]
-
-               this.flights = [{
-                carrier:"Lufthanza",
-                operation_day:3,
-                dep_time:1500,
-                duration:240,
-                src_city : "San Jose",
-                dest_city : "San Diego",
-                price:249
-              }]
-
-            this.userpreference = [{
-                first_name:"Lufthanza",
-                second_name:"Kumari",
-                gender:"F",
-                email:"kumariluft@gmail.com",
-                address : "1318 The Julian",
-                city : "San Jose",
-                state : "California",
-                zip: 95126
-              }]
-
-               this.paymentdetails = [{
-                name_on_card:"Lufthanza Kumari",
-                last_digits:1234,
-                card_type: "VISA",
-                address : "1318 The Julian",
-                city : "San Jose",
-                state : "California",
-                zip: 95126
-              }]
-
-
-            }
-
 
     render() {
         return (
@@ -126,6 +64,10 @@ class App extends Component {
                             <Route  exact path="/addflightadmin" render ={() => (<AddFlightAdmin/>)}/>
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
+
+                            <Route  exact path="/admincarbilling" render ={() => (<CarBillingInfo/>)}/>
+                            <Route  exact path="/adminflightbilling" render ={() => (<FlightBillingInfo/>)}/>
+
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
                             <Route  exact path="/editcars" render ={() => (<EditCars/>)}/>
                             <Route  exact path="/edithotels" render ={() => (<EditHotels/>)}/>

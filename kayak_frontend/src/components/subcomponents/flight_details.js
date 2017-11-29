@@ -3,8 +3,6 @@ import './../../images/home.css';
 import limitedseats from './../../images/limitedseats.png';
 import {connect} from 'react-redux';
 class FlightDetails extends Component {
-
-
   render() {
     return (
               <div className = "flight-details">
@@ -41,5 +39,4 @@ function mapStateToProps(state) {
     };
 
 }
-
 export default connect(mapStateToProps,null)(FlightDetails);

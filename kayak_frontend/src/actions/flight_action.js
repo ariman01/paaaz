@@ -1,4 +1,4 @@
-import {searchflightsAPI} from '../api/flightAPI';
+import {searchflightsAPI,bookflightAPI} from '../api/flightAPI';
 import {history} from "../utils/util";
 
 export function searchflights_action(payload){
@@ -13,13 +13,16 @@ export function searchflights_action(payload){
         var setday = {
             flightfromdate: start_d.toDateString(),
             flighttodate: end_d.toDateString(),
-            days: Math.round(difference_ms/ONE_DAY)
+            days: Math.round(difference_ms/ONE_DAY),
+            start_date:payload.start_date,
+            end_date:payload.end_date,
+
         }
         dispatch(setflightdates(setday));
         searchflightsAPI(payload)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             dispatch(success(response.result));
@@ -45,4 +48,46 @@ export function currentflight_action(payload)
     };
     function success(result) { return { type: 'CURRENT_FLIGHT', result } }
 }
+<<<<<<< HEAD
+export function setPrice(payload)
+{
+    return dispatch => {
+        dispatch(setflightprice(payload));
+    };
+    function setflightprice(result){return { type :'FLIGHT_FINALAMOUNT',result }}
+}
+export function bookflight_action(payload){
+    console.log("its date in bookflight action"+payload.start_date);
+    return dispatch => {
+        bookflightAPI(payload)
+            .then(
+                response => {
+                    if(response.status==201)
+                    {
+                        response.json().then((response) => {
+                            console.log(response.result);
+                            history.push('/flights');
+                        });
+                    }
+                    else
+                    {
+                        dispatch(failure(response.message));
+                    }
+                }
+            );
+    };
 
+    function failure(error) { return { type: 'FLIGHT_FAILURE', error } }
+}
+export function addTripProtection_action(payload)
+{
+    return dispatch => {
+        dispatch(setflightprice({booking_amount:payload}));
+    };
+    function setflightprice(result){return { type :'FLIGHT_FINALAMOUNT',result }}
+}
+
+
+
+=======
+>>>>>>> bb9f489583e38fad59fc673567ac9e2270b23f73

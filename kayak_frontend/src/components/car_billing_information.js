@@ -3,27 +3,29 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import HomePageHeader from './headers/homepage_header';
 import FlightDetails from './subcomponents/flight_details';
-import {getFlightBillingInfo} from './../api/adminAPI';
+import {getCarBillingInfo} from './../api/adminAPI';
 import './../images/billing.css';
 
-class FlightBillingInfo extends Component {
+class CarBillingInfo extends Component {
 
-  constructor(){
-    super();
-    this.data = {};
+constructor(){
+  super();
+  this.data = {};
 
-  }
+}
+
 
   getbills(bills){
     return bills.map((bill)=>{
       return (<tr>
             <td style={{width:89}}>{bill.booking_id}</td>
             <td style={{width:65}}>{bill.user_id}</td>
-            <td>{bill.flight_id}</td>
+            <td>{bill.model_number}</td>
             <td>{new Date(bill.booking_date).toISOString().slice(0,10)}</td>
             <td>{bill.booking_amount}</td>
             <td>{bill.src_city}</td>
             <td>{bill.destination_city}</td>
+            <td>{bill.agency}</td>
             </tr>
           )
     });
@@ -31,13 +33,13 @@ class FlightBillingInfo extends Component {
 
   render() {
     return (
-              <div className="Flight-billing-Info">
+              <div className="Car-billing-Info">
 
                   <div className="flight-billing-page-header">
                   <HomePageHeader/>
                   </div>
                      <div className = "heading">
-                      <h1> Flight Billing Information </h1>
+                      <h1> Car Billing Information </h1>
                      </div>
 
                      <div className ="search-options">
@@ -67,7 +69,7 @@ class FlightBillingInfo extends Component {
 
                               </div>
 
-                            <button type="submit"onClick={() => this.props.getFlightBillingInfo(this.data)}id="search" style={{width:150}}>Search</button>
+                            <button type="submit"onClick={() => this.props.getCarBillingInfo(this.data)}id="search" style={{width:150}}>Search</button>
 
                     <div class="billing-list">
                         </div>
@@ -77,15 +79,16 @@ class FlightBillingInfo extends Component {
                                   <tr>
                                   <th style={{width:90}}>Booking ID</th>
                                   <th style={{paddingLeft: 65}}>User ID</th>
-                                  <th style={{paddingLeft:110}}>Flight ID</th>
-                                  <th style={{paddingLeft: 100}}>Booking Date</th>
+                                  <th style={{paddingLeft:100}}>Car Name</th>
+                                  <th style={{paddingLeft: 170}}>Booking Date</th>
                                   <th >Booking Amount</th>
-                                  <th style={{paddingLeft: 100}}>src city</th>
-                                  <th style={{paddingLeft: 100}}>des city Date</th>
+                                  <th >src city</th>
+                                  <th >des city</th>
+                                  <th >Agency</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    {this.getbills(this.props.flightBillingInformation)}
+                                    {this.getbills(this.props.carBillingInformation)}
                                 </tbody>
                             </table>
                         </div>
@@ -95,13 +98,13 @@ class FlightBillingInfo extends Component {
 }
 
 function mapStateToProps(state){
-  console.log("maps to props flight billing:",state.admin_reducer.flightBillingInformation);
+  console.log("maps to props car billing:",state.admin_reducer.carBillingInformation);
   return {
-    flightBillingInformation:state.admin_reducer.flightBillingInformation
+    carBillingInformation:state.admin_reducer.carBillingInformation
   };
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getFlightBillingInfo:getFlightBillingInfo},dispatch);
+    return bindActionCreators({getCarBillingInfo:getCarBillingInfo},dispatch);
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(FlightBillingInfo);
+export default connect(mapStateToProps,mapDispatchToProps)(CarBillingInfo);

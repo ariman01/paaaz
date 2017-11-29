@@ -30,7 +30,27 @@ exports.addFlight = function(data, callback){
         callback(err,result);
     });
 }
-
+exports.bookFlight = function(data, callback){
+    console.log("its data in flight_services"+data.user_id);
+    var flightbookingDetail = {
+        user_id:data.user_id,
+        booking_date:data.booking_date,
+        booking_amount:data.booking_amount,
+        start_date:data.start_date,
+        end_date:data.end_date,
+        flight_name:data.flight_name,
+        src_city:data.src_city,
+        destination_city:data.destination_city,
+        flight_id:data.flight_id};
+    console.log("its flightbookingDetail in flight_services"+flightbookingDetail.user_id);
+    Flights.bookNewFlight( flightbookingDetail , function(err , results){
+        console.log("its booknewflight in flight_services"+flightbookingDetail.user_id);
+        if(err){
+            console.log("[Kafka] Error booking new flight")
+        }
+        callback(err,results);
+    });
+}
 exports.deleteFlight = function(data, callback){
     console.log("delete flight data",data);
     Flights.deleteFlight( data.flight_id , function(err , results){

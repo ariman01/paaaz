@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './../../images/subcomponent.css';
-
+import { connect } from 'react-redux';
 
 class CarBillingSummary extends Component {
 
@@ -10,24 +10,27 @@ class CarBillingSummary extends Component {
             <div className="car-summary" >
                 <div className="car-summary-1">
                     <strong ><h4>Summary</h4></strong>
-                    <h6>Economy, 5 people/1 bag, Automatic transmission, Air-conditioning Thu 11/23 - Fri 11/24 (1 day)</h6>
+                    <h6>{this.props.current_car.car_type}, {this.props.current_car.capacity} people/{this.props.current_car.no_of_bags}bag, Automatic transmission, Air-conditioning {this.props.car_days.carfromdate} - {this.props.car_days.cartodate} ({this.props.car_days.days} day)</h6>
                     <hr/>
                 </div >
                 <div className="car-summary-2">
                     <div>
-                    <strong><h4> Charges </h4></strong>
-                    <h5>Economy</h5>
-                    (1 hr)
+                        <strong><h4><b> Charges</b> </h4></strong>
+                    <h5>{this.props.current_car.car_type}
+                        ({this.props.car_days.days} day/days)</h5>
+                        {this.props.car_finalamount.totalprice_car}
                     <hr/>
                     </div>
 
                     <div>
-                    <h5>Tax and Fees</h5>
+                        <h5><b>Tax and Fees </b></h5>
+                        {this.props.car_finalamount.totaltax_days}
                     <hr/>
                     </div>
 
                     <div>
                     <h5>Total cost</h5>
+                        {this.props.car_finalamount.totalprice_car+this.props.car_finalamount.totaltax_days}
                     <hr/>
                     </div>
                     <div>
@@ -44,5 +47,13 @@ class CarBillingSummary extends Component {
           );
   }
 }
+function mapStateToProps(state) {
+    return {
+        car_finalamount: state.cardetails_reducer.car_finalamount,
+        current_car:state.cardetails_reducer.current_car,
+        car_days:state.cardetails_reducer.car_days
+    };
 
-export default CarBillingSummary;
+}
+
+export default connect(mapStateToProps,null)(CarBillingSummary);

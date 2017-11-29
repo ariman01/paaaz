@@ -21,7 +21,29 @@ router.post('/searchflights', function(req, res, next) {
     });
 });
 
-
+router.post('/bookflight', function(req, res, next) {
+    console.log("bookflight data: ",req.body.flight_name);
+    var flightbookingdetail = {
+        user_id:req.body.user_id,
+        booking_date:req.body.booking_date,
+        booking_amount:req.body.booking_amount,
+        start_date:req.body.start_date,
+        end_date:req.body.end_date,
+        flight_name:req.body.flight_name,
+        src_city:req.body.src_city,
+        destination_city:req.body.destination_city,
+        flight_id:req.body.flight_id
+    };
+    kafka.make_request('flight_book',flightbookingdetail, function(err,result){
+        if(err){
+            console.log("[Node Server] Error booking flight, error: ",err);
+            res.status(403).json({message:"Failed to book a flight: "+flightbookingdetail.flight_name+" try again!!!"})
+        }
+        else{
+            res.status(201).json({result:result,message:"successfully booked flight:"+flightbookingdetail.flight_name});
+        }
+    });
+});
 
 router.post('/addflight', function(req, res, next) {
     var flightDetail = {

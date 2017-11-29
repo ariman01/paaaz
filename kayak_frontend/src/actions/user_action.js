@@ -5,6 +5,7 @@ import {history,saveServerToken} from "../utils/util";
 export const useraction={
     signin_action,
     signup_action,
+    setUser_action
 };
 
 function signin_action(email, password) {
@@ -14,7 +15,7 @@ function signin_action(email, password) {
         userapi.signinAPI(email, password)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             console.log(response.result);
@@ -41,10 +42,10 @@ function signup_action(user) {
         userapi.signupAPI(user)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                             response.json().then((response) => {
-                                if(response.code==201)
+                                if(response.code===201)
                                 {
                                 dispatch(success(response));
                                 saveServerToken(user.username);
@@ -65,4 +66,12 @@ function signup_action(user) {
     };
     function success(user) { return { type: 'REGISTER_SUCCESS', user } }
     function failure(error) { return { type: 'REGISTER_FAILURE', error } }
+}
+function setUser_action(email)
+{
+    console.log("its set user action");
+    return dispatch => {
+        dispatch(setUser({user_id:email}));
+    };
+    function setUser(result){return { type :'SET_USER',result }}
 }

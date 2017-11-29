@@ -55,9 +55,16 @@ router.post('/flightanalysis', function(req, res, next) {
     });
 });
 
-
-
-
-
+router.get('/admintotalsales', function(req, res, next){
+   kafka.make_request('admin_total_sales', {}, function(err , results){
+     if(err){
+       console.log("error in retrieving total sales information error - ",err);
+       res.status(403).json({result:{},message:"Error :"+err});
+     }
+     else{
+       res.status(201).json({result:results,message:"Successfully retrieved total sales information"});
+     }
+   });
+});
 
 module.exports = router;

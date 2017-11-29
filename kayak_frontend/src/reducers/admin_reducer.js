@@ -1,6 +1,8 @@
 const initialData ={
   hotelBillingInformation:[],
-  total_sales:{car_sales:200,flight_sales:300,hotel_sales:10,user_booking:510},
+  carBillingInformation:[],
+  flightBillingInformation:[],
+  total_sales:{car_sales:0,flight_sales:0,hotel_sales:0,user_booking:0},
   hotel_analysis_data:[{
       top_ten_hotel_sales:{
           hotels:["Hayat","Grand","Taj","Oberoi","Country Inn","Hilton","May Blair","Bazuka","Bazinga","Test"],
@@ -83,6 +85,14 @@ export default function admin_reducer(state = initialData, action) {
         return Object.assign({},state, {
             hotelBillingInformation: action.hotel_billing_info
         });
+        case 'UPDATE_CAR_BILLING_INFO':
+        return Object.assign({},state, {
+            carBillingInformation: action.car_billing_info
+        });
+        case 'UPDATE_FLIGHT_BILLING_INFO':
+        return Object.assign({},state, {
+            flightBillingInformation: action.flight_billing_info
+        });
         case 'UPDATE_CAR_ANALYSIS':
         return Object.assign({},state,{
           car_analysis_data:action.car_analysis_data
@@ -91,6 +101,10 @@ export default function admin_reducer(state = initialData, action) {
         case 'UPDATE_FLIGHT_ANALYSIS':
         return Object.assign({},state,{
           flight_analysis_data:action.flight_analysis_data
+        });
+        case 'UPDATE_TOTAL_SALES_INFO':
+        return Object.assign({},state,{
+          total_sales:action.total_sales_info
         });
 
         case 'UPDATE_LIST_OF_SEARCHED_HOTELS':

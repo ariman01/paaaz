@@ -61,7 +61,9 @@ class SignIn extends Component
 
         const { showModal } = this.state;
         console.log("its before modal"+showModal);
+
         return (
+
 
             <div>
                 <Modal bsSize="sm" show={this.state.showModal} onHide={this.close}>
@@ -72,6 +74,7 @@ class SignIn extends Component
                         <button style={{margin:1,backgroundColor:'#558fe6',width:250,color:'white',height:45,textAlign:'center'}} onClick={this.signup}><img src ={googleicon} style={{width:25,height:25,float:'left'}}/>&nbsp;&nbsp;Continue with Google</button><br/><br/>
                         <div style={{color:'#545456',alignContent:'center'}}><b>Or Create A Kayak Account</b></div><br/><br/>
                         <input type="email" name="email" value={this.state.email} placeholder={"Email Address"} style={{backgroundColor:'rgb(250, 255, 189)',borderColor:'#e3e3e3',width:250,height:45}} onChange={this.handleChange}/><br/><br/>
+
                         <input type="password" name="password" value={this.state.password} placeholder={"Password"} style={{backgroundColor:'rgb(250, 255, 189)',borderColor:'#e3e3e3',width:250,height:45}} onChange={this.handleChange}/><br/><br/>
                         <button style={{backgroundColor:'#545456',color:'white',width:250,height:45}} onClick={this.handleSubmit}>Sign In</button>
                     </Modal.Body>
