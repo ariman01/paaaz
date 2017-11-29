@@ -27,7 +27,7 @@ function handle_request(topic, data, callback){
     }else if(topic === "hotel_add_req"){
       hotelservices.addNewHotel(data, callback);
     }else if(topic === "signup_req"){
-        userservices.addUser(data, callback);
+      userservices.addUser(data, callback);
     }else if(topic === "admin_analysis_hotel_req"){
         adminservices.adminHotelAnalysis(data, callback);
     } else if(topic === "admin_analysis_car_req"){
@@ -42,8 +42,14 @@ function handle_request(topic, data, callback){
         carservices.bookCar(data, callback);
     } else if(topic === "flight_book_req"){
         flightservices.bookFlight(data, callback);
-    } else if(topic === "hotel_book_req"){
+    } else if(topic === "hotel_book_req") {
         hotelservices.bookHotel(data, callback);
+    }else if(topic === "admin_car_bill_req"){
+      adminservices.adminCarBilling(data, callback);
+    }else if(topic === "admin_flight_bill_req"){
+      adminservices.adminflightBilling(data, callback);
+    }else if(topic === "admin_total_sales_req"){
+      adminservices.adminTotalSalesAnalysis(data, callback);
     }
 }
 

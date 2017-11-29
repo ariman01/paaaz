@@ -101,7 +101,7 @@ class AdminDashboard extends Component {
                                         <img src={userDashIcon} style={{padding:10}}/>
                                         </div>
                                         <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
-                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.flight_sales}</strong></span>
+                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.user_booking}</strong></span>
                                         </div>
                                       </div>
                                   <hr/>

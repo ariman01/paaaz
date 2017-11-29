@@ -4,7 +4,6 @@ float:left;
 color:black;
 margin-top:30px;
 font-size: 16px;
-background-color: #f1f1f1;
 
 
 }
@@ -50,79 +49,52 @@ float:left;
 
 .Hotel-billing-Info{
 
-    height: 1000px;
-	background-color: #f1f1f1;
+  height: 1000px;
+	background-color: white;
 }
 .heading{
-
 	font-family: "Times New Roman", Times, serif;
-	
-
-	
+	text-align: center;
 }
 #date {
-
 width:174px;
-height:28px; 
+height:28px;
 border-style: blue;
 margin-left: 4px;
 border-radius: 8px;
 font-size: 15px;
 border: 2px solid #555555;
-
-
 }
-
-#date:hover {
-    background-color: #FF360B;
-}
-
 
 #search {
-
 	float:left;
 	height: 30px;
 	margin-top:30px;
 	margin-left:18px;
 	font-size: 14px;
 	border-radius: 10px;
-    border: 2px solid #555555;
-    
-}
-#search:hover {
-    background-color: #FF360B;
-}
-
-.dropdown:hover {
-
-background-color: #FF360B;
+  border: 2px solid #555555;
 
 }
-
 
 .dropdown {
-
 width:160px;
-height:29px; 
+height:29px;
 border-style: solid;
 margin-left : 8px;
 border-radius: 8px;
 font-size: 15px;
 border: 2px solid #555555;
-
-
 }
 
 #or {
-
 font-size: 20px;
-background-color: #f1f1f1;
 margin-left: 15px;
-
-
 }
-.search-options {
-
-	background-color: #f1f1f1;
+.search-options{
+	text-align: center;
+	margin-left: 30%;
 }
-
+.Flight-billing-Info{
+	background-color: white;
+}

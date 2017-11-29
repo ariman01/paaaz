@@ -5,7 +5,6 @@ import HomePageHeader from './headers/homepage_header';
 import FlightDetails from './subcomponents/flight_details'
 import {getHotelBillingInfo} from './../api/adminAPI';
 
-
 import './../images/billing.css';
 
 class HotelBillingInfo extends Component {
@@ -21,7 +20,7 @@ class HotelBillingInfo extends Component {
             <td style={{width:89}}>{bill.booking_id}</td>
             <td style={{width:65}}>{bill.user_id}</td>
             <td>{bill.hotel_name}</td>
-            <td>{bill.booking_date}</td>
+            <td>{new Date(bill.booking_date).toISOString().slice(0,10)}</td>
             <td>{bill.booking_amount}</td></tr>
           )
     });

@@ -15,7 +15,7 @@ function signin_action(email, password) {
         userapi.signinAPI(email, password)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             console.log(response.result);
@@ -42,10 +42,10 @@ function signup_action(user) {
         userapi.signupAPI(user)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                             response.json().then((response) => {
-                                if(response.code==201)
+                                if(response.code===201)
                                 {
                                 dispatch(success(response));
                                 saveServerToken(user.username);

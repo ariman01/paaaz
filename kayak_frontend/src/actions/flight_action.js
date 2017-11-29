@@ -22,7 +22,7 @@ export function searchflights_action(payload){
         searchflightsAPI(payload)
             .then(
                 response => {
-                    if(response.status==201)
+                    if(response.status===201)
                     {
                         response.json().then((response) => {
                             dispatch(success(response.result));
@@ -48,6 +48,7 @@ export function currentflight_action(payload)
     };
     function success(result) { return { type: 'CURRENT_FLIGHT', result } }
 }
+<<<<<<< HEAD
 export function setPrice(payload)
 {
     return dispatch => {
@@ -88,3 +89,5 @@ export function addTripProtection_action(payload)
 
 
 
+=======
+>>>>>>> bb9f489583e38fad59fc673567ac9e2270b23f73
