@@ -26,7 +26,11 @@ const topics = [
     "car_search_req",
     "hotel_search_req"
 
-]
+];
+
+exports.CONNECTIONPOOL_IMP = false;
+exports.CONNECTIONPOOL_MONGO = false;
+exports.POOL_LIMIT = 20;
 
 
 exports.getTopicList = function (){

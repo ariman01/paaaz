@@ -7,11 +7,28 @@ var car_service = require('./services/car_services');
 var flight_services = require('./services/flight_services');
 var admin_services = require('./services/admin_services');
 var producer = connection.getProducer();
+var kafka_config = require('./config/kafka_topics')
 console.log('[Kafka]server is running');
 var mongoURL = "mongodb://localhost:27017/kayak_database";
-var promise = mongoose.connect(mongoURL, {
+/*var promise = mongoose.connect(mongoURL, {
     useMongoClient: true
-});
+});*/
+var mcon = require('./models/MongoConnection');
+console.log('[Kafka]server is running');
+console.log("kafka_config.CONNECTIONPOOL_IMP",kafka_config.CONNECTIONPOOL_IMP);
+console.log("kafka_config.CONNECTIONPOOL_MONGO",kafka_config.CONNECTIONPOOL_MONGO);
+if(kafka_config.CONNECTIONPOOL_IMP){
+  mcon.create();
+}else if(kafka_config.CONNECTIONPOOL_MONGO){
+  var promise = mongoose.connect(mongoURL, {
+    useMongoClient: true,
+    server: { poolSize: 20}
+  });
+}else{
+  var promise = mongoose.connect(mongoURL, {
+    useMongoClient: true
+  });
+}
 
 topic_names.map((topic)=>{
   var consumer = connection.getConsumer(topic);
