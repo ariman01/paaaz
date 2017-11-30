@@ -16,7 +16,8 @@ class SearchCar extends Component {
     return  (
             <div className="carhome">
                   <HomeHeader1/>
-                  <h1 style={{color:"white",marginTop:"4%"}}> Search hundreds of travel sites at once.</h1>
+                  <h1 style={{color:"white",marginTop:"4%", marginLeft : 380}}> Search hundreds of travel sites at once.</h1>
+                  <br/><br/>
                   <div style={{paddingTop:"3%"}}>
                       <HomeScreenButtonPanel/>
                       <CarSearchBar/>

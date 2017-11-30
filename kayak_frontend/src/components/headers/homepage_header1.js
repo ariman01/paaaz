@@ -22,14 +22,14 @@ class HomeHeader1 extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav>
-                    <NavItem eventKey={1} href="#">Cars</NavItem>
-                    <NavItem eventKey={1} href="#">Flights</NavItem>
-                    <NavItem eventKey={1} href="#">Hotels</NavItem>
+                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Cars</NavItem>
+                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Flights</NavItem>
+                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Hotels</NavItem>
                   </Nav>
                   <Nav pullRight>
-                    <NavDropdown eventKey={4} title="My Account" id="admin">
-                      <MenuItem eventKey={4.1}>Sign up</MenuItem>
-                      <MenuItem eventKey={4.2}>Sign in</MenuItem>
+                    <NavDropdown eventKey={4} style={{fontSize : "11pt"}} title="My Account" id="admin">
+                      <MenuItem eventKey={4.1} style={{fontSize : "11pt"}} >Sign up</MenuItem>
+                      <MenuItem eventKey={4.2} style={{fontSize : "12pt"}} >Sign in</MenuItem>
                     </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import HomePageHeader from './headers/homepage_header';
+import HomeHeader1 from './headers/homepage_header1';
 import CarBillingSummary from './subcomponents/car_billing_summary';
 import ViewCar from './subcomponents/view_car';
 import BookingDetails from './subcomponents/booking_details';
@@ -19,7 +19,7 @@ class CarBillingPage extends Component {
 
               <div className="car-billing-page">
                   <div className="car-billing-page-header">
-                  <HomePageHeader/>
+                  <HomeHeader1/>
                   </div>
 
                   <div className = "car-billing-body">
