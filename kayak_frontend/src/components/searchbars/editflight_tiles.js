@@ -41,7 +41,7 @@ class EditFlightTile extends Component {
 
           </div>
           <div className="flight-tile2">
-              <strong style={{marginLeft:50,fontSize:25,color:"black",marginTop:20}}>{this.props.data.price}</strong>
+              <strong style={{marginLeft:48,fontSize:25,color:"black",marginTop:20}}>${this.props.data.price}</strong>
               <h4 style={{marginLeft:50}}>Total</h4>
               <button onClick ={() => this.handleEdit()} style={{width:"80%",marginTop:"2%"}}><strong>Edit</strong></button>
               <button  onClick ={() => this.props.adminflightDelete({flight_id:this.props.data.flight_id},this.props.latest_admin_search_parameter)} style={{width:"80%",marginTop:"2%"}}><strong>Delete</strong></button>

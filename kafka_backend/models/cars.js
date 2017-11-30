@@ -15,7 +15,7 @@ var carSchema = new Schema({
     type:Number,
     required : true
   },
-  car_name:{
+  name:{
     type:String,
     required:true
   },
