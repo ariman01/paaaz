@@ -146,5 +146,22 @@ router.post('/updateuserdetails',function(req, res, next){
     });
 });
 
+router.post('/deleteuser',function(req, res, next){
+    var userinfo = {};
+    userinfo.email = req.body.email;
+
+    kafka.make_request('delete_user', userinfo , function(err,result){
+        if(!err){
+            console.log('result*****',result);
+            //console.log("user signed up ",result);
+            if(result.code === 201){
+              res.status(201).json(result);
+            }
+        }else{
+            res.status(401).json({});
+        }
+    });
+});
+
 
 module.exports = router;

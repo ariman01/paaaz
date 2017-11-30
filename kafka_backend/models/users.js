@@ -101,8 +101,24 @@ function updateUser (userdetail,callback){
 
 }
 
+function deleteUser (userdetail,callback){
+  var deleteUser = "delete from kayak_database.users where email='"+userdetail.email+"'";
+
+  mysql.fetchData(function(err,result){
+    if(err){
+      throw err;
+    }
+    else{
+      var response= {code:201,result:result};
+      callback(null,response);
+    }
+  },deleteUser);
+
+}
+
 
 module.exports.addNewUser = addNewUser;
 module.exports.searchUser = searchUser;
 module.exports.addNewUserAdmin = addNewUserAdmin;
 module.exports.updateUser = updateUser;
+module.exports.deleteUser = deleteUser;

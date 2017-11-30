@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
 import {history} from "../../utils/util";
 import * as adminActions from './../../actions/admin_action';
+import {handleUserDelete} from './../../api/adminAPI';
+
 
 
 import './../../images/admin.css';
@@ -64,7 +66,7 @@ class SearchedUser extends Component {
             <button type="submit" className="btn btn-primary" style={{width:150}}
             onClick ={() => this.handleEdit()} >Edit</button>&nbsp;&nbsp;
             <button type="submit" className="btn btn-danger" style={{width:150}}
-            >Delete</button>
+            onClick ={() => this.props.handleUserDelete(this.props.data)}>Delete</button>
 
           </div>
 
@@ -83,7 +85,8 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({editUserAdmin:adminActions.editUserAdmin},dispatch);
+    return bindActionCreators({editUserAdmin:adminActions.editUserAdmin,
+                                handleUserDelete: handleUserDelete},dispatch);
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchedUser);

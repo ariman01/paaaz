@@ -78,6 +78,9 @@ function handle_request(topic, data, callback){
     else if(topic === "update_user_req"){
       userservices.updateUserAdmin(data, callback);
     }
+    else if(topic === "delete_user_req"){
+      userservices.deleteUserAdmin(data, callback);
+    }
 }
 
 exports.handle_request = handle_request;

@@ -63,3 +63,15 @@ exports.updateUserAdmin = function(data, callback){
         }
     });
 }
+
+exports.deleteUserAdmin = function(data, callback){
+    Users.deleteUser( data , function(err , results){
+        if(err){
+            console.log("[Kafka] Error searching new user")
+            callback(err,null);
+        }else{
+          console.log("its result in user_services"+results);
+          callback(null,results);
+        }
+    });
+}

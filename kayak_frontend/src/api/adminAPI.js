@@ -608,3 +608,27 @@ export const handleUserUpdate = function(userdetail){
        });
    };
 };
+
+
+export const handleUserDelete = function(userdetail){
+ console.log("delete user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/deleteuser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" Deleted user with id:"+userdetail.email+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to delete user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while deleteing new user!!!");
+         return err;
+       });
+   };
+};
