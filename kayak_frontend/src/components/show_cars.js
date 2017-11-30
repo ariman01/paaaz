@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import CarTile from './searchbars/car_tiles';
 import HomePageHeader from './headers/homepage_header';
+import CarSearchLeftNav from './searchbars/car_search_leftnav';
 import { connect } from 'react-redux';
 class ShowCars extends Component {
 
@@ -17,7 +18,7 @@ constructor(){
 
               <div className = "car-details-body">
                 <div className ="car-details-body-left-nav">
-
+                  <CarSearchLeftNav/>
                 </div>
                 <div className ="car-details-body-centre">
                     {this.props.cars.length > 0 ?
@@ -37,9 +38,10 @@ constructor(){
   }
 }
 function mapStateToProps(state) {
-    console.log("hiii"+state.cardetails_reducer.cars);
+    console.log("show cars: "+state.cardetails_reducer.cars+" state.cardetails_reducer.leftNavCarConfig: "+state.cardetails_reducer.leftNavCarConfig);
     return {
-        cars: state.cardetails_reducer.cars,
+        cars: state.cardetails_reducer.displaycars,
+        leftNavCarConfig:state.cardetails_reducer.leftNavCarConfig
     };
 
 }

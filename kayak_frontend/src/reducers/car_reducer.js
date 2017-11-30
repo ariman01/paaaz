@@ -1,31 +1,29 @@
 
-
+import * as left_nav_util from './../utils/laft_nav_helper';
 const initialState = {
- cars:[{
-                name:"Audi Q3",
-                duration:4,
-                no_of_bags:8,
-                no_of_doors:4,
-                src_city : "San Jose",
-                destination_city : "San Diego",
-                agency : "Audi Rental Groups",
-                price:249,
-                capacity : 4
-              }],
+cars:[],
 displaycars:[],
 current_car:[],
 car_days:[],
 car_finalamount:[],
-latest_admin_search_parameter:null
+latest_admin_search_parameter:null,
+leftNavCarConfig:{
+    capacity:{},
+    bags:{},
+    cartype:{},
+    rentalagency:{}
+  }
 }
 export default function cardetails_reducer(state = initialState, action) {
     switch (action.type) {
 
         case 'CAR_SUCCESS':
-            return {
-                ...state,
-                cars: action.result
-            };
+            let config = left_nav_util.getleftNavConfigForCar(action.result);
+            return Object.assign({},state,{
+              cars: action.result,
+              displaycars:action.result,
+              leftNavCarConfig:config
+            });
         case 'CAR_FAILURE':
             return {
                 ...state,
@@ -50,6 +48,12 @@ export default function cardetails_reducer(state = initialState, action) {
             return Object.assign({},state,{
               latest_admin_search_parameter:action.last_search
             });
+        case 'SET_CONFIG':
+            let updatedcarlist = left_nav_util.filterCarbasedOnLeftNavBar(state.cars.slice(),action.config);
+            return Object.assign({},state,{
+              leftNavCarConfig:action.config,
+              displaycars:updatedcarlist
+                })
         default:
             return state
 

@@ -93,3 +93,9 @@ export const updateLastAdminSearch = (last_search) => {
         last_search: last_search
     }
 }
+export const setFlightConfig = (config)=>{
+return {
+  type:'SET_FLIGHT_CONFIG',
+  config:config
+  }
+};

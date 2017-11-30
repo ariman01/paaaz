@@ -93,4 +93,11 @@ export const updateLastAdminSearch = (last_search) => {
         type: "UPDATE_LAST_CAR_ADMIN_SEARCH",
         last_search: last_search
     }
-}
+};
+
+  export const setCarConfig = (config)=>{
+  return {
+    type:'SET_CONFIG',
+    config:config
+    }
+  };

@@ -90,3 +90,10 @@ export const updateLastAdminSearch = (last_search) => {
         last_search: last_search
     }
 }
+
+export const setHotelConfig = (config)=>{
+return {
+  type:'SET_HOTEL_CONFIG',
+  config:config
+  }
+}
