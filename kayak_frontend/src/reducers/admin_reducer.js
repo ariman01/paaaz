@@ -52,7 +52,10 @@ current_hotel_edit:{},
 listOfSearchedCars :[],
 current_car_edit:{},
 listOfSearchedFlights :[],
-current_flight_edit:{}
+current_flight_edit:{},
+searchedUser :[],
+current_user_edit :{}
+
 }
 
 export default function admin_reducer(state = initialData, action) {
@@ -134,6 +137,16 @@ export default function admin_reducer(state = initialData, action) {
         case 'EDIT_FLIGHT_INFO':
         return Object.assign({},state,{
           current_flight_edit:action.carinfo
+        });
+
+        case 'UPDATE_SEARCHED_USER':
+        return Object.assign({},state,{
+          searchedUser : action.payload
+        });
+
+        case 'EDIT_USER_INFO':
+        return Object.assign({},state,{
+          current_user_edit:action.userinfo
         });
 
         default:

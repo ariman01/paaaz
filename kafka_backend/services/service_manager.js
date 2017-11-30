@@ -69,6 +69,18 @@ function handle_request(topic, data, callback){
     }else if(topic === "delete_hotel_req"){
       hotelservices.deleteHotel(data, callback);
     }
+    else if(topic === "add_user_req"){
+      userservices.addUserAdmin(data, callback);
+    }
+    else if(topic === "search_user_req"){
+      userservices.searchUserAdmin(data, callback);
+    }
+    else if(topic === "update_user_req"){
+      userservices.updateUserAdmin(data, callback);
+    }
+    else if(topic === "delete_user_req"){
+      userservices.deleteUserAdmin(data, callback);
+    }
 }
 
 exports.handle_request = handle_request;

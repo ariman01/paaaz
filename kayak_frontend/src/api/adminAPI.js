@@ -531,3 +531,104 @@ export const getTotalSales = function(){
        });
    };
 };
+
+export const addUserAdmin = function(userdetail){
+ console.log("add user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/adduser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" New user with userid:"+userdetail.email+" is added successfully !!!");
+           history.push('/admindashboard');
+         }
+         else if(res.status === 401){
+           alert("user with userid:"+userdetail.email+" already exists!!!");
+           history.push('/adduseradmin');
+         }else{
+           alert((res.message)?res.message:"Failed to add new user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while adding new user!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleUserSearch = function(data){
+ console.log("Admin user search request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/users/searchuser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"User does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result",result)
+        dispatch(adminActions.updateSearchedUser(result.result));
+}).catch(err => {
+         console.log("Error in finding user!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleUserUpdate = function(userdetail){
+ console.log("update user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/updateuserdetails`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated user with id:"+userdetail.email+" successfully !!!");
+           history.push('/searchuseradmin');
+         }else{
+           alert((res.message)?res.message:"Failed to update user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while updating new user!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleUserDelete = function(userdetail){
+ console.log("delete user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/deleteuser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" Deleted user with id:"+userdetail.email+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to delete user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while deleteing new user!!!");
+         return err;
+       });
+   };
+};
