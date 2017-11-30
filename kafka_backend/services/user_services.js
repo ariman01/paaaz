@@ -23,7 +23,7 @@ exports.addUserAdmin = function(data, callback){
         last_name : data.last_name,
         address : data.address,
         city : data.city,
-        state : data.city,
+        state : data.state,
         zip : data.zip,
         phone : data.phone
         };

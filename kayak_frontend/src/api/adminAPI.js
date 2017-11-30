@@ -598,7 +598,7 @@ export const handleUserUpdate = function(userdetail){
      }).then(res => {
          if(res.status === 201){
            alert(" updated user with id:"+userdetail.email+" successfully !!!");
-           history.push('/admindashboard');
+           history.push('/searchuseradmin');
          }else{
            alert((res.message)?res.message:"Failed to update user !!!");
          }
