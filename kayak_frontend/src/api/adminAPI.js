@@ -558,3 +558,53 @@ export const addUserAdmin = function(userdetail){
        });
    };
 };
+
+
+export const handleUserSearch = function(data){
+ console.log("Admin user search request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/users/searchuser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"User does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result",result)
+        dispatch(adminActions.updateSearchedUser(result.result));
+}).catch(err => {
+         console.log("Error in finding user!!!");
+         return err;
+       });
+   };
+};
+
+
+export const handleUserUpdate = function(userdetail){
+ console.log("update user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/updateuserdetails`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated user with id:"+userdetail.email+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to update user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while updating new user!!!");
+         return err;
+       });
+   };
+};

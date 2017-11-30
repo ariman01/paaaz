@@ -29,9 +29,37 @@ exports.addUserAdmin = function(data, callback){
         };
     Users.addNewUserAdmin( userDetail , function(err , results){
         if(err){
-            console.log("[Kafka] Error adding new user")
+            console.log("[Kafka] Error adding new user");
         }
         console.log("its result in user_services"+results);
         callback(err,results);
+    });
+}
+
+
+exports.searchUserAdmin = function(data, callback){
+    var userDetail = {
+        email:data.email,
+        };
+    Users.searchUser( userDetail , function(err , results){
+        if(err){
+            console.log("[Kafka] Error searching new user")
+            callback(err,null);
+        }else{
+          console.log("its result in user_services"+results);
+          callback(null,results);
+        }
+    });
+}
+
+exports.updateUserAdmin = function(data, callback){
+    Users.updateUser( data , function(err , results){
+        if(err){
+            console.log("[Kafka] Error searching new user")
+            callback(err,null);
+        }else{
+          console.log("its result in user_services"+results);
+          callback(null,results);
+        }
     });
 }

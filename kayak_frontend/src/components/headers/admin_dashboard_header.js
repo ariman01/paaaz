@@ -45,7 +45,7 @@ class AdminDashboardHeader extends Component {
           history.push('/adduseradmin');
         };
         handle_user_search=()=>{
-          history.push('/adminsearchuser');
+          history.push('/searchuseradmin');
         };
 
         handle_admindashboard=()=>{

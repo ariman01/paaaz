@@ -109,3 +109,21 @@ export const updateTotalSalesAnalysis = (total_sales_info) =>{
   }
 
 }
+
+export const updateSearchedUser = (payload) =>{
+  console.log("Action UPDATE_TOTAL_SALES_INFO");
+  return {
+    type:"UPDATE_SEARCHED_USER",
+    payload:payload
+  }
+
+}
+
+
+export const editUserAdmin = (userinfo) =>{
+    console.log("Action EDIT_USER_INFO");
+    return {
+      type:"EDIT_USER_INFO",
+      userinfo:userinfo
+    }
+}

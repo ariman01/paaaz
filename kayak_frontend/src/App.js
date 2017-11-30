@@ -41,7 +41,9 @@ import EditCarForm from './components/searchbars/editcar_form';
 import FlightBillingInfo from './components/flight_billing_information';
 import CarBillingInfo from './components/car_billing_information';
 import AddUserAdmin from './components/subcomponents/add_user_admin';
-
+import SearchUser from './components/subcomponents/search_user';
+import SearchedUser from './components/subcomponents/searched_user';
+import UpdateUserAdmin from './components/subcomponents/edit_user_form';
 
 class App extends Component {
 
@@ -81,6 +83,10 @@ class App extends Component {
                             <Route  exact path="/admincarbilling" render ={() => (<CarBillingInfo/>)}/>
                             <Route  exact path="/adminhotelbilling" render ={() => (<HotelBillingInfo/>)}/>
                             <Route  exact path="/adduseradmin" render ={() => (<AddUserAdmin/>)}/>
+                            <Route  exact path="/searchuseradmin" render ={() => (<SearchUser/>)}/>
+                            <Route  exact path="/searcheduseradmin" render ={() => (<SearchedUser/>)}/>
+                            <Route  exact path="/edituserform" render ={() => (<UpdateUserAdmin/>)}/>
+
                     </MuiThemeProvider>
                 </Router>
             </div>

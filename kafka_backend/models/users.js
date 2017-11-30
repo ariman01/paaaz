@@ -61,6 +61,48 @@ function addNewUserAdmin(userdetail, callback) {
     }, checkUser);
 }
 
+function searchUser (userdetail,callback){
+  var findUser = "select * from users where email='" + userdetail.email + "'";
+  mysql.fetchData(function(err,result){
+    if(err){
+      throw err;
+    }
+    else if(result.length == 0){
+      console.log("user doesn't exist");
+      var response= {code:401,message:'User doesnt exists'};
+      callback(null,response);
+    }
+    else if(result.length > 0){
+      var response= {code:201,result:result};
+      callback(null,response);
+    }
+  },findUser);
+}
+
+function updateUser (userdetail,callback){
+  var updateUser = "UPDATE users SET first_name = '"+userdetail.first_name+"',"+
+                        "last_name = '"+userdetail.last_name+"',"+
+                        "address = '"+userdetail.address+"',"+
+                        "city = '"+userdetail.city+"',"+
+                        "state = '"+userdetail.state+"',"+
+                        "zip = '"+userdetail.zip+"',"+
+                        "phone = '"+userdetail.phone+"'"+
+                        "where email='"+userdetail.email+"'";
+
+  mysql.fetchData(function(err,result){
+    if(err){
+      throw err;
+    }
+    else{
+      var response= {code:201,result:result};
+      callback(null,response);
+    }
+  },updateUser);
+
+}
+
 
 module.exports.addNewUser = addNewUser;
+module.exports.searchUser = searchUser;
 module.exports.addNewUserAdmin = addNewUserAdmin;
+module.exports.updateUser = updateUser;
