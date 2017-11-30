@@ -531,3 +531,30 @@ export const getTotalSales = function(){
        });
    };
 };
+
+export const addUserAdmin = function(userdetail){
+ console.log("add user details:",userdetail)
+ return (dispatch) => {
+   fetch(`${server_url}/users/adduser`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(userdetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" New user with userid:"+userdetail.email+" is added successfully !!!");
+           history.push('/admindashboard');
+         }
+         else if(res.status === 401){
+           alert("user with userid:"+userdetail.email+" already exists!!!");
+           history.push('/adduseradmin');
+         }else{
+           alert((res.message)?res.message:"Failed to add new user !!!");
+         }
+    }).catch(err => {
+         console.log("Error while adding new user!!!");
+         return err;
+       });
+   };
+};

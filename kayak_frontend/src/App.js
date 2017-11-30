@@ -40,6 +40,7 @@ import EditFlightForm from './components/searchbars/editflight_form';
 import EditCarForm from './components/searchbars/editcar_form';
 import FlightBillingInfo from './components/flight_billing_information';
 import CarBillingInfo from './components/car_billing_information';
+import AddUserAdmin from './components/subcomponents/add_user_admin';
 
 
 class App extends Component {
@@ -79,6 +80,7 @@ class App extends Component {
                             <Route  exact path="/adminflightbilling" render ={() => (<FlightBillingInfo/>)}/>
                             <Route  exact path="/admincarbilling" render ={() => (<CarBillingInfo/>)}/>
                             <Route  exact path="/adminhotelbilling" render ={() => (<HotelBillingInfo/>)}/>
+                            <Route  exact path="/adduseradmin" render ={() => (<AddUserAdmin/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

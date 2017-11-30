@@ -76,4 +76,32 @@ router.post('/signup',function(req, res, next){
 });
 
 
+router.post('/adduser',function(req, res, next){
+    var userinfo = {};
+    userinfo.email = req.body.email;
+    userinfo.password = req.body.password;
+    userinfo.first_name = req.body.first_name;
+    userinfo.last_name = req.body.last_name;
+    userinfo.address = req.body.address;
+    userinfo.city = req.body.city;
+    userinfo.state = req.body.state;
+    userinfo.zip = req.body.zip;
+    userinfo.phone = req.body.phone;
+
+    kafka.make_request('add_user', userinfo , function(err,result){
+        if(!err){
+            //console.log("user signed up ",result);
+            if(result.code === 201){
+              res.status(201).json(result);
+            }
+            else if(result.code === 401){
+              res.status(401).json(result);
+            }
+        }else{
+            res.status(403).json({});
+        }
+    });
+});
+
+
 module.exports = router;

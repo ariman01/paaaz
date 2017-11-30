@@ -69,6 +69,9 @@ function handle_request(topic, data, callback){
     }else if(topic === "delete_hotel_req"){
       hotelservices.deleteHotel(data, callback);
     }
+    else if(topic === "add_user_req"){
+      userservices.addUserAdmin(data, callback);
+    }
 }
 
 exports.handle_request = handle_request;

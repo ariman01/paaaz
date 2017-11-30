@@ -30,4 +30,37 @@ function addNewUser(userdetail, callback) {
         }
     }, checkUser);
 }
+
+function addNewUserAdmin(userdetail, callback) {
+
+    var checkUser = "select * from users where email='" + userdetail.email + "'";
+    mysql.fetchData(function (err, result) {
+        if (err) {
+            throw err;
+        }
+        else if (result.length>0) {
+            console.log("user already there");
+            var response= {code:401,message:'User already exists'};
+            callback(null,response);
+        }
+        else if (result.length==0) {
+            var passwordToSave = bcrypt.hashSync(userdetail.password, salt);
+            var addUser = "INSERT INTO users(email,password,first_name,last_name,address,city,state,zip,phone) VALUES ('" + userdetail.email + "','" + passwordToSave + "','" +userdetail.first_name+ "','" + userdetail.last_name+ "','" + userdetail.address+ "','" + userdetail.city+ "','" +userdetail.state+"','"+ userdetail.zip+ "','" + userdetail.phone+"')";
+            console.log("query is" + addUser);
+            mysql.fetchData(function (err, result) {
+                if (err) {
+                    throw err;
+                    callback(null,response);
+                }
+                else {
+                    var response = {result:result,code:201,message:'User Successfully Created'};
+                    callback(null,response);
+                }
+            }, addUser);
+        }
+    }, checkUser);
+}
+
+
 module.exports.addNewUser = addNewUser;
+module.exports.addNewUserAdmin = addNewUserAdmin;
