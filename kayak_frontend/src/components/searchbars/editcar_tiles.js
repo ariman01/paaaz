@@ -40,8 +40,8 @@ class EditCarTile extends Component {
 
                       <div className="car-des-name" >
 
-                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;San Francisco </span><br/>
-                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;San Francisco </span>
+                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;{this.props.data.src_city} </span><br/>
+                         <span style={{fontSize:15,marginLeft:8,marginRight:8}}>  &nbsp;{this.props.data.destination_city} </span>
                       </div>
                   </div>
            </div>

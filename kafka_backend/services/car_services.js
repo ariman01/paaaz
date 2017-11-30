@@ -27,7 +27,7 @@ exports.addCar = function(data, callback){
     );
     Cars.addNewCar( carDetail , function(err , results){
         if(err){
-            console.log("[Kafka] Error adding new car")
+            console.log("[Kafka] Error adding new car", err);
         }
         callback(err,results);
     });
@@ -40,7 +40,7 @@ exports.bookCar = function(data, callback){
         booking_amount:data.booking_amount,
         start_date:data.start_date,
         end_date:data.end_date,
-        car_name:data.car_name,
+        name:data.name,
         src_city:data.src_city,
         destination_city:data.destination_city,
         rental_agency:data.rental_agency};
