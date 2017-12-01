@@ -9,10 +9,13 @@ import {currentflight_action} from './../../actions/flight_action';
 
 
 class FlightTile extends Component {
-  handleView(data){
-      this.props.currentflight_action(data);
-      history.push('./flightbillingpage');
+  constructor(props) {
+      super(props);
+      this.handleView = this.handleView.bind(this);
   }
+handleView(data){
+    this.props.currentflight_action(data);
+}
   render() {
     console.log("Flight tiles page:",this.props.data);
     return (
@@ -50,7 +53,14 @@ class FlightTile extends Component {
           );
   }
 }
+function mapStateToProps(state) {
+    console.log("hiii"+state.flightdetails_reducer.current_flight.price);
+    return {
+        flight_days: state.flightdetails_reducer.flight_days,
+        flight_finalamount:state.flightdetails_reducer.flight_finalamount
+    };
+}
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({currentflight_action:currentflight_action},dispatch);
 }
-export default connect(null,mapDispatchToProps)(FlightTile);
+export default connect(mapStateToProps,mapDispatchToProps)(FlightTile);

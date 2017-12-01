@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 class FlightBillingSummary extends Component {
 
   render() {
+    const flight_price=this.props.flight_finalamount.flight_price*this.props.flight_days.persons;
+    const flight_totalprice = flight_price+60;
     return (
       <div className="carr-billing-summary">
             <div className="car-summary" >
@@ -18,18 +20,18 @@ class FlightBillingSummary extends Component {
                     <div>
                     <strong style={{fontSize : "11pt"}}> Charges</strong>
                     <h5>Economy</h5>
-                        ${this.props.current_flight.price} <hr/>
+                        ${flight_price}<hr/>
                     </div>
 
                     <div>
                     <h5>Tax and Fees</h5>
-                        $100
+                        $60
                     <hr/>
                     </div>
 
                     <div>
                     <h5>Total cost</h5>
-                        ${this.props.current_flight.price+100}
+                        ${flight_totalprice}
                     <hr/>
                     </div>
 
@@ -55,5 +57,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps,null)(FlightBillingSummary);
-
-

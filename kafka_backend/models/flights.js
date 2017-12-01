@@ -23,7 +23,7 @@ var flightSchema = mongoose.Schema({
     required : true
   },
   operational_day : {
-    type : String,
+    type : Number,
     required : true
   },
   departure_time : {
@@ -68,6 +68,7 @@ function editFlight(flight_id, flightDetail, callback){
 }
 
 function searchFlights(parameter, callback){
+  console.log("its paramter in model-flights"+parameter.src_city+parameter.destination_city+parameter.operational_day);
   Flights.find(parameter, callback);
 }
 

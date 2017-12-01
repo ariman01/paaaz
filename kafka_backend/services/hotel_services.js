@@ -63,13 +63,6 @@ exports.addNewHotel = function(data, callback){
 }
 
 
-
-exports.bookHotel = function(data, callback){
-    console.log("In bookHotel");
-    callback(null,{result:"bookHotel success"});
-}
-
-
 exports.searchHotelsAdmin = function(data, callback){
     console.log("In searchHotelsAdmin");
     Hotels.searchHotelsAdmin( data.hotel_id, data.hotel_name,  function(err , results){

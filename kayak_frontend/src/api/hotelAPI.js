@@ -2,7 +2,7 @@ const headers = {
     'Accept': 'application/json'
 };
 export function searchhotelsAPI(payload) {
-    console.log("its api" + payload);
+    console.log("its api" + payload.src_city+payload.capacity);
     const requestOptions = {
         method: 'POST',
         credentials: 'include',
@@ -26,7 +26,7 @@ export function bookhotelAPI(payload)
         headers: { ...headers,'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     };
-    return fetch('http://localhost:3010/hotel/bookhotel', requestOptions)
+    return fetch('http://localhost:3010/hotels/bookhotel', requestOptions)
         .then((response) =>{
             return response;
 

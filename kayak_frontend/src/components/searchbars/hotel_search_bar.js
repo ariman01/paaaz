@@ -51,21 +51,22 @@ class HotelSearchBar extends Component {
                   <div className="container-fluid pull-left" style={{fontSize:13,paddingTop:30,paddingLeft:30}}>
                   </div>
                       <div className="form-group" style={{marginTop:"6%"}}>
-                          <input type="text"  className="TextField col-sm-3 col-md-3 col-lg-3" id="location"
-                          placeholder="Where" name="hotel_city" value={hoteldetails.hotel_city} style={{marginLeft:2,height:70,fontSize:17}} onChange={this.handleChange}/>
+                      <input type="text"  className="TextField col-sm-3 col-md-3 col-lg-3" id="location"
+                      placeholder="Where" name="src_city"  style={{marginLeft:2,height:70,fontSize:17}} onChange={this.handleChange}/>
                           <input type="date"  className="TextField col-sm-3 col-md-3 col-lg-3" id="checkInDate" name="start_date"
                           placeholder="Check-in" style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
 
-                          <DatePicker hintText="Check-out" mode="landscape" container="inline" className="TextField col-sm-2 col-md-3 col-lg-3" name="end_date" id="checkOutDate" style={{marginLeft:2, fontSize:17,backgroundColor:"white",height:70,textAlign:"bottom"}}/>
+                          <input type="date"  className="TextField col-sm-3 col-md-3 col-lg-3" id="checkInDate" name="end_date"
+                                 placeholder="Check-in" style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
 
-                          <select className="TextField col-sm-2 col-md-2 col-lg-2" id="noOfGuests" name="capacity" onChange={this.handleChange}
-                           style={{marginLeft:2,height:70, fontSize:17}}>
-                              <option selected="selected">No of Guests</option>
-                              <option value="One">One</option>
-                              <option value="Two">Two</option>
-                              <option value="Three">Three</option>
-                              <option value="Four">Four</option>
-                          </select>
+                                 <select className="TextField col-sm-2 col-md-2 col-lg-2" id="noOfGuests" name="capacity" onChange={this.handleChange}
+                                  style={{marginLeft:2,height:70, fontSize:17}}>
+                                     <option selected="selected">No of Guests</option>
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                                     <option value="4">4</option>
+                                 </select>
 
                       </div>
                       <input type="image" src={clickIcon} style={{height:70}} onClick={this.handleSubmit}/>

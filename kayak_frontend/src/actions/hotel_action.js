@@ -11,9 +11,11 @@ export function searchhotels_action(payload){
         var date2_ms = end_d.getTime();
         var difference_ms = Math.abs(date1_ms - date2_ms);
         var setday = {
-            hotelfromdate: start_d.toDateString(),
-            hoteltodate: end_d.toDateString(),
-            days: Math.round(difference_ms/ONE_DAY)
+          hotelfromdate: start_d.toDateString(),
+          hoteltodate: end_d.toDateString(),
+          days: Math.round(difference_ms/ONE_DAY),
+          start_date:payload.start_date,
+          end_date:payload.end_date,
         }
         dispatch(sethoteldates(setday));
         searchhotelsAPI(payload)
@@ -34,7 +36,7 @@ export function searchhotels_action(payload){
                 }
             );
     };
-    function sethoteldates(result){return { type :'HOTEL_DAYS',result }}
+    function sethoteldates(result){return { type :'HOTEL_DAYS',result}}
     function success(result) { return { type: 'HOTEL_SUCCESS', result } }
     function failure(error) { return { type: 'HOTEL_FAILURE', error } }
 }
@@ -45,7 +47,7 @@ export function currenthotel_action(payload)
     };
     function success(result) { return { type: 'CURRENT_HOTEL', result } }
 }
-export function setPrice(payload)
+export function setprice_action(payload)
 {
     return dispatch => {
         dispatch(sethotelprice(payload));
