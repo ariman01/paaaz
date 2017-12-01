@@ -40,7 +40,7 @@ exports.adminSignIn = function(data, callback){
        username:data.admininfo.username,
        password:data.admininfo.password
        };
-   Admin.adminSignIn( adminDetail , function(err , results){
+   adminSignIn( adminDetail , function(err , results){
        if(err){
            console.log("[Kafka] Error in siging in admin")
        }
@@ -52,26 +52,25 @@ function adminSignIn(admindetail, callback) {
    console.log("admin detail" + admindetail.username + admindetail.password);
    var checkAdmin = "select * from admin where username='" + admindetail.username + "'";
    mysql.fetchData(function (err, result) {
+       let res_result={}
+       res_result.status = 401;
        if (err) {
-           throw err;
+           //throw err;
+           res_result.message = "Internal SQL Error "+err;
+           callback(null,res_result);
        }else if (result.length>0) {
          console.log("sql result",result);
-         let res_result={}
-         res_result.status = 401;
          if(bcrypt.compareSync(admindetail.password, result[0].password)){
-           //const server_token = jwt.sign({uid:result[0].id},utils.server_secret_key);
-
-           //res_result.servertoken = server_token;
-           //res_result.userinfo = {firstname:result[0].firstname,
-                   //               username:result[0].email
-                   //             };
            res_result.message = "User logged in ... ";
            res_result.status = 201;
-           res_result.result={car_sales:100,flight_sales:10,hotel_sales:20,user_booking:30};
+           //res_result.result={car_sales:100,flight_sales:10,hotel_sales:20,user_booking:30};
            console.log("user signed in ");
          }else{
            res_result.message = "Wrong password !!!";
          }
+           callback(null,res_result);
+       }else{
+         res_result.message = "Wrong username !!!"
            callback(null,res_result);
        }
    }, checkAdmin);

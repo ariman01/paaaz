@@ -24,7 +24,8 @@ const topics = [
     "admin_analysis_flight_req",
     "admin_analysis_hotel_req",
     "car_search_req",
-    "hotel_search_req"
+    "hotel_search_req",
+    "flight_search_req"
 
 ];
 

@@ -4,6 +4,7 @@ import * as adminActions from './../actions/admin_action';
 import * as carActions from './../actions/car_action';
 import * as hotelActions from './../actions/hotel_action';
 import * as flightActions from './../actions/flight_action';
+import * as UTIL from './../utils/util';
 
 const server_url = "http://localhost:3010"
 const headers = {
@@ -23,11 +24,12 @@ export const adminLogin = function(admindetail){
          if(res.status === 201){
            return res.json();
          }else{
-           alert((res.message)?res.message:"Admin does not exist !!!");
+           alert((res.message)?res.message:"Admin username or password is wrong!!!");
          }
     }).then(result=>{
-        console.log("result",result," token :",result)
-        dispatch(adminActions.updateTotalSales(result.result));
+        console.log("result",result," token :",result.result.servertoken);
+        //dispatch(adminActions.updateTotalSales(result.result));
+        UTIL.saveServerToken(result.result.userinfo, result.result.servertoken, "admin");
         dispatch(getTotalSales());
         //history.push('/admindashboard');
  }).catch(err => {
