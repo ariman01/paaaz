@@ -82,7 +82,7 @@ export function bookcar_action(payload){
 export function addDamageProtection_action(payload)
 {
     return dispatch => {
-        dispatch(setcarprice({booking_amount:payload}));
+        dispatch(setcarprice(payload));
     };
     function setcarprice(result){return { type :'CAR_FINALAMOUNT',result }}
 }

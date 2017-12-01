@@ -5,28 +5,11 @@ import {bindActionCreators} from 'redux';
 import { useraction } from './../../actions/user_action';
 
 class RenderDetails extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange(event) {
-        const { name, value } = event.target;
-        this.setState({
-
-                [name]: value
-        });
-        const { email } = this.state;
-        console.log("its email in render_details"+email);
-        if (email) {
-            this.props.setUser_action(email);
-        }
-    }
+  constructor() {
+      super();
+  }
 
   render() {
-      const {email} = this.state;
     return (
               <div className = "render-details">
                       <div className= "render-details-top-div">
@@ -41,10 +24,8 @@ class RenderDetails extends Component {
                       <div className= "render-details-bottom-div">
                           <div className= "render-details-bottom-left-div">
                               <input type="text" placeholder="First Name*" style={{width : "350px" , height : "30px"}}/><br></br><br></br>
-                              <input type="text" placeholder="Email Address*" name="email" value={this.state.email} style={{width : "350px" , height : "30px"}} onChange={this.handleChange}/><br></br><br></br>
-                              {!email &&
-                              <div className="help-block">Email required</div>
-                              }
+                              <input type="text" placeholder="Email Address*" name="email" defaultValue="default data" required="true" style={{width : "350px" , height : "30px"}}
+                                     onChange={(eventdata)=>{this.props.setUser_action(eventdata.target.value)}}/><br></br><br></br>
                               <select style={{width : "350px" , height : "30px"}}>
                                   <option>Gender*</option>
                                   <option value="male">Male</option>
@@ -66,4 +47,3 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({setUser_action:useraction.setUser_action},dispatch);
 }
 export default connect(null,mapDispatchToProps)(RenderDetails);
-

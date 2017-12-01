@@ -11,11 +11,16 @@ class RentalCarDamageProtection extends Component {
         this.submitDamageProtection = this.submitDamageProtection.bind(this);
 
     }
-submitDamageProtection()
-{
-    const temp=this.props.car_finalamount.totalprice_car+this.props.car_finalamount.totaltax_days+(9*this.props.car_days.days);
-    this.props.addDamageProtection_action(temp);
-}
+    submitDamageProtection()
+    {
+        const temp=this.props.car_finalamount.totalprice_car+this.props.car_finalamount.totaltax_days+(9*this.props.car_days.days);
+        const payload={
+            booking_amount:temp,
+            totalprice_car:this.props.car_finalamount.totalprice_car,
+                totaltax_days:this.props.car_finalamount.totaltax_days
+        }
+        this.props.addDamageProtection_action(payload);
+    }
   render() {
     return (
               <div className = "rental-car-damage-protection">

@@ -18,19 +18,19 @@ class CarBillingSummary extends Component {
                         <strong><h4><b> Charges</b> </h4></strong>
                     <h5>{this.props.current_car.car_type}
                         ({this.props.car_days.days} day/days)</h5>
-                        {this.props.car_finalamount.totalprice_car}
+                        ${this.props.car_finalamount.totalprice_car}
                     <hr/>
                     </div>
 
                     <div>
                         <h5><b>Tax and Fees </b></h5>
-                        {this.props.car_finalamount.totaltax_days}
+                        ${this.props.car_finalamount.totaltax_days}
                     <hr/>
                     </div>
 
                     <div>
                     <h5>Total cost</h5>
-                        {this.props.car_finalamount.totalprice_car+this.props.car_finalamount.totaltax_days}
+                        ${this.props.car_finalamount.booking_amount}
                     <hr/>
                     </div>
                     <div>

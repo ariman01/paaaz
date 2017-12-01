@@ -44,9 +44,9 @@ exports.bookCar = function(data, callback){
         src_city:data.src_city,
         destination_city:data.destination_city,
         rental_agency:data.rental_agency};
-    console.log("its car_services details"+carbookingDetail.user_id);
+    console.log("[Kafka] car_services details"+carbookingDetail.user_id);
     Cars.bookNewCar( carbookingDetail , function(err , results){
-        console.log("its booknewcar in car_services");
+        console.log("[Kafka] booknewcar in car_services");
         if(err){
             console.log("[Kafka] Error booking new car")
         }

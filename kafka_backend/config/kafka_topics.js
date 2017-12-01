@@ -25,7 +25,22 @@ const topics = [
     "admin_analysis_hotel_req",
     "car_search_req",
     "hotel_search_req",
-    "flight_search_req"
+    "flight_search_req",
+    "admin_hotel_bill_req",
+    "car_book_req",
+    "flight_book_req",
+    "hotel_book_req",
+    "admin_car_bill_req",
+    "admin_flight_bill_req",
+    "admin_total_sales_req",
+    "getuser_details_req",
+    "edituser_details_req",
+    "deleteuser_req",
+    "addcard_details_req",
+    "editcard_details_req",
+    "getcard_details_req",
+    "getuser_history_req",
+
 
 ];
 

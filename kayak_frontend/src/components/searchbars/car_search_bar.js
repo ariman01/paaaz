@@ -3,6 +3,7 @@ import clickIcon from './../../images/clickIcon.png';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {searchcars_action} from './../../actions/car_action';
+import * as UTILValidation from './../../utils/validation';
 
 class CarSearchBar extends Component {
     constructor(props) {
@@ -31,8 +32,16 @@ class CarSearchBar extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { cardetails } = this.state;
-        const { dispatch } = this.props;
-        this.props.searchcars_action(cardetails);
+        console.log("Validating car inputs");
+        if(UTILValidation.emptyDate(cardetails.start_date) &&
+           UTILValidation.emptyDate(cardetails.end_date) &&
+           UTILValidation.emptyDate(cardetails.src_city)){
+
+             this.props.searchcars_action(cardetails);
+        }else{
+          alert("Required field are either missing or not valid !!!");
+        }
+
     }
   render() {
       const { cardetails } = this.state;
