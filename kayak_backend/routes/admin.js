@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var kafka = require('./../kafka/client');
+var utils = require('./../util/utils');
+var jwt = require('jsonwebtoken');
 
 router.post('/adminsignup', function(req, res, next) {
   var username = req.body.username;
@@ -33,13 +35,18 @@ router.post('/adminsignin', function(req, res, next) {
  kafka.make_request('admin_signin', admininfo, function(err , results){
    if(err){
      console.log("error in signing in as admin");
+     res.status(401).json({result : {}, message:"Failed to login in kafka error: "+err});
    }
    else{
      console.log("result: ",results);
      if(results.status == 201){
-       res.status(201).json({result : results.result, message:"Admin Signed in successfully"});
+       let userinfo ={};
+       userinfo.username = username;
+       userinfo.type = "admin";
+       const server_token = jwt.sign({uid:username},utils.server_secret_key);
+       res.status(201).json({result : {userinfo:userinfo,servertoken:server_token}, message:"Admin Signed in successfully"});
      }else{
-       res.status(401).json({result : results.result, message:"Failed to login in "});
+       res.status(401).json({result : results.result, message:results.message});
      }
    }
  });

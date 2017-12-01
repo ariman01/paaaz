@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import HotelTile from './searchbars/hotel_tiles';
 import HomePageHeader from './headers/homepage_header';
+import HotelSearchLeftNav from './searchbars/hotel_search_leftnav';
 import { connect } from 'react-redux';
 import './../images/home.css';
 import HomeHeader1 from './headers/homepage_header1';
@@ -22,9 +23,9 @@ constructor(){
 
               <div className = "hotel-details-body">
                 <div className ="hotel-details-body-left-nav">
-
+                  <HotelSearchLeftNav/>
                 </div>
-                 <div className ="car-details-body-centre">
+                 <div className ="hotel-details-body-centre">
                       {this.props.listofdisplayedhotels.length > 0 ?
                           this.props.listofdisplayedhotels.map((hotel) => {
                               return (<div><HotelTile data={hotel} style={{paddingTop: 10}}/></div>);
@@ -43,9 +44,9 @@ constructor(){
 
 }
 function mapStateToProps(state) {
-     console.log("hiii"+state.hoteldetails_reducer.hotels);
+     console.log("mapsto prop hotel",state.hoteldetails_reducer.displayedhotels);
     return {
-        listofdisplayedhotels: state.hoteldetails_reducer.listofdisplayedhotels,
+        listofdisplayedhotels: state.hoteldetails_reducer.displayedhotels
 
      };
 

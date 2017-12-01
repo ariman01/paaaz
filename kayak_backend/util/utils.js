@@ -1,8 +1,6 @@
 var jwt = require('jsonwebtoken');
 
-
 const server_secret_key = "aqswdefrgthyjukilop";
-
 
 function checkLoggedInUser(req,res,next){
     const tokenheader = req.body.servertoken || req.headers['servertoken'];
@@ -21,3 +19,4 @@ function checkLoggedInUser(req,res,next){
 }
 
 exports.checkLoggedInUser = checkLoggedInUser;
+exports.server_secret_key = server_secret_key;

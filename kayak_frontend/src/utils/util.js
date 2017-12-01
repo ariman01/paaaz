@@ -7,26 +7,49 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-export const saveServerToken = (data) => {
-    console.log("saveServerToken",data);
-    if(data.userinfo){
-        localStorage.setItem('currentUser',JSON.stringify(data.userinfo));
+export const saveServerToken = (userdata, servertoken, type) => {
+    console.log("saveServerToken",userdata);
+    if(type === "user"){
+        localStorage.setItem('currentUser',JSON.stringify(userdata));
+        localStorage.setItem('userServertoken',servertoken);
     }
-    if(data.servertoken){
-        localStorage.setItem('servertoken',data.servertoken);
+    if(type === "admin"){
+      localStorage.setItem('currentAdmin',JSON.stringify(userdata));
+      localStorage.setItem('adminServertoken',servertoken);
     }
 
 };
 
-export const deleteServerToken = (server_token) => {
+export const getAdminDetails=()=>{
+  return (localStorage.currentAdmin.username?localStorage.currentAdmin.username:null);
+}
+
+export const getUserDetails=()=>{
+  return (localStorage.currentUser.username?localStorage.currentUser.username:null);
+}
+
+export const deleteServerToken = (usertype) => {
+  if(usertype === "admin"){
+    localStorage.removeItem('currentAdmin');
+    localStorage.removeItem('adminServertoken');
+  }else if(usertype === "user"){
     localStorage.removeItem('currentUser');
     localStorage.removeItem('servertoken');
+  }
 };
 
-export const getHTTPHeader = function(){
+export const getUserHTTPHeader = function(){
     var header = {
         ...headers,
-        servertoken:localStorage.servertoken?localStorage.servertoken:null
+        servertoken:localStorage.userServertoken?localStorage.userServertoken:null
+    }
+    return header;
+};
+
+export const getAdminHTTPHeader = function(){
+    var header = {
+        ...headers,
+        servertoken:localStorage.adminServertoken?localStorage.adminServertoken:null
     }
     return header;
 };

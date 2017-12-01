@@ -6,7 +6,7 @@ function getConnection(){
     var connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
-        password : 'root',
+        password : 'asdf1234',
         database : 'kayak_database',
         port	 : 3306
     });
@@ -24,8 +24,9 @@ function fetchData(callback,sqlQuery){
             console.log("DB Results:"+rows);
             callback(err,rows);
         }
+        console.log("\nConnection closed..");
+        connection.end();
     });
-    console.log("\nConnection closed..");
-    //connection.end();
+
 }
 exports.fetchData=fetchData;

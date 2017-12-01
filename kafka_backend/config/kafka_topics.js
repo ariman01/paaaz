@@ -22,9 +22,16 @@ const topics = [
     "admin_total_sales_req",
     "admin_analysis_car_req",
     "admin_analysis_flight_req",
-    "admin_analysis_hotel_req"
+    "admin_analysis_hotel_req",
+    "car_search_req",
+    "hotel_search_req",
+    "flight_search_req"
 
-]
+];
+
+exports.CONNECTIONPOOL_IMP = false;
+exports.CONNECTIONPOOL_MONGO = false;
+exports.POOL_LIMIT = 20;
 
 
 exports.getTopicList = function (){

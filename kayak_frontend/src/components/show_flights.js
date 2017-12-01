@@ -2,8 +2,10 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import FlightTile from './searchbars/flight_tiles';
 import HomePageHeader from './headers/homepage_header';
+
 import HomeHeader1 from './headers/homepage_header1';
 
+import FlightSearchLeftNav from './searchbars/flight_search_leftnav';
 class ShowFlights extends Component {
     constructor(){
         console.log("its show in constructor");
@@ -19,7 +21,7 @@ class ShowFlights extends Component {
 
                 <div className = "car-details-body">
                     <div className ="car-details-body-left-nav">
-
+                      <FlightSearchLeftNav/>
                     </div>
                     <div className ="car-details-body-centre">
                         {this.props.flights.length > 0 ?
@@ -39,9 +41,9 @@ class ShowFlights extends Component {
     }
 }
 function mapStateToProps(state) {
-    console.log("hiii"+state.flightdetails_reducer.flights);
+    console.log("hiii"+state.flightdetails_reducer.displayflights);
     return {
-        flights: state.flightdetails_reducer.flights,
+        flights: state.flightdetails_reducer.displayflights,
     };
 
 }

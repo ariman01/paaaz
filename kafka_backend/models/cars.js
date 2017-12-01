@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var mysql = require('./mysql');
+var mcon = require('./MongoConnection');
+var kafka_config = require('./../config/kafka_topics')
 
 var carSchema = new Schema({
   model_no:{
@@ -73,7 +75,16 @@ function searchCars(src_city, destination_city, callback){
   if(destination_city)
     query.destination_city = destination_city;
   console.log("searchCar:",query);
-  Cars.find(query, callback);
+  //Cars.find(query, callback);
+  if(kafka_config.CONNECTIONPOOL_IMP){
+    mcon.getMongoConnection(function(con,index){
+      Cars.find(query, callback);
+        mcon.closeConnection(index);
+      });
+  }else{
+    Cars.find(query, callback);
+  }
+
 }
 
 function deleteCar(model_no, callback){

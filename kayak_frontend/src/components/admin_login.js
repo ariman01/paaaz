@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import AdminDashboardHeader from './headers/admin_dashboard_header';
+import AdminLoginHeader from './headers/admin_login_header';
 import './../images/user_profile.css';
 import {bindActionCreators} from 'redux';
 import {adminLogin} from "../api/adminAPI";
@@ -16,7 +16,7 @@ class AdminLogin extends Component {
     return (
             <div>
               <div className="user-profile-header">
-                <AdminDashboardHeader/>
+                <AdminLoginHeader/>
               </div>
 
               <div className="admin-login">
