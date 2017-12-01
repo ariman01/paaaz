@@ -64,7 +64,7 @@ export function filterCarbasedOnLeftNavBar(listofCars, config){
 export function getleftNavConfigForFlight(listofflights){
   var config = {duration:20,price:1000,carriers:{}};
   listofflights.map((flight)=>{
-    config.carriers[flight.carrier]=true;
+    config.carriers[flight.carrier_name]=true;
   });
   console.log("flight config: ",config);
   return config;
@@ -75,7 +75,7 @@ export function filterFlightbasedOnLeftNavBar(listofflights, config){
   var result_flight = [];
   listofflights.map((flight)=>{
     //console.log("config.carriers[flight.carrier]",config.carriers[flight.carrier],"flight.flight_duration <= config.duration",(flight.flight_duration <= config.duration));
-    if(config.carriers[flight.carrier] && flight.flight_duration <= config.duration && flight.price <= config.price){
+    if(config.carriers[flight.carrier_name] && flight.flight_duration <= config.duration && flight.price <= config.price){
       result_flight.push(flight)
     }
   });

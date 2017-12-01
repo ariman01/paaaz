@@ -12,8 +12,12 @@ class FlightTripProtection extends Component {
     }
     submitTripProtection()
     {
-        const temp=this.props.current_flight.price+100+(80.15);
-        this.props.addTripProtection_action(temp);
+      const temp=this.props.current_flight.price+60+80.15;
+      const payload={
+          booking_amount:temp,
+          flight_price:this.props.current_flight.price
+      }
+      this.props.addTripProtection_action(payload);
     }
 
   render() {

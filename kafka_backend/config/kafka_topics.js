@@ -40,6 +40,8 @@ const topics = [
     "editcard_details_req",
     "getcard_details_req",
     "getuser_history_req",
+    "signin_req",
+    "signup_req"
 
 
 ];

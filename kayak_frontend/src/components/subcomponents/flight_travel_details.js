@@ -8,25 +8,8 @@ class TravelDetails extends Component {
 
     constructor() {
         super();
-        this.state = {
-            email: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange(event) {
-        const { name, value } = event.target;
-        this.setState({
-
-            [name]: value
-        });
-        const { email } = this.state;
-        console.log("its email in render_details"+email);
-        if (email) {
-            this.props.setUser_action(email);
-        }
     }
   render() {
-      const {email} = this.state;
     return (
               <div className = "travel-details">
                   <br></br>
@@ -44,10 +27,7 @@ class TravelDetails extends Component {
                             <input type="text" placeholder="Postal Code*" id="second_name" style={{width:350 , height : 35}}/>
                             <br></br>
                             <br></br>
-                            <input type="text" placeholder="Email*" id="email" name="email" value={this.state.email} onChange={this.handleChange} style={{width:350 , height : 35}}/>
-                            {!email &&
-                            <div className="help-block">Email required</div>
-                            }
+                          <input type="text" placeholder="Email*" id="email" name="email" required="true" onChange={(eventdata)=>{this.props.setUser_action(eventdata.target.value)}} style={{width:350 , height : 35}}/>
                         </div>
                         <div className="travel2-div2">
                             <input type="text" placeholder="Middle Name*" id= "middle_name" style={{width:350 , height : 35}}/>
@@ -72,4 +52,3 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({setUser_action:useraction.setUser_action},dispatch);
 }
 export default connect(null,mapDispatchToProps)(TravelDetails);
-
