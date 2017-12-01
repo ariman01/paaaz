@@ -3,20 +3,21 @@ import HotelTile from './searchbars/hotel_tiles';
 import HomePageHeader from './headers/homepage_header';
 import { connect } from 'react-redux';
 import './../images/home.css';
+import HomeHeader1 from './headers/homepage_header1';
 
 
 class ShowHotels extends Component {
 constructor(){
   super();
- 
+
 }
-  
+
   render() {
     console.log("It will display list of hotels searched by the user");
     return (
               <div>
                 <div>
-                <HomePageHeader/>
+                <HomeHeader1/>
                 </div>
 
               <div className = "hotel-details-body">
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
      console.log("hiii"+state.hoteldetails_reducer.hotels);
     return {
         listofdisplayedhotels: state.hoteldetails_reducer.listofdisplayedhotels,
-        
+
      };
 
 }

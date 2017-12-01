@@ -358,3 +358,31 @@ function getTotalSalesUtil(callback){
 
   },carcount_query);
 }
+
+
+exports.adminDetails = function(data, callback){
+    var adminDetail = {
+        username:data.username,
+        };
+    Admin.adminDetails( adminDetail , function(err , results){
+        if(err){
+            console.log("[Kafka] Error getting admin details")
+            callback(err,null);
+        }else{
+          console.log("its result in admin_services"+results);
+          callback(null,results);
+        }
+    });
+}
+
+exports.updateAdminDetails = function(data, callback){
+    Admin.updateAdmin( data , function(err , results){
+        if(err){
+            console.log("[Kafka] Error upadating admin")
+            callback(err,null);
+        }else{
+          console.log("its result in user_services"+results);
+          callback(null,results);
+        }
+    });
+}

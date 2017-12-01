@@ -2,6 +2,8 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import FlightTile from './searchbars/flight_tiles';
 import HomePageHeader from './headers/homepage_header';
+import HomeHeader1 from './headers/homepage_header1';
+
 class ShowFlights extends Component {
     constructor(){
         console.log("its show in constructor");
@@ -12,7 +14,7 @@ class ShowFlights extends Component {
         return (
             <div>
                 <div>
-                    <HomePageHeader/>
+                    <HomeHeader1/>
                 </div>
 
                 <div className = "car-details-body">

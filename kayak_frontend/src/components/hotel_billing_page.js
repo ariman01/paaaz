@@ -6,6 +6,7 @@ import BillingInformation from './subcomponents/billing_information'
 import HotelBillingSummary from './subcomponents/hotel_billing_summary';
 import HotelTermsAndConditions from './subcomponents/hotel_tnc'
 import HotelDetails from './subcomponents/hotel_details'
+import HomeHeader1 from './headers/homepage_header1';
 
 import './../images/subcomponent.css';
 
@@ -17,7 +18,7 @@ class HotelBillingPage extends Component {
     return (
               <div className="flight-billing-page">
                   <div className="flight-billing-page-header">
-                  <HomePageHeader/>
+                  <HomeHeader1/>
                   </div>
 
                   <div className = "flight-billing-body">

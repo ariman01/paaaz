@@ -54,7 +54,9 @@ current_car_edit:{},
 listOfSearchedFlights :[],
 current_flight_edit:{},
 searchedUser :[],
-current_user_edit :{}
+current_user_edit :{},
+admin_details : [],
+edit_admin_details:{}
 
 }
 
@@ -147,6 +149,18 @@ export default function admin_reducer(state = initialData, action) {
         case 'EDIT_USER_INFO':
         return Object.assign({},state,{
           current_user_edit:action.userinfo
+        });
+
+        case 'SET_ADMIN_INFO':
+        console.log("SET ADMIN INFO:"+typeof(action.admininfo));
+        return Object.assign({},state,{
+          admin_details:action.admininfo
+        });
+
+        case 'SET_EDIT_ADMIN_INFO':
+        console.log("SET EDIT ADMIN INFO:"+typeof(action.admininfo));
+        return Object.assign({},state,{
+          edit_admin_details:action.admininfo
         });
 
         default:

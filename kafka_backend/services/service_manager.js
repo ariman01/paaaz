@@ -81,6 +81,12 @@ function handle_request(topic, data, callback){
     else if(topic === "delete_user_req"){
       userservices.deleteUserAdmin(data, callback);
     }
+    else if(topic === "admin_details_req"){
+      adminservices.adminDetails(data, callback);
+    }
+    else if(topic === "update_admin_req"){
+      adminservices.updateAdminDetails(data, callback);
+    }
 }
 
 exports.handle_request = handle_request;

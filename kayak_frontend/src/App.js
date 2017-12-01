@@ -44,6 +44,9 @@ import AddUserAdmin from './components/subcomponents/add_user_admin';
 import SearchUser from './components/subcomponents/search_user';
 import SearchedUser from './components/subcomponents/searched_user';
 import UpdateUserAdmin from './components/subcomponents/edit_user_form';
+import AdminProfile from './components/subcomponents/admin_profile';
+import EditAdminProfile from './components/subcomponents/edit_admin_profile';
+import HotelBillingPage from './components/hotel_billing_page';
 
 class App extends Component {
 
@@ -86,7 +89,9 @@ class App extends Component {
                             <Route  exact path="/searchuseradmin" render ={() => (<SearchUser/>)}/>
                             <Route  exact path="/searcheduseradmin" render ={() => (<SearchedUser/>)}/>
                             <Route  exact path="/edituserform" render ={() => (<UpdateUserAdmin/>)}/>
-
+                            <Route  exact path="/adminprofile" render ={() => (<AdminProfile/>)}/>
+                            <Route  exact path="/editadminprofile" render ={() => (<EditAdminProfile/>)}/>
+                            <Route  exact path="/hotelbillingpage" render ={() => (<HotelBillingPage/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>
