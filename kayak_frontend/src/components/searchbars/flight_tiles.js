@@ -20,7 +20,7 @@ class FlightTile extends Component {
 
           <div className="flight-tile1">
             <div className="flight-tile-div">
-            <img src={Images.getImages().delta_icon}/><br/>
+            <img src={Images.retrieveImages(this.props.data.carrier_name)}/><br/>
                 {this.props.data.carrier_name}
             </div>
             <div className="flight-tile-div">
