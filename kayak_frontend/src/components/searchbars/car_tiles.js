@@ -16,8 +16,8 @@ class CarTile extends Component {
         this.handleView = this.handleView.bind(this);
     }
   handleView(data){
-this.props.currentcar_action(data);
-history.push('./carbillingpage');
+    this.props.currentcar_action(data);
+    history.push('./carbillingpage');
 
   }
 

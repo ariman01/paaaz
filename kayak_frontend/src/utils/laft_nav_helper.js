@@ -86,7 +86,7 @@ export function filterFlightbasedOnLeftNavBar(listofflights, config){
 export function getleftNavConfigForHotel(listofhotels){
   var config = {price:1000,stars:{}};
   listofhotels.map((hotel)=>{
-    config.stars[hotel.stars]=true;
+    config.stars[hotel.hotel_stars]=true;
   });
   console.log("hotel config: ",config);
   return config;

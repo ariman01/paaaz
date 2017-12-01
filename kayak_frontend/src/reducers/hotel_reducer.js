@@ -1,111 +1,23 @@
 import * as left_nav_util from './../utils/laft_nav_helper';
 const initialState = {
- listofsearchedhotels:[{
-                name:"Sofitel Los Angeles at Bernandinho",
-                stars:4,
-                rating:8.5,
-                reviews:"Excellent",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:259
-              },{
-                name:"Sofitel Los Angeles at Bernandinho",
-                stars:4,
-                rating:8.5,
-                reviews:"Excellent",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:259
-              }],
-    hotels:[{
-                   name:"Sofitel Los Angeles at Bernandinho",
-                   stars:2,
-                   rating:8.5,
-                   reviews:"Excellent",
-                   city : "San Jose",
-                   state : "California",
-                   zip : 95126,
-                   capacity : 10,
-                   address:"Beverly Grove",
-                   price:250
-                 },{
-                   name:"Sofitel Los Angeles at Bernandinho",
-                   stars:4,
-                   rating:8.5,
-                   reviews:"Excellent",
-                   city : "San Jose",
-                   state : "California",
-                   zip : 95126,
-                   capacity : 10,
-                   address:"Beverly Grove",
-                   price:600
-                 },
-                 {
-                   name:"Sofitel Los Angeles at Bernandinho",
-                   stars:3,
-                   rating:8.5,
-                   reviews:"Excellent",
-                   city : "San Jose",
-                   state : "California",
-                   zip : 95126,
-                   capacity : 10,
-                   address:"Beverly Grove",
-                   price:300
-                 }],
- displayedhotels:[{
-                name:"Sofitel Los Angeles at Bernandinho",
-                stars:2,
-                rating:8.5,
-                reviews:"Excellent",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:250
-              },{
-                name:"Sofitel Los Angeles at Bernandinho",
-                stars:4,
-                rating:8.5,
-                reviews:"Excellent",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:600
-              },
-              {
-                name:"Sofitel Los Angeles at Bernandinho",
-                stars:3,
-                rating:8.5,
-                reviews:"Excellent",
-                city : "San Jose",
-                state : "California",
-                zip : 95126,
-                capacity : 10,
-                address:"Beverly Grove",
-                price:300
-              }],
+ hotels:[],
+ displayedhotels:[],
  current_hotel:[],
  hotel_days:[],
  hotel_finalamount:[],
  latest_admin_search_parameter:null,
- leftHotelNavConfig:{price:1000,stars:{2:true,3:true,4:true}}
+ leftHotelNavConfig:{price:1000,stars:{}}
 }
 export default function hoteldetails_reducer(state = initialState, action) {
     switch (action.type) {
 
         case 'HOTEL_SUCCESS':
+            let config = left_nav_util.getleftNavConfigForHotel(action.result);
             return {
                 ...state,
-                hotels: action.result
+                hotels: action.result,
+                displayedhotels:action.result,
+                leftHotelNavConfig:config
             };
         case 'HOTEL_FAILURE':
             return {
