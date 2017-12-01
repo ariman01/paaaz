@@ -265,6 +265,51 @@ router.post('/adminflightbilling', function(req, res, next) {
       }
 });
 
+router.post('/getadminprofile',function(req, res, next){
+    var admininfo = {};
+    admininfo.username = req.body.username;
+
+    kafka.make_request('admin_details', admininfo , function(err,result){
+        if(!err){
+            console.log('result*****',result);
+            //console.log("user signed up ",result);
+            if(result.code === 201){
+              res.status(201).json({result:result});
+            }
+        }else{
+            res.status(401).json({result:[]});
+        }
+    });
+});
+
+router.post('/updateadmindetails',function(req, res, next){
+    var admininfo = {};
+    admininfo.username = req.body.username;
+    admininfo.password = req.body.password;
+    admininfo.first_name = req.body.first_name;
+    admininfo.last_name = req.body.last_name;
+    admininfo.address = req.body.address;
+    admininfo.city = req.body.city;
+    admininfo.zip = req.body.zip;
+    admininfo.state = req.body.state;
+    admininfo.phone = req.body.phone;
+
+    console.log("admininfo: " , admininfo);
+
+    kafka.make_request('update_admin', admininfo , function(err,result){
+        if(!err){
+            console.log('result*****',result);
+            //console.log("user signed up ",result);
+            if(result.code === 201){
+              res.status(201).json(result);
+            }
+        }else{
+            res.status(401).json({});
+        }
+    });
+});
+
+
 
 
 module.exports = router;

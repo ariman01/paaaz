@@ -3,6 +3,8 @@ import CarTile from './searchbars/car_tiles';
 import HomePageHeader from './headers/homepage_header';
 import CarSearchLeftNav from './searchbars/car_search_leftnav';
 import { connect } from 'react-redux';
+import HomeHeader1 from './headers/homepage_header1';
+
 class ShowCars extends Component {
 
 constructor(){
@@ -13,7 +15,7 @@ constructor(){
     return (
               <div>
               <div>
-              <HomePageHeader/>
+              <HomeHeader1/>
               </div>
 
               <div className = "car-details-body">

@@ -127,3 +127,19 @@ export const editUserAdmin = (userinfo) =>{
       userinfo:userinfo
     }
 }
+
+export const setAdminDetails = (admininfo) =>{
+    console.log("Action SET_ADMIN_INFO");
+    return {
+      type:"SET_ADMIN_INFO",
+      admininfo:admininfo
+    }
+}
+
+export const editAdmin = (admininfo) =>{
+    console.log("Action SET_EDIT_ADMIN_INFO");
+    return {
+      type:"SET_EDIT_ADMIN_INFO",
+      admininfo:admininfo
+    }
+}

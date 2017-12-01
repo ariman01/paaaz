@@ -4,6 +4,7 @@ import HomePageHeader from './headers/homepage_header';
 import HotelSearchLeftNav from './searchbars/hotel_search_leftnav';
 import { connect } from 'react-redux';
 import './../images/home.css';
+import HomeHeader1 from './headers/homepage_header1';
 
 
 class ShowHotels extends Component {
@@ -17,7 +18,7 @@ constructor(){
     return (
               <div>
                 <div>
-                <HomePageHeader/>
+                <HomeHeader1/>
                 </div>
 
               <div className = "hotel-details-body">

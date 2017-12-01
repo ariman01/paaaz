@@ -6,8 +6,14 @@ import NavItem from 'react-bootstrap/lib/NavItem'
 import NavDropdown from 'react-bootstrap/lib/NavDropdown'
 import MenuItem  from 'react-bootstrap/lib/NavItem'
 import {history} from "./../../utils/util.js";
+import {getAdminProfile} from './../../api/adminAPI';
 import { connect } from 'react-redux';
+
+import {bindActionCreators} from 'redux';
+
+
 import * as UTIL from './../../utils/util';
+
 class AdminDashboardHeader extends Component {
 
         handle_car_search=()=>{
@@ -52,10 +58,12 @@ class AdminDashboardHeader extends Component {
           history.push('/admindashboard');
         }
 
+
         handle_admin_logout(){
           UTIL.deleteServerToken("admin");
           history.push("/adminlogin");
         }
+
 
     render() {
 
@@ -96,6 +104,10 @@ class AdminDashboardHeader extends Component {
                   </Nav>
                   <Nav pullRight>
                     <NavDropdown eventKey={4} title="My Admin">
+
+                      <MenuItem eventKey={4.1} onClick={()=>{this.props.getAdminProfile({username : "root"})}}>Profile</MenuItem>
+                      <MenuItem eventKey={4.2}>Logout</MenuItem>
+
                       <MenuItem eventKey={4.1}>Profile</MenuItem>
                       <MenuItem eventKey={4.2} onClick={this.handle_admin_logout}>Logout</MenuItem>
                     </NavDropdown>
@@ -107,7 +119,9 @@ class AdminDashboardHeader extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getAdminProfile:getAdminProfile},dispatch);
+}
 
 
-
-export default AdminDashboardHeader;
+export default connect(null,mapDispatchToProps)(AdminDashboardHeader);

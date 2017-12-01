@@ -634,3 +634,54 @@ export const handleUserDelete = function(userdetail){
        });
    };
 };
+
+export const getAdminProfile = function(data){
+ console.log("get admin details request data: ",data)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/getadminprofile`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+     }).then(res => {
+         if(res.status === 201){
+           return res.json();
+         }else{
+           alert((res.message)?res.message:"admin does not exist !!!");
+         }
+    }).then(result=>{
+        console.log("result",result.result.result);
+        dispatch(adminActions.setAdminDetails(result.result.result));
+        history.push('/adminprofile');
+}).catch(err => {
+         console.log("Error in finding user!!!");
+         return err;
+       });
+   };
+};
+
+
+
+export const handleAdminUpdate = function(admindetail){
+ console.log("update user details:",admindetail)
+ return (dispatch) => {
+   fetch(`${server_url}/admin/updateadmindetails`, {
+       method: 'POST',
+       credentials:'include',
+       mode: 'cors',
+       headers: { ...headers,'Content-Type': 'application/json' },
+       body: JSON.stringify(admindetail)
+     }).then(res => {
+         if(res.status === 201){
+           alert(" updated admin with id:"+admindetail.username+" successfully !!!");
+           history.push('/admindashboard');
+         }else{
+           alert((res.message)?res.message:"Failed to update admin !!!");
+         }
+    }).catch(err => {
+         console.log("Error while updating admin!!!");
+         return err;
+       });
+   };
+};

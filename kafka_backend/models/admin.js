@@ -76,5 +76,48 @@ function adminSignIn(admindetail, callback) {
    }, checkAdmin);
 }
 
+
+function adminDetails (admininfo,callback){
+  var findAdmin = "select * from admin where username='" + admininfo.username + "'";
+  mysql.fetchData(function(err,result){
+    if(err){
+      throw err;
+    }
+    else if(result.length == 0){
+      console.log("admin doesn't exist");
+      var response= {code:401,message:'User doesnt exists'};
+      callback(null,response);
+    }
+    else if(result.length > 0){
+      var response= {code:201,result:result};
+      callback(null,response);
+    }
+  },findAdmin);
+}
+
+function updateAdmin (admindetail,callback){
+  var updateAdmin = "UPDATE admin SET first_name = '"+admindetail.first_name+"',"+
+                        "last_name = '"+admindetail.last_name+"',"+
+                        "address = '"+admindetail.address+"',"+
+                        "city = '"+admindetail.city+"',"+
+                        "state = '"+admindetail.state+"',"+
+                        "zip = '"+admindetail.zip+"',"+
+                        "phone = '"+admindetail.phone+"'"+
+                        "where username='"+admindetail.username+"'";
+
+  mysql.fetchData(function(err,result){
+    if(err){
+      throw err;
+    }
+    else{
+      var response= {code:201,result:result};
+      callback(null,response);
+    }
+  },updateAdmin);
+
+}
+
 module.exports.addNewAdmin = addNewAdmin;
 module.exports.adminSignIn = adminSignIn;
+module.exports.adminDetails = adminDetails;
+module.exports.updateAdmin = updateAdmin;
