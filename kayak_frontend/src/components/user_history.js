@@ -1,35 +1,30 @@
 import React,{ Component } from 'react';
-import HomePageHeader from './headers/homepage_header';
+import HomePageHeader1 from './headers/homepage_header1';
 import './../images/user_profile.css';
 import UserHistoryTile from './searchbars/userhistory_tiles';
+import { connect } from 'react-redux';
+import {history} from "../utils/util";
+import {bindActionCreators} from 'redux';
+import * as UTIL from '../utils/util';
+import {userapi} from './../api/userAPI';
 
 
 class UserHistory extends Component {
 
   constructor(){
   super();
- this.userhistory = [{
-                user_id:12345,
-                booking_id:1234,
-                property_name: "Sofitel Los Angeles",
-                booking_date : "13/12/2017",
-                booking_amount: 200
-              },{
-                user_id:12345,
-                booking_id:1768,
-                property_name: "LeMeridien San Jose",
-                booking_date : "13/16/2017",
-                booking_amount: 250
-              },{
-                user_id:12345,
-                booking_id:5234,
-                property_name: "Stevens Creek Chicago",
-                booking_date : "13/14/2017",
-                booking_amount: 100
-              }]
 }
+getCardDetails()
+{
+  console.log("its getCardDetails in user_profile");
+  var email= UTIL.getUserDetails();
+  if(email){
+    this.props.getcarddetailsAPI({email:email});
+  }else{
+    alert("User not logged in !!!");
 
-
+  }
+}
    getUserHistoryTile(userhistory){
     console.log("UserHistory: ", userhistory);
     return userhistory.map((userhistory)=>{
@@ -42,22 +37,22 @@ class UserHistory extends Component {
     return (
             <div>
               <div className="user-profile-header">
-                <HomePageHeader/>
+                <HomePageHeader1/>
               </div>
 
               <div className= "user-profile-body">
                   <div className= "user-profile-body-nav-options">
                     <br></br>
-                    <a href="">Preference</a>
+                    <a onClick ={() => {history.push('/userdetails')}}>Preference</a>
                     <br></br>
                     <br></br>
-                    <a href="">Payment Details</a>
+                    <a onClick ={() => {this.getCardDetails()}}>Payment Details</a>
                   </div>
                     <p style={{fontSize : "20pt"}}>User History</p>
                     <br></br>
                     <br></br>
-                   
-                       {this.getUserHistoryTile(this.userhistory)}
+
+                       {this.getUserHistoryTile(this.props.userhistory)}
 
               </div>
 
@@ -67,7 +62,13 @@ class UserHistory extends Component {
            );
   }
 }
-
-
-
-export default UserHistory;
+function mapStateToProps(state) {
+    console.log("state.users.userhistory",state.users.userhistory);
+    return{
+        userhistory:state.users.userhistory
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistory:userapi.getuserhistoryAPI},dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(UserHistory);

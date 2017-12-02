@@ -4,6 +4,7 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var LocalStrategy = require('passport-local').Strategy;
 var kafka = require('./../kafka/client');
+var utils = require('./../util/utils');
 
 
 var router = express.Router();
@@ -16,17 +17,17 @@ passport.use('login',new LocalStrategy(
             servertoken:'',
             status:401
         };
-        kafka.make_request('signin',{"username":username}, function(err,result){
+        kafka.make_request('signin',{"email":username}, function(err,result){
             if(err){
                 throw err;
             }else{
-                //console.log("login result:",result );
-                if(result){
-                    if(bcrypt.compareSync(password, result.password)){
-                        const server_token = jwt.sign({uid:result.email},utils.server_secret_key);
+                console.log("user login result:",result);
+                if(result.result){
+                    if(bcrypt.compareSync(password, result.result.password)){
+                      console.log("user login compareSync:",result);
+                        const server_token = jwt.sign({uid:result.result.email},utils.server_secret_key);
                         res_result.servertoken = server_token;
-                        res_result.userinfo = {firstname:result.firstname,
-                            username:result.email
+                        res_result.userinfo = {firstname:result.result.first_name,username:result.result.email
                         };
                         res_result.message = "User logged in ... ";
                         res_result.status = 201;
@@ -44,6 +45,7 @@ passport.use('login',new LocalStrategy(
 
 
 router.post('/login', function(req, res, next) {
+  console.log("in login request");
     passport.authenticate('login', function(err, result) {
         if(!err && result.status == 201) {
             return res.status(201).json(result);
@@ -62,7 +64,7 @@ router.post('/signup',function(req, res, next){
         servertoken:''
     };
     let userinfo = {};
-    userinfo.userName = req.body.username;
+    userinfo.username = req.body.username;
     userinfo.password = req.body.password;
 
     kafka.make_request('signup',{"userinfo":userinfo}, function(err,result){
@@ -159,6 +161,114 @@ router.post('/deleteuser',function(req, res, next){
             }
         }else{
             res.status(401).json({});
+        }
+    });
+});
+router.post('/getuserdetails',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getuser_details',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching user details");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/getcarddetails',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getcard_details',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching card details");
+        }
+        else{
+            console.log("its result in card routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/getuserhistory',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getuser_history',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching user history");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/edituserdetails',function(req, res, next){
+    let userinfo = {};
+    userinfo.email = req.body.email;
+    userinfo.first_name = req.body.first_name;
+    userinfo.last_name = req.body.last_name;
+    userinfo.address = req.body.address;
+    userinfo.city = req.body.city;
+    userinfo.state = req.body.state;
+    userinfo.zip = req.body.zip;
+    userinfo.phone=req.body.phone;
+    kafka.make_request('edituser_details',{"userinfo" : userinfo }, function(err,result){
+        if(err){
+            console.log("error in editing user details");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/addcarddetails',function(req, res, next){
+    let cardinfo = {};
+    cardinfo.email = req.body.email;
+    cardinfo.name_on_card = req.body.name_on_card;
+    cardinfo.card_number = req.body.card_number;
+    cardinfo.card_type = req.body.card_type;
+    cardinfo.address=req.body.address;
+    cardinfo.city = req.body.city;
+    cardinfo.state = req.body.state;
+    cardinfo.zip = req.body.zip;
+    kafka.make_request('addcard_details',{"cardinfo" : cardinfo }, function(err,result){
+        if(err){
+            console.log("error in adding card details");
+        }
+        else{
+            console.log("its result in card routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/editcarddetails',function(req, res, next){
+    let cardinfo = {};
+    cardinfo.email = req.body.email;
+    cardinfo.name_on_card = req.body.name_on_card;
+    cardinfo.card_number = req.body.card_number;
+    cardinfo.card_type = req.body.card_type;
+    cardinfo.address=req.body.address;
+    cardinfo.city = req.body.city;
+    cardinfo.state = req.body.state;
+    cardinfo.zip = req.body.zip;
+    kafka.make_request('editcard_details',{"cardinfo" : cardinfo }, function(err,result){
+        if(err){
+            console.log("error in editing card details");
+        }
+        else{
+            console.log("its result in card routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/deleteuseraccount',function(req, res, next){
+    var email = (req.body.user_id).toLowerCase();
+    kafka.make_request('deleteuser',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in deleting user");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
         }
     });
 });

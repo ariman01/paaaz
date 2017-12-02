@@ -86,6 +86,23 @@ function handle_request(topic, data, callback){
     }
     else if(topic === "update_admin_req"){
       adminservices.updateAdminDetails(data, callback);
+    }else if(topic === "signin_req"){
+      userservices.searchUserAdmin(data, callback);
+    }
+    else if(topic === "getuser_details_req"){
+        userservices.getuserdetails(data, callback);
+    }else if(topic === "edituser_details_req"){
+        userservices.edituserdetails(data, callback);
+    }else if(topic === "editcard_details_req"){
+        userservices.editcarddetails(data, callback);
+    }else if(topic === "addcard_details_req"){
+        userservices.addcarddetails(data, callback);
+    }else if(topic === "deleteuser_req"){
+        userservices.deleteuser(data, callback);
+    }else if(topic === "getcard_details_req"){
+        userservices.getcarddetails(data, callback);
+    }else if(topic === "getuser_history_req"){
+        userservices.getuserhistory(data, callback);
     }
 }
 

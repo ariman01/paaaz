@@ -4,18 +4,10 @@ import './../../images/user_profile.css';
 
 
 class PaymentDetailsTile extends Component {
-
-
-
   render() {
     console.log("It will display user profile");
     return (
             <div>
-             
-
-             
-                 
-                
                     <table style = {{padding : 30}}>
                         <tbody>
                           <tr>
@@ -25,7 +17,7 @@ class PaymentDetailsTile extends Component {
                           <hr></hr>
                            <tr>
                             <td><strong>Card Number</strong></td>
-                            <td>{this.props.data.last_digits}</td>
+                            <td>{this.props.data.card_number}</td>
                           </tr>
                           <hr></hr>
                           <tr>
@@ -40,13 +32,13 @@ class PaymentDetailsTile extends Component {
                           <br></br>
                           <br></br>
                           <hr></hr>
-                          
+
 
                         </tbody>
                       </table>
 
-                 
-            
+
+
 
 
             </div>

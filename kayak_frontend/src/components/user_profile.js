@@ -1,30 +1,57 @@
 import React,{ Component } from 'react';
-import HomePageHeader from './headers/homepage_header';
+import HomePageHeader1 from './headers/homepage_header1';
 import './../images/user_profile.css';
-
-
+import {history} from "../utils/util";
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {userapi} from './../api/userAPI';
+import * as UTIL from '../utils/util';
 class UserProfile extends Component {
+  getCardDetails()
+  {
+    console.log("its getCardDetails in user_profile");
+    var email= UTIL.getUserDetails();
+    if(email){
+      this.props.getcarddetailsAPI({email:email});
+    }else{
+      alert("User not logged in !!!");
 
+    }
+  }
+  getHistory()
+  {
+    console.log("its getCardDetails in user_profile");
+    var email= UTIL.getUserDetails();
+    if(email){
+      this.props.getuserhistoryAPI({email:email});
+    }else{
+      alert("User not logged in !!!");
+
+    }
+  }
 handleEdit(){
-    console.log("Clicked Edit User profile");
+    history.push('./edituserdetails');
   }
 
 
   render() {
     console.log("It will display user profile");
+
     return (
+
             <div>
+
               <div className="user-profile-header">
-                <HomePageHeader/>
+                <HomePageHeader1/>
               </div>
 
               <div className= "user-profile-body">
                   <div className= "user-profile-body-nav-options">
                     <br></br>
-                    <a href="">Payment Details</a>
+                    <a onClick ={() => {this.getCardDetails()}}>Payment Details</a>
                     <br></br>
                     <br></br>
-                    <a href="">History</a>
+                    <a onClick ={() => {this.getHistory()}}>History</a>
                   </div>
 
                   <div className= "user-profile-body-details">
@@ -33,35 +60,31 @@ handleEdit(){
                         <tbody>
                           <tr>
                             <td><strong>First Name</strong></td>
-                            <td>{this.props.data[0].first_name}</td>
+                            <td>{this.props.userdetails.first_name}</td>
                           </tr>
                           <tr>
-                            <td><strong>Second Name</strong></td>
-                            <td>{this.props.data[0].second_name}</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Gender</strong></td>
-                            <td>{this.props.data[0].gender}</td>
+                            <td><strong>Last Name</strong></td>
+                            <td>{this.props.userdetails.last_name}</td>
                           </tr>
                           <tr>
                             <td><strong>Email</strong></td>
-                            <td><a href="">{this.props.data[0].email}</a></td>
+                            <td>{this.props.userdetails.email}</td>
                           </tr>
                           <tr>
                             <td><strong>Address</strong></td>
-                            <td>{this.props.data[0].address}</td>
+                            <td>{this.props.userdetails.address}</td>
                           </tr>
                           <tr>
                             <td><strong>City</strong></td>
-                            <td>{this.props.data[0].city}</td>
+                            <td>{this.props.userdetails.city}</td>
                           </tr>
                           <tr>
                             <td><strong>State</strong></td>
-                            <td>{this.props.data[0].state}</td>
+                            <td>{this.props.userdetails.state}</td>
                           </tr>
                           <tr>
                             <td><strong>Zip</strong></td>
-                            <td>{this.props.data[0].zip}</td>
+                            <td>{this.props.userdetails.zip}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -74,10 +97,18 @@ handleEdit(){
 
 
             </div>
-           );
+          );
   }
 }
 
 
-
-export default UserProfile;
+function mapStateToProps(state) {
+    console.log("state.users.userdetails",state.users.userdetails);
+   return{
+       userdetails:state.users.userdetails
+   }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistoryAPI:userapi.getuserhistoryAPI},dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(UserProfile);

@@ -26,6 +26,7 @@ import AddHotelAdmin from './components/subcomponents/add_hotel_admin';
 import AddFlightAdmin from './components/subcomponents/add_flight_admin';
 import UserProfile from './components/user_profile';
 import SignUp from './components/sign_up';
+import SignIn from './components/sign_in';
 import AdminLogin from './components/admin_login'
 import HotelGraphs from './components/subcomponents/hotel_graphs';
 import FlightGraphs from './components/subcomponents/flight_graphs';
@@ -47,7 +48,12 @@ import UpdateUserAdmin from './components/subcomponents/edit_user_form';
 import AdminProfile from './components/subcomponents/admin_profile';
 import EditAdminProfile from './components/subcomponents/edit_admin_profile';
 import HotelBillingPage from './components/hotel_billing_page';
-
+import AfterBookingFlights from './components/afterbookingflights';
+import AfterBookingCars from './components/afterbookingcars';
+import AfterBookingHotels from './components/afterbookinghotels';
+import PaymentDetails from './components/payment_details';
+import UserHistory from './components/user_history';
+import EditUserDetails from './components/searchbars/editpreference_form';
 class App extends Component {
 
 
@@ -92,6 +98,15 @@ class App extends Component {
                             <Route  exact path="/adminprofile" render ={() => (<AdminProfile/>)}/>
                             <Route  exact path="/editadminprofile" render ={() => (<EditAdminProfile/>)}/>
                             <Route  exact path="/hotelbillingpage" render ={() => (<HotelBillingPage/>)}/>
+                            <Route  exact path="/signup" render ={() => (<SignUp/>)}/>
+                            <Route  exact path="/signin" render ={() => (<SignIn/>)}/>
+                            <Route  exact path="/afterbookingflights" render ={() => (<AfterBookingFlights/>)}/>
+                            <Route  exact path="/afterbookingcars" render ={() => (<AfterBookingCars/>)}/>
+                            <Route  exact path="/afterbookinghotels" render ={() => (<AfterBookingHotels/>)}/>
+                            <Route  exact path="/paymentdetails" render ={() => (<PaymentDetails/>)}/>
+                            <Route  exact path="/userdetails" render ={() => (<UserProfile/>)}/>
+                            <Route  exact path="/edituserdetails" render ={() => (<EditUserDetails/>)}/>
+                            <Route  exact path="/userhistory" render ={() => (<UserHistory/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

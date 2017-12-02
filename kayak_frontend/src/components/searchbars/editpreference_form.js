@@ -1,64 +1,86 @@
 import React,{ Component } from 'react';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
 import './../../images/admin.css';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { useraction } from './../../actions/user_action';
+import {edituserdetailsAPI} from './../../api/userAPI';
+import HomePageHeader1 from './../headers/homepage_header1';
 
 class EditPreferenceForm extends Component {
-
- handleSubmit(){
-    console.log("Clicked Edit Hotel");
+  constructor() {
+      super();
+      this.user_edit_data = {};
+  }
+  componentDidMount()
+  {
+      console.log("its did"+this.user_edit_data.first_name);
   }
   render() {
+    this.user_edit_data = this.props.userdetails;
     return (
+
             <div className = "add-hotel-admin">
 
-                <div className="admin-dashboard-header">
-                  <AdminDashboardHeader/>
+                <div>
+                    <HomePageHeader1/>
                 </div>
 
                 <div className = "add-hotel-admin-body">
                   <h2>Edit Preference</h2>
                   <hr/>
-                  
+
 
                   <label>First name</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_name"  placeholder={this.props.data[0].first_name} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.first_name} size="35"
+                         onChange={(first_name) => {this.user_edit_data.first_name = first_name.target.value}}/>
                   <br></br>
-                  <label>First name</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_address"  placeholder={this.props.data[0].second_name} size="35"/>
-                  <br></br>
-                  <label>Gender</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_city"  placeholder={this.props.data[0].gender} size="35"/>
+                  <label>Last name</label>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.last_name} size="35"
+                         onChange={(last_name) => {this.user_edit_data.last_name = last_name.target.value}}/>
                   <br></br>
                   <label>Email</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_state"  placeholder={this.props.data[0].email} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.email} size="35"
+                         onChange={(email) => {this.user_edit_data.email = email.target.value}}/>
                   <br></br>
                   <label>Address</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_zip"  placeholder={this.props.data[0].address} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.address} size="35"
+                         onChange={(address) => {this.user_edit_data.address = address.target.value}}/>
                   <br></br>
                   <label>City</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_stars"  placeholder={this.props.data[0].city} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.city} size="35"
+                         onChange={(city) => {this.user_edit_data.city = city.target.value}}/>
                   <br></br>
-                 
+
                   <label>State</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_rating"  placeholder={this.props.data[0].state} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.state} size="35"
+                         onChange={(state) => {this.user_edit_data.state = state.target.value}}/>
 
                   <br></br>
                   <label>Zip</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_capacity"  placeholder={this.props.data[0].zip} size="35"/>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.zip} size="35"
+                         onChange={(zip) => {this.user_edit_data.zip = zip.target.value}}/>
 
                   <br></br>
 
-                  <button onClick ={() => this.handleSubmit()} type="submit" className="btn btn-primary" style={{width:150}}>Submit</button>
+                  <button onClick ={() => this.props.edituserdetailsAPI(this.user_edit_data)} type="submit" className="btn btn-primary" style={{width:150}}>Submit</button>
 
                 </div>
-
 
 
             </div>
            );
   }
 }
+function mapStateToProps(state) {
+    console.log("edit preference pageuserdetails",state.users.userdetails);
+    return  {
+        userdetails: state.users.userdetails
+    }
+}
 
-
-
-export default EditPreferenceForm;
+function mapDispatchToProps(dispatch) {
+    console.log("its before action in editpref"+this.user_edit_data);
+    return bindActionCreators({edituserdetailsAPI:edituserdetailsAPI},dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(EditPreferenceForm);

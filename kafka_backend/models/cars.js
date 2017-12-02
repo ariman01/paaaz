@@ -54,7 +54,7 @@ function addNewCar(cardetail, callback){
 }
 function bookNewCar(carbookdetail, callback){
     console.log("its in book new car"+carbookdetail.user_id);
-    var bookCar = "INSERT INTO car_transaction(user_id,src_city,destination_city,agency_name,car_name,booking_date,booking_amount,start_date,end_date) VALUES ('" + carbookdetail.user_id + "','" + carbookdetail.src_city + "','" + carbookdetail.destination_city + "','" + carbookdetail.rental_agency + "','" + carbookdetail.car_name + "','" + carbookdetail.booking_date + "','" + carbookdetail.booking_amount + "','" + carbookdetail.start_date + "','" + carbookdetail.end_date + "')";
+    var bookCar = "INSERT INTO car_transaction(user_id,src_city,destination_city,agency_name,car_name,booking_date,booking_amount,start_date,end_date) VALUES ('" + carbookdetail.user_id + "','" + carbookdetail.src_city + "','" + carbookdetail.destination_city + "','" + carbookdetail.rental_agency + "','" + carbookdetail.name + "','" + carbookdetail.booking_date + "','" + carbookdetail.booking_amount + "','" + carbookdetail.start_date + "','" + carbookdetail.end_date + "')";
     mysql.fetchData(function (err, result) {
         if (err) {
             throw err;
