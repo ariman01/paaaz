@@ -7,36 +7,16 @@ import {searchflights_action} from './../../actions/flight_action';
 class FlightSearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            flightdetails: {
-                src_city: '',
-                destination_city: '',
-                start_date: '',
-                end_date: ''
-            }
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleChange(event) {
-        const { name, value } = event.target;
-        const { flightdetails } = this.state;
-        this.setState({
-            flightdetails: {
-                ...flightdetails,
-                [name]: value
-            }
-        });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        const { flightdetails } = this.state;
-        const { dispatch } = this.props;
-        this.props.searchflights_action(flightdetails);
+        this.flightdetails= {}
+    };
+
+
+    handleSubmit() {
+        console.log("Flight serach bar handleSubmit flightdetails:",this.flightdetails);
+        this.props.searchflights_action(this.flightdetails);
     }
 
   render() {
-      const { flightdetails } = this.state;
     console.log("Search CarSearch Bar Page");
     return (
               <div className="container-fluid" style = {{height:250}}>
@@ -50,24 +30,29 @@ class FlightSearchBar extends Component {
                   </div>
                       <div className="form-group" style={{marginTop:"6%"}}>
                           <input type="text"  className="TextField col-sm-2 col-md-2 col-lg-2" id="srclocation"
-                          placeholder="From where?" name="src_city" value={flightdetails.src_city} style={{marginLeft:2,height:70,fontSize:17}} onChange={this.handleChange}/>
+                          placeholder="From where?" name="src_city" style={{marginLeft:2,height:70,fontSize:17}}
+                           onChange={(eventvalue)=>{this.flightdetails.src_city = eventvalue.target.value}}/>
                           <input type="text"  className="TextField col-sm-2 col-md-2 col-lg-2" id="deslocation"
-                          placeholder="To where?" name="destination_city" value={flightdetails.destination_city} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
+                          placeholder="To where?" name="destination_city"  style={{marginLeft:2,height:70, fontSize:17}}
+                           onChange={(eventvalue)=>{this.flightdetails.destination_city = eventvalue.target.value}}/>
                           <input type="date"  className="TextField col-sm-2 col-md-2 col-lg-2" id="depart"
-                          placeholder="Depart" name="start_date" value={flightdetails.start_date} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
+                          placeholder="Depart" name="start_date"  style={{marginLeft:2,height:70, fontSize:17}}
+                            onChange={(eventvalue)=>{this.flightdetails.start_date = eventvalue.target.value}}/>
                           <input type="date"  className="TextField col-sm-2 col-md-2 col-lg-2" id="return"
-                          placeholder="Return" name="end_date" value={flightdetails.end_date} style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
+                          placeholder="Return" name="end_date"  style={{marginLeft:2,height:70, fontSize:17}}
+                           onChange={(eventvalue)=>{this.flightdetails.end_date = eventvalue.target.value}}/>
 
                           <select className="TextField col-sm-3 col-md-3 col-lg-3" id="noOfAdults"
-                           style={{marginLeft:2,height:70, fontSize:17}}>
+                           style={{marginLeft:2,height:70, fontSize:17}}
+                           onChange={(eventvalue)=>{this.flightdetails.persons = eventvalue.target.value}}>
                               <option selected="selected">Adults</option>
-                              <option value="One">One</option>
-                              <option value="Two">Two</option>
-                              <option value="Three">Three</option>
-                              <option value="Four">Four</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
                           </select>
                       </div>
-                      <input type="image" src={clickIcon} style={{height:70}} onClick={this.handleSubmit}/>
+                      <input type="image" src={clickIcon} style={{height:70}} onClick={()=>{this.handleSubmit()}}/>
                   </div>
               </div>
            );

@@ -2,6 +2,7 @@ var  Flights = require('./../models/flights');
 
 
 exports.searchFlights = function(data, callback){
+    console.log("[Kafka] Search flights data:",data);
     Flights.searchFlights(data, function(err, result){
         if(err){
             console.log("[Kafka] Error while searching for ")

@@ -27,6 +27,20 @@ class HotelTile extends Component {
 
   }
 
+  getreview(reviews){
+    return reviews.map((review)=>{
+      return (<li>{review}</li>);
+    });
+  }
+  getNoofStars(number){
+    console.log("number",number);
+    var starArray = new Array(Number(number));
+    starArray.fill(1);
+    return starArray.map((x)=>{
+        return <span className="glyphicon glyphicon-star" style={{color:"#FF7F50"}}></span>
+    });
+  }
+
   render() {
     //const hotel_price=(this.props.current_hotel.hotel_price)*(this.props.hotel_days.days);
     return (
@@ -38,24 +52,31 @@ class HotelTile extends Component {
            </div>
 
           <div className="tiled2">
+
               <div style={{marginTop:"5%"}}>
-              <span style={{fontSize:20, padding:40}}><b>{this.props.data.hotel_name}</b></span><br/>
+                  <span style={{fontSize:20 ,marginLeft:5}}><b>{this.props.data.hotel_name}</b></span><br/>
+                  <span style={{float: "left",marginLeft:5}}>
+                {this.getNoofStars(this.props.data.hotel_stars)}</span><br/>
               </div>
-              <div style={{width:300}}>
+              <div className="hotel-review-rating" >
+                    <div className = "hotel-rating">
+                        <span style={{marginTop:30,marginLeft:5, backgroundColor: "#00B1E1", color: 'white'}}> {this.props.data.hotel_rating} </span>
+                        <br/>
+                        <h6>Address : </h6>
 
-                   <span class="glyphicon glyphicon-star" style={{float: "left",marginLeft:45}}>
-                 : {this.props.data.hotel_stars}</span><br/>
-                 <div style={{marginTop:30}}>
-                   <span style={{marginTop:30,marginLeft:50, backgroundColor: "#00B1E1", color: 'white'}}> {this.props.data.hotel_rating} </span>
-                   <span style={{marginTop:30,marginLeft:30}}>{this.props.data.hotel_reviews}   </span>
-                         <span style={{fontSize:15,marginLeft:50}}>Neighbourhood <br/><div style={{marginLeft:200, fontSize:12,color: 'grey' }}> {this.props.data.hotel_address} </div></span>
+                        <h5>{this.props.data.hotel_address} </h5>
+                    </div>
 
+                    <div className = "hotel-review">
+                    <h6>Reviews:</h6>
 
-                <span style={{marginLeft:170}}></span>
-                </div>
-               </div>
+                    {this.getreview(this.props.data.hotel_reviews) }
+
+                    </div>
+              </div>
 
           </div>
+
 
           <div className="tiled3">
               <strong style={{fontSize:25,color:"black"}}>${this.props.data.hotel_price}</strong>

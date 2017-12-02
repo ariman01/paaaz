@@ -33,7 +33,7 @@ render() {
 
                 </div>
 
-                <div className ="hotel-details-body-centre">
+                <div className ="hotel-details-body-centre-admin">
 
                 {this.props.listOfSearchedHotels.map((hotel)=>{
                     return (<EditHotelTile data={hotel} style={{paddingTop:10}}/>)

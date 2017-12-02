@@ -74,22 +74,61 @@
   margin-top: 7px;
 }
 .tiled1 {
-  padding-left: 20px;
+  padding-left: 0px;
   float:left;
   display:inline;
-  width:45%;
+  width:35%;
   height:100%;
   margin-left:0px;
 }
-.tiled2 {
-  padding-left: 50px;
-  float:left;
-  width:30%;
-  height:100%;
-  display:inline;,
 
+.tiled1-car{
+  padding-left: 10px;
+  float:left;
+  display:inline;
+  width:35%;
+  height:100%;
+  margin-left:0px;
+}
+
+.tiled2 {
+  float:left;
+  width:40%;
+  height:100%;
+  display:inline;
+  border-bottom: solid 1px grey;
   background-color:white;
 }
+
+.tiled2-car {
+  float:left;
+  width:40%;
+  height:100%;
+  display:inline;
+  border-bottom: solid 1px grey;
+  background-color:white;
+}
+
+.hotel-review-rating{
+
+}
+
+.hotel-rating{
+  width:30%;
+  display: inline;
+  float: left;
+  padding-left: 10px;
+}
+
+.hotel-review{
+  width:60%;
+  height:95%;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
 .tiled3 {
   float:right;
   padding-top: 35px;
@@ -100,10 +139,12 @@
   margin-right:20px;
   border-width:3px;
   border-left-style:outset;
+  align: center;
 }
 .car-img {
   padding-top: 10%;
   src: url('audi.png');
+  padding-left: 150px;
 }
 .car-agency-image{
   display:inline;
@@ -135,6 +176,23 @@
   width: 60%;
 
 }
+
+.car-details-body-centre-admin{
+  margin-left: 260px;
+  float:left;
+  display:inline;
+  width: 60%;
+
+}
+
+.hotel-details-body-centre-admin{
+  margin-left: 260px;
+  float:left;
+  display:inline;
+  width: 60%;
+
+}
+
 .car-details-body-right-nav{
   float:left;
   display:inline;
@@ -356,6 +414,7 @@
   background-color: white;
 }
 .hotel-details-body-centre{
+
   display:inline;
   float:left;
   width: 58%;

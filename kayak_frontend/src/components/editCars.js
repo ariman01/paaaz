@@ -30,7 +30,7 @@ constructor(){
                 <div className ="car-details-body-left-nav">
 
                 </div>
-                <div className ="car-details-body-centre">
+                <div className ="car-details-body-centre-admin">
                 {this.props.listOfSearchedCars.map((car)=>{
                     return (<EditCarTile data={car} style={{paddingTop:10}}/>)
                 })}

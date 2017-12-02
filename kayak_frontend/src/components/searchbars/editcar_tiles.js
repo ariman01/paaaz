@@ -25,7 +25,7 @@ class EditCarTile extends Component {
     console.log("Search leftnav Bar Page");
     return (
       <div className="tile">
-          <div className="tiled1">
+          <div className="tiled1-car">
                   <div className="tiled1-img-pane" style={{float:"left",width:"100%"}}>
                       <h1>{this.props.data.name}</h1>
                       <h5 style={{color:"grey"}}>Audi or similar car</h5>
@@ -46,7 +46,7 @@ class EditCarTile extends Component {
                   </div>
            </div>
 
-          <div className="tiled2" style={{float:"left"}}>
+          <div className="tiled2-car" style={{float:"left"}}>
               <div style={{marginTop:"10%"}}>
                   <img  className="car-img" src={carIcon}/>
               </div>
