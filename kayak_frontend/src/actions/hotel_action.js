@@ -64,7 +64,7 @@ export function bookhotel_action(payload){
                     {
                         response.json().then((response) => {
                             console.log(response.result);
-                            history.push('/hotels');
+                            history.push('/afterbookinghotels');
                         });
                     }
                     else

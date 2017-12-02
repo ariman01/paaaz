@@ -21,11 +21,23 @@ export const saveServerToken = (userdata, servertoken, type) => {
 };
 
 export const getAdminDetails=()=>{
-  return (localStorage.currentAdmin.username?localStorage.currentAdmin.username:null);
+  if(localStorage.currentAdmin){
+    var admindetail = JSON.parse(localStorage.currentAdmin);
+    return (admindetail.username?admindetail.username:null);
+  }else{
+    return null;
+  }
+
 }
 
 export const getUserDetails=()=>{
-  return (localStorage.currentUser.username?localStorage.currentUser.username:null);
+  if(localStorage.currentUser){
+    var userdetail = JSON.parse(localStorage.currentUser);
+    return (userdetail.username?userdetail.username:null);
+  }else{
+    return null;
+  }
+
 }
 
 export const deleteServerToken = (usertype) => {
@@ -34,7 +46,7 @@ export const deleteServerToken = (usertype) => {
     localStorage.removeItem('adminServertoken');
   }else if(usertype === "user"){
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('servertoken');
+    localStorage.removeItem('userServertoken');
   }
 };
 

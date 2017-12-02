@@ -19,7 +19,7 @@ class ViewCar extends Component {
                   <div className="view-car-bottom-div">
                             <div className = "view-car-left-div">
                                 <div className ="view-car-cardetails1">
-                                    <strong style={{fontSize : 17}}>{this.props.data.car_type}({this.props.data.car_name} or similar)</strong><br></br>
+                                    <strong style={{fontSize : 17}}>{this.props.data.car_type}({this.props.data.name} or similar)</strong><br></br>
                                     Automatic transmission, Air-conditioning<br></br>
                                     {this.props.car_days.carfromdate} to {this.props.car_days.cartodate} ({this.props.car_days.days} days)
                                 </div>

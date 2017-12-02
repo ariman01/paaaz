@@ -1,6 +1,8 @@
 import { userConstants } from '../constants/userConstants';
 const initialState = {
     currentUser : null,
+    userdetails:{},
+    carddetails:[]
 };
 export function users(state = initialState, action) {
     switch (action.type) {
@@ -12,19 +14,29 @@ export function users(state = initialState, action) {
             return {
                 items: action.users
             };
-        case userConstants.GETALL_FAILURE:
+        case 'GETALL_FAILURE':
             return {
                 error: action.error
             };
-        case userConstants.USER_DETAILS:
+        case 'GETUSER_DETAILS':
             return{
                 ...state,
-                userdetails:action.user
+                userdetails:action.result
             };
         case 'SET_USER':
             return{
                 ...state,
                 user_id:action.result
+            }
+        case 'GETCARD_DETAILS':
+            return{
+                ...state,
+                carddetails:action.result
+            }
+        case 'GETUSER_HISTORY':
+            return{
+                ...state,
+                userhistory:action.result
             }
         default:
             return state

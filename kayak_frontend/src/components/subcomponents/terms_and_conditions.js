@@ -22,7 +22,7 @@ handleSubmit()
         src_city:this.props.current_car.src_city,
         destination_city:this.props.current_car.destination_city,
         rental_agency:this.props.current_car.rental_agency,
-        car_name:this.props.current_car.car_name,
+        name:this.props.current_car.name,
         start_date:this.props.car_days.start_date,
         end_date:this.props.car_days.end_date,
         booking_amount:this.props.car_finalamount.booking_amount,

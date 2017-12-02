@@ -50,7 +50,7 @@ router.post('/bookcar', function(req, res, next) {
         booking_amount:req.body.booking_amount,
         start_date:req.body.start_date,
         end_date:req.body.end_date,
-        car_name:req.body.car_name,
+        name:req.body.name,
         src_city:req.body.src_city,
         destination_city:req.body.destination_city,
         rental_agency:req.body.rental_agency
