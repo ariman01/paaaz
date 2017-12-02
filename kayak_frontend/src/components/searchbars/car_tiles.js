@@ -26,8 +26,8 @@ class CarTile extends Component {
       <div className="tile">
           <div className="tiled1">
                   <div className="tiled1-img-pane" style={{float:"left",width:"100%"}}>
-                      <h1>{this.props.data.car_type}</h1>
-                      <h5 style={{color:"grey"}}>{this.props.data.car_name} or similar car</h5>
+                      <h3>{this.props.data.car_type}</h3>
+                      <h5 style={{color:"grey"}}>{this.props.data.name} or similar car</h5>
                       <img src = {userIcon}/> {this.props.data.capacity}
                       <img src = {baggageIcon} style={{padding:10}}/> {this.props.data.no_of_bags}
                       <img src = {cardoorIcon} style={{padding:10}}/> {this.props.data.no_of_doors}

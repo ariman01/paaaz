@@ -81,7 +81,7 @@ export function bookflight_action(payload){
                     {
                         response.json().then((response) => {
                             console.log(response.result);
-                            history.push('/flights');
+                            history.push('/afterbookingflights');
                         });
                     }
                     else

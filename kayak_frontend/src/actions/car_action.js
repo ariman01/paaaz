@@ -66,7 +66,7 @@ export function bookcar_action(payload){
                     {
                         response.json().then((response) => {
                             console.log(response.result);
-                            history.push('/cars');
+                            history.push('/afterbookingcars');
                         });
                     }
                     else
