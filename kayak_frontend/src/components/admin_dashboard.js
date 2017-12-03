@@ -10,6 +10,7 @@ import flightDashIcon from './../images/admin_dash_flight.png';
 import userDashIcon from './../images/admin_dash_user.png';
 import {getHotelAnalysis,getCarAnalysis, getFlightAnalysis} from './../api/adminAPI';
 import BarChart from './graph/bar_chart';
+import LineChart from './graph/line_chart';
 
 class AdminDashboard extends Component {
 
@@ -40,14 +41,14 @@ class AdminDashboard extends Component {
                     </div>
 
                     <div className="admin-dashboard-tiles-div" >
-                        <div className="admin-dashboard-tile-car" onClick={() => this.props.getCarAnalysis({date : "2017"})}>
+                        <div className="admin-dashboard-tile-car" onClick={() => this.props.getCarAnalysis({date : "2017/11/11"})}>
                             <div style={{height:"100%"}}>
                                 <div style={{height:"60%"}}>
                                         <div style={{display:"inline",float:"left", width:"60%"}}>
                                         <img src={carDashIcon}/>
                                         </div>
                                         <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
-                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.car_sales}</strong></span>
+                                        <span style={{fontSize:20,textAlign:"center"}}><strong>{this.props.total_sales.car_sales}</strong></span>
                                         </div>
                                       </div>
                                   <hr/>
@@ -58,14 +59,14 @@ class AdminDashboard extends Component {
                             </div>
                         </div>
 
-                        <div className="admin-dashboard-tile-hotel" onClick={() => this.props.getHotelAnalysis({date : "2017"})}>
+                        <div className="admin-dashboard-tile-hotel" onClick={() => this.props.getHotelAnalysis({date : "2017/11/11"})}>
                             <div style={{height:"100%"}}>
                                 <div style={{height:"60%"}}>
                                         <div style={{display:"inline",float:"left", width:"60%"}}>
                                         <img src={hotelDashIcon} style={{padding:10}}/>
                                         </div>
                                         <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
-                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.hotel_sales}</strong></span>
+                                        <span style={{fontSize:20,textAlign:"center"}}><strong>{this.props.total_sales.hotel_sales}</strong></span>
                                         </div>
                                       </div>
                                   <hr/>
@@ -83,7 +84,7 @@ class AdminDashboard extends Component {
                                         <img src={flightDashIcon} style={{padding:10}}/>
                                         </div>
                                         <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
-                                        <span style={{fontSize:40,textAlign:"center",color:"#00BFFF"}}><strong>{this.props.total_sales.flight_sales}</strong></span>
+                                        <span style={{fontSize:20,textAlign:"center",color:"#00BFFF"}}><strong>{this.props.total_sales.flight_sales}</strong></span>
                                         </div>
                                       </div>
                                   <hr/>
@@ -101,7 +102,7 @@ class AdminDashboard extends Component {
                                         <img src={userDashIcon} style={{padding:10}}/>
                                         </div>
                                         <div style={{display:"inline",float:"right", width:"40%",height:"100%",paddingTop:40}}>
-                                        <span style={{fontSize:40,textAlign:"center"}}><strong>{this.props.total_sales.user_booking}</strong></span>
+                                        <span style={{fontSize:20,textAlign:"center"}}><strong>{this.props.total_sales.user_booking}</strong></span>
                                         </div>
                                       </div>
                                   <hr/>

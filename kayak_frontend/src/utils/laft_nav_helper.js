@@ -36,7 +36,7 @@ export  function getleftNavConfigForCar(listofcars){
 
 function includeCarWithCapacity(capacity, config ){
   //console.log("capacity",capacity, "config",config.capacity['three_to_five']);
-  if(capacity> 0 && capacity <=2 && config.capacity['one_to_two']) return true;
+  if(capacity>0 && capacity <=2 && config.capacity['one_to_two']) return true;
   if(capacity>2 && capacity <=5 && config.capacity['three_to_five']) return true;
   if(capacity>=6 && config.capacity['six_or_more']) return true;
   return false;

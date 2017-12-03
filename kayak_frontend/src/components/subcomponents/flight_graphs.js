@@ -37,14 +37,14 @@ getAdminDashBoardGraph(labels, datasets, label_name, header_text){
                     " Sales Report"," Top 10 Airlines in terms of sales")}
                 </div>
                 <br></br>
-                <h3 className="hotel-graph-header">Top Cities in terms of sales </h3>
+                <h3 className="hotel-graph-header">Top 10 Cities in terms of sales </h3>
                 <div className="car-graph-2">
                     {this.getAdminDashBoardGraph(this.props.flight_analysis_data[1]['top_ten_city_sales'].cities,this.props.flight_analysis_data[1]['top_ten_city_sales'].sales,
                     " Sales Report"," Top Cities in terms of sales")}
                 </div>
 
                 <br></br>
-                <h3 className="hotel-graph-header"> Top Airlines in terms of no. of bookings</h3>
+                <h3 className="hotel-graph-header"> Top 10 Airlines in terms of no. of bookings</h3>
                 <div className="car-graph-3">
                     {this.getAdminDashBoardGraph(this.props.flight_analysis_data[2]['top_ten_carrier_bookings'].carriers,this.props.flight_analysis_data[2]['top_ten_carrier_bookings'].bookings,
                     " Sales Report"," Top Airlines in terms of no. of bookings")}

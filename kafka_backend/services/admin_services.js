@@ -38,7 +38,7 @@ exports.adminHotelAnalysis = function(data , callback){
             finalResult.push({top_ten_hotel_sales:result1});
 
             //Analysis#2
-            var hotel_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by src_city order by Booking_Amount";
+            var hotel_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by src_city order by Booking_Amount desc limit 10";
             var result2 ={};
             result2.city_name =[];
             result2.sales=[];
@@ -167,7 +167,7 @@ exports.adminCarAnalysis = function(data , callback){
             finalResult.push({top_ten_car_sales:result1});
 
             //Analysis#2
-            var car_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from car_transaction group by src_city order by Booking_Amount";
+            var car_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from car_transaction group by src_city order by Booking_Amount desc limit 10";
             var result2 ={};
             result2.cities =[];
             result2.sales=[];
@@ -249,7 +249,7 @@ exports.adminFlightAnalysis = function(data , callback){
             finalResult.push({top_ten_carrier_sales:result1});
 
             //Analysis#2
-            var flight_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from flight_transaction group by src_city order by Booking_Amount";
+            var flight_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from flight_transaction group by src_city order by Booking_Amount desc limit 10";
             var result2 ={};
             result2.cities =[];
             result2.sales=[];
