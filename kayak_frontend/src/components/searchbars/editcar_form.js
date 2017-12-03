@@ -63,7 +63,7 @@ constructor(){
 
                   <br></br>
 
-                  <button onClick ={() => this.props.handleCarUpdate(this.car_edit_data)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
+                  <button onClick ={() => this.props.handleCarUpdate(this.car_edit_data,this.props.latest_admin_search_parameter)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
 
                 </div>
 
@@ -79,6 +79,7 @@ function mapStateToProps(state) {
     console.log("maps to props  car edit form :"+state.admin_reducer.current_car_edit);
     return {
         current_car_edit: state.admin_reducer.current_car_edit,
+        latest_admin_search_parameter: state.cardetails_reducer.latest_admin_search_parameter
     };
 
 }

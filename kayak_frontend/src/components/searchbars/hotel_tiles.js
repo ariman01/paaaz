@@ -6,6 +6,8 @@ import {history} from './../../utils/util.js';
 import {bindActionCreators} from 'redux';
 import {currenthotel_action,setprice_action} from './../../actions/hotel_action';
 import { connect } from 'react-redux';
+import * as Images from './../../utils/images';
+
 class HotelTile extends Component {
 
 
@@ -46,8 +48,8 @@ class HotelTile extends Component {
     return (
       <div className="tile">
           <div className="tiled1">
-                  <div className="tiled1-img-pane" style={{float:"left",width:"100%",height:100}}>
-                    <img  className="hotel-img" src={HotelIcon}/>
+                  <div className="tiled1-img-pane" style={{float:"left",width:"100%",height:"100%"}}>
+                    <img  className="hotel-img" src={Images.retrieveHotelImages(this.props.data.hotel_stars)}/>
                   </div>
            </div>
 

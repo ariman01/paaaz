@@ -11,7 +11,16 @@ constructor(){
     this.searchcar ={}
   }
 
+carSearch(data){
+  console.log("this.searchcar.name ",this.searchcar.name );
+  console.log("this.searchcar.model_no ",this.searchcar.model_no);
+  if((this.searchcar.model_no) || (this.searchcar.name)){
+    this.props.handleCarSearch(data);
+  }else{
+    alert("User need to provide either car model no or name");
+  }
 
+}
   render() {
     console.log("It will display list of cars searched by the admin :this.searchflight",this.searchflight);
     return (
@@ -25,7 +34,7 @@ constructor(){
                       <input placeholder="Car Id" id="model_no" onChange={(model_no) => {this.searchcar.model_no = model_no.target.value}}/>
                        <strong> OR  </strong>
                       <input placeholder="Car Name" id="name" onChange={(name) => {this.searchcar.name = name.target.value}}/>
-                      <button style={{marginLeft:15}} onClick ={() => this.props.handleCarSearch(this.searchcar)} ><strong>Search</strong></button>
+                      <button style={{marginLeft:15}} onClick ={() => this.carSearch(this.searchcar)} ><strong>Search</strong></button>
                   </div>
                 <div className ="car-details-body-left-nav">
 

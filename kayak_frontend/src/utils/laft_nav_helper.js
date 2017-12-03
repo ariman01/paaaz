@@ -96,7 +96,7 @@ export function filterHotelbasedOnLeftNavBar(listofhotels, config){
   console.log("listofhotels, ",listofhotels,"config : !!!", config)
   var result_hotel = [];
   listofhotels.map((hotel)=>{
-    if(config.stars[hotel.stars] && hotel.price <= config.price){
+    if(config.stars[hotel.hotel_stars] && hotel.hotel_price <= config.price){
       result_hotel.push(hotel)
     }
   });

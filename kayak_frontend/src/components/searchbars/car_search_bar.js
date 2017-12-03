@@ -33,16 +33,14 @@ class CarSearchBar extends Component {
         event.preventDefault();
         const { cardetails } = this.state;
         console.log("Validating car inputs");
-        if(UTILValidation.emptyDate(cardetails.start_date) &&
-           UTILValidation.emptyDate(cardetails.end_date) &&
-           UTILValidation.emptyDate(cardetails.src_city)){
+        if(UTILValidation.emptyDate(cardetails.src_city,"source city") &&
+           UTILValidation.emptyDate(cardetails.start_date,"start date") &&
+           UTILValidation.emptyDate(cardetails.end_date,"end date") &&
+           UTILValidation.validateStartEndDate(cardetails.start_date,cardetails.end_date)){
 
-             this.props.searchcars_action(cardetails);
-        }else{
-          alert("Required field are either missing or not valid !!!");
+           this.props.searchcars_action(cardetails);
         }
-
-    }
+      }
   render() {
       const { cardetails } = this.state;
     return (

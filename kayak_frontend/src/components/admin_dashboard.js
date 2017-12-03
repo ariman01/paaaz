@@ -107,7 +107,7 @@ class AdminDashboard extends Component {
                                   <hr/>
 
                                   <div style={{height:"30%"}}>
-                                  <h4>Total hotels rented last year</h4>
+                                  <h4>Total user booking last year</h4>
                                   </div>
                             </div>
                         </div>

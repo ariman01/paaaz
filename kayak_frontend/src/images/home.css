@@ -74,7 +74,7 @@
   margin-top: 7px;
 }
 .tiled1 {
-  padding-left: 0px;
+  padding-left: 5px;
   float:left;
   display:inline;
   width:35%;
@@ -138,6 +138,19 @@
   display: inline;
   margin-right:20px;
   border-width:3px;
+  text-align: center;
+  border-left-style:outset;
+  align: center;
+}
+.edit-car-tiled3{
+  float:right;
+  padding-top: 35px;
+  width:20%;
+  height:100%;
+  display: inline;
+  margin-right:20px;
+  border-width:3px;
+  text-align: center;
   border-left-style:outset;
   align: center;
 }
@@ -148,13 +161,11 @@
 }
 .car-agency-image{
   display:inline;
-  margin-top: 10%;
 
   flaot:left;
 }
 .car-des-name{
   display:inline;
-  margin-top: 20px;
   float:right;
   border-width:3px;
   border-left-style:outset;
@@ -426,9 +437,24 @@
   width: 18%;
   background-color: white;
 }
+.tiled1-img-pane{
+  width: 310px;
+  height:65%;
+  padding:10px;
+  padding-left: 5px;
+}
+.tiled1-hotel-img-pane{
+  width: 310px;
+  height:100%;
+  padding:10px;
+  padding-left: 5px;
+}
 
 .hotel-img {
   width: 310px;
+  height:100%;
+  padding:10px;
+  padding-left: 5px;
   src: url('hotelimage.jpg');
 }
 .hotel-name{

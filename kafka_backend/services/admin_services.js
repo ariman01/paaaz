@@ -115,15 +115,14 @@ exports.adminSignIn = function(data, callback){
 
 exports.adminHotelBilling= function(data,callback) {
 
-   var hotelbilling="select booking_id,user_id,hotel_name,booking_date,booking_amount from hotel_transaction";
+   //var hotelbilling="select booking_id,user_id,hotel_name,booking_date,booking_amount from hotel_transaction";
    mysql.fetchData(function(err,results) {
-
     if(err){
-      console.log("error");
-         }
-    console.log("Results from database:"+JSON.stringify(results));
-           callback(err,results);
-  }, hotelbilling);
+      console.log("[Kafka] Error adminHotelBilling");
+    }
+    //console.log("Results from database:"+JSON.stringify(results));
+     callback(err,results);
+  }, data.query);
 }
 
 exports.adminCarBilling= function(data,callback) {

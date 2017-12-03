@@ -55,7 +55,7 @@ router.post('/adminsignin', function(req, res, next) {
 
 router.post('/adminhotelbilling', function(req, res, next) {
 
-      var date = new Date(req.body.date);
+      /*var date = new Date(req.body.date);
       var year = date.getFullYear();
       console.log("Year entered is:"+year);
       kafka.make_request('admin_hotel_bill', {"year" : 2017}, function(err,result){
@@ -66,7 +66,32 @@ router.post('/adminhotelbilling', function(req, res, next) {
         }else {
             res.status(201).json({result:result,message:"Successfully retrieved hotel billing information"});
         }
-    });
+    });*/
+    //Date format YYYY-MM-DD
+        var where_clause =  '';
+        if( req.body.date){
+          where_clause += "where Date(booking_date) = "+"'"+req.body.date+"'";
+        }else if(req.body.month){
+            var date = new Date();
+            var year = date.getFullYear();
+            var start_d = year+"-"+req.body.month+"-"+01;
+            var end_d = year+"-"+req.body.month+"-"+31;
+            where_clause += "where Date(booking_date) between '"+start_d+"' and '"+end_d+"'";
+        }else{
+          res.status(403).json({result:[],message:"Please select either month or date to get billing information"});
+        }
+        if(where_clause){
+          var hotelbilling="select * from hotel_transaction "+where_clause;
+          kafka.make_request('admin_hotel_bill', {query : hotelbilling}, function(err,result){
+
+            if(err){
+                console.log(err);
+                res.status(403).json({result:[],message:err});
+            }else {
+                res.status(201).json({result:result,message:"Successfully retrieved hotel billing information"});
+            }
+        });
+        }
 });
 
 
@@ -121,28 +146,33 @@ router.post('/updatehoteladmin', function(req, res, next) {
 router.post('/searchcarsadmin', function(req, res, next) {
     console.log("In search cars admin");
 
-    var model_no = req.body.model_no;
-    var name = req.body.name;
+    var model_no = req.body.model_no?(req.body.model_no).toLowerCase():'';
+    var name = req.body.name?(req.body.name).toLowerCase():'';
+    if(model_no.length >0 ||name.length>0){
+      kafka.make_request('car_search_admin',{"model_no" : model_no , "name" : name}, function(err,result){
+          if(err){
+              console.log("error in searching cars");
+              res.status(403).json({result:[],message:"Admin Failed to search car with id :"+model_no});
+          }
+          else{
+              console.log("car search successful");
+              res.status(201).json({result:result,message:"Admin Sucessfully searched car with id :"+model_no});
+          }
+      });
+    }else{
+      res.status(401).json({result:[],message:"User need to provide either car name or model no to search!!!"});
+    }
 
-    kafka.make_request('car_search_admin',{"model_no" : model_no , "name" : name}, function(err,result){
-        if(err){
-            console.log("error in searching cars");
-            res.status(403).json({result:result,message:"Admin Failed to search car with id :"+model_no});
-        }
-        else{
-            console.log("car search successful");
-            res.status(201).json({result:result,message:"Admin Sucessfully searched car with id :"+model_no});
-        }
-    });
+
 });
 
 router.post('/updatecaradmin', function(req, res, next) {
     console.log("In update cars");
     var carDetail = {
-       model_no : req.body.model_no,
+       model_no : req.body.model_no?(req.body.model_no).toLowerCase():'',
        capacity : req.body.capacity,
        no_of_bags : req.body.no_of_bags,
-       name : req.body.name,
+       name : req.body.name?(req.body.name).toLowerCase():'',
        no_of_doors : req.body.no_of_doors,
        price : req.body.price,
        src_city :req.body.src_city,
@@ -217,7 +247,7 @@ router.post('/admincarbilling', function(req, res, next) {
           var date = new Date();
           var year = date.getFullYear();
           var start_d = year+"-"+req.body.month+"-"+01;
-          var end_d = year+"-"+(Number(req.body.month)+1)+"-"+31;
+          var end_d = year+"-"+req.body.month+"-"+31;
           where_clause += "where Date(booking_date) between '"+start_d+"' and '"+end_d+"'";
       }else{
         res.status(403).json({result:[],message:"Please select either month or date to get billing information"});

@@ -7,6 +7,7 @@ import viewDeal from './../../images/viewdeal.png';
 import * as adminActions from './../../actions/admin_action';
 import {adminHotelDelete} from './../../api/adminAPI';
 import {history} from "../../utils/util";
+import * as Images from './../../utils/images';
 
 class EditHotelTile extends Component {
   handleEdit(){
@@ -34,8 +35,8 @@ class EditHotelTile extends Component {
     return (
       <div className="hotel-tile">
           <div className="tiled1">
-                  <div className="tiled1-img-pane" style={{float:"left",width:"100%",height:100}}>
-                    <img  className="hotel-img" src={HotelIcon}/>
+                  <div className="tiled1-hotel-img-pane" style={{float:"left"}}>
+                    <img  className="hotel-img" src={Images.retrieveHotelImages(this.props.data.hotel_stars)}/>
                   </div>
            </div>
 
