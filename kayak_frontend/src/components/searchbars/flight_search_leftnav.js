@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import CustomCheckbox from './../subcomponents/custom/custom_checkbox';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import Slider from 'react-rangeslider';
 import {setFlightConfig} from './../../actions/flight_action';
 
 class FlightSearchLeftNav extends Component{

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import DatePicker from 'material-ui/DatePicker';
 import {searchflights_action} from './../../actions/flight_action';
+import * as UTILValidation from './../../utils/validation';
+
+
 class FlightSearchBar extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +16,16 @@ class FlightSearchBar extends Component {
 
     handleSubmit() {
         console.log("Flight serach bar handleSubmit flightdetails:",this.flightdetails);
-        this.props.searchflights_action(this.flightdetails);
+        console.log("Validating car inputs");
+        if(UTILValidation.emptyDate(this.flightdetails.src_city,"source city") &&
+           UTILValidation.emptyDate(this.flightdetails.destination_city,"destination city") &&
+           UTILValidation.emptyDate(this.flightdetails.start_date,"start date") &&
+           UTILValidation.emptyDate(this.flightdetails.end_date,"end date") &&
+           UTILValidation.emptyDate(this.flightdetails.persons,"no of adults") &&
+           UTILValidation.validateStartEndDate(this.flightdetails.start_date,this.flightdetails.end_date)){
+           this.props.searchflights_action(this.flightdetails);
+        }
+
     }
 
   render() {
@@ -42,7 +54,7 @@ class FlightSearchBar extends Component {
                           placeholder="Return" name="end_date"  style={{marginLeft:2,height:70, fontSize:17}}
                            onChange={(eventvalue)=>{this.flightdetails.end_date = eventvalue.target.value}}/>
 
-                          <select className="TextField col-sm-3 col-md-3 col-lg-3" id="noOfAdults"
+                          <select className="TextField col-sm-3 col-md-3 col-lg-3" id="noOfAdults" name="adults"
                            style={{marginLeft:2,height:70, fontSize:17}}
                            onChange={(eventvalue)=>{this.flightdetails.persons = eventvalue.target.value}}>
                               <option selected="selected">Adults</option>

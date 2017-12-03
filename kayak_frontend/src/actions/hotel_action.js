@@ -25,8 +25,14 @@ export function searchhotels_action(payload){
                     {
                         response.json().then((response) => {
                             console.log("its result in hotelaction"+ response.result);
-                            dispatch(success(response.result));
-                            history.push('/hoteldetails');
+                            if(response.result && response.result.length <=0){
+                              alert("No data found for the given search");
+                            }
+                            else{
+                              dispatch(success(response.result));
+                              history.push('/hoteldetails');
+                            }
+
                         });
                     }
                     else

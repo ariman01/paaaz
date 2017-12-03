@@ -28,8 +28,14 @@ export function searchflights_action(payload){
                     {
                         response.json().then((response) => {
                           //response.result[0].price = response.result[0].price*persons;
+                          if(response.result && response.result.length <= 0){
+                            alert("No data found for the given search");
+                          }
+                          else{
                             dispatch(success(response.result));
                             history.push('/flightdetails');
+                          }
+
                         });
                     }
                     else
