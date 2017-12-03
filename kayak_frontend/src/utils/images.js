@@ -51,7 +51,7 @@ import defcarIcon from './../images/car/audi.png';
 export const getImages = () => {
   return {
     "american airlines":americanairlinesIcon,
-    "alaska airlines":americanairlinesIcon,
+    "alaska airlines":alaskaIcon,
     "default_airline":defaultAirlineIcon,
     "southwest airlines":southwestAirlineIcon,
     "lufthansa airlines":lufthansaAirlinesIcon,

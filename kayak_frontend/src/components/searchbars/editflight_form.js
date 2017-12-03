@@ -4,6 +4,7 @@ import './../../images/admin.css';
 import { connect } from 'react-redux';
 import {handleFlightUpdate} from './../../api/adminAPI';
 import {bindActionCreators} from 'redux';
+import * as UTILValidation from './../../utils/validation';
 
 class EditFlightForm extends Component {
 
@@ -11,6 +12,19 @@ class EditFlightForm extends Component {
       super();
       this.flight_edit_data ={};
   }
+
+  handleEdit(flightdetail) {
+      console.log("Validating flight data edit form flightdetail",flightdetail);
+      if(UTILValidation.emptyDate(flightdetail.carrier_name,"flight name") &&
+         UTILValidation.emptyDate(flightdetail.departure_time,"deparature time")&&
+         UTILValidation.numericValidation(flightdetail.flight_duration,"duration")&&
+         UTILValidation.emptyDate(flightdetail.src_city,"src_city ")&&
+         UTILValidation.emptyDate(flightdetail.destination_city,"destination_city ")&&
+         UTILValidation.numericValidation(flightdetail.price,"price ")){
+
+         this.props.handleFlightUpdate(flightdetail);
+      }
+    }
 
   render() {
     this.flight_edit_data = this.props.current_flight_edit;
@@ -29,10 +43,6 @@ class EditFlightForm extends Component {
                   <label>Flight Carrier</label>
                   <input type="text" style={{width:400}} className="form-control" id="carrier_name"  defaultValue={this.props.current_flight_edit.carrier_name} size="35"
                   onChange={(carrier_name) => {this.flight_edit_data.carrier_name = carrier_name.target.value}}/>
-                  <br></br>
-                  <label>Operation days</label>
-                  <input type="text" style={{width:400}} className="form-control" id="operation_day"  defaultValue={this.props.current_flight_edit.operation_day} size="35"
-                  onChange={(operation_day) => {this.flight_edit_data.operation_day = operation_day.target.value}}/>
                   <br></br>
                   <label>Departure Time</label>
                   <input type="text" style={{width:400}} className="form-control" id="departure_time"  defaultValue={this.props.current_flight_edit.departure_time} size="35"
@@ -57,7 +67,7 @@ class EditFlightForm extends Component {
 
                   <br></br>
 
-                  <button onClick ={() => this.props.handleFlightUpdate(this.flight_edit_data)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
+                  <button onClick ={() => this.handleEdit(this.flight_edit_data)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
 
                 </div>
 

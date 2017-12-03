@@ -38,7 +38,7 @@ exports.adminHotelAnalysis = function(data , callback){
             finalResult.push({top_ten_hotel_sales:result1});
 
             //Analysis#2
-            var hotel_analysis_query2="select name_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by name_city order by Booking_Amount";
+            var hotel_analysis_query2="select src_city,sum(booking_amount) as Booking_Amount from hotel_transaction group by src_city order by Booking_Amount";
             var result2 ={};
             result2.city_name =[];
             result2.sales=[];
@@ -51,7 +51,7 @@ exports.adminHotelAnalysis = function(data , callback){
                   else{
                       console.log("Results from database:"+JSON.stringify(results));
                       results.map((value)=>{
-                        result2.city_name.push(value.name_city);
+                        result2.city_name.push(value.src_city);
                         result2.sales.push(value.Booking_Amount);
                       });
 
@@ -148,7 +148,7 @@ exports.adminflightBilling= function(data,callback) {
 exports.adminCarAnalysis = function(data , callback){
   //Analysis#1
   var finalResult = [];
-  var car_analysis_query1="select sum(booking_amount) as Booking_Amount,model_no from car_transaction where Year(booking_date) = '"+data.year+"' group by model_no order by Booking_Amount desc limit 10";
+  var car_analysis_query1="select sum(booking_amount) as Booking_Amount,car_name from car_transaction where Year(booking_date) = '"+data.year+"' group by car_name order by Booking_Amount desc limit 10";
   var result1 = {};
   result1.models = [];
   result1.sales= [];
@@ -160,7 +160,7 @@ exports.adminCarAnalysis = function(data , callback){
           }
           else{
             results.map((value)=>{
-              result1.models.push(value.model_no);
+              result1.models.push(value.car_name);
               result1.sales.push(value.Booking_Amount);
             });
             console.log("result1 ******",result1);
@@ -230,7 +230,7 @@ exports.adminCarAnalysis = function(data , callback){
 exports.adminFlightAnalysis = function(data , callback){
   //Analysis#1
   var finalResult = [];
-  var flight_analysis_query1="select sum(booking_amount) as Booking_Amount,carrier_name from flight_transaction where Year(booking_date) = '"+data.year+"' group by carrier_name order by Booking_Amount desc limit 10";
+  var flight_analysis_query1="select sum(booking_amount) as Booking_Amount,flight_name from flight_transaction where Year(booking_date) = '"+data.year+"' group by flight_name order by Booking_Amount desc limit 10";
   var result1 = {};
   result1.carriers = [];
   result1.sales= [];
@@ -242,7 +242,7 @@ exports.adminFlightAnalysis = function(data , callback){
           }
           else{
             results.map((value)=>{
-              result1.carriers.push(value.carrier_name);
+              result1.carriers.push(value.flight_name);
               result1.sales.push(value.Booking_Amount);
             });
             console.log("result1 ******",result1);
@@ -271,7 +271,7 @@ exports.adminFlightAnalysis = function(data , callback){
 
 
                       //Analysis#3
-                      var flight_analysis_query3="select carrier_name,count(flight_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from flight_transaction where month(booking_date) = month(current_date())-1 group by carrier_name order by Number_Of_Bookings desc limit 10";
+                      var flight_analysis_query3="select flight_name,count(flight_id) as Number_Of_Bookings,sum(booking_amount) as Booking_Amount from flight_transaction where month(booking_date) = month(current_date())-1 group by flight_name order by Number_Of_Bookings desc limit 10";
 
                       var result3 ={};
                       result3.carriers = [];
@@ -288,7 +288,7 @@ exports.adminFlightAnalysis = function(data , callback){
                             console.log("Results from database:"+JSON.stringify(results));
 
                             results.map((value)=>{
-                                result3.carriers.push(value.carrier_name);
+                                result3.carriers.push(value.flight_name);
                                 result3.bookings.push(value.Number_Of_Bookings);
                             });
                             console.log("result3****",result3);

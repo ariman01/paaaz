@@ -47,10 +47,10 @@ router.post('/bookflight', function(req, res, next) {
 
 router.post('/addflight', function(req, res, next) {
     var flightDetail = {
-        flight_id:req.body.flight_id,
-        carrier_name:req.body.carrier_name,
-        src_city:req.body.src_city,
-        destination_city:req.body.destination_city,
+        flight_id:req.body.flight_id?req.body.flight_id.toLowerCase():'',
+        carrier_name:req.body.carrier_name?req.body.carrier_name.toLowerCase():'',
+        src_city:req.body.src_city?req.body.src_city.toLowerCase():'',
+        destination_city:req.body.destination_city?req.body.destination_city.toLowerCase():'',
         flight_duration:req.body.flight_duration,
         operational_day:req.body.operational_day,
         departure_time:req.body.departure_time,

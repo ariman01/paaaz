@@ -71,7 +71,7 @@ export function validateName (name) {
 
 //for numeric fields like no_of_bags, capacity, price etc
 export function numericValidation(value, field){
-    var regex = /^\d*$/;
+    var regex = /^\d+$/;
     var patt = new RegExp(regex);
     var res= patt.test(value);
     console.log(res);

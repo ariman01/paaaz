@@ -27,8 +27,7 @@ class AddCarAdmin extends Component {
          UTILValidation.emptyDate(cardetail.src_city,"src_city") &&
          UTILValidation.emptyDate(cardetail.destination_city,"destination") &&
          UTILValidation.emptyDate(cardetail.rental_agency,"rental agency") &&
-         UTILValidation.emptyDate(cardetail.car_type,"car type") &&
-         UTILValidation.validateStartEndDate(cardetail.start_date,cardetail.end_date)){
+         UTILValidation.emptyDate(cardetail.car_type,"car type")){
 
          this.props.addCarAdmin(cardetail);
       }

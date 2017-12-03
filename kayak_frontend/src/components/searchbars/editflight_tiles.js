@@ -22,7 +22,7 @@ class EditFlightTile extends Component {
 
           <div className="flight-tile1">
             <div className="flight-tile-div">
-            <img src={Images.getImages().delta_icon} />
+            <img src={Images.retrieveImages(this.props.data.carrier_name)} />
             </div>
             <div className="flight-tile-div">
             {this.props.data.departure_time}<br/>
@@ -51,6 +51,7 @@ class EditFlightTile extends Component {
   }
 }
 function mapStateToProps(state) {
+  console.log("mapStateToProps: edit flight tiles",state.flightdetails_reducer.latest_admin_search_parameter);
     return {
         latest_admin_search_parameter: state.flightdetails_reducer.latest_admin_search_parameter,
     };
@@ -63,4 +64,4 @@ function mapDispatchToProps(dispatch) {
 
 
 
-export default connect(null,mapDispatchToProps)(EditFlightTile);
+export default connect(mapStateToProps,mapDispatchToProps)(EditFlightTile);
