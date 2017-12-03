@@ -341,7 +341,7 @@ describe( "Incorrect searchflightsadmin API", function() {
 
 describe( "delete Flight API", function() {
     describe("delete FlightAPI ", function() {
-        it("Should return 200 response", function(done) {
+        it("Should return 201 response", function(done) {
             // Send some Form Data
              chai.request(baseurl)
             .post('/flights/deleteflight')
@@ -366,7 +366,7 @@ describe( "delete Flight API", function() {
 
 describe( "correct Search car API", function() {
     describe("correct Search car API ", function() {
-        it("Should return 200 response", function(done) {
+        it("Should return 201 response", function(done) {
             // Send some Form Data
              chai.request(baseurl)
             .post('/cars/searchcars')
@@ -393,7 +393,7 @@ describe( "correct Search car API", function() {
 
 describe( "Delete car API", function() {
     describe("Delete car API ", function() {
-        it("Should return 200 response", function(done) {
+        it("Should return 201 response", function(done) {
             // Send some Form Data
              chai.request(baseurl)
             .post('/cars/deletecar')
@@ -578,6 +578,385 @@ describe( "admin total sales API", function() {
             // Send some Form Data
              chai.request(baseurl)
             .get('/analysis/admintotalsales')
+
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+describe( "admin billing API", function() {
+    describe("admin billing api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/adminhotelbilling')
+            .send({
+            date:'2017/11/11'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+describe( "admin car billing API", function() {
+    describe("admin car billing api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/admincarbilling')
+            .send({
+            date:'2017/11/11'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+describe( "admin flight billing API", function() {
+    describe("admin flight billing api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/adminflightbilling')
+            .send({
+            date:'2017/11/11'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+
+
+describe( "admin search flight API", function() {
+    describe("admin search flight api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/searchflightsadmin')
+            .send({
+            flightid:'ilc632',
+            carrier_name:'british airways'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+describe( "admin search car API", function() {
+    describe("admin search car api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/searchcarsadmin')
+            .send({
+            model_no:'nissan versa',
+            name:'thrifty'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+
+describe( "admin search hotel API", function() {
+    describe("admin search hotel api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/searchhotelsadmin')
+            .send({
+            hotel_id:'dyjfl00115',
+            hotel_hname:'fisher group'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+describe( "Incorect admin search hotel API", function() {
+    describe("Incorrect admin search hotel api", function() {
+        it("Should return 404 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/admin/searchhotelsadmins')
+            .send({
+            hotel_id:'dyjfl00115',
+            hotel_hname:'fisher group'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(404);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+describe( "Book Hotel API", function() {
+    describe("Book Hotel  api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/cars/bookcar')
+            .send({
+            user_id:'dyjfl00115',
+            booking_date:'2017/1/11',
+            booking_amount:'456',
+            start_date:'2016/11/11',
+            end_date:'2015/11/11',
+            name:'AC Hotel',
+            src_city:'San Jose',
+            destination_city:'New York',
+            rental_agency:'thrifty'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+describe( "Book Flight API", function() {
+    describe("Book Flight  api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/flights/bookflight')
+            .send({
+            user_id:'dyjfl00115',
+            booking_date:'2017/1/11',
+            booking_amount:456,
+            start_date:'2016/11/11',
+            end_date:'2017/11/11',
+            flight_name:'british airways',
+            src_city:'san jose',
+            destination_city:'New York',
+            flight_id:'SJS123'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+
+
+        describe( "Book car API", function() {
+    describe("Book car  api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/cars/bookcar')
+            .send({
+            user_id:'dyjfl00115',
+            booking_date:'2017/1/11',
+            booking_amount:'456',
+            start_date:'2016/11/11',
+            end_date:'2015/11/11',
+            name:'Corolla',
+            src_city:'San Jose',
+            destination_city:'New York',
+            rental_agency:'thrifty'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+        describe( " Incorrect Book car API", function() {
+    describe("Incorrect Book car  api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/cars/bookcars')
+            .send({
+            user_id:'dyjfl00115',
+            booking_date:'2017/1/11',
+            booking_amount:'456',
+            start_date:'2016/11/11',
+            end_date:'2015/11/11',
+            name:'Corolla',
+            src_city:'San Jose',
+            destination_city:'New York',
+            rental_agency:'thrifty'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(404);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+   describe( " delete hotel API", function() {
+    describe(" delete hotel API ", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/hotels/deletehotel')
+            .send({
+             hotel_id:'abc123'
+            })
+
+
+            .end(function (err, res) {
+                expect(res).to.have.status(201);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+describe( " Incorrect delete hotel API", function() {
+    describe("Incorrect delete hotel API ", function() {
+        it("Should return 404 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/hotels/deletehotels')
+            .send({
+             hotel_id:'abc123'
+            })
+
+
+            .end(function (err, res) {
+                expect(res).to.have.status(404);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+
+describe( "Incorrect Book Flight API", function() {
+    describe("Incorrect Book Flight  api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/flights/bookflights')
+            .send({
+            user_id:'dyjfl00115',
+            booking_date:'2017/1/11',
+            booking_amount:'456',
+            start_date:'2016/11/11',
+            end_date:'2015/11/11',
+            name:'british airways',
+            src_city:'San Jose',
+            destination_city:'New York',
+            flight_id:'SJS123'
+            })
+
+            .end(function (err, res) {
+                expect(res).to.have.status(404);
+               // expect(res.param.inputUsername).to.equal("chabra@gmail.com");
+                done();
+            });
+
+        });
+
+    });
+});
+
+describe( "hotel analysis API", function() {
+    describe("hotel analysis api", function() {
+        it("Should return 201 response", function(done) {
+            // Send some Form Data
+             chai.request(baseurl)
+            .post('/analysis/one')
+            .send({
+            date:'2017/11/11'
+            })
 
 
             .end(function (err, res) {
