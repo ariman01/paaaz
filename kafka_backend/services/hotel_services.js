@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 exports.searchHotels = function(data, callback){
     console.log("In searchHotels");
-    Hotels.searchHotels( data.hotel_city, data.hotel_capacity,  function(err , results){
+    Hotels.searchHotels( data.hotel_city,  function(err , results){
         console.log("result is" + results);
         if(err){
             callback(null,err);

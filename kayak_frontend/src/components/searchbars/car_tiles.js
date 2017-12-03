@@ -13,6 +13,7 @@ import {currentcar_action} from './../../actions/car_action';
 import { useraction } from './../../actions/user_action';
 import * as UTIL from './../../utils/util';
 import {userapi} from './../../api/userAPI';
+import * as Images from './../../utils/images';
 class CarTile extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ class CarTile extends Component {
     this.props.currentcar_action(data);
   }
 }
-  
+
 
   render() {
     return (
@@ -42,7 +43,8 @@ class CarTile extends Component {
                   </div>
                   <div style={{width:"100%"}}>
                       <div className="car-agency-image">
-                          <img src = {foxIcon} />
+                          <img src = {Images.retrieveCarAgencyImages(this.props.data.rental_agency)} /><br/>
+                          {this.props.data.rental_agency}
                       </div>
 
                       <div className="car-des-name" >
@@ -56,7 +58,7 @@ class CarTile extends Component {
           <div className="tiled2" style={{float:"left"}}>
               <div style={{marginTop:"10%"}}>
                   <span style={{color:"grey"}}>Pay Later</span> - <span style={{color:"green"}}>Free Cancellation</span>
-                  <img  className="car-img" src={carIcon}/>
+                  <img  className="car-img" src={Images.retrieveCarImages(this.props.data.car_type)}/>
               </div>
           </div>
 

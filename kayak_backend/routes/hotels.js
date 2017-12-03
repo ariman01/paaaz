@@ -6,9 +6,9 @@ router.post('/searchhotels', function(req, res, next) {
     console.log("In search hotels");
 
     var hotel_city = (req.body.src_city).toLowerCase() ;
-    var hotel_capacity = (req.body.capacity).toLowerCase() ;
+    //var hotel_capacity = (req.body.capacity).toLowerCase() ;
 
-    kafka.make_request('hotel_search',{"hotel_city" : hotel_city , "hotel_capacity" : hotel_capacity}, function(err,result){
+    kafka.make_request('hotel_search',{"hotel_city" : hotel_city}, function(err,result){
         if(err){
             console.log("error in searching hotels");
             res.status(403).json({result:result,message:"Failed to search hotel in city :"+hotel_city});

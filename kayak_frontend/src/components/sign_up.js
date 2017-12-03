@@ -7,7 +7,7 @@ import { useraction } from './../actions/user_action';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import FlightSearchBar from './searchbars/flight_search_bar.js';
-import HomeHeader from './headers/homepage_header';
+import HomeHeader1 from './headers/homepage_header1';
 import '../images/home.css';
 import HomeScreenButtonPanel from './searchbars/homescreen_button_panel';
 class SignUp extends Component
@@ -67,7 +67,7 @@ class SignUp extends Component
         console.log("its before modal"+showModal);
         return (
             <div className="flighthome">
-                <HomeHeader/>
+                <HomeHeader1/>
                 <div style={{paddingTop:"12%"}}>
                     <HomeScreenButtonPanel/>
                     <FlightSearchBar/>

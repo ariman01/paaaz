@@ -56,9 +56,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state){
-  console.log("Search users mapStateToProps: "+state.admin_reducer.searchedUser);
+  console.log("Search users mapStateToProps: "+state.admin_reducer.searchedUser.length);
   return{
-      searchedUser: state.admin_reducer.searchedUser,
+      searchedUser: state.admin_reducer.searchedUser
   };
 }
 

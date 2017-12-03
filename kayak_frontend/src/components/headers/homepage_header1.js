@@ -14,6 +14,20 @@ import {useraction} from './../../actions/user_action';
 import * as UTIL from './../../utils/util';
 
 class HomeHeader1 extends Component {
+
+  handleCarClick=()=>{
+    history.push("/cars");
+  }
+  handleFlightClick=()=>{
+    history.push("/flights");
+  }
+  handleHotelClick=()=>{
+    history.push("/hotels");
+  }
+  handle_homepage=()=>{
+    history.push('/cars');
+  }
+
   handleUserProfile(username){
     this.props.getuserdetails_action({email:username});
   }
@@ -39,15 +53,15 @@ class HomeHeader1 extends Component {
               <Navbar inverse collapseOnSelect className="home-page-header">
                 <Navbar.Header>
                   <Navbar.Brand>
-                    <a href="#"><img src={homeIcon}/></a>
+                    <a ><input type="image" onClick={this.handle_homepage} src={homeIcon}/></a>
                   </Navbar.Brand>
                   <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav>
-                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Cars</NavItem>
-                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Flights</NavItem>
-                    <NavItem eventKey={1} href="#" style={{marginLeft : 40 , fontSize : "12pt"}}>Hotels</NavItem>
+                    <NavItem eventKey={1} onClick={this.handleCarClick} style={{marginLeft : 40 , fontSize : "12pt"}}>Cars</NavItem>
+                    <NavItem eventKey={1} onClick={this.handleFlightClick} style={{marginLeft : 40 , fontSize : "12pt"}}>Flights</NavItem>
+                    <NavItem eventKey={1} onClick={this.handleHotelClick} style={{marginLeft : 40 , fontSize : "12pt"}}>Hotels</NavItem>
                   </Nav>
                   <Nav pullRight>
                     {this.getDropDownElement()}

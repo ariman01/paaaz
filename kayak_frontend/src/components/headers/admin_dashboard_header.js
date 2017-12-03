@@ -106,9 +106,6 @@ class AdminDashboardHeader extends Component {
                     <NavDropdown eventKey={4} title="My Admin">
 
                       <MenuItem eventKey={4.1} onClick={()=>{this.props.getAdminProfile({username : "root"})}}>Profile</MenuItem>
-                      <MenuItem eventKey={4.2}>Logout</MenuItem>
-
-                      <MenuItem eventKey={4.1}>Profile</MenuItem>
                       <MenuItem eventKey={4.2} onClick={this.handle_admin_logout}>Logout</MenuItem>
                     </NavDropdown>
                   </Nav>

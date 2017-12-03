@@ -15,7 +15,7 @@ class ShowFlights extends Component {
         console.log("It will display list of cars searched by the user");
         return (
             <div>
-                <div>
+                <div className="show-flight-header">
                     <HomeHeader1/>
                 </div>
 

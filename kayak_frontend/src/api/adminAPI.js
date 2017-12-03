@@ -303,7 +303,13 @@ export const handleHotelSearch = function(data){
          }
     }).then(result=>{
         console.log("result:",result);
-        dispatch(adminActions.updateListOfSearchedHotels(result.result));
+        if(result.result.length <= 0){
+          alert("No hotel data found for the given search");
+        }
+        else{
+          dispatch(adminActions.updateListOfSearchedHotels(result.result));
+        }
+
  }).catch(err => {
          console.log("Error while retrieving hotels!!!");
          return err;
@@ -351,11 +357,17 @@ export const handleCarSearch = function(data){
            dispatch(carActions.updateLastAdminSearch(data));
            return res.json();
          }else{
-           alert((res.message)?res.message:"Car doesn't exist!!!");
+             alert("Car not found !!!");
+
          }
+
     }).then(result=>{
         console.log("result:",result);
+        if(result.result && result.result.length>0){
         dispatch(adminActions.updateListOfSearchedCars(result.result));
+      }else{
+        alert("Car not found !!!");
+      }
  }).catch(err => {
          console.log("Error while retrieving cars!!!");
          return err;
@@ -433,8 +445,8 @@ export const adminHotelDelete = function(data, last_search){
 };
 
 
-export const handleCarUpdate = function(cardetail){
- console.log("update hotel details:",cardetail)
+export const handleCarUpdate = function(cardetail, last_search){
+ console.log("update hotel details:",cardetail, "last_search",last_search);
  return (dispatch) => {
    fetch(`${server_url}/admin/updatecaradmin`, {
        method: 'POST',
@@ -445,7 +457,9 @@ export const handleCarUpdate = function(cardetail){
      }).then(res => {
          if(res.status === 201){
            alert(" updated car with id:"+cardetail.model_no+" successfully !!!");
-           history.push('/admindashboard');
+           dispatch(handleHotelSearch(last_search));
+           //history.push('/admindashboard');editcars
+           history.push('/editcars')
          }else{
            alert((res.message)?res.message:"Failed to update car !!!");
          }
@@ -476,7 +490,13 @@ export const handleFlightSearch = function(data){
          }
     }).then(result=>{
         console.log("result:",result);
-        dispatch(adminActions.updateListOfSearchedFlights(result.result));
+        if(result.result && result.result.length <=0){
+          alert("Flight data not found");
+        }
+        else{
+          dispatch(adminActions.updateListOfSearchedFlights(result.result));
+
+        }
  }).catch(err => {
          console.log("Error while retrieving cars!!!");
          return err;
@@ -578,7 +598,7 @@ export const handleUserSearch = function(data){
            alert((res.message)?res.message:"User does not exist !!!");
          }
     }).then(result=>{
-        console.log("result",result)
+        console.log("handleUserSearch result",result)
         dispatch(adminActions.updateSearchedUser(result.result));
 }).catch(err => {
          console.log("Error in finding user!!!");

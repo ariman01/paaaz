@@ -36,7 +36,7 @@ export  function getleftNavConfigForCar(listofcars){
 
 function includeCarWithCapacity(capacity, config ){
   //console.log("capacity",capacity, "config",config.capacity['three_to_five']);
-  if(capacity> 0 && capacity <=2 && config.capacity['one_to_two']) return true;
+  if(capacity>0 && capacity <=2 && config.capacity['one_to_two']) return true;
   if(capacity>2 && capacity <=5 && config.capacity['three_to_five']) return true;
   if(capacity>=6 && config.capacity['six_or_more']) return true;
   return false;
@@ -96,7 +96,7 @@ export function filterHotelbasedOnLeftNavBar(listofhotels, config){
   console.log("listofhotels, ",listofhotels,"config : !!!", config)
   var result_hotel = [];
   listofhotels.map((hotel)=>{
-    if(config.stars[hotel.stars] && hotel.price <= config.price){
+    if(config.stars[hotel.hotel_stars] && hotel.hotel_price <= config.price){
       result_hotel.push(hotel)
     }
   });

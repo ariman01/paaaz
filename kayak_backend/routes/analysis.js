@@ -9,7 +9,7 @@ router.post('/one', function(req, res, next) {
 		 		var year = date.getFullYear();
 		 		console.log("Year entered is:"+year);
 
-    kafka.make_request('admin_analysis_hotel', {"year" : 2017}, function(err,result){
+    kafka.make_request('admin_analysis_hotel', {"year" : year}, function(err,result){
         console.log("err",err,"result",result.finalResult[0]);
         if(err){
             console.log(err);
@@ -27,7 +27,7 @@ router.post('/caranalysis', function(req, res, next) {
 		 		var year = date.getFullYear();
 		 		console.log("Year entered is:"+year);
 
-    kafka.make_request('admin_analysis_car', {"year" : 2017}, function(err,result){
+    kafka.make_request('admin_analysis_car', {"year" : year}, function(err,result){
         console.log("err",err,"result",result.finalResult[0]);
         if(err){
             console.log(err);
@@ -45,7 +45,7 @@ router.post('/flightanalysis', function(req, res, next) {
 		 		var year = date.getFullYear();
 		 		console.log("Year entered is:"+year);
 
-    kafka.make_request('admin_analysis_flight', {"year" : 2017}, function(err,result){
+    kafka.make_request('admin_analysis_flight', {"year" : year}, function(err,result){
         console.log("err",err,"result",result.finalResult[0]);
         if(err){
             console.log(err);

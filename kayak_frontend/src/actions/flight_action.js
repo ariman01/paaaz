@@ -28,8 +28,14 @@ export function searchflights_action(payload){
                     {
                         response.json().then((response) => {
                           //response.result[0].price = response.result[0].price*persons;
+                          if(response.result && response.result.length <= 0){
+                            alert("No data found for the given search");
+                          }
+                          else{
                             dispatch(success(response.result));
                             history.push('/flightdetails');
+                          }
+
                         });
                     }
                     else
@@ -102,7 +108,7 @@ export function addTripProtection_action(payload)
     function setflightprice(result){return { type :'FLIGHT_FINALAMOUNT',result }}
 }
 export const updateLastAdminSearch = (last_search) => {
-    console.log("Action UPDATE_LAST_FLIGHT_ADMIN_SEARCH");
+    console.log("Action UPDATE_LAST_FLIGHT_ADMIN_SEARCH last_search",last_search);
     return {
         type: "UPDATE_LAST_FLIGHT_ADMIN_SEARCH",
         last_search: last_search

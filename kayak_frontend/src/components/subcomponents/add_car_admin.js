@@ -4,12 +4,34 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../../images/admin.css';
 import {addCarAdmin} from './../../api/adminAPI';
+import * as UTILValidation from './../../utils/validation';
 
 class AddCarAdmin extends Component {
   constructor(){
     super();
     this.cardetail ={}
   }
+
+  handleSubmit(cardetail) {
+      console.log("Validating add car inputs at admin dashboard");
+      if(UTILValidation.emptyDate(cardetail.model_no,"model_no") &&
+         UTILValidation.emptyDate(cardetail.name,"car_name") &&
+         UTILValidation.emptyDate(cardetail.capacity,"capacity") &&
+         UTILValidation.numericValidation(cardetail.capacity,"capacity")&&
+         UTILValidation.emptyDate(cardetail.no_of_doors,"no_of_door") &&
+         UTILValidation.numericValidation(cardetail.no_of_doors,"no_of_door") &&
+         UTILValidation.emptyDate(cardetail.no_of_bags,"no_of_bags") &&
+         UTILValidation.numericValidation(cardetail.no_of_bags,"no_of_bags") &&
+         UTILValidation.emptyDate(cardetail.price,"price") &&
+         UTILValidation.numericValidation(cardetail.price,"price") &&
+         UTILValidation.emptyDate(cardetail.src_city,"src_city") &&
+         UTILValidation.emptyDate(cardetail.destination_city,"destination") &&
+         UTILValidation.emptyDate(cardetail.rental_agency,"rental agency") &&
+         UTILValidation.emptyDate(cardetail.car_type,"car type")){
+
+         this.props.addCarAdmin(cardetail);
+      }
+    }
 
 
   render() {
@@ -28,7 +50,7 @@ class AddCarAdmin extends Component {
                   <input type="text" style={{width:400}} className="form-control" id="car_model"  placeholder="Enter car model" size="35"
                   onChange={(car_model) => {this.cardetail.model_no = car_model.target.value}}/>
                   <br></br>
-                  <label>Car Car Name</label>
+                  <label>Car Name</label>
                   <input type="text" style={{width:400}} className="form-control" id="car_name"  placeholder="Enter car name" size="35"
                   onChange={(car_name) => {this.cardetail.name = car_name.target.value}}/>
                   <br></br>
@@ -95,7 +117,7 @@ class AddCarAdmin extends Component {
                   </div>
 
                   <button type="submit" className="btn btn-primary" style={{width:150}}
-                  onClick={() => this.props.addCarAdmin(this.cardetail)}>Add</button>
+                  onClick={() => this.handleSubmit(this.cardetail)}>Add</button>
 
                 </div>
 

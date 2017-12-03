@@ -25,8 +25,14 @@ export function searchcars_action(payload){
                     {
                         response.json().then((response) => {
                         console.log(response.result);
-                        dispatch(success(response.result));
-                        history.push('/cardetails');
+                        if(response.result && response.result.length <= 0){
+                          alert("no data available");
+                        }
+                        else{
+                          dispatch(success(response.result));
+                          history.push('/cardetails');
+                        }
+
                     });
                     }
                     else

@@ -38,7 +38,7 @@ class CarGraphs extends Component {
                     " Sales Report"," Top 10 car models in terms of sales")}
                 </div>
                 <br></br>
-                <h3 className="hotel-graph-header">Top cities in terms of car sales </h3>
+                <h3 className="hotel-graph-header">Top 10 cities in terms of car sales </h3>
                 <div className="car-graph-2">
                   {this.getAdminDashBoardGraph(this.props.car_analysis_data[1]['top_ten_city_sales'].cities,this.props.car_analysis_data[1]['top_ten_city_sales'].sales,
                   " Sales Report"," Cities with maximum sales")}

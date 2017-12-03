@@ -14,9 +14,9 @@ constructor(){
   render() {
     return (
               <div>
-                <div>
+              <div className="show-hotel-header">
                 <HomeHeader1/>
-                </div>
+              </div>
 
               <div className = "hotel-details-body">
                 <div className ="hotel-details-body-left-nav">

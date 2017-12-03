@@ -4,11 +4,35 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../../images/admin.css';
 import {addUserAdmin} from './../../api/adminAPI';
+import * as UTILValidation from './../../utils/validation';
+
 
 class AddUserAdmin extends Component {
   constructor(){
     super();
     this.userdetail ={}
+  }
+
+  handleSubmit(userdetail){
+    console.log("Validating add user inputs at admin dashboard");
+    if(UTILValidation.emptyDate(userdetail.email,"email") &&
+       UTILValidation.validateEmail(userdetail.email,"email") &&
+       UTILValidation.emptyDate(userdetail.password,"password") &&
+       UTILValidation.emptyDate(userdetail.first_name,"first name") &&
+       UTILValidation.emptyDate(userdetail.last_name,"last name") &&
+       UTILValidation.emptyDate(userdetail.address,"address") &&
+       UTILValidation.emptyDate(userdetail.city,"city") &&
+       UTILValidation.emptyDate(userdetail.state,"state") &&
+       UTILValidation.checkValidState(userdetail.state) &&
+       UTILValidation.emptyDate(userdetail.zip,"zip") &&
+       UTILValidation.validatePinCode(userdetail.zip,"zip")&&
+       UTILValidation.emptyDate(userdetail.phone,"phone") &&
+       UTILValidation.validatePhone(userdetail.phone,"phone")
+       ){
+
+       this.props.addUserAdmin(userdetail);
+    }
+
   }
 
 
@@ -62,7 +86,7 @@ class AddUserAdmin extends Component {
                   <br></br>
 
                   <button type="submit" className="btn btn-primary" style={{width:150}}
-                  onClick={() => this.props.addUserAdmin(this.userdetail)}>Add User</button>
+                  onClick={() => this.handleSubmit(this.userdetail)}>Add User</button>
 
                 </div>
 

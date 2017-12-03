@@ -66,12 +66,10 @@ function addNewHotel(hotelDetail, callback){
 
 }
 
-function searchHotels(hotel_city, hotel_capacity, callback){
+function searchHotels(hotel_city, callback){
   var query = {};
   if(hotel_city)
     query.hotel_city = hotel_city;
-  if(hotel_capacity)
-    query.hotel_capacity = hotel_capacity;
   console.log("searchHotel:",query);
   Hotels.find(query, callback);
 

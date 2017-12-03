@@ -4,6 +4,9 @@ import DatePicker from 'material-ui/DatePicker';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {searchhotels_action} from './../../actions/hotel_action';
+import * as UTILValidation from './../../utils/validation';
+
+
 class HotelSearchBar extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +36,14 @@ class HotelSearchBar extends Component {
         const {hoteldetails } = this.state;
         const { dispatch } = this.props;
         console.log("its capacity"+hoteldetails.capacity);
-        this.props.searchhotels_action(hoteldetails);
+        if(UTILValidation.emptyDate(hoteldetails.src_city,"source city") &&
+           UTILValidation.emptyDate(hoteldetails.start_date,"start date") &&
+           UTILValidation.emptyDate(hoteldetails.end_date,"end date") &&
+           UTILValidation.emptyDate(hoteldetails.capacity,"no of guests") &&
+           UTILValidation.validateStartEndDate(hoteldetails.start_date,hoteldetails.end_date)){
+           this.props.searchhotels_action(hoteldetails);
+        }
+
     }
 
   render() {
@@ -56,7 +66,7 @@ class HotelSearchBar extends Component {
                           <input type="date"  className="TextField col-sm-3 col-md-3 col-lg-3" id="checkInDate" name="start_date"
                           placeholder="Check-in" style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
 
-                          <input type="date"  className="TextField col-sm-3 col-md-3 col-lg-3" id="checkInDate" name="end_date"
+                          <input type="date"  className="TextField col-sm-3 col-md-3 col-lg-3" id="checkOutDate" name="end_date"
                                  placeholder="Check-in" style={{marginLeft:2,height:70, fontSize:17}} onChange={this.handleChange}/>
 
                                  <select className="TextField col-sm-2 col-md-2 col-lg-2" id="noOfGuests" name="capacity" onChange={this.handleChange}

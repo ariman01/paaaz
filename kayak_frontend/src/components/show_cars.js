@@ -14,7 +14,7 @@ constructor(){
   render() {
     return (
               <div>
-              <div>
+              <div className="show-car-header">
               <HomeHeader1/>
               </div>
 

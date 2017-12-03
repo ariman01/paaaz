@@ -28,7 +28,7 @@ else {
 
 }
   render() {
-    console.log("Search leftnav Bar Page");
+    console.log("Flight tiles page:",this.props.data);
     return (
       <div className="flight-tile">
 

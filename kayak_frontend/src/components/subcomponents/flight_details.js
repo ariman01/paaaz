@@ -15,7 +15,7 @@ class FlightDetails extends Component {
                     <div className= "flight-departure-return-text">
                         <strong>{this.props.data.src_city} to {this.props.data.destination_city}</strong>
                         <br></br>
-                        {this.props.data.carrier_name}, round-trip, mixed, 1 adult
+                        {this.props.data.carrier_name}, round-trip, mixed, {this.props.flight_days.persons} adult
                         <br></br>
                         <br></br>
                         Depart: {this.props.flight_days.flightfromdate}
