@@ -207,7 +207,7 @@ exports.adminCarAnalysis = function(data , callback){
 
                             results.map((value)=>{
                                 result3.agencies.push(value.agency_name);
-                                result3.sales.push(value.Number_Of_Bookings);
+                                result3.sales.push(value.Booking_Amount);
                             });
                             console.log("result3****",result3);
                             finalResult.push({top_ten_agency_sales:result3});
@@ -282,7 +282,7 @@ exports.adminFlightAnalysis = function(data , callback){
 
                             if(err){
                                 console.log("error");
-                                result3.message = "Error could not find top ten hotels"
+                                result3.message = "Error could not find top ten flight"
                                 //callback(null,err);
                                  }
                             console.log("Results from database:"+JSON.stringify(results));
