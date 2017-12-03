@@ -80,16 +80,13 @@ function handle_request(topic, data, callback){
     }
     else if(topic === "delete_user_req"){
       userservices.deleteUserAdmin(data, callback);
-    }
-    else if(topic === "admin_details_req"){
+    }else if(topic === "admin_details_req"){
       adminservices.adminDetails(data, callback);
-    }
-    else if(topic === "update_admin_req"){
+    }else if(topic === "update_admin_req"){
       adminservices.updateAdminDetails(data, callback);
     }else if(topic === "signin_req"){
       userservices.searchUserAdmin(data, callback);
-    }
-    else if(topic === "getuser_details_req"){
+    }else if(topic === "getuser_details_req"){
         userservices.getuserdetails(data, callback);
     }else if(topic === "edituser_details_req"){
         userservices.edituserdetails(data, callback);
@@ -103,7 +100,16 @@ function handle_request(topic, data, callback){
         userservices.getcarddetails(data, callback);
     }else if(topic === "getuser_history_req"){
         userservices.getuserhistory(data, callback);
+    }else if(topic === "get_user_card_details_req"){
+        userservices.get_user_card(data, callback);
+    }else if(topic === "getuserhistoryHotels_req"){
+        userservices.getuserhistoryHotels(data, callback);
+    }else if(topic === "getuserhistoryCars_req"){
+        userservices.getuserhistoryCars(data, callback);
+    }else if(topic === "getuserhistoryFlights_req"){
+        userservices.getuserhistoryFlights(data, callback);
     }
+
 }
 
 exports.handle_request = handle_request;

@@ -20,17 +20,12 @@ getCardDetails()
   var email= UTIL.getUserDetails();
   if(email){
     this.props.getcarddetailsAPI({email:email});
+
   }else{
     alert("User not logged in !!!");
 
   }
 }
-   getUserHistoryTile(userhistory){
-    console.log("UserHistory: ", userhistory);
-    return userhistory.map((userhistory)=>{
-      return (<UserHistoryTile data={userhistory} style={{paddingTop:10}}/>)
-    });
-  }
 
   render() {
     console.log("It will display user profile");
@@ -48,27 +43,21 @@ getCardDetails()
                     <br></br>
                     <a onClick ={() => {this.getCardDetails()}}>Payment Details</a>
                   </div>
-                    <p style={{fontSize : "20pt"}}>User History</p>
-                    <br></br>
-                    <br></br>
+                  <br/>
+                  <br/>
 
-                       {this.getUserHistoryTile(this.props.userhistory)}
+                  <p style={{fontSize : "20pt"}}>User History</p>
+                  <a onClick ={() => {this.props.getuserhistorycars({email:UTIL.getUserDetails()});}}>Car History</a><br/><br/><br/>
+                  <a onClick ={() => {this.props.getuserhistoryflights({email:UTIL.getUserDetails()});}}>Flight History</a><br/><br/><br/>
+                  <a onClick ={() => {this.props.getuserhistoryhotels({email:UTIL.getUserDetails()});}}>Hotel History</a><br/><br/><br/>
+
 
               </div>
-
-
-
             </div>
            );
   }
 }
-function mapStateToProps(state) {
-    console.log("state.users.userhistory",state.users.userhistory);
-    return{
-        userhistory:state.users.userhistory
-    }
-}
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistory:userapi.getuserhistoryAPI},dispatch);
+    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistorycars:userapi.getuserhistorycarsAPI,getuserhistoryflights:userapi.getuserhistoryflightsAPI,getuserhistoryhotels:userapi.getuserhistoryhotelsAPI},dispatch);
 }
-export default connect(mapStateToProps,mapDispatchToProps)(UserHistory);
+export default connect(null,mapDispatchToProps)(UserHistory);

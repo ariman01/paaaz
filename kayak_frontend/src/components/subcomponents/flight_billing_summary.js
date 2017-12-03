@@ -47,7 +47,6 @@ class FlightBillingSummary extends Component {
   }
 }
 function mapStateToProps(state) {
-    console.log("hiii"+state.flightdetails_reducer.flight_days.days);
     return {
         flight_days: state.flightdetails_reducer.flight_days,
         current_flight:state.flightdetails_reducer.current_flight,

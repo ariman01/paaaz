@@ -1,51 +1,75 @@
 import React,{ Component } from 'react';
-import AdminDashboardHeader from './../headers/admin_dashboard_header';
+import homepage_header1 from './../headers/homepage_header1';
 import './../../images/admin.css';
+import { connect } from 'react-redux';
+import {history} from "./../../utils/util";
+import * as UTIL from './../../utils/util';
+import {bindActionCreators} from 'redux';
+import {addcarddetailsAPI} from './../../api/userAPI';
 
 class AddPaymentDetailsForm extends Component {
-
- handleAdd(){
-    console.log("Clicked Add Card");
+  constructor(){
+    super();
+    this.carddetail ={}
   }
+
+ handleAdd(data){
+   var email= UTIL.getUserDetails();
+   if(email){
+     const payload = {
+       name_on_card : data.name_on_card,
+      card_number : data.card_number,
+      card_type : data.card_type,
+      address : data.address,
+       city : data.city,
+      state : data.state,
+       zip : data.zip,
+       email : email
+     }
+     this.props.addcarddetailsAPI(payload);
+   }else{
+     alert("User not logged in !!!");
+  }
+}
   render() {
     return (
             <div className = "add-hotel-admin">
 
                 <div className="admin-dashboard-header">
-                  <AdminDashboardHeader/>
+                  <homepage_header1/>
                 </div>
 
                 <div className = "add-hotel-admin-body">
                   <h2>Add Payment Detail</h2>
                   <hr/>
-                  
+
 
                   <label>Name on Card</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_name"  placeholder="Name on Card" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(name_on_card) => {this.carddetail.name_on_card = name_on_card.target.value}} placeholder="Name on Card" size="35"/>
                   <br></br>
                   <label>Card Number(last 4 digits)</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_address"  placeholder="card Number" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(card_number) => {this.carddetail.card_number = card_number.target.value}}  placeholder="card Number" size="35"/>
                   <br></br>
                   <label>Card Type</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_city"  placeholder="Card Type" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(card_type) => {this.carddetail.card_type = card_type.target.value}}  placeholder="Card Type" size="35"/>
                   <br></br>
                   <label>Address</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_state"  placeholder="Address" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(address) => {this.carddetail.address = address.target.value}}  placeholder="Address" size="35"/>
                   <br></br>
                   <label>City</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_stars"  placeholder="City" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(city) => {this.carddetail.city = city.target.value}}  placeholder="City" size="35"/>
                   <br></br>
-                 
+
                   <label>State</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_rating"  placeholder="State" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(state) => {this.carddetail.state = state.target.value}}  placeholder="State" size="35"/>
 
                   <br></br>
                   <label>Zip</label>
-                  <input type="text" style={{width:400}} className="form-control" id="hotel_capacity"  placeholder="Zip" size="35"/>
+                  <input type="text" style={{width:400}} className="form-control" onChange={(zip) => {this.carddetail.zip = zip.target.value}}  placeholder="Zip" size="35"/>
 
                   <br></br>
 
-                  <button onClick ={() => this.handleAdd()} type="submit" className="btn btn-primary" style={{width:150}}>Add</button>
+                  <button onClick= {() => this.handleAdd(this.carddetail)} type="submit" className="btn btn-primary" style={{width:150}}>Add</button>
 
                 </div>
 
@@ -55,7 +79,8 @@ class AddPaymentDetailsForm extends Component {
            );
   }
 }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({addcarddetailsAPI:addcarddetailsAPI},dispatch);
+}
 
-
-
-export default AddPaymentDetailsForm;
+export default connect(null,mapDispatchToProps)(AddPaymentDetailsForm);

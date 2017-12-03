@@ -112,11 +112,26 @@ function getUserDetails(userdetail, callback) {
         }
         else
         {
-            console.log("its result in model user"+result);
+            console.log("its result in model user"+result.first_name);
             var response = {result,code:201,message:'User details found'};
             callback(null,response);
         }
     }, getUser);
+}
+function get_user_card(userdetail, callback) {
+    console.log("its userdetails in usermodel" + userdetail.email);
+    var getUserCard = "SELECT kayak_database.users.email,kayak_database.users.first_name,kayak_database.users.last_name,kayak_database.users.address,kayak_database.users.city,kayak_database.users.state,kayak_database.users.zip,kayak_database.users.phone,kayak_database.card_payment.name_on_card,kayak_database.card_payment.card_number,kayak_database.card_payment.card_type FROM ( kayak_database.card_payment right outer join kayak_database.users on kayak_database.card_payment.email = kayak_database.users .email ) where kayak_database.users.email ='"+userdetail.email+"'";
+        mysql.fetchData(function (err, result) {
+          if (err) {
+            throw err;
+        }
+        else
+        {
+            console.log("its result in model user"+result);
+            var response = {result,code:201,message:'User details found'};
+            callback(null,response);
+        }
+    }, getUserCard);
 }
 function deleteUserAccount(userdetail, callback) {
     console.log("its userdetails in usermodel" + userdetail.email);
@@ -195,22 +210,92 @@ function addCardDetails(carddetail, callback) {
                 }
             }, addCard);
 }
-function getUserHistory(userdetail, callback) {
+/*function getUserHistory(userdetail, callback) {
+  var finalResult = [];
     console.log("its userhistory in usermodel" + userdetail.email);
-    var getUser = "(select booking_id,user_id,src_city,destination_city,agency_name,car_name,booking_date,booking_amount,start_date,end_date from car_transaction where user_id='" + userdetail.email + "') " +
-        "UNION ALL (select booking_id,user_id,flight_id,flight_name,src_city,destination_city,booking_date,booking_amount,start_date,end_date from flight_transaction where user_id='" + userdetail.email + "') " +
-        "UNION ALL (select booking_id,user_id,src_city,null as destination_city,hotel_name,hotel_id,booking_date,booking_amount,start_date,end_date  from hotel_transaction where user_id='" + userdetail.email + "') ";
-    mysql.fetchData(function (err, result) {
+    var getCars = "SELECT * from car_transaction where car_transaction.user_id='"+userdetail.email+"'";
+    mysql.fetchData(function (err, result1) {
         if (err) {
             throw err;
         }
         else
-        {
-            console.log("its result in model user"+result);
-            var response = {result,code:201,message:'User details found'};
+        { //console.log("its flight",result1);
+          finalResult.push({cars:result1});
+          var getFlights = "SELECT * from flight_transaction where flight_transaction.user_id='"+userdetail.email+"'";
+          mysql.fetchData(function (err, result2) {
+            if (err) {
+                throw err;
+            }
+            else
+            {
+              //console.log("its flight",result2);
+              finalResult.push({flights:result2});
+              var getHotels = "SELECT * from hotel_transaction where hotel_transaction.user_id='"+userdetail.email+"'";
+              mysql.fetchData(function (err, result3) {
+                if (err) {
+                    throw err;
+                }
+                else
+                {
+                  //console.log("its flight",result3);
+                  finalResult.push({hotels:result3});
+                }
+            }, getHotels);
+
+            }
+        }, getFlights);
+            console.log("its finalResult in user model"+finalResult[0]['cars']);
+            //console.log("its finalResult in user model"+finalResult[1]['flights']);
+            //console.log("its finalResult in user model"+finalResult[2]['hotels']);
+            var response = {result:finalResult,code:201,message:'User details found'};
             callback(null,response);
         }
-    }, getUser);
+    }, getCars);
+}*/
+function getuserhistoryCars(userdetail,callback)
+{
+  console.log("its userhistory in usermodel" + userdetail.email);
+    var getCars = "SELECT * from car_transaction where car_transaction.user_id='"+userdetail.email+"'";
+          mysql.fetchData(function (err, result) {
+            if (err) {
+            throw err;
+        }
+        else
+        {
+            var response = {result:result,code:201,message:'User details found'};
+            callback(null,response);
+        }
+    }, getCars);
+}
+function getuserhistoryFlights(userdetail,callback)
+{
+  console.log("its userhistory in usermodel" + userdetail.email);
+    var getFlights = "SELECT * from flight_transaction where flight_transaction.user_id='"+userdetail.email+"'";
+        mysql.fetchData(function (err, result) {
+            if (err) {
+            throw err;
+        }
+        else
+        {
+            var response = {result:result,code:201,message:'User details found'};
+            callback(null,response);
+        }
+    }, getFlights);
+}
+function getuserhistoryHotels(userdetail,callback)
+{
+  console.log("its userhistory in usermodel" + userdetail.email);
+    var getHotels = "SELECT * from hotel_transaction where hotel_transaction.user_id='"+userdetail.email+"'";
+          mysql.fetchData(function (err, result) {
+            if (err) {
+            throw err;
+        }
+        else
+        {
+            var response = {result:result,code:201,message:'User details found'};
+            callback(null,response);
+        }
+    }, getHotels);
 }
 function deleteUser (userdetail,callback){
   var deleteUser = "delete from kayak_database.users where email='"+userdetail.email+"'";
@@ -235,8 +320,11 @@ module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
 module.exports.getUserDetails=getUserDetails;
 module.exports.getCardDetails=getCardDetails;
-module.exports.getUserHistory=getUserHistory;
 module.exports.editUserDetails=editUserDetails;
 module.exports.addCardDetails=addCardDetails;
 module.exports.editCardDetails=editCardDetails;
 module.exports.deleteUserAccount = deleteUserAccount;
+module.exports.get_user_card=get_user_card;
+module.exports.getuserhistoryHotels =getuserhistoryHotels;
+module.exports.getuserhistoryFlights=getuserhistoryFlights;
+module.exports.getuserhistoryCars=getuserhistoryCars;

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import booknow from './../../images/booknow.jpg';
 import {bindActionCreators} from 'redux';
 import {bookcar_action} from './../../actions/car_action';
+import * as UTIL from './../../utils/util';
 class TermsAndConditions extends Component {
     constructor(props) {
         super(props);
@@ -17,8 +18,15 @@ handleSubmit()
     var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
     var booking = yyyy+"/"+mm+"/"+dd;
+    var email= UTIL.getUserDetails();
+    var user_id='';
+    if(email){
+      user_id = email;
+    }else{
+      user_id= this.props.user_id.user_id;
+    }
     const payload={
-        user_id:this.props.user_id.user_id,
+        user_id:user_id,
         src_city:this.props.current_car.src_city,
         destination_city:this.props.current_car.destination_city,
         rental_agency:this.props.current_car.rental_agency,

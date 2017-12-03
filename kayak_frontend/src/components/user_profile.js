@@ -18,17 +18,6 @@ class UserProfile extends Component {
 
     }
   }
-  getHistory()
-  {
-    console.log("its getCardDetails in user_profile");
-    var email= UTIL.getUserDetails();
-    if(email){
-      this.props.getuserhistoryAPI({email:email});
-    }else{
-      alert("User not logged in !!!");
-
-    }
-  }
 handleEdit(){
     history.push('./edituserdetails');
   }
@@ -51,7 +40,9 @@ handleEdit(){
                     <a onClick ={() => {this.getCardDetails()}}>Payment Details</a>
                     <br></br>
                     <br></br>
-                    <a onClick ={() => {this.getHistory()}}>History</a>
+                    <a onClick ={() => {this.props.getuserhistorycars({email:UTIL.getUserDetails()});}}>Car History</a><br/><br/><br/>
+                    <a onClick ={() => {this.props.getuserhistoryflights({email:UTIL.getUserDetails()});}}>Flight History</a><br/><br/><br/>
+                    <a onClick ={() => {this.props.getuserhistoryhotels({email:UTIL.getUserDetails()});}}>Hotel History</a><br/><br/><br/>
                   </div>
 
                   <div className= "user-profile-body-details">
@@ -109,6 +100,6 @@ function mapStateToProps(state) {
    }
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistoryAPI:userapi.getuserhistoryAPI},dispatch);
+    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistorycars:userapi.getuserhistorycarsAPI,getuserhistoryflights:userapi.getuserhistoryflightsAPI,getuserhistoryhotels:userapi.getuserhistoryhotelsAPI},dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(UserProfile);

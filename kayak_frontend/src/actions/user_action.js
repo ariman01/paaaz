@@ -3,13 +3,17 @@ import { userapi } from '../api/userAPI';
 import { alert_actions } from './alert_action';
 import {history,saveServerToken} from "../utils/util";
 import * as UTIL from  "../utils/util";
+import {currentflight_action} from './flight_action';
+import {currentcar_action} from './car_action';
+import {currenthotel_action} from './hotel_action';
 export const useraction={
     signin_action,
     signup_action,
     setUser_action,
     getuserdetails_action,
     edituserdetails_action,
-    deleteuser_action
+    deleteuser_action,
+    get_user_card_details_action
 };
 
 function signin_action(user) {
@@ -44,19 +48,25 @@ function signup_action(user) {
                     if(response.status===201)
                     {
                             response.json().then((response) => {
+                              console.log("User sign up response:",response);
                                 if(response.code===201)
                                 {
-                                dispatch(success(response));
-                                saveServerToken(user.username);
+                                //dispatch(success(response));
+                                dispatch(success(response.userinfo));
+                                UTIL.saveServerToken(response.userinfo,response.servertoken,"user");
+                                //saveServerToken(user.username);
+                                alert("user successfully signed up !!!");
                                 history.push('/flights');
                                 }
                                 else
                                 {
+                                    alert(response.message?response.message:"Sign up failed !!!");
                                     dispatch(failure(response.message));
                                 }
                         });
-                    }
-                    else
+                    }else if(response.status === 405){
+                      alert("User already exists !!!");
+                    }else
                     {
                         dispatch(failure(response.message));
                         dispatch(alert_actions.error(response.message));
@@ -66,11 +76,11 @@ function signup_action(user) {
     function success(user) { return { type: 'REGISTER_SUCCESS', user } }
     function failure(error) { return { type: 'REGISTER_FAILURE', error } }
 }
-function setUser_action(email)
+function setUser_action(user_id)
 {
     console.log("its set user action");
     return dispatch => {
-        dispatch(setUser({user_id:email}));
+        dispatch(setUser({user_id:user_id}));
     };
     function setUser(result){return { type :'SET_USER',result }}
 }
@@ -87,7 +97,7 @@ function getuserdetails_action(payload) {
                         response.json().then((response) => {
                             if(response.code===201)
                             {
-                              console.log("get user detail response:",response);
+                              console.log("get user detail response:",response.result);
                                 dispatch(success(response));
                                 history.push('/userdetails');
                             }
@@ -107,6 +117,47 @@ function getuserdetails_action(payload) {
     function failure(error) { return { type: 'GETALL_FAILURE', error } }
 }
 
+function get_user_card_details_action(payload) {
+  console.log("its payload in get_user_details_action"+payload.email+payload.data);
+    return dispatch => {
+        userapi.get_user_card_detailsAPI(payload)
+            .then(
+                response => {
+                    if(response.status===201)
+                    {
+                        response.json().then((response) => {
+                            if(response.code===201)
+                            {
+                              console.log("get user detail response:",response.result[0]);
+                                dispatch(success(response.result[0]));
+                                if(payload.data.carrier_name)
+                                {
+                                dispatch(currentflight_action(payload.data));
+                                }
+                                else if(payload.data.car_type)
+                                {
+                                  dispatch(currentcar_action(payload.data));
+                                }
+                                else if(payload.data.hotel_name)
+                                {
+                                  dispatch(currenthotel_action(payload.data));
+                                }
+                            }
+                            else
+                            {
+                                dispatch(failure(response.message));
+                            }
+                        });
+                    }
+                    else
+                    {
+                        dispatch(failure(response.message));
+                    }
+                });
+    };
+    function success(result) { return { type: 'GETUSERCARD_DETAILS', result } }
+    function failure(error) { return { type: 'GETALL_FAILURE', error } }
+}
 function edituserdetails_action(user) {
     console.log("its edit user details actions"+user.first_name);
     return dispatch => {
