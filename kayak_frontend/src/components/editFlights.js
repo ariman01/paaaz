@@ -15,6 +15,16 @@ class EditFlights extends Component {
       this.searchflight ={}
     }
 
+  flightSearch(data){
+      console.log("this.searchflight.flight_id ",this.searchflight.flight_id );
+      console.log("this.searchflight.carrier_name ",this.searchflight.carrier_name);
+      if((this.searchflight.flight_id) || (this.searchflight.carrier_name)){
+        this.props.handleFlightSearch(data);
+      }else{
+        alert("User need to provide either flight id  or carrier name");
+      }
+
+    }
 
   render() {
     console.log("It will display list of flights searched by the admin");
@@ -29,7 +39,7 @@ class EditFlights extends Component {
                           <input placeholder="Flight Id" id="flight_id" onChange={(flight_id) => {this.searchflight.flight_id = flight_id.target.value}}/>
                            <strong> OR  </strong>
                           <input placeholder="Carrier Name" id="carrier_name" onChange={(carrier_name) => {this.searchflight.carrier_name = carrier_name.target.value}}/>
-                          <button style={{marginLeft:15}} onClick ={() => this.props.handleFlightSearch(this.searchflight)} ><strong>Search</strong></button>
+                          <button style={{marginLeft:15}} onClick ={() => this.flightSearch(this.searchflight)} ><strong>Search</strong></button>
                       </div>
                     <div className ="hotel-details-body-left-nav">
 

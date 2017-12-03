@@ -303,7 +303,13 @@ export const handleHotelSearch = function(data){
          }
     }).then(result=>{
         console.log("result:",result);
-        dispatch(adminActions.updateListOfSearchedHotels(result.result));
+        if(result.result.length <= 0){
+          alert("No hotel data found for the given search");
+        }
+        else{
+          dispatch(adminActions.updateListOfSearchedHotels(result.result));
+        }
+
  }).catch(err => {
          console.log("Error while retrieving hotels!!!");
          return err;
@@ -484,7 +490,13 @@ export const handleFlightSearch = function(data){
          }
     }).then(result=>{
         console.log("result:",result);
-        dispatch(adminActions.updateListOfSearchedFlights(result.result));
+        if(result.result && result.result.length <=0){
+          alert("Flight data not found");
+        }
+        else{
+          dispatch(adminActions.updateListOfSearchedFlights(result.result));
+
+        }
  }).catch(err => {
          console.log("Error while retrieving cars!!!");
          return err;
@@ -586,7 +598,7 @@ export const handleUserSearch = function(data){
            alert((res.message)?res.message:"User does not exist !!!");
          }
     }).then(result=>{
-        console.log("result",result)
+        console.log("handleUserSearch result",result)
         dispatch(adminActions.updateSearchedUser(result.result));
 }).catch(err => {
          console.log("Error in finding user!!!");

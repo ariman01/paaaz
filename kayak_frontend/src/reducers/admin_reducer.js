@@ -143,7 +143,7 @@ export default function admin_reducer(state = initialData, action) {
 
         case 'UPDATE_SEARCHED_USER':
         return Object.assign({},state,{
-          searchedUser : action.payload
+          searchedUser : [action.payload]
         });
 
         case 'EDIT_USER_INFO':
