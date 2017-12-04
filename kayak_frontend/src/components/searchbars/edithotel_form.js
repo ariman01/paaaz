@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
 import './../../images/admin.css';
 import {handleHotelUpdate} from './../../api/adminAPI';
+import * as UTILValidation from './../../utils/validation';
+
 
 class EditHotelForm extends Component {
 
@@ -11,6 +13,26 @@ class EditHotelForm extends Component {
     super();
     this.hotel_edit_data ={};
   }
+
+  handleSubmit(hoteldetail) {
+      console.log("Validating edit hotel inputs at admin dashboard",hoteldetail);
+      if(
+         UTILValidation.emptyDate(hoteldetail.hotel_name,"hotel name") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_address,"hotel address") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_city,"hotel city") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_state,"hotel state") &&
+         UTILValidation.checkValidState(hoteldetail.hotel_state,"hotel state") &&
+         UTILValidation.numericValidation(hoteldetail.hotel_zip,"hotel zip")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_stars,"hotel stars")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_rating,"hotel rating")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_capacity,"hotel capacity")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_price,"hotel price")
+         ){
+
+         this.props.handleHotelUpdate(hoteldetail);
+      }
+  }
+
   render() {
 
       this.hotel_edit_data = this.props.current_hotel_edit;
@@ -66,7 +88,7 @@ class EditHotelForm extends Component {
 
                   <br></br>
 
-                  <button onClick ={() => this.props.handleHotelUpdate(this.hotel_edit_data)} type="submit" className="btn btn-primary" style={{width:150}}>Update</button>
+                  <button onClick ={() => this.handleSubmit(this.hotel_edit_data)} type="submit" className="btn btn-primary" style={{width:150}}>Update</button>
 
                 </div>
 

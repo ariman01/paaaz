@@ -42,10 +42,15 @@ const topics = [
     "getuser_history_req",
     "signin_req",
     "signup_req",
+
+    "admin_details_req",
+    "update_admin_req",
+
     "get_user_card_details_req",
     "getuserhistoryHotels_req",
     "getuserhistoryCars_req",
     "getuserhistoryFlights_req"
+
 
 
 ];
