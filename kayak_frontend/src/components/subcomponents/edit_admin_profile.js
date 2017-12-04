@@ -23,7 +23,7 @@ class EditAdminProfile extends Component {
                 </div>
 
                 <div className = "add-car-admin-body">
-                  <h2>Edit User details</h2>
+                  <h2>Edit Admin details</h2>
                   <hr/>
 
                   <label>First Name</label>

@@ -61,6 +61,7 @@ export function checkValidState(statename){
 }
 
 export function emptyDate(data, field){
+	console.log("data",data);
   if(data && data.length>0){
     return true;
   }

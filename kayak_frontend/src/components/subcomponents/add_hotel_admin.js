@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addHotelAdmin} from './../../api/adminAPI';
 import './../../images/admin.css';
+import * as UTILValidation from './../../utils/validation';
+
 
 class AddHotelAdmin extends Component {
 
@@ -12,6 +14,28 @@ class AddHotelAdmin extends Component {
     this.hoteldetail ={}
   }
 
+  handleSubmit(hoteldetail) {
+      console.log("Validating add car inputs at admin dashboard");
+      if(UTILValidation.emptyDate(hoteldetail.hotel_id,"hotel id") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_name,"hotel name") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_address,"hotel address") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_city,"hotel city") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_state,"state") &&
+         UTILValidation.checkValidState(hoteldetail.hotel_state) &&
+         UTILValidation.emptyDate(hoteldetail.hotel_zip,"hotel zip") &&
+         UTILValidation.validatePinCode(hoteldetail.hotel_zip,"hotel zip") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_stars,"hotel stars") &&
+         UTILValidation.numericValidation(hoteldetail.hotel_stars,"hotel stars") &&
+         UTILValidation.emptyDate(hoteldetail.hotel_rating,"hotel rating") &&
+         UTILValidation.numericValidation(hoteldetail.hotel_rating,"hotel rating")&&
+         UTILValidation.emptyDate(hoteldetail.hotel_capacity,"hotel capacity")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_capacity,"hotel capacity")&&
+         UTILValidation.emptyDate(hoteldetail.hotel_price,"hotel price")&&
+         UTILValidation.numericValidation(hoteldetail.hotel_price,"hotel price")){
+
+         this.props.addHotelAdmin(hoteldetail);
+      }
+    }
 
 
   render() {
@@ -78,7 +102,7 @@ class AddHotelAdmin extends Component {
                   <br></br>
 
                   <button type="submit" className="btn btn-primary" style={{width:150}}
-                  onClick={()=>{this.props.addHotelAdmin(this.hoteldetail)}}>Add</button>
+                  onClick={()=>{this.handleSubmit(this.hoteldetail)}}>Add</button>
 
                 </div>
 

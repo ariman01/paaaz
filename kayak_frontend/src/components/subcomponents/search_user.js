@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {handleUserSearch} from './../../api/adminAPI';
 import AdminDashboardHeader from './../headers/admin_dashboard_header';
-import SearchedUser from './searched_user'
+import SearchedUser from './searched_user';
+import * as UTILValidation from './../../utils/validation';
+
 
 class SearchUser extends Component {
 constructor(){
@@ -11,6 +13,12 @@ constructor(){
     this.searchuser ={}
   }
 
+  handleSubmit(email){
+    if(UTILValidation.validateEmail(email.email,"email")){
+      this.props.handleUserSearch(email);
+    }
+
+  }
 
   render() {
     return (
@@ -22,7 +30,7 @@ constructor(){
               <div className = "car-details-body">
                   <div style = {{marginLeft:520}}>
                       <input style={{width : 350}} placeholder="Enter email id of the user" id="email" onChange={(email) => {this.searchuser.email = email.target.value}}/>
-                      <button style={{marginLeft:15}} onClick ={() => this.props.handleUserSearch(this.searchuser)} ><strong>Search</strong></button>
+                      <button style={{marginLeft:15}} onClick ={() => this.handleSubmit(this.searchuser)} ><strong>Search</strong></button>
                       <br/>
                       <br/>
                   </div>

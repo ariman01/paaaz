@@ -309,6 +309,8 @@ router.post('/getadminprofile',function(req, res, next){
             //console.log("user signed up ",result);
             if(result.code === 201){
               res.status(201).json({result:result});
+            }else{
+              res.status(401).json
             }
         }else{
             res.status(401).json({result:[]});
@@ -336,6 +338,9 @@ router.post('/updateadmindetails',function(req, res, next){
             //console.log("user signed up ",result);
             if(result.code === 201){
               res.status(201).json(result);
+            }
+            else{
+              res.status(401).json({result:[],message:"details not found"});
             }
         }else{
             res.status(401).json({});

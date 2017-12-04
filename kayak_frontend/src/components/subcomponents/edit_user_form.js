@@ -4,12 +4,30 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../../images/admin.css';
 import {handleUserUpdate} from './../../api/adminAPI';
+import * as UTILValidation from './../../utils/validation';
+
 
 class UpdateUserAdmin extends Component {
   constructor(){
     super();
     this.updateduserdetail ={}
   }
+
+  handleSubmit(userdetail) {
+      console.log("Validating user edit inputs at admin dashboard");
+      if(UTILValidation.validateEmail(userdetail.email,"email")&&
+        UTILValidation.emptyDate(userdetail.first_name,"first name")&&
+        UTILValidation.emptyDate(userdetail.last_name,"last name")&&
+        UTILValidation.emptyDate(userdetail.address,"address")&&
+        UTILValidation.emptyDate(userdetail.city,"city")&&
+        UTILValidation.checkValidState(userdetail.state)&&
+        UTILValidation.validatePinCode(userdetail.zip,"zip")&&
+        UTILValidation.validatePhone(userdetail.phone,"phone")
+      ){
+
+         this.props.handleUserUpdate(userdetail);
+      }
+    }
 
 
   render() {
@@ -59,7 +77,7 @@ class UpdateUserAdmin extends Component {
                   <br></br>
 
                   <button type="submit" className="btn btn-primary" style={{width:150}}
-                  onClick={() => this.props.handleUserUpdate(this.updateduserdetail)}>Update User</button>
+                  onClick={() => this.handleSubmit(this.updateduserdetail)}>Update User</button>
 
                 </div>
 

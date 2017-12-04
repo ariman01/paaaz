@@ -115,9 +115,11 @@ router.post('/searchuser',function(req, res, next){
             //console.log("user signed up ",result);
             if(result.code === 201){
               res.status(201).json(result);
+            }else{
+              res.status(401).json({result:[],message : result.message});
             }
         }else{
-            res.status(401).json({});
+            res.status(401).json({result:[],message : "user not found"});
         }
     });
 });

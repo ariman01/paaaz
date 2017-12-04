@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './../../images/admin.css';
 import {handleCarUpdate} from './../../api/adminAPI';
+import * as UTILValidation from './../../utils/validation';
+
 
 class EditCarForm extends Component {
 
@@ -11,6 +13,25 @@ constructor(){
     super();
     this.car_edit_data ={};
   }
+
+  handleSubmit(cardetail,latestAdminSerachParam) {
+      console.log("Validating edit car inputs at admin dashboard",cardetail);
+      if(
+         UTILValidation.emptyDate(cardetail.name,"car_name") &&
+         UTILValidation.numericValidation(cardetail.capacity,"capacity")&&
+         UTILValidation.numericValidation(cardetail.no_of_bags,"no_of_bags") &&
+         UTILValidation.numericValidation(cardetail.no_of_doors,"no_of_door") &&
+
+         UTILValidation.emptyDate(cardetail.src_city,"src_city") &&
+         UTILValidation.emptyDate(cardetail.destination_city,"destination") &&
+         UTILValidation.emptyDate(cardetail.rental_agency,"rental agency")&&
+         UTILValidation.numericValidation(cardetail.price,"price")
+         ){
+
+         this.props.handleCarUpdate(cardetail,latestAdminSerachParam);
+      }
+    }
+
 
   render() {
     this.car_edit_data = this.props.current_car_edit;
@@ -63,7 +84,7 @@ constructor(){
 
                   <br></br>
 
-                  <button onClick ={() => this.props.handleCarUpdate(this.car_edit_data,this.props.latest_admin_search_parameter)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
+                  <button onClick ={() => this.handleSubmit(this.car_edit_data,this.props.latest_admin_search_parameter)}  type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
 
                 </div>
 

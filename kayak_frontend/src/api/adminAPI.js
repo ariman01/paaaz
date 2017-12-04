@@ -595,11 +595,17 @@ export const handleUserSearch = function(data){
          if(res.status === 201){
            return res.json();
          }else{
-           alert((res.message)?res.message:"User does not exist !!!");
+           alert("User does not exist !!!");
          }
     }).then(result=>{
-        console.log("handleUserSearch result",result)
-        dispatch(adminActions.updateSearchedUser(result.result));
+        console.log("handleUserSearch result",result.result);
+        if(result.result && result.result.length < 0){
+          alert("User not found");
+        }
+        else{
+          dispatch(adminActions.updateSearchedUser(result.result));
+
+        }
 }).catch(err => {
          console.log("Error in finding user!!!");
          return err;
@@ -671,7 +677,7 @@ export const getAdminProfile = function(data){
            alert((res.message)?res.message:"admin does not exist !!!");
          }
     }).then(result=>{
-        console.log("result",result.result.result);
+        console.log("result",result);
         dispatch(adminActions.setAdminDetails(result.result.result));
         history.push('/adminprofile');
 }).catch(err => {
