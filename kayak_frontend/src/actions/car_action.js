@@ -52,6 +52,7 @@ export function currentcar_action(payload)
     console.log("its payload in currentcar_action"+payload.capacity);
     return dispatch => {
         dispatch(success(payload));
+        history.push('/carbillingpage');
     };
     function success(result) { return { type: 'CURRENT_CAR', result } }
 }

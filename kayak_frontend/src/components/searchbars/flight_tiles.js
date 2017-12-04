@@ -6,6 +6,9 @@ import './../../images/flight.css';
 import {history} from './../../utils/util.js';
 import {bindActionCreators} from 'redux';
 import {currentflight_action} from './../../actions/flight_action';
+import { useraction } from './../../actions/user_action';
+import * as UTIL from './../../utils/util';
+import {userapi} from './../../api/userAPI';
 
 
 class FlightTile extends Component {
@@ -14,7 +17,15 @@ class FlightTile extends Component {
       this.handleView = this.handleView.bind(this);
   }
 handleView(data){
-    this.props.currentflight_action(data);
+  var email= UTIL.getUserDetails();
+  console.log("its handleView in flight_tiles"+email);
+  if(email){
+  this.props.get_user_card_details_action({email:email,data:data});
+}
+else {
+  this.props.currentflight_action(data);
+}
+
 }
   render() {
     console.log("Flight tiles page:",this.props.data);
@@ -61,6 +72,6 @@ function mapStateToProps(state) {
     };
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({currentflight_action:currentflight_action},dispatch);
+    return bindActionCreators({currentflight_action:currentflight_action,get_user_card_details_action:useraction.get_user_card_details_action},dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(FlightTile);

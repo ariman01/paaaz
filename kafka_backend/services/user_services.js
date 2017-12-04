@@ -169,11 +169,44 @@ exports.editcarddetails = function(data, callback){
         callback(err,result);
     });
 }
-exports.getuserhistory = function(data, callback){
+exports.getuserhistoryCars = function(data, callback){
     var userDetail = {
         email:data.email
     };
-    Users.getUserHistory( userDetail , function(err , result){
+    Users.getuserhistoryCars( userDetail , function(err , result){
+        if(err){
+            console.log("[Kafka] Error getting user history")
+        }
+        callback(err,result);
+    });
+}
+exports.getuserhistoryFlights = function(data, callback){
+    var userDetail = {
+        email:data.email
+    };
+    Users.getuserhistoryFlights( userDetail , function(err , result){
+        if(err){
+            console.log("[Kafka] Error getting user history")
+        }
+        callback(err,result);
+    });
+}
+exports.getuserhistoryHotels = function(data, callback){
+    var userDetail = {
+        email:data.email
+    };
+    Users.getuserhistoryHotels( userDetail , function(err , result){
+        if(err){
+            console.log("[Kafka] Error getting user history")
+        }
+        callback(err,result);
+    });
+}
+exports.get_user_card= function(data, callback){
+    var userDetail = {
+        email:data.email
+    };
+    Users.get_user_card( userDetail , function(err , result){
         if(err){
             console.log("[Kafka] Error getting user history")
         }

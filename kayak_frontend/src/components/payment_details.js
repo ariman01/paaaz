@@ -15,7 +15,7 @@ class PaymentDetails extends Component {
 }
 
 handleEdit(){
-    console.log("Clicked Edit Card");
+    history.push('/editpaymentdetailsform')
   }
   handleAdd(){
     console.log("Clicked Add Card");
@@ -51,7 +51,9 @@ handleEdit(){
                     <a onClick ={() => {history.push('/userdetails')}}>Preference</a>
                     <br></br>
                     <br></br>
-                    <a onClick ={() => {this.getHistory()}}>History</a>
+                    <a onClick ={() => {this.props.getuserhistorycars({email:UTIL.getUserDetails()});}}>Car History</a><br/><br/><br/>
+                    <a onClick ={() => {this.props.getuserhistoryflights({email:UTIL.getUserDetails()});}}>Flight History</a><br/><br/><br/>
+                    <a onClick ={() => {this.props.getuserhistoryhotels({email:UTIL.getUserDetails()});}}>Hotel History</a><br/><br/><br/>
                   </div>
                     <p style={{fontSize : "20pt"}}>Payment Details</p>
                     <br></br>
@@ -59,7 +61,7 @@ handleEdit(){
 
                        {this.getPaymentDetailsTIle(this.props.carddetails)}
 
-                        <button onClick ={() => this.handleAdd()} type="submit" className="btn btn-primary" style={{width:150}}>Add</button>
+                        <button onClick ={() => {history.push('/addpaymentdetailsform')}} type="submit" className="btn btn-primary" style={{width:150}}>Add</button>
                          <button onClick ={() => this.handleEdit()} type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
 
               </div>
@@ -79,7 +81,7 @@ function mapStateToProps(state) {
     }
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistoryAPI:userapi.getuserhistoryAPI},dispatch);
+    return bindActionCreators({getcarddetailsAPI:userapi.getcarddetailsAPI,getuserhistorycars:userapi.getuserhistorycarsAPI,getuserhistoryflights:userapi.getuserhistoryflightsAPI,getuserhistoryhotels:userapi.getuserhistoryhotelsAPI},dispatch);
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(PaymentDetails);

@@ -4,6 +4,7 @@ import booknow from './../../images/booknow.jpg';
 import { connect } from 'react-redux';
 import {bookhotel_action} from './../../actions/hotel_action';
 import {bindActionCreators} from 'redux';
+import * as UTIL from './../../utils/util';
 class HotelTermsAndConditions extends Component {
   constructor(props) {
       super(props);
@@ -17,8 +18,15 @@ class HotelTermsAndConditions extends Component {
       var mm = today.getMonth()+1;
       var yyyy = today.getFullYear();
       var booking = yyyy+"/"+mm+"/"+dd;
+      var email= UTIL.getUserDetails();
+      var user_id='';
+      if(email){
+        user_id = email;
+      }else{
+        user_id= this.props.user_id.user_id;
+      }
       const payload={
-          user_id:this.props.user_id.user_id,
+          user_id:user_id,
           src_city:this.props.current_hotel.hotel_city,
           hotel_name:this.props.current_hotel.hotel_name,
           hotel_id:this.props.current_hotel.hotel_id,

@@ -50,6 +50,7 @@ export function currenthotel_action(payload)
 {
     return dispatch => {
         dispatch(success(payload));
+        history.push('/hotelbillingpage');
     };
     function success(result) { return { type: 'CURRENT_HOTEL', result } }
 }

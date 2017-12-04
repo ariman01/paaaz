@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import booknow from './../../images/booknow.jpg';
 import {bookflight_action} from './../../actions/flight_action';
 import {bindActionCreators} from 'redux';
+import * as UTIL from './../../utils/util';
 class FlightsTermsAndConditions extends Component {
     constructor(props) {
         super(props);
@@ -17,8 +18,15 @@ class FlightsTermsAndConditions extends Component {
         var mm = today.getMonth()+1;
         var yyyy = today.getFullYear();
         var booking = yyyy+"/"+mm+"/"+dd;
+        var email= UTIL.getUserDetails();
+        var user_id='';
+        if(email){
+          user_id = email;
+        }else{
+          user_id= this.props.user_id.user_id;
+        }
         const payload={
-            user_id:this.props.user_id.user_id,
+            user_id:user_id,
             flight_id:this.props.current_flight.flight_id,
             flight_name:this.props.current_flight.carrier_name,
             src_city:this.props.current_flight.src_city,

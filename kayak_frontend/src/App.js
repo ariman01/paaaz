@@ -37,6 +37,7 @@ import EditHotelTile from './components/searchbars/edithotel_tiles';
 import EditFlights from './components/editFlights';
 import EditCars from './components/editCars';
 import EditHotelForm from './components/searchbars/edithotel_form';
+import AddPaymentDetailsForm from './components/searchbars/addpaymentdetails_form';
 import EditFlightForm from './components/searchbars/editflight_form';
 import EditCarForm from './components/searchbars/editcar_form';
 import FlightBillingInfo from './components/flight_billing_information';
@@ -52,7 +53,10 @@ import AfterBookingFlights from './components/afterbookingflights';
 import AfterBookingCars from './components/afterbookingcars';
 import AfterBookingHotels from './components/afterbookinghotels';
 import PaymentDetails from './components/payment_details';
+import UserHotelHistory from './components/user_hotel_history';
 import UserHistory from './components/user_history';
+import UserCarHistory from './components/user_car_history';
+import UserFlightHistory from './components/user_flight_history';
 import EditUserDetails from './components/searchbars/editpreference_form';
 class App extends Component {
 
@@ -79,8 +83,7 @@ class App extends Component {
                             <Route  exact path="/carbillingpage" render ={() => (<CarBillingPage/>)}/>
                             <Route  exact path="/adminlogin" render ={() => (<AdminLogin/>)}/>
 
-
-
+                            <Route  exact path="/addpaymentdetailsform" render ={() => (<AddPaymentDetailsForm/>)}/>
                             <Route  exact path="/hotelgraphs" render ={() => (<HotelGraphs/>)}/>
                             <Route  exact path="/editcars" render ={() => (<EditCars/>)}/>
                             <Route  exact path="/edithotels" render ={() => (<EditHotels/>)}/>
@@ -107,6 +110,9 @@ class App extends Component {
                             <Route  exact path="/userdetails" render ={() => (<UserProfile/>)}/>
                             <Route  exact path="/edituserdetails" render ={() => (<EditUserDetails/>)}/>
                             <Route  exact path="/userhistory" render ={() => (<UserHistory/>)}/>
+                            <Route  exact path="/userhotelhistory" render ={() => (<UserHotelHistory/>)}/>
+                            <Route  exact path="/usercarhistory" render ={() => (<UserCarHistory/>)}/>
+                            <Route  exact path="/userflighthistory" render ={() => (<UserFlightHistory/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

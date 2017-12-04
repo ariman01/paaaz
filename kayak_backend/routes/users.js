@@ -60,19 +60,29 @@ router.post('/login', function(req, res, next) {
 
 
 router.post('/signup',function(req, res, next){
-    let res_result = {message:'',
-        servertoken:''
-    };
+    let res_result = {};
     let userinfo = {};
     userinfo.username = req.body.username;
     userinfo.password = req.body.password;
+    res_result.code = 401;
 
     kafka.make_request('signup',{"userinfo":userinfo}, function(err,result){
         if(!err){
             //console.log("user signed up ",result);
-            res.status(201).json(result);
+            if(result.code === 201){
+              const server_token = jwt.sign({uid:userinfo.username},utils.server_secret_key);
+              res_result.userinfo = {username:userinfo.username}
+              res_result.servertoken = server_token;
+              res_result.code =201;
+              res_result.message = "User signed up successfully ... ";
+              res.status(201).json(res_result);
+            }else{
+              res_result.message = result.message;
+              res.status(405).json(res_result);
+            }
+
         }else{
-            res.status(401).json({});
+            res.status(401).json({message:"Server error failed to signup new user try again later"});
         }
     });
 });
@@ -190,11 +200,50 @@ router.post('/getcarddetails',function(req, res, next){
         }
     });
 });
-router.post('/getuserhistory',function(req, res, next){
+router.post('/getusercarddetails',function(req, res, next){
     var email = (req.body.email).toLowerCase();
-    kafka.make_request('getuser_history',{"email" : email }, function(err,result){
+
+    kafka.make_request('get_user_card_details',{"email" : email }, function(err,result){
         if(err){
-            console.log("error in searching user history");
+            console.log("error in searching card details");
+        }
+        else{
+            console.log("its result in card routes"+result.card_type);
+            res.status(201).json(result);
+        }
+    });
+
+
+});
+router.post('/getuserhistorycars',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getuserhistoryCars',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching user history cars");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/getuserhistoryflights',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getuserhistoryFlights',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching user history flights");
+        }
+        else{
+            console.log("its result in user routes"+result);
+            res.status(201).json(result);
+        }
+    });
+});
+router.post('/getuserhistoryhotels',function(req, res, next){
+    var email = (req.body.email).toLowerCase();
+    kafka.make_request('getuserhistoryHotels',{"email" : email }, function(err,result){
+        if(err){
+            console.log("error in searching user history hotels");
         }
         else{
             console.log("its result in user routes"+result);

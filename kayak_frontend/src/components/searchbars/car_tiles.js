@@ -10,18 +10,25 @@ import foxIcon from './../../images/fox.png';
 import {history} from './../../utils/util.js';
 import {bindActionCreators} from 'redux';
 import {currentcar_action} from './../../actions/car_action';
+import { useraction } from './../../actions/user_action';
+import * as UTIL from './../../utils/util';
+import {userapi} from './../../api/userAPI';
 import * as Images from './../../utils/images';
-
 class CarTile extends Component {
     constructor(props) {
         super(props);
         this.handleView = this.handleView.bind(this);
     }
   handleView(data){
-    this.props.currentcar_action(data);
-    history.push('./carbillingpage');
-
+    var email= UTIL.getUserDetails();
+    if(email){
+    this.props.get_user_card_details_action({email:email,data:data});
   }
+  else {
+    this.props.currentcar_action(data);
+  }
+}
+
 
   render() {
     return (
@@ -67,6 +74,6 @@ class CarTile extends Component {
   }
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({currentcar_action:currentcar_action},dispatch);
+    return bindActionCreators({currentcar_action:currentcar_action,get_user_card_details_action:useraction.get_user_card_details_action},dispatch);
 }
 export default connect(null,mapDispatchToProps)(CarTile);

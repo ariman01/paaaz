@@ -36,7 +36,7 @@ class HomeHeader1 extends Component {
       if(UTIL.getUserDetails()){
         return (<NavDropdown eventKey={4} style={{fontSize : "11pt"}} title="My Account" id="admin">
           <MenuItem eventKey={4.1} onClick ={() => {this.handleUserProfile(UTIL.getUserDetails())}} style={{fontSize : "11pt"}} >Profile</MenuItem>
-          <MenuItem eventKey={4.2} onClick ={() => {UTIL.deleteServerToken("user")}} style={{fontSize : "12pt"}} >Logout</MenuItem>
+          <MenuItem eventKey={4.2} onClick ={() => {UTIL.deleteServerToken("user");history.push('./cars')}} style={{fontSize : "12pt"}} >Logout</MenuItem>
         </NavDropdown>)
       }else{
         return (<NavDropdown eventKey={4} style={{fontSize : "11pt"}} title="My Account" id="admin">

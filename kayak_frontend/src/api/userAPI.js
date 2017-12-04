@@ -8,7 +8,10 @@ export const userapi= {
     editcarddetailsAPI,
     getcarddetailsAPI,
     deleteuserAPI,
-    getuserhistoryAPI
+    getuserhistorycarsAPI,
+    getuserhistoryflightsAPI,
+    getuserhistoryhotelsAPI,
+    get_user_card_detailsAPI
 };
 const headers = {
     'Accept': 'application/json'
@@ -111,9 +114,26 @@ function getcarddetailsAPI(email) {
     }
     function success(result) { return { type: 'GETCARD_DETAILS', result:result.result } }
 }
-function getuserhistoryAPI(email) {
+function get_user_card_detailsAPI(payload)
+{
+  const email= {email:payload.email};
+  console.log("its payload in get_user_details_api"+email);
+    const requestOptions = {
+        method: 'POST',
+        credentials:'include',
+        mode:'cors',
+        headers: { ...headers,'Content-Type': 'application/json'},
+        body: JSON.stringify(email)
+    };
+    return fetch('http://localhost:3010/users/getusercarddetails', requestOptions)
+        .then((response) =>{
+            return response;
+        });
+}
+
+function getuserhistorycarsAPI(email) {
     return (dispatch) => {
-        fetch(`${server_url}/users/getuserhistory`, {
+        fetch(`${server_url}/users/getuserhistorycars`, {
             method: 'POST',
             credentials: 'include',
             mode: 'cors',
@@ -127,7 +147,7 @@ function getuserhistoryAPI(email) {
                   {
                     console.log("its result in getUserHistoryAPI"+response);
                     dispatch(success(response));
-                    history.push('/userhistory');
+                    history.push('/usercarhistory');
                   }
                   else
                   {
@@ -137,7 +157,63 @@ function getuserhistoryAPI(email) {
           }
       });
     }
-    function success(result) { return { type: 'GETUSER_HISTORY', result:result.result } }
+    function success(result) { return { type: 'GETUSERCAR_HISTORY', result:result.result } }
+}
+function getuserhistoryflightsAPI(email) {
+    return (dispatch) => {
+        fetch(`${server_url}/users/getuserhistoryflights`, {
+            method: 'POST',
+            credentials: 'include',
+            mode: 'cors',
+            headers: {...headers, 'Content-Type': 'application/json'},
+            body: JSON.stringify(email)
+        }).then(res => {
+          if(res.status===201)
+          {
+              res.json().then((response) => {
+                  if(response.code===201)
+                  {
+                    console.log("its result in getUserHistoryAPI"+response);
+                    dispatch(success(response));
+                    history.push('/userflighthistory');
+                  }
+                  else
+                  {
+                    alert((res.message) ? res.message : "get card failed !!!");
+                  }
+              });
+          }
+      });
+    }
+    function success(result) { return { type: 'GETUSERFLIGHT_HISTORY', result:result.result } }
+}
+function getuserhistoryhotelsAPI(email) {
+    return (dispatch) => {
+        fetch(`${server_url}/users/getuserhistoryhotels`, {
+            method: 'POST',
+            credentials: 'include',
+            mode: 'cors',
+            headers: {...headers, 'Content-Type': 'application/json'},
+            body: JSON.stringify(email)
+        }).then(res => {
+          if(res.status===201)
+          {
+              res.json().then((response) => {
+                  if(response.code===201)
+                  {
+                    console.log("its result in getUserHistoryAPI"+response);
+                    dispatch(success(response));
+                    history.push('/userhotelhistory');
+                  }
+                  else
+                  {
+                    alert((res.message) ? res.message : "get card failed !!!");
+                  }
+              });
+          }
+      });
+    }
+    function success(result) { return { type: 'GETUSERHOTEL_HISTORY', result:result.result } }
 }
 export const editcarddetailsAPI = function(carddetail){
     console.log("card details:",carddetail.name_on_card);
@@ -153,7 +229,7 @@ export const editcarddetailsAPI = function(carddetail){
             body: JSON.stringify(carddetail)
         }).then(res => {
             if(res.status === 201){
-                dispatch(useraction.getcarddetailsAPI(email));
+                dispatch(getcarddetailsAPI(email));
             }else{
                 alert((res.message)?res.message:"card edit failed !!!");
             }
@@ -164,7 +240,6 @@ export const editcarddetailsAPI = function(carddetail){
     };
 };
 export const addcarddetailsAPI = function(carddetail){
-    console.log("card details:",carddetail.name_on_card);
     const email={
         email:carddetail.email
     }
@@ -176,15 +251,20 @@ export const addcarddetailsAPI = function(carddetail){
             headers: { ...headers,'Content-Type': 'application/json' },
             body: JSON.stringify(carddetail)
         }).then(res => {
-            if(res.status === 201){
-                dispatch(useraction.getcarddetailsAPI(email));
-            }else{
-                alert((res.message)?res.message:"card edit failed !!!");
-            }
-        }).catch(err => {
-            console.log("Error user edit!!!");
-            return err;
-        });
+          if(res.status===201)
+          {
+              res.json().then((response) => {
+                  if(response.code===201)
+                  {
+                    dispatch(getcarddetailsAPI(email));
+                  }
+                  else
+                  {
+                    alert((res.message) ? res.message : "adding card failed !!!");
+                  }
+              });
+          }
+      });
     };
 };
 function deleteuserAPI(user)

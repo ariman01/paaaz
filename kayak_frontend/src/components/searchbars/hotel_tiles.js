@@ -6,13 +6,22 @@ import {history} from './../../utils/util.js';
 import {bindActionCreators} from 'redux';
 import {currenthotel_action,setprice_action} from './../../actions/hotel_action';
 import { connect } from 'react-redux';
+import { useraction } from './../../actions/user_action';
+import * as UTIL from './../../utils/util';
+import {userapi} from './../../api/userAPI';
 import * as Images from './../../utils/images';
-
 class HotelTile extends Component {
 
 
   handleView(data){
-      this.props.currenthotel_action(data);
+    var email= UTIL.getUserDetails();
+    if(email){
+    this.props.get_user_card_details_action({email:email,data:data});
+  }
+  else {
+    this.props.currenthotel_action(data);
+  }
+
       console.log("handle hotel view :",data);
       var hotel_price=(this.props.data.hotel_price)*(this.props.hotel_days.days);
       var hotel_tax=10*this.props.hotel_days.days;
@@ -25,7 +34,6 @@ class HotelTile extends Component {
       console.log("payload: ",payload);
       console.log("its payload in hoteltile"+payload.hotel_price+payload.booking_amount);
       this.props.setprice_action(payload);
-      history.push('./hotelbillingpage');
 
   }
 
@@ -101,7 +109,7 @@ function mapStateToProps(state) {
 
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({currenthotel_action:currenthotel_action,setprice_action:setprice_action},dispatch);
+    return bindActionCreators({currenthotel_action:currenthotel_action,setprice_action:setprice_action,get_user_card_details_action:useraction.get_user_card_details_action},dispatch);
 
 }
 export default connect(mapStateToProps,mapDispatchToProps)(HotelTile);
