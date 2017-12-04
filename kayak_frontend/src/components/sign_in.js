@@ -10,6 +10,7 @@ import FlightSearchBar from './searchbars/flight_search_bar.js';
 import HomeHeader1 from './headers/homepage_header1';
 import '../images/home.css';
 import HomeScreenButtonPanel from './searchbars/homescreen_button_panel';
+import * as UTIL from '../utils/validation';
 class SignIn extends Component
 {
     constructor()
@@ -51,7 +52,15 @@ class SignIn extends Component
     handleSubmit() {
         console.log("signin modal handleSubmit:",this.state.user);
         if (this.state.user.username && this.state.user.password) {
-            this.props.signin_action(this.state.user);
+          if(UTIL.validateEmail(this.state.user.username))
+          {
+              this.props.signin_action(this.state.user);
+          }
+          else {
+          }
+        }
+        else {
+          alert("Please provide the required fields !!!");
         }
     }
 

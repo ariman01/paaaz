@@ -120,7 +120,7 @@ function getUserDetails(userdetail, callback) {
 }
 function get_user_card(userdetail, callback) {
     console.log("its userdetails in usermodel" + userdetail.email);
-    var getUserCard = "SELECT kayak_database.users.email,kayak_database.users.first_name,kayak_database.users.last_name,kayak_database.users.address,kayak_database.users.city,kayak_database.users.state,kayak_database.users.zip,kayak_database.users.phone,kayak_database.card_payment.name_on_card,kayak_database.card_payment.card_number,kayak_database.card_payment.card_type FROM ( kayak_database.card_payment right outer join kayak_database.users on kayak_database.card_payment.email = kayak_database.users .email ) where kayak_database.users.email ='"+userdetail.email+"'";
+    var getUserCard = "SELECT kayak_database.users.email,kayak_database.users.first_name,kayak_database.users.last_name,kayak_database.users.address,kayak_database.users.city,kayak_database.users.state,kayak_database.users.zip,kayak_database.users.phone,kayak_database.card_payment.name_on_card,kayak_database.card_payment.card_number,kayak_database.card_payment.card_type,kayak_database.card_payment.cvv FROM ( kayak_database.card_payment right outer join kayak_database.users on kayak_database.card_payment.email = kayak_database.users .email ) where kayak_database.users.email ='"+userdetail.email+"'";
         mysql.fetchData(function (err, result) {
           if (err) {
             throw err;
@@ -150,7 +150,7 @@ function deleteUserAccount(userdetail, callback) {
 }
 function editUserDetails(userdetail, callback) {
     console.log("its userdetails in model user"+userdetail.first_name+userdetail.phone);
-    var editUser= "UPDATE users SET first_name='"+userdetail.first_name+"',last_name='"+userdetail.last_name+"',address='"+userdetail.address+"',city='"+userdetail.city+"',state='"+userdetail.state+"',zip='"+userdetail.zip+"' WHERE email='"+userdetail.email+"'";
+    var editUser= "UPDATE users SET first_name='"+userdetail.first_name+"',last_name='"+userdetail.last_name+"',address='"+userdetail.address+"',city='"+userdetail.city+"',state='"+userdetail.state+"',zip='"+userdetail.zip+"',phone='"+userdetail.phone+"' WHERE email='"+userdetail.email+"'";
 
     //var editUser = "INSERT INTO users(email,first_name,last_name,address,city,state,zip,phone) VALUES ('" + userdetail.email + "','" + userdetail.first_name + "','" + userdetail.last_name + "','" + userdetail.address + "','" + userdetail.city + "','" + userdetail.state + "','" + userdetail.zip + "','" + userdetail.phone + "')";
     console.log("query is" + editUser);

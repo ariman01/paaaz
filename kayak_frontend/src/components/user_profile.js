@@ -77,11 +77,17 @@ handleEdit(){
                             <td><strong>Zip</strong></td>
                             <td>{this.props.userdetails.zip}</td>
                           </tr>
+                          <tr>
+                            <td><strong>Phone</strong></td>
+                            <td>{this.props.userdetails.phone}</td>
+                          </tr>
                         </tbody>
                       </table>
                       <div style = {{width : "100%", marginLeft: 160}}>
                       <button onClick ={() => this.handleEdit()} style={{align:'center', width:"15%",marginTop:"2%"}}><strong>Edit</strong></button>
+
                       </div>
+                      <a href={'./deleteaccount'} style={{float:'left'}}>Delete Account</a>
                   </div>
               </div>
 

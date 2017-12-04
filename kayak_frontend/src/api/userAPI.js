@@ -240,6 +240,7 @@ export const editcarddetailsAPI = function(carddetail){
     };
 };
 export const addcarddetailsAPI = function(carddetail){
+  console.log("its add card after book");
     const email={
         email:carddetail.email
     }

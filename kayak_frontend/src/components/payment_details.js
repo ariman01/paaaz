@@ -15,7 +15,7 @@ class PaymentDetails extends Component {
 }
 
 handleEdit(){
-    history.push('/editpaymentdetailsform')
+    history.push('/editpaymentdetails')
   }
   handleAdd(){
     console.log("Clicked Add Card");
@@ -41,9 +41,9 @@ handleEdit(){
     console.log("It will display user payment details");
     return (
             <div>
-              <div className="user-profile-header">
+            <div className="show-hotel-header">
                 <HomePageHeader1/>
-              </div>
+            </div>
 
               <div className= "user-profile-body">
                   <div className= "user-profile-body-nav-options">
@@ -62,7 +62,7 @@ handleEdit(){
                        {this.getPaymentDetailsTIle(this.props.carddetails)}
 
                         <button onClick ={() => {history.push('/addpaymentdetailsform')}} type="submit" className="btn btn-primary" style={{width:150}}>Add</button>
-                         <button onClick ={() => this.handleEdit()} type="submit" className="btn btn-primary" style={{width:150}}>Edit</button>
+                         <button onClick ={() => this.handleEdit()} type="submit" className="btn btn-primary" style={{width:150,marginLeft:10}}>Edit</button>
 
               </div>
 

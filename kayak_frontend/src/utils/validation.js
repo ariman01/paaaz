@@ -69,15 +69,21 @@ export function emptyDate(data, field){
 }
 
 export function validateEmail (email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	if(email && email.length >0){
+		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     var patt = new RegExp(re);
     var res= patt.test(email);
     if(res){
       return res;
-    }
-    else{
+    }else{
       alert("Invalid Email");
+			return false
     }
+	}else{
+		alert("Required field email is missing or not valid !!!");
+	  return false;
+	}
+
 
 }
 
@@ -93,21 +99,21 @@ export function validateStartEndDate (start_date , end_date) {
 }
 
 export function validatePinCode (pincode) {
+
        var regex = /^(\d{5})?$/;
        var patt = new RegExp(regex);
        var res= patt.test(pincode);
        console.log(res);
        if(res){
          return res;
-       }
-       else{
+       }else{
          alert("Pin should only be a 5 digit number");
        }
-
 }
 
 
 export function validatePhone (phone) {
+
        var regex = /^(\d{10})?$/;
        var patt = new RegExp(regex);
        var res= patt.test(phone);
@@ -117,35 +123,68 @@ export function validatePhone (phone) {
        }
        else{
          alert("Phone number can only be 10 digit number");
+				 return false;
        }
+
 
 }
 
 export function validateCreditCard (cardno) {
-       var regex = /^(\d{16})?$/;
-       var patt = new RegExp(regex);
-       var res= patt.test(cardno);
-       console.log(res);
-       return res;
+			if(cardno && cardno.length >0){
+				var regex = /^(\d{16})?$/;
+        var patt = new RegExp(regex);
+        var res= patt.test(cardno);
+ 			 if(res){
+          return res
+        }
+        else{
+          alert("Invalid Credit Card");
+					return false
+        }
+			}else{
+				alert("Required field credit card detail is missing !!!");
+			  return false;
+			}
+
+
 }
 
 export function validateCVV (cvv) {
+	console.log("cvv check :",cvv);
+	if(cvv && cvv.length >0){
        var regex = /^(\d{3})?$/;
        var patt = new RegExp(regex);
        var res= patt.test(cvv);
-       console.log(res);
-       return res;
+			 if(res){
+         return res
+       }
+       else{
+         alert("Invalid CVV - It has to be of 3 digits");
+       }
+		 }else{
+			 alert("Required field credit card cvv detail is missing !!!");
+			 return false;
+		 }
 
 }
 
 
 //for name to be greater than 2 characters and less than 30
 export function validateName (name) {
+	if(name && name.length >0){
        var regex = /^[a-zA-Z ]{2,30}$/
        var patt = new RegExp(regex);
        var res= patt.test(name);
-       console.log(res);
-       return res;
+			 if(res){
+         return res
+       }
+       else{
+         alert("Name should be more than 2 characters and less than 30 characters");
+       }
+		 }else{
+			 alert("Required field credit card name on card detail is missing !!!");
+			 return false;
+		 }
 }
 
 //for numeric fields like no_of_bags, capacity, price etc

@@ -10,7 +10,7 @@ class AfterBookingHotels extends Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="show-hotel-header">
                     <HomeHeader1/>
                 </div>
                 <div className = "car-details-body">

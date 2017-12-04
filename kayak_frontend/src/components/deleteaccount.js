@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
 import {Modal,Button} from 'react-bootstrap';
+import HomePageHeader1 from './headers/homepage_header1';
 import facebookicon from './../images/facebookicon.jpg';
 import googleicon from './../images/googleicon.jpg';
 import {history} from "./../utils/util";
@@ -7,8 +8,8 @@ import { useraction } from './../actions/user_action';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import FlightSearchBar from './searchbars/flight_search_bar.js';
-import HomeHeader from './headers/homepage_header';
 import '../images/home.css';
+import * as UTIL from '../utils/util';
 import HomeScreenButtonPanel from './searchbars/homescreen_button_panel';
 class DeleteAccount extends Component
 {
@@ -35,32 +36,34 @@ class DeleteAccount extends Component
     }
     handleSubmit(event) {
         event.preventDefault();
-        const payload={user_id:"pooja@yahoo.com"};
-            this.props.deleteuser_action(payload);
+        var email= UTIL.getUserDetails();
+        if(email){
+          const payload={user_id:email};
+              this.props.deleteuser_action(payload);
+        }else{
+          alert("User not logged in !!!");
+
     }
+  }
     render() {
 
         const { showModal } = this.state;
         console.log("its before modal"+showModal);
         return (
             <div className="flighthome">
-                <HomeHeader/>
-                <div style={{paddingTop:"12%"}}>
-                    <HomeScreenButtonPanel/>
-                    <FlightSearchBar/>
+                <div className="user-profile-header">
+                  <HomePageHeader1/>
                 </div>
 
                 <div>
                     <Modal style={{paddingTop:100}} bsSize="sm" show={this.state.showModal} onHide={this.close}>
-                        <Modal.Header closeButton style={{backgroundColor:'#e0e0e0',color:'#545456'}}>Please Signup to Continue
+                        <Modal.Header closeButton style={{backgroundColor:'#e0e0e0',color:'orange'}}>Wish to delete your account?
                         </Modal.Header>
                         <Modal.Body style={{paddingTop:25}}>
-                            <div style={{color:'#545456',alignContent:'center'}}><b>Delete Account..?</b></div><br/><br/>
-                            <button style={{backgroundColor:'#545456',color:'white',width:250,height:45}} onClick={this.handleSubmit}>Create Account</button>
+                            <button style={{backgroundColor:'orange',color:'white',width:250,height:45}} onClick={this.handleSubmit}>Delete Account</button><br/><br/>
+                            <button style={{backgroundColor:'orange',color:'white',width:250,height:45}} onClick={() =>history.push('/cars')}>Cancel</button>
                         </Modal.Body>
-                        <Modal.Footer>
-                            <label style={{float:'left'}}>Already have an account? </label><Button onClick={this.login}>SignIn</Button>
-                        </Modal.Footer>
+
                     </Modal>
                 </div>
             </div>

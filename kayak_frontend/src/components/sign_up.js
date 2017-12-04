@@ -10,6 +10,7 @@ import FlightSearchBar from './searchbars/flight_search_bar.js';
 import HomeHeader1 from './headers/homepage_header1';
 import '../images/home.css';
 import HomeScreenButtonPanel from './searchbars/homescreen_button_panel';
+import * as UTIL from '../utils/validation';
 class SignUp extends Component
 {
     constructor()
@@ -53,13 +54,22 @@ class SignUp extends Component
         const { user } = this.state;
         const { dispatch } = this.props;
         if (user.username && user.password) {
-           this.props.signup_action(user);
+          if(UTIL.validateEmail(user.username))
+          {
+              this.props.signup_action(user);
+          }
+          else {
+            
+          }
+        }
+        else {
+          alert("Please provide the required fields !!!");
         }
     }
 
     login()
     {
-        history.push('./login');
+        history.push('./signin');
     }
     render() {
 

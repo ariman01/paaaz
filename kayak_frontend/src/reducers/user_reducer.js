@@ -1,9 +1,9 @@
 import { userConstants } from '../constants/userConstants';
 const initialState = {
-    currentUser : null,
+    currentUser : {},
     userdetails:{},
     carddetails:[],
-    usercarddetails:[],
+    usercarddetails:{},
     userflighthistory:{},
     usercarhistory:{},
     userhotelhistory:{}
@@ -57,6 +57,10 @@ export function users(state = initialState, action) {
                         ...state,
                         userhotelhistory:action.result
                     }
+        case 'UPDATE_BILLING_USERINFO':
+        return Object.assign({},state,{
+          usercarddetails:action.userinfo
+        });
         default:
             return state
     }

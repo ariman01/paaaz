@@ -1,5 +1,8 @@
 import {searchcarsAPI,bookcarAPI} from '../api/carAPI';
 import {history} from "../utils/util";
+import * as UTIL from './../utils/validation';
+//import {addcarddetailsAPI} from '../api/userAPI';
+
 
 export function searchcars_action(payload){
     console.log("its date in searchcar action"+payload.start_date);
@@ -63,8 +66,16 @@ export function setPrice(payload)
     };
     function setcarprice(result){return { type :'CAR_FINALAMOUNT',result }}
 }
+function checkCreditDataValid(data){
+  if(UTIL.validateCreditCard(data.card_number) && UTIL.validateCVV(data.cvv)
+    && UTIL.checkValidState(data.state) && UTIL.validatePinCode(data.zip)
+    && UTIL.validatePhone(data.phone) && UTIL.validateName(data.name_on_card)
+  ){
+      return true;
+  }
+    return false;
+}
 export function bookcar_action(payload){
-    console.log("its date in bookcar action"+payload.start_date);
     return dispatch => {
         bookcarAPI(payload)
             .then(
@@ -83,7 +94,6 @@ export function bookcar_action(payload){
                 }
             );
     };
-
     function failure(error) { return { type: 'CAR_FAILURE', error } }
 }
 export function addDamageProtection_action(payload)

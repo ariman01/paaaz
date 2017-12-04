@@ -47,6 +47,8 @@ export const deleteServerToken = (usertype) => {
   }else if(usertype === "user"){
     localStorage.removeItem('currentUser');
     localStorage.removeItem('userServertoken');
+      alert("user will be logged out");
+      history.push('/flights');
   }
 };
 

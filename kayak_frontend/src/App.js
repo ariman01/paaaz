@@ -58,6 +58,8 @@ import UserHistory from './components/user_history';
 import UserCarHistory from './components/user_car_history';
 import UserFlightHistory from './components/user_flight_history';
 import EditUserDetails from './components/searchbars/editpreference_form';
+import EditPaymentDetails from './components/searchbars/editpaymentdetails_form';
+import DeleteAccount from './components/deleteaccount';
 class App extends Component {
 
 
@@ -113,6 +115,8 @@ class App extends Component {
                             <Route  exact path="/userhotelhistory" render ={() => (<UserHotelHistory/>)}/>
                             <Route  exact path="/usercarhistory" render ={() => (<UserCarHistory/>)}/>
                             <Route  exact path="/userflighthistory" render ={() => (<UserFlightHistory/>)}/>
+                            <Route  exact path="/deleteaccount" render ={() => (<DeleteAccount/>)}/>
+                            <Route  exact path="/editpaymentdetails" render ={() => (<EditPaymentDetails/>)}/>
                     </MuiThemeProvider>
                 </Router>
             </div>

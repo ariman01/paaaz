@@ -10,8 +10,8 @@ class AfterBookingCars extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <HomeHeader1/>
+                <div className  = "show-hotel-header">
+                    <HomeHeader1 />
                 </div>
                 <div className = "car-details-body">
                     <div className ="car-details-body-centre">

@@ -4,13 +4,31 @@ import { connect } from 'react-redux';
 import booknow from './../../images/booknow.jpg';
 import {bindActionCreators} from 'redux';
 import {bookcar_action} from './../../actions/car_action';
-import * as UTIL from './../../utils/util';
+import * as util from './../../utils/util';
+import * as UTIL from './../../utils/validation';
 class TermsAndConditions extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+    checkCreditDataValid(payload)
+    {
+        if(UTIL.validateCreditCard(payload.card_number) && UTIL.validateCVV(payload.cvv) && UTIL.validateName(payload.name_on_card) ){
+            return true;
+        }
+          return false;
+      }
+      checkpersonalInfoValid(payload){
+          if(payload.state && !UTIL.checkValidState(payload.state))
+              return false
+          if(payload.zip && !UTIL.validatePinCode(payload.zip))
+              return false
+          if(payload.phone && !UTIL.validatePhone(payload.phone))
+              return false
+          return true;
+      }
+
 handleSubmit()
 {
     var today = new Date();
@@ -18,15 +36,11 @@ handleSubmit()
     var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
     var booking = yyyy+"/"+mm+"/"+dd;
-    var email= UTIL.getUserDetails();
-    var user_id='';
-    if(email){
-      user_id = email;
-    }else{
-      user_id= this.props.user_id.user_id;
-    }
+
+
+
     const payload={
-        user_id:user_id,
+        user_id:this.props.usercarddetails.email,
         src_city:this.props.current_car.src_city,
         destination_city:this.props.current_car.destination_city,
         rental_agency:this.props.current_car.rental_agency,
@@ -34,9 +48,19 @@ handleSubmit()
         start_date:this.props.car_days.start_date,
         end_date:this.props.car_days.end_date,
         booking_amount:this.props.car_finalamount.booking_amount,
+        state:this.props.usercarddetails.state,
+        zip:this.props.usercarddetails.zip,
+        card_number:this.props.usercarddetails.card_number,
+        cvv:this.props.usercarddetails.cvv,
+        phone:this.props.usercarddetails.phone,
+        name_on_card:this.props.usercarddetails.name_on_card,
         booking_date:booking
-    }
+    };
+
+    if(UTIL.validateEmail(payload.user_id) && this.checkCreditDataValid(payload) && this.checkpersonalInfoValid(payload))
+    {
     this.props.bookcar_action(payload);
+    }
 }
 
   render() {
@@ -89,7 +113,10 @@ function mapStateToProps(state) {
         current_car:state.cardetails_reducer.current_car,
         car_finalamount: state.cardetails_reducer.car_finalamount,
         car_days:state.cardetails_reducer.car_days,
-        user_id:state.users.user_id
+        user_id:state.users.user_id,
+        currentUser:state.users.currentUser,
+        usercarddetails:state.users.usercarddetails
+
     };
 
 }

@@ -6,15 +6,34 @@ import {bindActionCreators} from 'redux';
 import { useraction } from './../../actions/user_action';
 import {edituserdetailsAPI} from './../../api/userAPI';
 import HomePageHeader1 from './../headers/homepage_header1';
+import * as UTIL from './../../utils/validation';
 
 class EditPreferenceForm extends Component {
   constructor() {
       super();
       this.user_edit_data = {};
   }
-  componentDidMount()
-  {
-      console.log("its did"+this.user_edit_data.first_name);
+
+
+  checkpersonalInfoValid(data){
+      if(data.first_name && !UTIL.validateName(data.first_name))
+          return false
+      if(data.last_name && !UTIL.validateName(data.last_name))
+          return false
+      if(data.state && !UTIL.checkValidState(data.state))
+          return false
+      if(data.zip && !UTIL.validatePinCode(data.zip))
+          return false
+      if(data.phone && !UTIL.validatePhone(data.phone))
+          return false
+      return true;
+  }
+
+  handleSubmit(data){
+    if(UTIL.validateEmail(data.email) && this.checkpersonalInfoValid(data)){
+        this.props.edituserdetailsAPI(data);
+    }
+
   }
   render() {
     this.user_edit_data = this.props.userdetails;
@@ -22,7 +41,7 @@ class EditPreferenceForm extends Component {
 
             <div className = "add-hotel-admin">
 
-                <div>
+                <div className="show-hotel-header">
                     <HomePageHeader1/>
                 </div>
 
@@ -62,8 +81,13 @@ class EditPreferenceForm extends Component {
                          onChange={(zip) => {this.user_edit_data.zip = zip.target.value}}/>
 
                   <br></br>
+                  <label>Phone Number</label>
+                  <input type="text" style={{width:400}} className="form-control"  defaultValue={this.props.userdetails.phone} size="35"
+                         onChange={(phone) => {this.user_edit_data.phone = phone.target.value}}/>
 
-                  <button onClick ={() => this.props.edituserdetailsAPI(this.user_edit_data)} type="submit" className="btn btn-primary" style={{width:150}}>Submit</button>
+                  <br></br>
+
+                  <button onClick ={() => this.handleSubmit(this.user_edit_data)} type="submit" className="btn btn-primary" style={{width:150}}>Submit</button>
 
                 </div>
 

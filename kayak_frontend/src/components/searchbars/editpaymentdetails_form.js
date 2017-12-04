@@ -4,7 +4,7 @@ import './../../images/admin.css';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {editcarddetailsAPI} from './../../api/userAPI';
-
+import HomePageHeader1 from './../headers/homepage_header1';
 class EditPaymentDetailsForm extends Component {
   constructor() {
       super();
@@ -18,16 +18,13 @@ class EditPaymentDetailsForm extends Component {
     this.card_edit_data = this.props.carddetails;
     return (
             <div className = "add-hotel-admin">
-
-                <div className="admin-dashboard-header">
-                  <AdminDashboardHeader/>
-                </div>
+            <div className="user-profile-header">
+              <HomePageHeader1/>
+            </div>
 
                 <div className = "add-hotel-admin-body">
                   <h2>Edit Payment detail</h2>
                   <hr/>
-
-
                   <label>Name on Card</label>
                   <input type="text" style={{width:400}} className="form-control" defaultValue={this.props.carddetails.name_on_card} size="35"
                          onChange={(name_on_card) => {this.card_edit_data.name_on_card = name_on_card.target.value}}/>
@@ -73,8 +70,9 @@ class EditPaymentDetailsForm extends Component {
 function mapStateToProps(state) {
     console.log("edit preference pageuserdetails",state.users.carddetails);
     return  {
-        carddetails: state.users.carddetails
+        carddetails: state.users.carddetails[0]
     }
+  
 }
 
 function mapDispatchToProps(dispatch) {

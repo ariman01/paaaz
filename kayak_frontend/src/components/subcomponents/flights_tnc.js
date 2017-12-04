@@ -4,13 +4,31 @@ import { connect } from 'react-redux';
 import booknow from './../../images/booknow.jpg';
 import {bookflight_action} from './../../actions/flight_action';
 import {bindActionCreators} from 'redux';
-import * as UTIL from './../../utils/util';
+import * as util from './../../utils/util';
+import * as UTIL from './../../utils/validation';
 class FlightsTermsAndConditions extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+    checkCreditDataValid(payload)
+    {
+        if(UTIL.validateCreditCard(payload.card_number) && UTIL.validateCVV(payload.cvv) && UTIL.validateName(payload.name_on_card) ){
+            return true;
+        }
+          return false;
+      }
+      checkpersonalInfoValid(payload){
+          if(payload.state && !UTIL.checkValidState(payload.state))
+              return false
+          if(payload.zip && !UTIL.validatePinCode(payload.zip))
+              return false
+          if(payload.phone && !UTIL.validatePhone(payload.phone))
+              return false
+          return true;
+      }
+
     handleSubmit()
     {
         var today = new Date();
@@ -18,15 +36,10 @@ class FlightsTermsAndConditions extends Component {
         var mm = today.getMonth()+1;
         var yyyy = today.getFullYear();
         var booking = yyyy+"/"+mm+"/"+dd;
-        var email= UTIL.getUserDetails();
-        var user_id='';
-        if(email){
-          user_id = email;
-        }else{
-          user_id= this.props.user_id.user_id;
-        }
+
+
         const payload={
-            user_id:user_id,
+            user_id:this.props.usercarddetails.email,
             flight_id:this.props.current_flight.flight_id,
             flight_name:this.props.current_flight.carrier_name,
             src_city:this.props.current_flight.src_city,
@@ -34,9 +47,18 @@ class FlightsTermsAndConditions extends Component {
             start_date:this.props.flight_days.start_date,
             end_date:this.props.flight_days.end_date,
             booking_amount:this.props.flight_finalamount.booking_amount,
+            state:this.props.usercarddetails.state,
+            zip:this.props.usercarddetails.zip,
+            card_number:this.props.usercarddetails.card_number,
+            cvv:this.props.usercarddetails.cvv,
+            phone:this.props.usercarddetails.phone,
+            name_on_card:this.props.usercarddetails.name_on_card,
             booking_date:booking
         }
+        if(UTIL.validateEmail(payload.user_id) && this.checkCreditDataValid(payload) && this.checkpersonalInfoValid(payload))
+        {
         this.props.bookflight_action(payload);
+        }
     }
 
   render() {
@@ -76,7 +98,9 @@ function mapStateToProps(state) {
         current_flight:state.flightdetails_reducer.current_flight,
         flight_finalamount: state.flightdetails_reducer.flight_finalamount,
         flight_days:state.flightdetails_reducer.flight_days,
-        user_id:state.users.user_id
+        user_id:state.users.user_id,
+        currentUser:state.users.currentUser,
+        usercarddetails: state.users.usercarddetails
     };
 
 }

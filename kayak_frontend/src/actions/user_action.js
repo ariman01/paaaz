@@ -28,11 +28,14 @@ function signin_action(user) {
                             console.log("signin_action"+response);
                             dispatch(success(response.userinfo));
                             UTIL.saveServerToken(response.userinfo,response.servertoken,"user");
-                            history.push('/flights');
+                            history.push('/cars');
                         });
                     }else{
+                      response.json().then((response) => {
+                        alert(response.message?response.message:"Sign In failed !!!");
                         dispatch(failure(response.message));
                         dispatch(alert_actions.error(response.message));
+                      });
                     }
                 } );
     };
@@ -56,7 +59,7 @@ function signup_action(user) {
                                 UTIL.saveServerToken(response.userinfo,response.servertoken,"user");
                                 //saveServerToken(user.username);
                                 alert("user successfully signed up !!!");
-                                history.push('/flights');
+                                history.push('/cars');
                                 }
                                 else
                                 {
@@ -200,6 +203,7 @@ function deleteuser_action(user) {
                             if(response.code===201)
                             {
                                 dispatch(success(response));
+                                UTIL.deleteServerToken("user");
                                 history.push('/flights');
                             }
                             else
@@ -217,4 +221,12 @@ function deleteuser_action(user) {
     };
     function success(user) { return { type: 'DELETE_SUCCESS', user } }
     function failure(error) { return { type: 'DELETE_FAILURE', error } }
+}
+
+export const billingUserinfoUpdate = (userinfo) =>{
+    console.log("Action UPDATE_BILLING_USERINFO");
+    return {
+      type:"UPDATE_BILLING_USERINFO",
+      userinfo:userinfo
+    }
 }
